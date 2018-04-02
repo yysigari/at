@@ -17,9 +17,10 @@ Installation process:
 
 3. start Matlab
 
-4. go in atmat directory
-
-   `>> cd at/atmat`
+4. Put the directories at/atmat and at/integrators in your Matlab path.  
+Using Matlab graphical interface:  
+`"Set path"` button, `"Add with Subfolders"` and select `atmat`  
+Repeat for `atintegrators`
 
 5. Compile all mexfunctions
 
