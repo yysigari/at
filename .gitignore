@@ -42,3 +42,8 @@ Contents.m
 # Vim
 *.swp
 *.swo
+
+# Files from direct install of pyat in conda
+pyat/*.pth
+pyat/f2py*
+pyat/site.py
