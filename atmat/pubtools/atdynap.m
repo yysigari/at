@@ -1,75 +1,116 @@
-function [xx,zz]=atdynap(ring,nt,dpp,rfrac)
-%ATDYNAP		Compute the dynamic aperture
+function [xx,zz]=atdynap(ring,nt,dpp,rfrac, nangle)
+%ATDYNAP Compute the dynamic aperture along several angles
 %
+%[XX,ZZ] = ATDYNAP(RING,NTURNS,DPP,RFRAC)
 %
-%[XX,ZZ]=ATDYNAP(RING,NTURNS,DPP,RFRAC)
+%  INPUTS
+%  1. XX,ZZ  - limit of the dynamic aperture (betatron amplitudes in m)
+%  2. RING   - Structure for tracking
+%  3. NTURNS - Number of turns
+%  4. DPP    - Off-momentum value (default: 0)
+%  5. RFRAC  - Resolution of the grid for checking the stability
+%	     	   as a fraction of the maximum stable amplitude (default: 0.02)
+%  6. nangle - Number of angles to probe. The code will use 2*nangle+1 
+%              (default: 5)
 %
-%XX,ZZ :	limit of the dynamic aperture (betatron amplitudes in m)
-%RING :		Structure for tracking
-%NTURNS:	Number of turns
-%DPP :		Off-momentum value (default: 0)
-%RFRAC :	Resolution of the grid for checking the stability
-%			as a fraction of the maximum stable amplitude
-%			(default: 0.02)
+%  OUTPUTS
+%  1. xx - dynamic aperture [xx zz]
+%  2. zz - dynamic aperture [xx zz]
+%
+%  EXAMPLE
+%  1. [xx zz]= atdynap(ring,NT,0,0.02);
 
-np=5;
+% search is made along 2nangle+1 angles of radius rlist
 rlist=0:0.001:0.1;
+
+% default number of angle to probe
+if nargin < 4, nangle=5; end
+% default radius fractional part
 if nargin < 4, rfrac=0.02; end
+%Default energy offset
 if nargin < 3, dpp=0.0; end
 
+
+% looks for closed orbit
 if isnumeric(dpp)
-clorb=[findorbit4(ring,dpp);dpp;0];
+    clorb=[findorbit4(ring,dpp);dpp;0];
 else
-   clorb=findorbit6(ring);
+    clorb=findorbit6(ring);
 end
 
-t1=linspace(0,pi,2*np+3);
-xpmax=ascan(ring,nt,clorb,0,rlist);
-zmax=ascan(ring,nt,clorb,0.5*pi,rlist);
-xmmax=ascan(ring,nt,clorb,pi,rlist);
-% 
-% x1=[xpmax*ones(1,np+2) xmmax*ones(1,np+1)];
-% z1=zmax*ones(1,2*np+3);
-% tlist=atan2(sin(t1).*z1,cos(t1).*x1)';
-% 
-% rr=NaN(2*np+3,1);
-% rr(1)=xpmax;
-% rr(np+2)=zmax;
-% rr(2*np+3)=xmmax;
-% for i=[2:np+1 np+3:2*np+2]
-%    rr(i)=ascan(ring,nt,clorb,tlist(i),rlist);
-% end
-% xx=rr.*cos(tlist);
-% zz=rr.*sin(tlist);
+% generates a search grid in theta
+theta = linspace(0,pi,2*nangle+3);
+
+% Look for main axis limits
+% look for maximum amplitude in positive amplitude (xp)
+xpmax = ascan(ring,nt,clorb,0,rlist);
+% look for maximum amplitude in vertical amplitude
+zmax  = ascan(ring,nt,clorb,0.5*pi,rlist);
+% look for maximum amplitude in negative amplitude (xm)
+xmmax = ascan(ring,nt,clorb,pi,rlist);
+
+% refine grid for the search for DA
+% 0.5*max_amplitude to 2*max_amplitude by step of rfract*max_amplitude
 slist=0.5:rfrac:2;
-xx=NaN(2*np+3,1);
-zz=xx;
-for i=1:np+3
-   [xx(i),zz(i)]=bscan(ring,nt,clorb,...
-	  xpmax*cos(t1(i))*slist,zmax*sin(t1(i))*slist);
+
+% intialize data
+xx = nan(2*nangle+3,1);
+zz = xx;
+
+for i=1:nangle+3
+    [xx(i),zz(i)]=bscan(ring,nt,clorb,...
+        xpmax*cos(theta(i))*slist,zmax*sin(theta(i))*slist);
 end
-for i=np+4:2*np+3
-   [xx(i),zz(i)]=bscan(ring,nt,clorb,...
-	  xmmax*cos(t1(i))*slist,zmax*sin(t1(i))*slist);
+for i=nangle+4:2*nangle+3
+    [xx(i),zz(i)]=bscan(ring,nt,clorb,...
+        xmmax*cos(theta(i))*slist,zmax*sin(theta(i))*slist);
 end
 
+%subfunction sections
 function rmax=ascan(ring,nt,clorb,theta,rlist)
-for rr=rlist
-   rin=clorb+[rr*cos(theta);0;rr*sin(theta);0;0;0];
-   [dummy,lost]=ringpass(ring,rin,nt,'KeepLattice'); %#ok<ASGLU>
-   if lost, break; end
-   rmax=rr;
+% ascan - searches for maximum radius value along a radius line of angle theta
+%
+%  INPUTS
+%  1. ring  - Ring structure
+%  2. nt    - number of turns for tracking 
+%  3. clorb - Closed orbit
+%  4. theta - Angle line to make the search
+%  5. rlist - Vector of radius
+%
+%  OUTPUTS
+%  1. rmax  - maximum amplitude
+
+for radius=rlist
+    rin=clorb+[radius*cos(theta);0;radius*sin(theta);0;0;0];
+    [dummy,lost]=ringpass(ring,rin,nt,'KeepLattice'); %#ok<ASGLU>
+    if lost, break; end
+    rmax=radius;
 end
-fprintf('theta: %g, r: %g\n',theta,rmax);
+fprintf('theta: %g rad, r: %g mm\n',theta, rmax*1e3);
 
 function [xmax,zmax]=bscan(ring,nt,clorb,xlist,zlist)
+% bscan - searches for maximum amplitudes along a radius line of angle theta
+%
+%  INPUTS
+%  1. ring  - Ring structure
+%  2. nt    - number of turns for tracking 
+%  3. clorb - Closed orbit
+%  4. xlist - Angle line to make the search
+%  5. zlist - Vector of radius
+%
+%  OUTPUTS
+%  1. xmax  - maximum horizontal amplitude
+%  2. zmax  - maximum vertical amplitude
+
+% initialize data
 xmax = 0.0;
 zmax = 0.0;
+
 for i=1:length(xlist)
-   rin=clorb+[xlist(i);0;zlist(i);0;0;0];
-   [dummy,lost]=ringpass(ring,rin,nt,'KeepLattice'); %#ok<ASGLU>
-   if lost, break; end
-   xmax=xlist(i);
-   zmax=zlist(i);
+    rin=clorb+[xlist(i);0;zlist(i);0;0;0];
+    [dummy,lost]=ringpass(ring,rin,nt,'KeepLattice'); %#ok<ASGLU>
+    if lost, break; end
+    xmax=xlist(i);
+    zmax=zlist(i);
 end
-fprintf('xm: %g, zm: %g\n',xmax,zmax);
+fprintf('xm: %g mm, zm: %g mm\n',xmax*1e3,zmax*1e3);
