@@ -4,6 +4,7 @@ function plotdata=plotAperture(~,ring,~,varargin)
 % 
 % use with atplot(atlattice,@plotAperture);
 %
+%  See Also PlotRAperture, PlotERAperture, SetPhysicalAperture
 
 apind=findcells(ring,'Limits');
 
