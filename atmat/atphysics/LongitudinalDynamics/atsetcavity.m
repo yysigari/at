@@ -30,6 +30,10 @@ newring = ring;
 % Indices of all cavity
 indrfc=findcells(ring,'Class','RFCavity');
 
+if isempty(indrfc)
+    error('No cavity located');
+end
+    
 [E0,ncells,~,~,U0]=atenergy(ring); %#ok<ASGLU>
 % gamma0=E0/me_EV;
 % beta0=sqrt(gamma0^2-1)/gamma0;
