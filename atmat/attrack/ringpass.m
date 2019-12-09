@@ -34,7 +34,7 @@ function [Rout, varargout] = ringpass(ring, Rin, nturns, varargin)
 %                                    the element where the particle is lost
 %                                    (sixth coordinate is inf if particle is lost in a physical aperture)
 %               coordinates          6xNxNHIST array, coordinates at the entrance of the
-%                                    LHIST elements before the loss
+%                                    NHIST elements before the loss
 %
 % ROUT=RINGPASS(...,'KeepLattice') Tracking with the 'KeepLattice' flag is
 %   more efficient because it reuses persistent data structures stored in
