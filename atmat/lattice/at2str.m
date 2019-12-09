@@ -10,10 +10,16 @@ function elstr=at2str(elem)
 %  OUTPUTS
 %  1. elsstr - String given the AT constructor of the element
 %
-%  See also atwritem atwritepy
+%  EXAMPLES
+%  1. at2str(ring{1})
+%
+%  See also atwritem atwritepy atguessclass
 
+% Guess class of the element
 atclass=atguessclass(elem, 'UseClass');
 
+% switchyard over the classname
+% default class will be maker
 switch atclass
     case 'Drift'
         create=@atdrift;
@@ -71,7 +77,7 @@ switch atclass
     case 'Corrector'
         create=@atcorrector;
         [options,args]=doptions(elem,create,{'Length','KickAngle'});
-    case 'Multipole'
+    case {'Multipole', 'Octupole'}
         create=@atmultipole;
         [options,args]=doptions(elem,create,{'Length','PolynomA','PolynomB'});
     case 'ThinMultipole'
@@ -131,7 +137,7 @@ elstr=sprintf(fmt,func2str(create),strargs{:});
         catch
             argstr=sprintf('%s([])',class(arg));
             warning('AT:CannotDisplay',...
-            'In the element ''%s'' the %s field cannot be displayed (replaced by ''%s'')',famname, prevarg, argstr);
+                'In the element ''%s'' the %s field cannot be displayed (replaced by ''%s'')',famname, prevarg, argstr);
         end
         prevarg=argstr;
     end
