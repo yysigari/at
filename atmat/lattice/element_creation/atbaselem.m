@@ -5,6 +5,11 @@ function elem = atbaselem(famname,method,varargin)
 %   Create an AT element structure and check the consistence of
 %   PolynomA, PolynomB, MaxOrder and NumIntSteps
 %
+%  INPUTS
+%  1. famnam - Element Name
+%  2. method - Integration methode
+%  3. any couple of key/value - depend on element.
+%
 %  NOTES
 %    1. length of PolynomA and PolynomB are equal (zero padding)
 %    2. MaxOrder is always lenght(PolynomA) - 1
