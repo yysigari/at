@@ -24,7 +24,7 @@ function [xx,zz]=atdynap(ring,nt,dpp,rfrac, nangle)
 rlist=0:0.001:0.1;
 
 % default number of angle to probe
-if nargin < 4, nangle=5; end
+if nargin < 5, nangle=5; end
 % default radius fractional part
 if nargin < 4, rfrac=0.02; end
 %Default energy offset
@@ -40,7 +40,7 @@ end
 
 % generates a search grid in theta
 theta = linspace(0,pi,2*nangle+3);
-
+fprintf('***** DA estimation\n');
 % Look for main axis limits
 % look for maximum amplitude in positive amplitude (xp)
 xpmax = ascan(ring,nt,clorb,0,rlist);
@@ -86,7 +86,7 @@ for radius=rlist
     if lost, break; end
     rmax=radius;
 end
-fprintf('theta: %g rad, r: %g mm\n',theta, rmax*1e3);
+fprintf('theta: %8.3f rad, rmax: %8.3f mm\n',theta, rmax*1e3);
 
 function [xmax,zmax]=bscan(ring,nt,clorb,xlist,zlist)
 % bscan - searches for maximum amplitudes along a radius line of angle theta
@@ -101,16 +101,26 @@ function [xmax,zmax]=bscan(ring,nt,clorb,xlist,zlist)
 %  OUTPUTS
 %  1. xmax  - maximum horizontal amplitude
 %  2. zmax  - maximum vertical amplitude
+%
+%  NOTES
+%  1. A 10 um transveres amplitude is forced for tracking to get the full
+%  4D/6D dynamics
 
 % initialize data
 xmax = 0.0;
 zmax = 0.0;
 
+%minimum tranverse amplitudes
+rin0 = 10*[1e-6; 0; 1e-6; 0; 0; 0];
+
+fprintf('***** DA computation\n');
+
+% loop over the DA grid
 for i=1:length(xlist)
-    rin=clorb+[xlist(i);0;zlist(i);0;0;0];
+    rin=clorb+[xlist(i);0;zlist(i);0;0;0]+rin0;
     [dummy,lost]=ringpass(ring,rin,nt,'KeepLattice'); %#ok<ASGLU>
     if lost, break; end
     xmax=xlist(i);
     zmax=zlist(i);
 end
-fprintf('xm: %g mm, zm: %g mm\n',xmax*1e3,zmax*1e3);
+fprintf('xmax: %8.3f mm, zmax: %8.3f mm\n\n',xmax*1e3,zmax*1e3);
