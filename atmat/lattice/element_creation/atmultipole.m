@@ -40,3 +40,4 @@ function elem=atmultipole(fname,varargin)
 elem=atbaselem(fname,method,'Class',cl,'Length',L,...
     'PolynomA',PolynomA,'PolynomB',PolynomB,rsrc{:});
 end
+

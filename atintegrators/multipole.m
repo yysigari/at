@@ -37,7 +37,7 @@ ElemData.T1 = zeros(1,6);
 ElemData.T2 = zeros(1,6);
 ElemData.PolynomA= PolynomA;	 
 ElemData.PolynomB= PolynomB;
-ElemData.BendingAngle  	= PolynomB(1);
+%ElemData.BendingAngle  	= PolynomB(1); % to be compatible for multipole
 ElemData.PassMethod=method;
 
 global FAMLIST
