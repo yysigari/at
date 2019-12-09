@@ -4,8 +4,8 @@ function varargout=atx(ring,varargin)
 %  BEAMDATA=ATX(RING,DPP,REFPTS)
 %
 %  INPUTS
-%  1. RING - AT structure
-%  2. DPP  - Rrelative energy deviation (default: 0)
+%  1. RING   - AT structure
+%  2. DPP    - Relative energy deviation (default: 0)
 %  3. REFPTS - Index of elements (default: 1:length(ring))
 %
 %  OUTPUT
