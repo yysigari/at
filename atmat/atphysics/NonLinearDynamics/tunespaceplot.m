@@ -1,25 +1,27 @@
 function R = tunespaceplot(XTUNE,YTUNE,RESORDER,varargin);
 %TUNESPACEPLOT draws a tune diagram
 % resonance lines: m*nu_x + n*nu_y = p
-
 %
-% TUNESPACEPLOT(XTUNE, YTUNE, ORDER)
+%  SYNTAX
+%  1. TUNESPACEPLOT(XTUNE, YTUNE, ORDER)
+%  2. TUNESPACEPLOT(XTUNE, YTUNE, ORDER, FIGHANDLE)
 %
-% XTUNE = [XTUNEMIN,XTUNEMAX] 
-% YTUNE = [YTUNEMIN,YTUNEMAX] - plotting range in tune space
-% RESORDER - resonance order: |m| + |n|
-
-% TUNESPACEPLOT(XTUNE, YTUNE, ORDER, FIGHANDLE)
-% TUNESPACEPLOT(XTUNE, YTUNE, ORDER, FIGHANDLE)
-
-
-% 
-
-
- 
+%  INPUTS
+%  1. XTUNE    - horizontal tune axis [XTUNEMIN,XTUNEMAX] 
+%  2. YTUNE    - vertical tune axis [YTUNEMIN,YTUNEMAX] - plotting range in tune space
+%  3. RESORDER - resonance order: |m| + |n|
+%
+%  OPTIONAL ARGUMENTS
+%  FIGHANDLE   - figure handle
+%
+%  OUTPUTS
+%  1. R - Table of resonance lines in the format [order m n p x1 y1 x2 y2] where (xi, yi)
+%  are the resonance line coordinates in the (x,y) plane.
+%  R(1,2)*R(1,5)+ R(1,3)*R(1,6) = R(1,4)
+%  R(1,2)*R(1,7)+ R(1,3)*R(1,8) = R(1,4)
 
 if nargin>3
-    if ishandle(varargin{1}) & strcmp(get(varargin{1},'Type'),'figure')
+    if ishandle(varargin{1}) && strcmp(get(varargin{1},'Type'),'figure')
         % Plot tune space plot
         figure(varargin{1});
     else % create new figure
@@ -27,17 +29,16 @@ if nargin>3
         axes;   
     end
 end
+
 if nargin>4
     LINEARGS = varargin(2:end);
 else
     LINEARGS = {};
 end
 
-
 axis([XTUNE,YTUNE]);
 axis square
         
-
 R = zeros(8*length(RESORDER),6);
 NLMAX = 0;
 for r = RESORDER
@@ -46,8 +47,7 @@ for r = RESORDER
         
         % Lower
         p1 = ceil(m*XTUNE(1)+n*YTUNE(1));
-        p2 = floor(m*XTUNE(2)+n*YTUNE(1));
-        
+        p2 = floor(m*XTUNE(2)+n*YTUNE(1));        
             
         for p =p1:p2 
             if m % lines with m=0 do not cross upper and lower sides 
@@ -59,8 +59,7 @@ for r = RESORDER
         % Left
         p1 = ceil(m*XTUNE(1)+n*YTUNE(1));
         p2 = floor(m*XTUNE(1)+n*YTUNE(2));
-        
-        
+              
         for p =p1:p2
             if n % lines with n=0 do not cross left and right sides 
                 NLMAX = NLMAX+1;
@@ -140,17 +139,19 @@ for r = RESORDER
         end
     end
 end
+
 %R = sortrows(R(1:NLMAX,:));
 R = unique(R(1:NLMAX,:),'rows');
 [temp,I,J] = unique(R(:,1:4),'rows');
 K = I(find(diff([0;I])==2))-1;
 
-RESNUM = [R(K,1:4)]; % [o, m, n, p] O = |m| + |n|
+RESNUM = [R(K,1:4)]; % [o, m, n, p] o = |m| + |n|
 X1 = R(K,5);
+% X2 = R(K+1,5);
 X2 = R(K+1,5);
 Y1 = R(K,6);
-Y2 = R(K+1,6);
-
+% Y2 = R(K+1,6);
+ Y2 = R(K+1,6);
 
 % Remove accidental lines that are on the box edge
 K1 = (X1==X2) & (X1==XTUNE(1));
@@ -160,20 +161,13 @@ K4 = (Y1==Y2) & (Y1==YTUNE(2));
 
 K = find(~(K1 | K2 | K3 | K4));
 
-
 RESNUM = RESNUM(K,:);
 X1 = X1(K);
 X2 = X2(K);
 Y1 = Y1(K);
 Y2 = Y2(K);
 
-
 R = [RESNUM,X1,Y1,X2,Y2];
-
-
-
-
-
 
 NL = size(RESNUM,1);
 for i = 1:NL
@@ -181,7 +175,4 @@ for i = 1:NL
     if ~isempty(LINEARGS)
         set(hl,LINEARGS{:});
     end
-end
-
-
-    
+end    
