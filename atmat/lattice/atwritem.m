@@ -35,6 +35,7 @@ else
 end
 
 fprintf(fid,'ring={...\n');
+% at2str(ring{1})
 ok=cellfun(@(elem) fprintf(fid,'%s;...\n',at2str(elem)),ring); %#ok<NASGU>
 fprintf(fid,'};\n');
 
