@@ -21,20 +21,31 @@ function [ring,radelemIndex,cavitiesIndex,energy]=atradon(ring1,varargin)
 %                '' makes no change,
 %                'auto' will substitute 'Pass' with 'RadPass' in any method
 %                (default: '')
+%  5. SEXTUPASS   pass method for sextupoles
+%                '' makes no change,
+%                'auto' will substitute 'Pass' with 'RadPass' in any method
+%                (default: '')
+%  6. OCTUPASS   pass method for octupoles
+%                '' makes no change,
+%                'auto' will substitute 'Pass' with 'RadPass' in any method
+%                (default: '')
 %
 %  OUPUTS
-%  1. RING2     Output ring
-%  2. RADINDEX  Indices of elements with radiation
-%  3. CAVINDEX  Indices of cavities
+%  1. RING2     - Output ring
+%  2. RADINDEX  - Indices of elements with radiation
+%  3. CAVINDEX  - Indices of cavities
+%  4. Energy    - Ring energy
 %
 %  See also ATRADOFF, ATCAVITYON, ATCAVITYOFF
 
+[cavipass, bendpass, quadpass, sextupass, octupass]=parseargs({'CavityPass','auto','', '', ''},varargin);
 
-[cavipass,bendpass,quadpass]=parseargs({'CavityPass','auto',''},varargin);
+ring = ring1;
 
-ring=ring1;
-
+% getenergy
 energy=atenergy(ring);
+
+%CAVITY business
 if ~isempty(cavipass)
     cavitiesIndex=atgetcells(ring,'Frequency');
     if any(cavitiesIndex)
@@ -44,6 +55,7 @@ else
     cavitiesIndex=false(size(ring));
 end
 
+%BEND business
 if ~isempty(bendpass)
     isdipole=@(elem,bangle) bangle~=0;
     dipoles=atgetcells(ring,'BendingAngle',isdipole);
@@ -54,6 +66,7 @@ else
     dipoles=false(size(ring));
 end
 
+%QUADRUPOLE business
 if ~isempty(quadpass)
     isquadrupole=@(elem,polyb) length(polyb) >= 2 && polyb(2)~=0;
     quadrupoles=atgetcells(ring,'PolynomB',isquadrupole) & ~dipoles;
@@ -64,7 +77,29 @@ else
     quadrupoles=false(size(ring));
 end
 
-radelemIndex=dipoles|quadrupoles;
+%SEXTUPOLE business
+if ~isempty(sextupass)
+    issextupole=@(elem,polyb) length(polyb) >= 3 && polyb(3)~=0;
+    sextupoles=atgetcells(ring,'PolynomB',issextupole) & ~dipoles & ~quadrupoles;
+    if any(sextupoles) > 0
+        ring(sextupoles)=changepass(ring(sextupoles),sextupass,energy);
+    end
+else
+    sextupoles=false(size(ring));
+end
+
+%OCTUPOLE business
+if ~isempty(octupass)
+    isoctupole=@(elem,polyb) length(polyb) >= 4 && polyb(4)~=0;
+    octupoles=atgetcells(ring,'PolynomB',isoctupole) & ~dipoles & ~quadrupoles & ~sextupoles;
+    if any(octupoles) > 0
+        ring(octupoles)=changepass(ring(octupoles),octupass,energy);
+    end
+else
+    octupoles=false(size(ring));
+end
+
+radelemIndex=dipoles|quadrupoles|sextupoles|octupoles;
 
 if any(cavitiesIndex)
     atdisplay(1,['Cavities located at position ' num2str(find(cavitiesIndex)')]);
