@@ -19,7 +19,7 @@ function ringapert=SetPhysicalAperture(ring,apertureX,apertureY)
 %
 % atplot(ringinj,@plotAperture);
 %
-%See also: ATAPERTURE, plotAperture
+%See also: ataperture, plotAperture
 
 
 if length(apertureX)==length(ring) &&  length(apertureY)==length(ring)
