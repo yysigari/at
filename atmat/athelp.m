@@ -44,14 +44,14 @@ cd(fileparts(ATROOT))
 [~, folder] = fileparts(cd);
 %doc(folder);
 
-if ~isfile('helpdoc.mat') || NEWFLAG
-    fprintf('** generating doc for a few seconds **\n');
+if ~isfile('atdoc.mat') || NEWFLAG
+    fprintf('** Generating doc for a few seconds **\n');
     html = help2html(folder,'AT DOC','-doc');
     save('helpdoc.mat','html')
 else
-    d = dir('helpdoc.mat');
+    d = dir('atdoc.mat');
     fprintf('Last version of the file %s \n To update the doc issue athelp(''new'')\n', d.date);
-    load('helpdoc.mat');
+    load('atdoc.mat');
 end
 
 % Display documentation
