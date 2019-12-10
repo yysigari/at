@@ -39,6 +39,9 @@ cmake_install.cmake
 #Contents files
 Contents.m
 
+#dynamic athelp documentation
+atdoc.mat
+
 # Vim
 *.swp
 *.swo
