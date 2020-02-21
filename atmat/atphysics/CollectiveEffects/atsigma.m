@@ -16,7 +16,10 @@ function sigma = atsigma(varargin)
 %   SIGMA=ATSIGMA(ATSTRUCT)
 %       builds a 6x6 sigma matrix
 %
-%  See also atx
+%   NOTES
+%   1. Sigma matrix is the variance matrix of the beam
+%
+%  See also atx, atbeam
 
 if iscell(varargin{1})
     beamdata=atx(varargin{1},0,1);

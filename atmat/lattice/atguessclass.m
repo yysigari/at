@@ -1,10 +1,16 @@
 function atclass = atguessclass(elem, varargin)
-%ATGUESSCLASS Tries to determine the class of an element
-%ATCLASS=ATGUESSCLASS(ATELEM) Tries to determine the class of an element
+% ATGUESSCLASS - Tries to determine the class of an element
+% ATCLASS=ATGUESSCLASS(ATELEM) Tries to determine the class of an element
 %
 %  INPUTS
 %  1. elem - AT element
+%  
+%  OPTIONAL INPUTS
+%  'UseClass' - Preserves the 'Class' field in elements with bn and an.
+%               Othertry try to guess as well
 %
+%  OUPUTS
+%  1. atclass - Guessed atclass for element elem
 %
 %  NOTES
 %  1. atclass=atguessclass(atelem,'useclass')

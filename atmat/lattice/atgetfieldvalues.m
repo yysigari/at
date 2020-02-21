@@ -1,31 +1,35 @@
 function values = atgetfieldvalues(ring,varargin)
-%ATGETFIELDVALUES retrieves the field values AT cell array of elements
+%ATGETFIELDVALUES - retrieves the field values AT cell array of elements
 %
-% VALUES = ATGETFIELDVALUES(RING,'field') extracts the values of
-% the field 'field' in all the elements of RING
+%  VALUES = atgetfieldvalues(RING,'field') extracts the values of
+%  the field 'field' in all the elements of RING
 %
-% VALUES = ATGETFIELDVALUES(RING,INDEX,'field') extracts the values of
-% the field 'field' in the elements of RING selected by INDEX
+%  VALUES = atgetfieldvalues(RING,INDEX,'field') extracts the values of
+%  the field 'field' in the elements of RING selected by INDEX
 %
-% if RING{I}.FIELD is a numeric scalar
+%  if RING{I}.FIELD is a numeric scalar
 %    VALUES is a length(INDEX) x 1 array
-% otherwise
+%  otherwise
 %    VALUES is a length(INDEX) x 1 cell array
 %
+%  More generally atgetfieldvalues(RING,INDEX,subs1,subs2,...) will call
+%   getfield(RING{I},subs1,subs2,...) for I in INDEX
 %
-% More generally ATGETFIELDVALUES(RING,INDEX,subs1,subs2,...) will call
-%  GETFIELD(RING{I},subs1,subs2,...) for I in INDEX
+%  INPUTS
+%  1. ring    - Lattice structure
+%  OPTIONAL
+%  1. Index   - Index of position in the ring structure
+%  2. 'field' - fieldaname
+%  3. subs1, subs2 - extra parameter to access the field
 %
-% Examples:
+%  EXAMPLES
+%  1. V=atgetfieldvalues(RING,1:10,'PolynomB') is a 10x1  cell array
+%    such that V{I}=RING{I}.PolynomB for I=1:10
 %
-% V=ATGETFIELDVALUES(RING,1:10,'PolynomB') is a 10x1  cell array
-% such that V{I}=RING{I}.PolynomB for I=1:10
+%  2. V=atgetfieldvalues(RING(1:10),'PolynomB',{1,2}) is a 10x1 array
+%     such that V(I)=RING{I},PolynomB(1,2)
 %
-% V=ATGETFIELDVALUES(RING(1:10),'PolynomB',{1,2}) is a 10x1 array
-% such that V(I)=RING{I},PolynomB(1,2)
-%
-%
-% See also ATSETFIELDVALUES ATGETCELLS GETCELLSTRUCT FINDCELLS
+% See Also atsetfieldvalues atgetcells, getcellstruct, findcells
 
 if islogical(varargin{1}) || isnumeric(varargin{1})
     values=atgetfield(ring(varargin{1}),varargin{2:end});

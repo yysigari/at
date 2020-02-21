@@ -2,10 +2,9 @@ function deltamax = momentum_aperture_at(THERING,deltalimit,initcoord,delta,prec
 % momentum_aperture_at - computes half momentum acceptance of a ring
 %
 %  INPUTS
-%  1. THERING - Ring structure
+%  1. THERING               - Lattice structure
 %  2. deltalimit  [min max] - energy offset vairation for the search procedure
-%  3. initcoord [x y]       - initial coordinate for tracking, should be larger
-%  than 0
+%  3. initcoord [x y]       - initial coordinate for tracking, should be larger than 0
 %  4. delta                 - starting energy offset for search
 %  5. precdelta             -
 %  6. deltastepsize         -
@@ -29,18 +28,18 @@ function deltamax = momentum_aperture_at(THERING,deltalimit,initcoord,delta,prec
 %  5. Stop. The momentum aperture is ?s
 %
 %  EXAMPLES
-%  1. deltamax = momentum_aperture_at(THERING,0.1,[10^-6 10^-6],0,0,0.01,3,10,100)
-%  2. deltamin = momentum_aperture_at(THERING,-0.1,[10^-6 10^-6],0,0,-0.01,3,10,100)
+%  1. deltamax = momentum_aperture_at(THERING,0.1,10^-6; 0; 10^-6; 0; 0; 0],0,0,0.01,3,10,100)
+%  2. deltamin = momentum_aperture_at(THERING,-0.1,10^-6; 0; 10^-6; 0; 0; 0],0,0,-0.01,3,10,100)
 
 %disp([delta splits])
 
-if ( delta>=0 && delta<deltalimit) ||  ( delta<=0 && delta>deltalimit)
+if (delta>=0 && delta<deltalimit) ||  (delta<=0 && delta>deltalimit)
         
     if splits>-1
                 
         % track for this delta
-        
-        [~, LOSS] =ringpass(THERING,[initcoord(1) 0 initcoord(2) 0 delta 0]',nturns);
+        initcoord(5) = delta;
+        [~, LOSS] =ringpass(THERING,initcoord,nturns);
         
         if LOSS~=1 % if NOT LOST go to next step
             

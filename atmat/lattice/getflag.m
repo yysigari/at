@@ -1,28 +1,37 @@
-function [flag,opts] = getflag(opts,optname)
-%GETFLAG Check the presence of a flag in an argument list
+function [flag,arglist] = getflag(arglist,optname)
+%  getflag - check the presence of a flag in an argument list
 %
-%OPTION=GETFLAG(ARGS,OPTNAME)
-%   Return a logical value indicating the presence of the flag name in the
-%   argument list. Flag names are case insensitive.
+%  OPTION=GETFLAG(opts,optname)
+%    Return a logical value indicating the presence of the flag name in the
+%    argument list. Flag names are case insensitive.
 %
-%ARGS:      Argument list (cell array)
-%OPTNAME:	Name of the desired option (string)
-%
-%[OPTION,NEWARGS]=GETFLAG(ARGS,OPTNAME)
+% [OPTION,NEWARGS]=GETFLAG(ARGS,OPTNAME)
 %           Returns the argument list after removing the processed flag
 %
-%Example:
+%  INPUTS
+%  1. opts    - Argument list (cell array)
+%  2. optname - Name of the desired option (string)
 %
-%function testfunc(varargin)
+%  OUPUTS
+%  1. flag - logical value indicating the presence of the flag name in the
+%            argument list.
+%  2. opts - argument list after removing the processed flag
 %
-%[optflag,args]=getflag(varargin,'option');     % Extract an optional flag
-%[range,args]=getoption(args,'Range', 1:10);	% Extract a keyword argument
-%[width, height]=getargs(args,{210,297});       % Extract positional arguments
+%  EXAMPLES
 %
-%Dee also GETOPTION, GETARGS
+%  function testfunc(varargin)
+%
+%   [optflag,args]=getflag(varargin,'option');  % Extract an optional flag
+%   [range,args]=getoption(args,'Range', 1:10);	% Extract a keyword argument
+%   [width, height]=getargs(args,{210,297});    % Extract positional arguments
+%
+% See also GETOPTION, GETARGS
 
-ok=strcmpi(optname,opts);
-flag=any(ok);
-opts=opts(~ok);
+%% Written by ESRF team 
+
+ok      = strcmpi(optname,arglist);
+flag    = any(ok);
+arglist = arglist(~ok);
+
 end
 

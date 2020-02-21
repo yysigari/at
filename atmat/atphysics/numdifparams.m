@@ -7,12 +7,12 @@
 % If the field is not defined in NUMDIFPARAMS the function uses
 % its internal default value
 % 
-% Example: 
+% EXAMPLE:
 %
 % >> global NUMDIFPARAMS
 % >> NUMDIFPARAMS.XYStep = 1e-8;
 % >> NUMDIFPARAMS.DPStep = 1e-6;
 %
-% Functions that use NUMDIFPARAMS are:
-%   FINDM44, FINDM66, FINDELEMM66, LINOPT, TWISSRING, TWISSLINE,
-%   TUNECHROM
+% Functions that use numdifparams are:
+%   findm44, findm66, findelemm66, linopt, twissring, twissline,
+%   tunechrom

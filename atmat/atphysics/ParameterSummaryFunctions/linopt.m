@@ -1,4 +1,4 @@
-function [LinData, varargout] = linopt(RING,DP,varargin);
+function [LinData, varargout] = linopt(RING,DP,varargin)
 %LINOPT performs linear analysis of the COUPLED lattices
 %   Notation is the same as in reference [3]
 %
@@ -39,9 +39,6 @@ function [LinData, varargout] = linopt(RING,DP,varargin);
 %   [2] E.Courant, H.Snyder
 %   [3] D.Sagan, D.Rubin Phys.Rev.Spec.Top.-Accelerators and beams, vol.2 (1999)
 
- 
-
-NE=length(RING);
 if(nargin==2)
    REFPTS= 1;
 else
@@ -58,10 +55,10 @@ LinData = struct('ElemIndex',num2cell(REFPTS),'SPos',num2cell(spos),...
     'ClosedOrbit',num2cell(orb,1),'M44',squeeze(num2cell(MS,[1 2]))');
 
 % Calculate A,B,C, gamma at the first element
-M =M44(1:2,1:2);
-N =M44(3:4,3:4);
-m =M44(1:2,3:4);
-n =M44(3:4,1:2);
+M = M44(1:2,1:2);
+N = M44(3:4,3:4);
+m = M44(1:2,3:4);
+n = M44(3:4,1:2);
 
 % 2-by-2 symplectic matrix
 S = [0 1; -1 0];
@@ -73,8 +70,6 @@ G = diag([g g]);
 C = -H*sign(t)/(g*sqrt(t*t+4*det(H)));
 A = G*G*M  -  G*(m*S*C'*S' + C*n) + C*N*S*C'*S';
 B = G*G*N  +  G*(S*C'*S'*m + n*C) + S*C'*S'*M*C;
-
-
    
 if REFPTS(1)==1 & NR>1
     START = 2;
@@ -88,13 +83,8 @@ else
     START = 1;
 end
 
-
-      
-    
-
-
 % find  matrixes in all elements indexed by REFPTS
-for i=START:NR;
+for i=START:NR
     M12 =LinData(i).M44(1:2,1:2);
     N12 =LinData(i).M44(3:4,3:4);
     m12 =LinData(i).M44(1:2,3:4);
@@ -113,8 +103,6 @@ for i=START:NR;
  
 end
 
-
-
 if nargout > 1 
    cos_mu_x = trace(A)/2;
    cos_mu_y = trace(B)/2;
@@ -130,6 +118,6 @@ if nargout == 3
         dDP =  1e-8;
     end
     % Calculate tunes for DP+dDP
-    [LD, TUNES] = linopt(RING,DP+dDP,1);
+    [~, TUNES] = linopt(RING,DP+dDP,1);
     varargout{2} = (TUNES - varargout{1})/dDP;
 end

@@ -47,7 +47,7 @@ function curve = atbaseplot(varargin)
 
 global THERING
 
-npts=400; % number of point
+npts=400; % number of points
 narg=1;
 % Select axes for the plot
 if narg<=length(varargin) && isscalar(varargin{narg}) && ishandle(varargin{narg})
@@ -166,4 +166,5 @@ function [s,plotdata]=defaultplot(ring,dpp,varargin) %#ok<INUSD>
 
 s=[];
 plotdata=[];
+
 end
