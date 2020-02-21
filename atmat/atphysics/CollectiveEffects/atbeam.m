@@ -13,12 +13,15 @@ function particle_dist = atbeam(np,sigma,orbit)
 %
 %  NOTES
 %    1. random generator is randn
+%    2. Use cholesky decomposition to give to uncorrelated variables a
+%    given covariance matrix
 %
 %  See also atsigma
 
 %
 %See also ATPLOTBEAM, ATSIGMA
 
+% BOX-MULLER GENERATOR
 % ampl=sqrt(-2*log(rand(3,np)));
 % phase=2*pi()*rand(3,np);
 % v=[ampl.*cos(phase);ampl.*sin(phase)];
