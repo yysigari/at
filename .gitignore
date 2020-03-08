@@ -41,6 +41,7 @@ Contents.m
 
 #dynamic athelp documentation
 atdoc.mat
+doc_html
 
 # Vim
 *.swp
