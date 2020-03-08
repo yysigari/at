@@ -89,7 +89,8 @@ MY = atan2(squeeze(MS(3,4,:)), squeeze(MS(3,3,:)*by-MS(3,4,:)*ay));
 MX = BetatronPhaseUnwrap(MX);
 MY = BetatronPhaseUnwrap(MY);
 
-tune=mod(atan2([sin_mu_x,sin_mu_y],[cos_mu_x cos_mu_y])/2/pi,1.0);
+%tune=mod(atan2([sin_mu_x,sin_mu_y],[cos_mu_x cos_mu_y])/2/pi,1.0);
+tune = [MX(end),MY(end)]/2/pi;
 
 NR = length(REFPTS);
 % Build TD only for points originally referenced in REFPTS
