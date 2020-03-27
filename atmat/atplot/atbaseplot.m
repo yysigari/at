@@ -47,14 +47,15 @@ function curve = atbaseplot(varargin)
 
 global THERING
 
-npts=400; % number of points
+npts=400; % number of points to display
 narg=1;
+
 % Select axes for the plot
 if narg<=length(varargin) && isscalar(varargin{narg}) && ishandle(varargin{narg})
     ax=varargin{narg};
     narg=narg+1;
-else
-    ax=gca;
+else   
+    ax=gca
 end
 % Select the lattice
 if narg<=length(varargin) && iscell(varargin{narg})
