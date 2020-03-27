@@ -39,10 +39,9 @@ ATROOT = atroot;
 DIR_old = pwd;
 cd(fileparts(ATROOT))
 
-%for comaptbility with previous Matlab version 2013b for example
+%for compatibility with previous Matlab version 2013b for example
 %folder should not include full path
 [~, folder] = fileparts(cd);
-%doc(folder);
 
 if ~isfile('atdoc.mat') || NEWFLAG
     fprintf('** Generating doc for a few seconds **\n');
@@ -58,5 +57,3 @@ end
 web(['text://' html], '-helpbrowser');
 
 cd(DIR_old)
-
-%help(fileparts(ATROOT));
