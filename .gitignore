@@ -46,3 +46,8 @@ doc_html
 # Vim
 *.swp
 *.swo
+
+#Local documentation
+doc_html/
+atdoc.mat
+helpdoc.mat
