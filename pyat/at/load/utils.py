@@ -34,7 +34,8 @@ _alias_map = {'rbend': elt.Dipole,
               'rf': elt.RFCavity,
               'bpm': elt.Monitor,
               'ap': elt.Aperture,
-              'ringparam': RingParam}
+              'ringparam': RingParam,
+              'wig': elt.Wiggler}
 
 
 # Matlab to Python class translation
@@ -50,7 +51,8 @@ _PASS_MAP = {'DriftPass': elt.Drift,
              'CavityPass': elt.RFCavity, 'RFCavityPass': elt.RFCavity,
              'ThinMPolePass': elt.ThinMultipole,
              'Matrix66Pass': elt.M66,
-             'AperturePass': elt.Aperture}
+             'AperturePass': elt.Aperture,
+             'GWigSymplecticPass': elt.Wiggler}
 
 # Matlab to Python attribute translation
 _param_to_lattice = {'Energy': 'energy', 'Periodicity': 'periodicity',
@@ -232,7 +234,9 @@ def element_from_dict(elem_dict, index=None, check=True, quiet=False):
     if check:
         sanitise_class(index, cls, elem_dict)
     # Remove mandatory attributes from the keyword arguments.
-    elem_args = (elem_dict.pop(attr, None) for attr in cls.REQUIRED_ATTRIBUTES)
+    # Create list rather than generator to ensure that elements are removed
+    # from elem_dict.
+    elem_args = [elem_dict.pop(attr, None) for attr in cls.REQUIRED_ATTRIBUTES]
     element = cls(*(arg for arg in elem_args if arg is not None), **elem_dict)
     return element
 

@@ -16,12 +16,15 @@ refpts can be:
 """
 import numpy
 import functools
+from itertools import compress
 from fnmatch import fnmatch
 from at.lattice import elements
 
-__all__ = ['AtError', 'AtWarning', 'check_radiation', 'uint32_refpts',
-           'bool_refpts', 'checkattr', 'checktype', 'get_cells',
-           'get_elements', 'get_refpts', 'refpts_iterator', 'get_s_pos',
+__all__ = ['AtError', 'AtWarning', 'check_radiation', 'make_copy',
+           'uint32_refpts', 'bool_refpts',
+           'checkattr', 'checktype', 'checkname',
+           'get_cells', 'get_elements', 'get_refpts', 'get_s_pos',
+           'refpts_count', 'refpts_len', 'refpts_iterator',
            'set_shift', 'set_tilt', 'tilt_elem', 'shift_elem',
            'get_value_refpts', 'set_value_refpts']
 
@@ -54,16 +57,38 @@ def check_radiation(rad):
     return radiation_decorator
 
 
+def make_copy(copy):
+    """Function to be used as a decorator for optics functions
+    The decorated function must be defined as:
+
+    def func(ring, refpts, *args, **kwargs):
+        ...
+        return
+
+    If copy is False, the function is not modified,
+    If copy is True, a shallow copy of ring is done, then the elements selected
+    by refpts are deep-copied, then func is applied to the copy, and the new
+    ring is returned.
+    """
+    def copy_decorator(func):
+        @functools.wraps(func)
+        def wrapper(ring, refpts, *args, **kwargs):
+            if copy:
+                ring = ring.replace(refpts)
+            func(ring, refpts, *args, **kwargs)
+            return ring if copy else None
+        return wrapper
+    return copy_decorator
+
+
 def uint32_refpts(refpts, n_elements):
     """
     Return a uint32 numpy array with contents as the indices of the selected
     elements.  This is used for indexing a lattice using explicit indices.
     """
-    refs = numpy.asarray(refpts).reshape(-1)
+    refs = numpy.ravel(refpts)
     if (refpts is None) or (refs.size == 0):
         return numpy.array([], dtype=numpy.uint32)
-    elif refs.size > n_elements+1:
-        raise ValueError('too many reftps given')
     elif numpy.issubdtype(refs.dtype, numpy.bool_):
         return numpy.flatnonzero(refs).astype(numpy.uint32)
 
@@ -85,24 +110,53 @@ def uint32_refpts(refpts, n_elements):
     return refs
 
 
+# Private function accepting a callable for refpts
+def _uint32_refs(ring, refpts):
+    """"Return a uint32 numpy array containing the indices of the selected
+    elements. refpts may be:
+
+    1) a integer or a sequence of integers (0 indicating the first element)
+    2) a sequence of booleans marking the selected elements
+    3) a callable f such that f(elem) is True for selected elements
+    """
+    if callable(refpts):
+        refpts = [refpts(el) for el in ring]
+    return uint32_refpts(refpts, len(ring))
+
+
 def bool_refpts(refpts, n_elements):
     """
     Return a boolean numpy array of length n_elements + 1 where True elements
     are selected. This is used for indexing a lattice using True or False
     values.
     """
-    if isinstance(refpts, numpy.ndarray) and refpts.dtype == bool:
-        diff = 1 + n_elements - refpts.size
-        if diff == 0:
-            return refpts
-        elif diff > 0:
-            return numpy.append(refpts, numpy.zeros(diff, dtype=bool))
+    refs = numpy.ravel(refpts)
+    if (refpts is None) or (refs.size == 0):
+        return numpy.zeros(n_elements + 1, dtype=bool)
+    elif refs.dtype == bool:
+        diff = 1 + n_elements - refs.size
+        if diff <= 0:
+            return refs[:n_elements + 1]
         else:
-            return refpts[:n_elements+1]
+            return numpy.append(refs, numpy.zeros(diff, dtype=bool))
     else:
         brefpts = numpy.zeros(n_elements + 1, dtype=bool)
-        brefpts[refpts] = True
+        brefpts[refs] = True
         return brefpts
+
+
+# Private function accepting a callable for refpts
+def _bool_refs(ring, refpts):
+    """Return a boolean numpy array of length n_elements + 1 where True elements
+    are selected. refpts may be:
+
+    1) a integer or a sequence of integers (0 indicating the first element)
+    2) a sequence of booleans marking the selected elements
+    3) a callable f such that f(elem) is True for selected elements
+    """
+    if callable(refpts):
+        refpts = [refpts(el) for el in ring]
+    return bool_refpts(refpts, len(ring))
 
 
 def checkattr(*args):
@@ -156,6 +210,23 @@ def checktype(eltype):
     return lambda el: isinstance(el, eltype)
 
 
+def checkname(pattern):
+    """Return a function to be used as a filter. Check the name of an element.
+    This function can be used to extract from a ring all elements have a
+    given FamName attribute.
+
+    filtfunc = checkname(pattern)
+        returns the function filtfunc such that ok=filtfunc(element) is True
+        if the element's FamName matches pattern.
+
+    Example:
+
+    qps = filter(checkname('QF.*'), ring)
+        returns an iterator over all elements
+    """
+    return lambda el: fnmatch(el.FamName, pattern)
+
+
 def get_cells(ring, *args):
     """Return a numpy array of booleans, with the same length as ring,
     marking all elements satisfying a given condition.
@@ -192,17 +263,44 @@ def refpts_iterator(ring, refpts):
 
     refpts may be:
 
-    1) a list of integers (0 indicating the first element)
-    2) a numpy array of booleans as long as ring where selected elements
-       are true
+    1) a integer or a sequence of integers (0 indicating the first element)
+    2) a sequence of booleans marking the selected elements
+    3) a callable f such that f(elem) is True for selected elements
     """
-    if isinstance(refpts, numpy.ndarray) and refpts.dtype == bool:
-        for el, tst in zip(ring, refpts):
-            if tst:
-                yield el
+    if callable(refpts):
+        return filter(refpts, ring)
     else:
-        for i in refpts:
-            yield ring[i]
+        refs = numpy.ravel(refpts)
+        if (refpts is None) or (refs.size == 0):
+            return iter(())
+        elif refs.dtype == bool:
+            return compress(ring, refs)
+        else:
+            return (ring[i] for i in refs)
+
+
+def refpts_len(ring, refpts):
+    if callable(refpts):
+        return len(list(filter(refpts, ring)))
+    else:
+        refs = numpy.ravel(refpts)
+        if (refpts is None) or (refs.size == 0):
+            return 0
+        elif refs.dtype == bool:
+            return numpy.count_nonzero(refs)
+        else:
+            return len(refs)
+
+
+# noinspection PyUnusedLocal
+def refpts_count(refpts, n_elements):
+    refs = numpy.ravel(refpts)
+    if (refpts is None) or (refs.size == 0):
+        return 0
+    elif refs.dtype == bool:
+        return numpy.count_nonzero(refs)
+    else:
+        return len(refs)
 
 
 def get_refpts(ring, key, quiet=True):
@@ -224,16 +322,13 @@ def get_refpts(ring, key, quiet=True):
         elems: a list of elems refpts matching key
     """
     if isinstance(key, elements.Element):
-        elems = [i for i, elem in enumerate(ring) if isinstance(elem,
-                 type(key))]
+        checkfun = checktype(type(key))
     elif isinstance(key, type):
-        elems = [i for i, elem in enumerate(ring) if isinstance(elem,
-                 key)]
+        checkfun = checktype(key)
     elif numpy.issubdtype(type(key), numpy.str_):
-        elems = [i for i, elem in enumerate(ring) if fnmatch(elem.FamName,
-                 key)]
+        checkfun = checkname(key)
         if not quiet:
-            matched_fams = set(ring[elem].FamName for elem in elems)
+            matched_fams = set(elem.FamName for elem in filter(checkfun, ring))
             ending = 'y' if len(matched_fams) == 1 else 'ies'
             print("String '{0}' matched {1} famil{2}: {3}\n"
                   "all corresponding elements have been "
@@ -242,7 +337,7 @@ def get_refpts(ring, key, quiet=True):
     else:
         raise TypeError("Invalid key type {0}; please enter a string, element"
                         " type, or element instance.".format(type(key)))
-    return numpy.array(elems)
+    return uint32_refpts(list(map(checkfun, ring)), len(ring))
 
 
 def get_elements(ring, key, quiet=True):
@@ -263,51 +358,90 @@ def get_elements(ring, key, quiet=True):
     Returns:
         a list of elems matching key
     """
-    return [ring[i] for i in get_refpts(ring, key, quiet=quiet)]
+    if isinstance(key, elements.Element):
+        checkfun = checktype(type(key))
+    elif isinstance(key, type):
+        checkfun = checktype(key)
+    elif numpy.issubdtype(type(key), numpy.str_):
+        checkfun = checkname(key)
+        if not quiet:
+            matched_fams = set(elem.FamName for elem in filter(checkfun, ring))
+            ending = 'y' if len(matched_fams) == 1 else 'ies'
+            print("String '{0}' matched {1} famil{2}: {3}\n"
+                  "all corresponding elements have been "
+                  "returned.".format(key, len(matched_fams), ending,
+                                     ', '.join(matched_fams)))
+    else:
+        raise TypeError("Invalid key type {0}; please enter a string, element"
+                        " type, or element instance.".format(type(key)))
+    return list(filter(checkfun, ring))
 
 
-def get_value_refpts(ring, refpts, var, order=None):
+def get_value_refpts(ring, refpts, var, index=None):
     """Get the values of an attribute of an array of elements based on
-       their refpts
+    their refpts
 
-    Args:
-        ring: lattice from which to retrieve the elements.
-        refpts: integer or array of integer or booleans
-        var: attribute name
-        order (optional): index of the value to change in case var is
-        an array, if None the full array is returned (Default)
+    PARAMETERS:
+        ring            Lattice description
+        refpts          Integer, array of integer or booleans, filter
+        var             attribute name
+
+    KEYWORDS:
+        index=None      index of the value to retrieve if var is an array.
+                        If None the full array is retrieved (Default)
     """
-    uintrefs = uint32_refpts([] if refpts is None else refpts, len(ring))
-    if order is None:
-        return numpy.array(list(map(lambda x: getattr(ring[x], var),
-                           uintrefs)))
+    if index is None:
+        def getf(elem):
+            return getattr(elem, var)
     else:
-        return numpy.array(list(map(lambda x: getattr(ring[x], var)[order],
-                           uintrefs)))
+        def getf(elem):
+            return getattr(elem, var)[index]
+
+    return numpy.array([getf(elem) for elem in refpts_iterator(ring, refpts)])
 
 
-def set_value_refpts(ring, refpts, var, value, order=None, increment=False):
-    """Set the values of an attribute of an array of elements based on their refpts
+def set_value_refpts(ring, refpts, var, values, index=None,
+                     increment=False, copy=False):
+    """Set the values of an attribute of an array of elements based on
+    their refpts
 
-    Args:
-        ring: lattice from which to retrieve the elements.
-        refpts: integer or array of integer or booleans
-        var: attribute name
-        value: desired value for the attribute
-        order (optional): index of the value to change in case var is an
-        array, if None the full array is replaced by value (Default)
-        increment (optional): adds value to the initial value, if False
-        the initial value is replaced (Default)
+    PARAMETERS:
+        ring            Lattice description
+        refpts          Integer, array of integer or booleans, filter
+        var             attribute name
+        values          desired value for the attribute
+
+    KEYWORDS:
+        index=None      index of the value to change if var is an array.
+                        If None the full array is replaced by value (Default)
+        increment=False Add values to the initial values.
+                        If False the initial value is replaced (Default)
+        copy=False      If False, do the modification in-place.
+                        If True, returns a shallow copy of ring with new
+                        modified elements.
+                        CAUTION: a shallow copy means that all non-affected
+                        elements are shared with the original lattice.
+                        Any further modification will affect in both lattices.
     """
-    uintrefs = uint32_refpts([] if refpts is None else refpts, len(ring))
+    if index is None:
+        def setf(elem, value):
+            setattr(elem, var, value)
+    else:
+        def setf(elem, value):
+            getattr(elem, var)[index] = value
+
     if increment:
-        value = value + get_value_refpts(ring, uintrefs, var, order=order)
-    if order is None:
-        for i, ii in enumerate(uintrefs):
-            setattr(ring[ii], var, value[i])
+        values = values + get_value_refpts(ring, refpts, var, index=index)
     else:
-        for i, ii in enumerate(uintrefs):
-            getattr(ring[ii], var)[order] = value[i]
+        values = numpy.broadcast_to(values, (refpts_len(ring, refpts),))
+
+    # noinspection PyShadowingNames
+    @make_copy(copy)
+    def apply(ring, refpts, values):
+        for elm, val in zip(refpts_iterator(ring, refpts), values):
+            setf(elm, val)
+
+    return apply(ring, refpts, values)
 
 
 def get_s_pos(ring, refpts=None):
@@ -326,7 +460,7 @@ def get_s_pos(ring, refpts=None):
     s_pos = numpy.cumsum([getattr(el, 'Length', 0.0) for el in ring])
     # Prepend position at the start of the first element.
     s_pos = numpy.concatenate(([0.0], s_pos))
-    refpts = uint32_refpts(refpts, len(ring))
+    refpts = _uint32_refs(ring, refpts)
     return s_pos[refpts]
 
 

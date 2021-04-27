@@ -81,7 +81,7 @@ end
     function [linusr,pm]=atx2(ring,energy,periods,voltage,eloss,varargin)
         
         c = PhysConstant.speed_of_light_in_vacuum.value;
-        [dpp,refusr]=parseargs({0,1:length(ring)},varargin);
+        [dpp,refusr]=getargs(varargin,0,1:length(ring));
         if islogical(refusr)
             refusr(end+1,length(ring)+1)=false;
         else
@@ -144,7 +144,7 @@ end
         if any(cavindex)
             try
                 [envelope,espread,blength,m,T]=ohmienvelope(ring2,radindex,refpts);
-                [chi,tns]=atdampingrates(m);
+                [tns,chi]=atdampingrates(m);
                 fs=abs(tns(3))/revperiod;
                 dampingtime=revperiod./chi;
                 alpha=1.0./dampingtime;
@@ -240,21 +240,6 @@ end
         function lind=deflt(lind)
             lind.modemit=NaN(1,3);
             lind.emit44=NaN(1,2);
-        end
-        
-        function [chi,nu]=atdampingrates(m66)
-            %find tunes and damping rates from one map matrix with radiation
-            aa=amat(m66);
-            
-            Rmat=aa\m66*aa;
-            
-            [chi,nu]=cellfun(@decode,num2cell(reshape(1:size(m66,1),2,[]),1));
-            
-            function [chi,nu]=decode(range)
-                matr=Rmat(range,range);
-                nu=atan2(matr(1,2)-matr(2,1),matr(1,1)+matr(2,2))/2/pi;
-                chi=-log(sqrt(det(matr)));
-            end
         end
         
         function mask=setelems(mask,idx)

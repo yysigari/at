@@ -10,6 +10,8 @@
 
 #define STR(name) XSTR(name)
 #define XSTR(name) #name
+/* Handle differences between Python 2 and Python 3 in declaring extension
+   modules and the numpy API. */
 #if PY_MAJOR_VERSION >= 3
 #define MOD_INIT_STR(name) PyInit_##name(void)
 #define MOD_ERROR_VAL NULL
@@ -28,7 +30,7 @@
 
 
 #if defined(_WIN32)    /* Create a dummy module initialisation function for Windows */
-#define MODULE_DEF(name) MOD_INIT(name) {return MOD_ERROR_VAL;}
+#define MODULE_DEF(name) PyMODINIT_FUNC MOD_INIT(name) {return MOD_ERROR_VAL;}
 #endif /* _WIN32 */
 #endif /* PYAT */
 
@@ -39,10 +41,6 @@
 /* All builds */
 #include <stdlib.h>
 #include <math.h>
-
-#ifndef OMP_PARTICLE_THRESHOLD
-#define OMP_PARTICLE_THRESHOLD (10)
-#endif
 
 /* All Windows builds */
 #if defined(PCWIN) || defined(_WIN32)
@@ -55,7 +53,9 @@
 #ifdef MATLAB_MEX_FILE
 /* Matlab only */
 #include <mex.h>
+#ifndef OCTAVE
 #include <matrix.h>
+#endif
 
 /* Get ready for R2018a C matrix API */
 #ifndef mxGetDoubles
@@ -77,7 +77,9 @@ DECLSPEC_SELECTANY extern const float FLOAT_NaN = ((float)((1e308 * 10)*0.));
 #define NAN FLOAT_NaN
 DECLSPEC_SELECTANY extern const float FLOAT_POSITIVE_INFINITY = ((float)(1e308 * 10));
 #define INFINITY FLOAT_POSITIVE_INFINITY
+#ifndef __cplusplus
 typedef int bool;
+#endif
 #define false 0
 #define true 1
 

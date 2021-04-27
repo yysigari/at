@@ -17,12 +17,13 @@ Initialisation:
     Python 2.7.3 (default, Nov  9 2013, 21:59:00)
     [GCC 4.4.7 20120313 (Red Hat 4.4.7-3)] on linux2
     Type "help", "copyright", "credits" or "license" for more information.
+    >>> import at
     >>>
 
 - Load a pyAT ring from a .mat file::
 
-    >>> import at
-    >>> ring = at.load.load_mat('test_matlab/hmba.mat')
+    >>> from at.load import load_mat
+    >>> ring = load_mat('test_matlab/hmba.mat')
 
 Basic Use:
 ----------
@@ -35,11 +36,11 @@ Basic Use:
 - Viewing the first element in the ring::
 
     >>> ring[0]
-    RingParam('S28d', 6000000000.0, Periodicity=32)
+    RFCavity('RFC', 0.0, 187500.0, 352372212.4670127, 31, 6000000000.0, PassMethod='IdentityPass')
 
 - Changing the pass method of an element::
 
-    >>> ring[1].PassMethod = "CavityPass"
+    >>> ring[0].PassMethod = "CavityPass"
 
 - Get the s position of the 10th element in the ring::
 
