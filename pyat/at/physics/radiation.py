@@ -4,14 +4,14 @@ Radiation and equilibrium emittances
 from math import sin, cos, tan, sqrt, sinh, cosh, pi
 import numpy
 from scipy.linalg import inv, det, solve_sylvester
-from at.lattice import Lattice, check_radiation, uint32_refpts
+from at.lattice.constants import clight, e_mass
+from at.lattice import Lattice, check_radiation
 from at.lattice import Element, Dipole, Wiggler, DConstant, Multipole
-from at.lattice import get_refpts, get_cells, get_value_refpts
+from at.lattice import get_refpts, get_value_refpts
 from at.lattice import uint32_refpts, set_value_refpts
 from at.tracking import lattice_pass
-from at.physics import clight, e_mass, get_tunes_damp
 from at.physics import find_orbit6, find_m66, find_elem_m66
-from at.physics import linopt, find_mpole_raddiff_matrix
+from at.physics import find_mpole_raddiff_matrix, get_tunes_damp
 
 __all__ = ['ohmi_envelope', 'get_radiation_integrals', 'quantdiffmat',
            'gen_quantdiff_elem', 'tapering']
@@ -197,19 +197,25 @@ def ohmi_envelope(ring, refpts=None, orbit=None, keep_lattice=False):
     return data0, r66data, data
 
 
-@check_radiation(False)
-def get_radiation_integrals(ring, dp=0.0, twiss=None):
+def get_radiation_integrals(ring, dp=None, twiss=None, **kwargs):
     """
-    Compute the 5 radiation integrals for uncoupled lattices. No RF cavity or
-    radiating element is allowed.
+    Compute the 5 radiation integrals for uncoupled lattices.
 
     PARAMETERS
         ring            lattice description.
-        dp=0.0          momentum deviation
 
     KEYWORDS
         twiss=None      linear optics at all points (from linopt). If None,
                         it will be computed.
+        dp=0.0          Ignored if radiation is ON. Momentum deviation.
+        dct=None        Ignored if radiation is ON. Path lengthening.
+                        If specified, dp is ignored and the off-momentum is
+                        deduced from the path lengthening.
+        method=linopt6  Method used for the analysis of the transfer matrix.
+                        See get_optics.
+                        linopt6: default
+                        linopt2: faster if no longitudinal motion and
+                                 no H/V coupling,
 
     OUTPUT
         i1, i2, i3, i4, i5
@@ -333,8 +339,8 @@ def get_radiation_integrals(ring, dp=0.0, twiss=None):
     integrals = numpy.zeros((5,))
 
     if twiss is None:
-        _, _, _, twiss = linopt(ring, dp, range(len(ring) + 1),
-                                get_chrom=True, coupled=False)
+        _, _, twiss = ring.get_optics(refpts=range(len(ring) + 1), dp=dp,
+                                      get_chrom=True, **kwargs)
     elif len(twiss) != len(ring) + 1:
         raise ValueError('length of Twiss data should be {0}'
                          .format(len(ring) + 1))

@@ -1,6 +1,9 @@
 function ring = atsetcavity(ring,varargin)
 %ATSECAVITY Set the cavity parameters
 %
+%WARNING: This function modifies the time reference,
+%this should be avoided
+%
 %ATSETCAVITY may be used in two modes:
 %
 %Upgrade mode
@@ -12,13 +15,9 @@ function ring = atsetcavity(ring,varargin)
 %   Set the cavity frequency to the nominal value according to
 %   circumference and harmonic number
 %
-%NEWRING=ATSETCAVITY(RING,...,'HarmNumber',HARM_NUMBER,...)
-%   Set the cavity harmonic number of the full ring (all cells)
-%   The harmonic number of each cavity is HARM_NUMBER / N_CELLS
-%
 %NEWRING=ATSETCAVITY(RING,...,'Voltage',VOLTAGE,...)
 %   Set the total voltage (all cells) [V]
-%   The voltage of each cavity is VOLTAGE / N_CAVITIES / N_CELLS
+%   The voltage of each cavity is VOLTAGE / N_CAVITIES / PERIODICITY
 %
 %NEWRING=ATSETCAVITY(RING,...,'TimeLag',TIMELAG,...)
 %   Set the time lag [m]
@@ -35,14 +34,14 @@ function ring = atsetcavity(ring,varargin)
 %===================================================
 %NEWRING = ATSETCAVITY(RING,RFV,RADFLAG,HARM_NUMBER)
 %  RING         Ring structure
-%  RFV          RF voltage [V]
+%  RFV          RF voltage (per cell) [V]
 %  RADFLAG      0/1: activate/desactivate radiation (atradon/atradoff)
-%  HARMNUMBER 	Harmonic number
+%  HARMNUMBER 	Harmonic number (for 1 cell)
 %
 %  NOTES
 %  1. This mode is deprecated and should be replaced by
 %       RING=ATSETCAVITY(RING,'Frequency','nominal',...
-%           'HarmNumber',HARM_NUMBER, 'Voltage',RFV)
+%           'HarmNumber',HARM_NUMBER*PERIODICITY, 'Voltage',RFV/PERIODICITY)
 %       RING=atSetCavityPhase(RING) (optional)
 %       RING=atradon(RING)          (optional)
 %  2. All the N cavities will have a voltage RFV/N
@@ -54,75 +53,81 @@ function ring = atsetcavity(ring,varargin)
 
 % Speed of light
 CLIGHT=PhysConstant.speed_of_light_in_vacuum.value;
+E_MASS=1.0E6*PhysConstant.electron_mass_energy_equivalent_in_MeV.value;
 
-[refpts,varargs]=getoption(varargin, 'refpts', atgetcells(ring, 'Frequency'));
+props=atGetRingProperties(ring);
+try         % Look for cavities in the lattice properties
+    cavpts=props.cavpts;
+catch       % Take all cavities
+    cavpts=atgetcells(ring,'Frequency');
+end
+[cavpts,varargs]=getoption(varargin, 'refpts', cavpts);
 [frequency,varargs]=getoption(varargs, 'Frequency', []);
-[voltage,varargs]=getoption(varargs, 'Voltage', []);
-[harmnumber,varargs]=getoption(varargs, 'HarmNumber', []);
+[vring,varargs]=getoption(varargs, 'Voltage', []);
 [timelag,varargs]=getoption(varargs, 'TimeLag', []);
+[dp,varargs]=getoption(varargs,'dp',NaN);
+[dct,varargs]=getoption(varargs,'dct',NaN);
 
-if islogical(refpts)
-    refpts=find(refpts);
+if islogical(cavpts)
+    cavpts=find(cavpts);
 end
 
-[~,ncells]=atenergy(ring);
-cavities=ring(refpts);
+ncells=props.Periodicity;
+cavities=ring(cavpts);
 ncavs=length(cavities);
 
 if isempty(varargs)             % New syntax
     if ncavs == 0
         error('AT:NoCavity', 'No cavity found in the lattice');
     end
-    if ~isempty(harmnumber)
-        cavities=atsetfieldvalues(cavities, 'HarmNumber', harmnumber/ncells);
-    end
     if ~isempty(frequency)
         if (ischar(frequency) || isstring(frequency)) && strcmp(frequency, 'nominal')
-            if isempty(harmnumber)
-                harmnumber=ncells*getfield(cavities,'HarmNumber');
+            gamma0=props.Energy/E_MASS;
+            beta0=sqrt(1-1/gamma0/gamma0);
+            lcell=ncells*findspos(ring,length(ring)+1);
+            frev=beta0*CLIGHT/lcell;
+            if isfinite(dct)
+                frev=frev - frev*frev/CLIGHT*ncells*dct;
+            elseif isfinite(dp)
+                [~,ringrad]=check_radiation(ring,false,'force');
+                etac=1/gamma0^2 - mcf(ringrad);
+                frev=frev + frev*etac*dp;
             end
-            circ=ncells*findspos(ring,length(ring)+1);
-            frequency = (CLIGHT/circ)*harmnumber;
+            frequency = frev*props.HarmNumber;
         end
         cavities=atsetfieldvalues(cavities, 'Frequency', frequency);
     end
-    if ~isempty(voltage)
-        cavities=atsetfieldvalues(cavities, 'Voltage', voltage/ncells/ncavs);
+    if ~isempty(vring)
+        cavities=atsetfieldvalues(cavities, 'Voltage', vring/ncells/ncavs);
     end
     if ~isempty(timelag)
         cavities=atsetfieldvalues(cavities, 'TimeLag', timelag);
     end
-    ring(refpts)=cavities;
+    ring(cavpts)=cavities;
 else                            % Old syntax, for compatibility
-    % me_EV=510998.928;
-    
-    % gamma0=E0/me_EV;
+    % gamma0=props.Energy/E_MASS;
     % beta0=sqrt(gamma0^2-1)/gamma0;
-    [rfv,radflag,HarmNumber]=deal(varargin{:});
-    L=findspos(ring,length(ring)+1);
-    circ=L*ncells;
-    %freq=(beta0*clight/circ)*HarmNumber;
-    freq=(CLIGHT/circ)*HarmNumber;
+    [vcell,radflag,harmcell]=deal(varargin{:});
+    lcell=findspos(ring,length(ring)+1);
+%   frequency = (beta0*CLIGHT/circ)*harmnumber;
+    frequency = (CLIGHT/lcell)*harmcell;
     
     %now set cavity frequencies, Harmonic Number and RF Voltage
-    cavities=atsetfieldvalues(cavities, 'Frequency', freq);
-    cavities=atsetfieldvalues(cavities, 'HarmNumber', HarmNumber);
-    cavities=atsetfieldvalues(cavities, 'Voltage', rfv/ncavs);
-    ring(refpts)=cavities;
+    cavities=atsetfieldvalues(cavities, 'Frequency', frequency);
+    cavities=atsetfieldvalues(cavities, 'HarmNumber', harmcell);
+    cavities=atsetfieldvalues(cavities, 'Voltage', vcell/ncavs);
+    ring(cavpts)=cavities;
     
     %now set phaselags in cavities
     if radflag
-        warning('AT:CavityTimeLag',...
-            ['\nThis function modifies the time reference\n',...
-            'This should be avoided, you have been warned\n']);
         U0=atgetU0(ring);
-        timelag= (circ/(2*pi*HarmNumber))*asin(U0/(rfv));
+        timelag= (lcell/(2*pi*harmcell))*asin(U0/vcell/ncells);
         ring=atradon(ring);  % set radiation on. nothing if radiation is already on
     else
         ring=atradoff(ring,'CavityPass');  % set radiation off. nothing if radiation is already off
         timelag=0;
     end
-    ring=atsetfieldvalues(ring, refpts, 'TimeLag', timelag);
+    ring=atsetfieldvalues(ring, cavpts, 'TimeLag', timelag);
 end
 
     function values=getfield(ring,attr)

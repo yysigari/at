@@ -2,7 +2,7 @@ import at
 import numpy
 from numpy.testing import assert_allclose as assert_close
 import pytest
-from at import AtWarning, physics, atpass
+from at import AtWarning, physics, lattice_pass
 
 
 DP = 1e-5
@@ -43,8 +43,14 @@ def test_find_orbit4_result_unchanged_by_atpass(dba_lattice):
     orbit, _ = physics.find_orbit4(dba_lattice, DP)
     orbit_copy = numpy.copy(orbit)
     orbit[4] = DP
-    atpass(dba_lattice, orbit, 1)
+    lattice_pass(dba_lattice, orbit, 1)
     assert_close(orbit[:4], orbit_copy[:4], atol=1e-12)
+
+
+def test_find_orbit4_produces_same_result_with_keep_lattice_True(dba_lattice):
+    orbit0, _ = physics.find_orbit4(dba_lattice)
+    orbit1, _ = physics.find_orbit4(dba_lattice, keep_lattice=True)
+    assert_close(orbit0, orbit1, rtol=0, atol=1e-12)
 
 
 def test_find_orbit4_with_two_refpts_with_and_without_guess(dba_lattice):
@@ -82,7 +88,7 @@ def test_find_m44_returns_same_answer_as_matlab(dba_lattice, refpts):
 
 @pytest.mark.parametrize('refpts', ([145], [20], [1, 2, 3]))
 def test_find_m66(hmba_lattice, refpts):
-    hmba_lattice = hmba_lattice.radiation_on(copy=True)
+    hmba_lattice = hmba_lattice.radiation_on(copy=True, quadrupole_pass=None)
     m66, mstack = physics.find_m66(hmba_lattice, refpts=refpts)
     assert_close(m66, M66_MATLAB, rtol=0, atol=1e-8)
     stack_size = 0 if refpts is None else len(refpts)
@@ -119,10 +125,24 @@ def test_find_sync_orbit_finds_zeros(dba_lattice):
 
 
 def test_find_orbit6(hmba_lattice):
-    hmba_lattice = hmba_lattice.radiation_on(copy=True)
+    hmba_lattice = hmba_lattice.radiation_on(quadrupole_pass=None, copy=True)
     refpts = numpy.ones(len(hmba_lattice), dtype=bool)
     orbit6, all_points = physics.find_orbit6(hmba_lattice, refpts)
     assert_close(orbit6, orbit6_MATLAB, rtol=0, atol=1e-12)
+
+
+def test_find_orbit6_produces_same_result_with_keep_lattice_True(hmba_lattice):
+    hmba_lattice = hmba_lattice.radiation_on(quadrupole_pass=None, copy=True)
+    orbit0, _ = physics.find_orbit6(hmba_lattice)
+    # Technicality - the default arguments to find_orbit6 mean that
+    # keep_lattice argument is always false.
+    orbit1, _ = physics.find_orbit6(hmba_lattice, keep_lattice=True)
+    # With INTEGRAL keep_lattice does take effect.
+    orbit2, _ = physics.find_orbit6(
+        hmba_lattice, keep_lattice=True, method=physics.ELossMethod.INTEGRAL
+    )
+    assert_close(orbit0, orbit1, rtol=0, atol=1e-12)
+    assert_close(orbit0, orbit2, rtol=0, atol=1e-12)
 
 
 def test_find_orbit6_raises_AtError_if_there_is_no_cavity(dba_lattice):
@@ -210,14 +230,13 @@ def test_linopt_no_refpts(dba_lattice):
 @pytest.mark.parametrize('refpts', ([145], [1, 2, 3, 145]))
 def test_linopt_line(hmba_lattice, refpts):
     refpts.append(len(hmba_lattice))
-    l0, q, qp, ld = at.linopt(hmba_lattice, refpts=refpts, get_chrom=True)
-    lt0, qt, qpt, ltd = at.linopt(hmba_lattice, refpts=refpts, twiss_in=l0, get_chrom=True)
+    l0, q, qp, ld = at.linopt(hmba_lattice, refpts=refpts)
+    lt0, qt, qpt, ltd = at.linopt(hmba_lattice, refpts=refpts, twiss_in=l0)
     assert_close(ld['beta'], ltd['beta'], rtol=1e-12)
     assert_close(ld['s_pos'], ltd['s_pos'], rtol=1e-12)
     assert_close(ld['closed_orbit'], ltd['closed_orbit'], rtol=1e-12)
     assert_close(ld['alpha'], ltd['alpha'], rtol=1e-12)
     assert_close(ld['dispersion'], ltd['dispersion'], rtol=1e-7, atol=1e-12)
-    assert_close(q, qt, rtol=1e-12)
 
 
 def test_get_tune_chrom(hmba_lattice):
@@ -251,7 +270,7 @@ def test_nl_detuning_chromaticity(hmba_lattice):
 
 
 def test_quantdiff(hmba_lattice):
-    hmba_lattice = hmba_lattice.radiation_on(quadrupole_pass='auto', copy=True)
+    hmba_lattice = hmba_lattice.radiation_on(copy=True)
     dmat = physics.radiation.quantdiffmat(hmba_lattice)
     lmat = physics.radiation._lmat(dmat)
     assert_close(lmat,
@@ -286,35 +305,35 @@ def test_quantdiff(hmba_lattice):
 
 @pytest.mark.parametrize('refpts', ([121], [0, 40, 121]))
 def test_ohmi_envelope(hmba_lattice, refpts):
-    hmba_lattice = hmba_lattice.radiation_on(copy=True)
+    hmba_lattice = hmba_lattice.radiation_on(quadrupole_pass=None, copy=True)
     emit0, beamdata, emit = hmba_lattice.ohmi_envelope(refpts)
     obs = emit[-1]
     assert_close(beamdata['tunes'], [3.81563019e-01, 8.54376397e-01, 1.09060761e-04], rtol=2e-6)
     assert_close(beamdata['damping_rates'], [1.00820161236330e-05, 6.5784570179901e-06,  9.6533371920752e-06], rtol=2e-4)
     assert_close(
         beamdata['mode_matrices'], [
-            [[6.90001508e+00, -2.60056093e-05, 0.0, -0.0, 6.78652772e-08, -2.22998189e-06],
-             [-2.60056093e-05, 1.44927220e-01, 0.0, 0.0, -1.83087733e-06, -2.50274430e-04],
+            [[6.900015076522e+00, -2.600561025601e-05, 0.0, 0.0, 7.033283426057e-08, -1.958846024911e-06],
+             [-2.600249384045e-05, 1.449272196690e-01, 0.0, 0.0, -2.620677306167e-08, -2.502689554756e-04],
              [0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
              [0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
-             [6.78652772e-08, -1.83087733e-06, 0.0, 0.0, 2.31302829e-11, 3.16171491e-09],
-             [-2.22998189e-06, -2.50274430e-04, 0.0, 0.0, 3.16171491e-09, 4.32198996e-07]],
+             [6.786549359771e-08, -1.830877523937e-06, 0.0, 0.0, 3.317606946246e-13, 3.161648751422e-09],
+             [-2.235976330003e-06, -2.502745958743e-04, 0.0, 0.0, 4.523318887995e-11, 4.321897420594e-07]],
             [[0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
              [0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
-             [0.0, 0.0, 2.64468092e+00, 2.69748825e-06, 0.0, 0.0],
-             [0.0, 0.0, 2.69748825e-06, 3.78117448e-01, 0.0, 0.0],
+             [0.0, 0.0, 2.644680915989e+00, 2.697486758770e-06, 0.0, 0.0],
+             [0.0, 0.0, 2.697486758770e-06, 3.781174484837e-01, 0.0, 0.0],
              [0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
              [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]],
-            [[9.10978897e-07, -1.52946569e-10, 0.0, 0.0, 5.27532457e-04, -2.43385375e-05],
-             [-1.52946569e-10, 2.60206883e-14, 0.0, 0.0, -8.85722732e-08, -2.93778068e-08],
+            [[9.113022151170e-07, -1.741438302371e-10, 0.0, 0.0, 5.275323738144e-04, -2.432719763508e-05],
+             [-1.525842629452e-10, 2.956617621069e-14, 0.0, 0.0, -8.857232505860e-08, -2.937970125037e-08],
              [0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
              [0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
-             [5.27532457e-04, -8.85722732e-08, 0.0, 0.0, 3.05485151e-01, -1.37512611e-02],
-             [-2.43385375e-05, -2.93778068e-08, 0.0, 0.0, -1.37512611e-02, 3.27410054e+00]]
+             [5.277154175864e-04, -1.008471110362e-07, 0.0, 0.0, 3.054851032955e-01, -1.374469424428e-02],
+             [-6.509766798157e-05, -2.750326322828e-08, 0.0, 0.0, -1.374469426584e-02, 3.274100458152e+00]]
          ],
-        rtol=1e-5, atol=1e-5)
+        rtol=0, atol=1e-8)
     assert_close(beamdata['mode_emittances'], [1.320573957833556e-10, 0.0, 2.858758561755633e-06], atol=1e-9)
-    assert_close(obs['r66'],[
+    assert_close(obs['r66'], [
         [9.136741971381e-10, -3.482498346543e-15, -3.540695039195e-27,
          2.549996268446e-27, 1.507800991407e-09, -1.435701289711e-15],
         [-3.482510157944e-15, 1.913602810243e-11, 3.793679939809e-29,
@@ -328,7 +347,7 @@ def test_ohmi_envelope(hmba_lattice, refpts):
         [-1.435546867844e-15, -1.287082075586e-13, -3.973151364541e-21,
          -2.471963980361e-21, 9.793419918932e-10, 9.358003801197e-06]
     ], atol=1E-10)
-    assert_close(obs['r44'],[
+    assert_close(obs['r44'], [
         [9.110704278582e-10, -3.048890798332e-15, 0.000000000000e+00, 0.000000000000e+00],
         [-3.048902609732e-15, 1.913602802845e-11, 0.000000000000e+00, 0.000000000000e+00],
         [0.000000000000e+00, 0.000000000000e+00, 0.000000000000e+00, 0.000000000000e+00],

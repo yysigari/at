@@ -1,9 +1,8 @@
 from math import pi, sqrt, asin, cos
 import numpy
 from numpy import nan
-from scipy.constants import c
-from at.lattice import Lattice
-from at.physics import Cgamma, Cq, e_mass
+from ..lattice import Lattice
+from ..lattice.constants import clight, Cgamma, Cq
 
 __all__ = ['RingParameters', 'radiation_parameters', 'envelope_parameters']
 
@@ -32,7 +31,7 @@ class RingParameters(object):
         'sigma_l':          '             Bunch length: {0:g} m',
         'voltage':          '         Cavities voltage: {0} V',
         'phi_s':            '        Synchrotron phase: {0:g} rd',
-        'f_s':              '    Synchrotron frequency; {0:g} Hz'
+        'f_s':              '    Synchrotron frequency: {0:g} Hz'
     }
 
     def __init__(self, **kwargs):
@@ -51,16 +50,24 @@ class RingParameters(object):
 
 
 # noinspection PyPep8Naming
-def radiation_parameters(ring, dp=0.0, params=None):
+def radiation_parameters(ring, dp=None, params=None, **kwargs):
     """Compute ring parameters from the radiation integrals. Valid for
     uncoupled lattices with no RF cavity or radiating element.
 
     INPUT
         ring            Lattice object.
-        dp=0.0          momentum deviation.
 
     KEYWORD
         params=None     RingParam object to be updated.
+        dp=0.0          Ignored if radiation is ON. Momentum deviation.
+        dct=None        Ignored if radiation is ON. Path lengthening.
+                        If specified, dp is ignored and the off-momentum is
+                        deduced from the path lengthening.
+        method=linopt6  Method used for the analysis of the transfer matrix.
+                        See get_optics.
+                        linopt6: default
+                        linopt2: faster if no longitudinal motion and
+                                 no H/V coupling,
 
     OUTPUT
         params          RingParam object. The computed attributes are,
@@ -87,16 +94,15 @@ def radiation_parameters(ring, dp=0.0, params=None):
             f_s             Synchrotron frequency [Hz]
     """
     rp = RingParameters() if params is None else params
-    _, tunes, chroms, twiss = ring.linopt(dp, range(len(ring) + 1),
-                                          get_chrom=True, coupled=False)
-    rp.chromaticities = chroms * ring.periodicity
+    _, ringdata, twiss = ring.get_optics(refpts=range(len(ring) + 1), dp=dp,
+                                         get_chrom=True, **kwargs)
+    rp.chromaticities = ringdata.chromaticity * ring.periodicity
     integs = ring.get_radiation_integrals(dp, twiss=twiss)
     rp.i1, rp.i2, rp.i3, rp.i4, rp.i5 = numpy.array(integs) * ring.periodicity
     circumference = ring.circumference
-    revolution_period = circumference / c
-    voltage = ring.voltage
+    voltage = ring.rf_voltage
     E0 = ring.energy
-    gamma = E0 / e_mass
+    gamma = ring.gamma
     gamma2 = gamma * gamma
     beta = sqrt(1.0 - 1.0/gamma2)
     U0 = Cgamma / 2.0 / pi * E0**4 * rp.i2
@@ -104,6 +110,7 @@ def radiation_parameters(ring, dp=0.0, params=None):
     Jz = 1.0
     Je = 2.0 + rp.i4/rp.i2
     damping_partition_numbers = numpy.array([Jx, Jz, Je])
+    revolution_period = circumference / clight / beta
     ct = 2.0 * E0 / U0 * revolution_period
     rp.E0 = E0
     rp.U0 = U0
@@ -120,9 +127,12 @@ def radiation_parameters(ring, dp=0.0, params=None):
     rp.J = damping_partition_numbers
     rp.sigma_e = sqrt(Cq * gamma2 * rp.i3 / Je / rp.i2)
     rp.sigma_l = beta * abs(etac) * circumference / 2.0 / pi / nus * rp.sigma_e
-    ringtunes, _ = numpy.modf(ring.periodicity * tunes)
+    ringtunes, _ = numpy.modf(ring.periodicity * ringdata.tune)
+    if len(ringtunes) < 3:
+        rp.tunes = numpy.concatenate((ringtunes, (nus,)))
+    else:
+        rp.tunes6 = ringtunes
     rp.fulltunes = ring.periodicity * twiss[-1].mu / 2.0 / pi
-    rp.tunes = numpy.concatenate((ringtunes, (nus,)))
     rp.alphac = alphac
     rp.etac = etac
     return rp
@@ -153,17 +163,17 @@ def envelope_parameters(ring, params=None):
     """
     rp = RingParameters() if params is None else params
     emit0, beamdata, emit = ring.ohmi_envelope()
-    voltage = ring.voltage
+    voltage = ring.rf_voltage
     rp.E0 = ring.energy
     rp.U0 = ring.energy_loss
-    revolution_period = ring.circumference / c
-    rp.Tau = revolution_period / beamdata.damping_rates / ring.periodicity
+    rev_freq = ring.revolution_frequency
+    rp.Tau = 1.0 / rev_freq / beamdata.damping_rates / ring.periodicity
     alpha = 1.0 / rp.Tau
     rp.J = 4.0 * alpha / numpy.sum(alpha)
     rp.tunes6, _ = numpy.modf(ring.periodicity * beamdata.tunes)
     rp.phi_s = pi - asin(rp.U0 / voltage)
     rp.voltage = voltage
-    rp.f_s = rp.tunes6[2] / revolution_period
+    rp.f_s = rp.tunes6[2] * rev_freq
     rp.emittances = beamdata.mode_emittances
     rp.sigma_e = sqrt(emit0.r66[4, 4])
     rp.sigma_l = sqrt(emit0.r66[5, 5])
