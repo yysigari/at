@@ -1,8 +1,8 @@
 """Lattice object
 
 The methods implemented in this module are internal to the 'lattice' package.
-This is necessary to ensure that the 'lattice' package is independent
-from other AT packages.
+This is necessary to ensure that the 'lattice' package is independent of other
+AT packages.
 
 Other Lattice methods are implemented in other AT packages and are available
 as soon as the package is imported. The 'tracking' and 'physics' packages are
@@ -137,7 +137,7 @@ class Lattice(list):
         # set default values
         kwargs.setdefault('name', '')
         periodicity = kwargs.setdefault('periodicity', 1)
-        kwargs.setdefault('_particle', Particle('relativistic'))
+        kwargs.setdefault('_particle', Particle('electron'))
         # Remove temporary keywords
         frequency = kwargs.pop('_frequency', None)
         cell_h = kwargs.pop('_harmnumber', None)
@@ -370,6 +370,14 @@ class Lattice(list):
         return self.periodicity * self.get_s_pos(len(self))[0]
 
     @property
+    def revolution_frequency(self):
+        """Revolution frequency (fullring) [Hz]"""
+        # gamma = self.gamma
+        # beta = math.sqrt(1.0 - 1.0 / gamma / gamma)
+        # return beta * clight / self.circumference
+        return clight / self.circumference
+
+    @property
     def particle(self):
         """Circulating particle"""
         return self._particle
@@ -407,6 +415,11 @@ class Lattice(list):
     def beta(self):
         gamma = float(self.energy / self.particle.rest_energy)
         return math.sqrt(1.0 - 1.0/gamma/gamma)
+
+    # noinspection PyPep8Naming
+    @property
+    def BRho(self):
+        return math.sqrt(self.energy**2 - self.particle.rest_energy**2)/clight
 
     @property
     def radiation(self):

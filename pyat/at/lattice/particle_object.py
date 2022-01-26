@@ -1,5 +1,6 @@
 from .constants import e_mass, p_mass
 import numpy
+from warnings import warn
 
 
 class Particle(object):
@@ -27,9 +28,9 @@ class Particle(object):
     )
 
     def __init__(self, name, **kwargs):
-        if name != 'relativistic':
-            raise NotImplementedError(
-                "Only 'relativistic' is allowed at the moment")
+        if name != 'electron':
+            warn(UserWarning("AT tracking still assumes beta==1\n"
+                             "Make sure your particle is ultra-relativistic"))
         if name in self._known:
             kwargs.update(self._known[name])
         self.name = name
@@ -39,14 +40,18 @@ class Particle(object):
         for (key, val) in kwargs.items():
             setattr(self, key, val)
 
+    def to_dict(self):
+        attrs = vars(self).copy()
+        attrs['rest_energy'] = attrs.pop('_rest_energy')
+        attrs['charge'] = attrs.pop('_charge')
+        return attrs
+
     def __repr__(self):
         if self.name in self._known:
             return "Particle('{0}')".format(self.name)
         else:
-            attrs = vars(self).copy()
+            attrs = self.to_dict()
             name = attrs.pop('name')
-            attrs['rest_energy'] = attrs.pop('_rest_energy')
-            attrs['charge'] = attrs.pop('_charge')
             args = ', '.join('{0}={1!r}'.format(k, v) for k, v in attrs.items())
             return "Particle('{0}', {1})".format(name, args)
 

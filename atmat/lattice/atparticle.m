@@ -1,11 +1,12 @@
 classdef atparticle
     %ATPARTICLE Particle definition for AT
+    %
     %   A particle is defined by its name, rest energy and charge
 
     properties(SetAccess=private)
-        name
-        rest_energy
-        charge
+        name        % Name of the particle
+        rest_energy % Particle rest energy [eV]
+        charge      % Particle charge [elementary charge]
     end
 
     properties(Constant, Hidden)
@@ -29,9 +30,18 @@ classdef atparticle
     methods
         function obj = atparticle(name, varargin)
             %ATPARTICLE Construct an ATPARTICLE instance
-            %   Detailed explanation goes here
+            %
+            % ATPARTICLE(NAME)
+            %   NAME        May be 'electron', 'positron', 'proton', 'relativistic'
+            %               The rest energy and charge are automatically filled.
+            %
+            % ATPARTICLE(NAME,REST_ENERGY,CHARGE)
+            %   NAME        Name of the particle
+            %   REST_ENERGY Rest energy [eV]
+            %   CHARGE      Charge [elementary charge]
+            
             if ~strcmp(name,'relativistic')
-                error('AT:particle','Only ''relativistic'' is allowed at the moment');
+                warning('AT:particle','AT tracking still assumes beta==1. Make sure your particle is ultra-relativistic');
             end
             try
                 args = atparticle.known2.(name);
