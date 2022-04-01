@@ -92,8 +92,10 @@ CELXSR   = [AP HCELL HCELRXSR];
 %BMIT beamline made
 HCELLBMIT =	[D1 D1A BPM D1B QFA D2A COR D2B QFB D3 BENDBMIT D4A BPM D4B SD D5 QFC D6 SF];
 CELBMIT   = [AP HCELLBMIT HCELR];
+%build SM straigh 10ID-1
+CELSM = [AP HCELL HCELR];
 
-ELIST = [CEL CELXSR CEL CEL CELBMIT CEL CEL CEL CEL CEL CEL CEL CAV]; 
+ELIST = [CEL CELXSR CEL CEL CELBMIT CEL CEL CEL CEL SM CEL CEL CAV]; 
 buildlat(ELIST);
 
 % Compute total length and RF frequency
@@ -110,3 +112,4 @@ THERING = setcellstruct(THERING, 'Energy', 1:length(THERING), Energy);
 % LOSSFLAG is not global in AT1.3
 evalin('base','clear LOSSFLAG');
 evalin('base','global THERING FAMLIST GLOBVAL'); 
+
