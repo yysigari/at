@@ -11,7 +11,7 @@ import copy
 from inspect import getmembers, isdatadescriptor
 
 
-_collective = ['ImpedanceTablePass']
+_collective = ['ImpedanceTablePass', 'WakeFieldPass']
 
 
 def _array(value, shape=(-1,), dtype=numpy.float64):
@@ -78,7 +78,7 @@ class Element(object):
         keywords = ['{0!r}'.format(arg) for arg in arguments]
         keywords += ['{0}={1!r}'.format(k, v) for k, v in sorted(attrs.items())
                      if not numpy.array_equal(v, getattr(defelem, k, None))]
-        args = re.sub('\n\s*', ' ', ', '.join(keywords))
+        args = re.sub(r'\n\s*', ' ', ', '.join(keywords))
         return '{0}({1})'.format(self.__class__.__name__, args)
 
     def equals(self, other):
@@ -260,6 +260,16 @@ class Drift(LongElement):
         line[::2] = drifts
         line[1::2] = elements
         return [el for el in line if el is not None]
+        
+        
+class Collimator(Drift):
+    """pyAT collimator element"""
+    REQUIRED_ATTRIBUTES = LongElement.REQUIRED_ATTRIBUTES + ['RApertures']
+    def __init__(self, family_name, length, limits, **kwargs):
+        """Collimator(FamName, Length, limits, **keywords)
+        """
+        super(Collimator, self).__init__(family_name, length,
+                                         RApertures=limits, **kwargs)
 
 
 class ThinMultipole(Element):
@@ -513,7 +523,7 @@ class RFCavity(LongElement):
         TimeLag   time lag with respect to the reference particle
         """
         kwargs.setdefault('TimeLag', 0.0)
-        kwargs.setdefault('PassMethod', 'CavityPass')
+        kwargs.setdefault('PassMethod', 'RFCavityPass')
         super(RFCavity, self).__init__(family_name, length,
                                        Voltage=voltage,
                                        Frequency=frequency,

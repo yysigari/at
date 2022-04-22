@@ -12,6 +12,7 @@ from at.lattice import uint32_refpts, set_value_refpts
 from at.tracking import lattice_pass
 from at.physics import find_orbit6, find_m66, find_elem_m66
 from at.physics import find_mpole_raddiff_matrix, get_tunes_damp
+from at.physics import ELossMethod
 
 __all__ = ['ohmi_envelope', 'get_radiation_integrals', 'quantdiffmat',
            'gen_quantdiff_elem', 'tapering']
@@ -266,14 +267,14 @@ def get_radiation_integrals(ring, dp=None, twiss=None, **kwargs):
             hp0 = 2.0 * (alpha1 * eta0 + beta0 * etap1) / rho
             h2p0 = 2.0 * (-alpha1 * etap1 + beta0 / rho - gamma1 * eta0) / rho
             h_ave = h0 + hp0 * ll / 2.0 + h2p0 * ll * ll / 6.0 \
-                    - alpha1 * ll ** 3 / 4.0 / rho2 \
-                    + gamma1 * ll ** 4 / 20.0 / rho2
+                - alpha1 * ll ** 3 / 4.0 / rho2 \
+                + gamma1 * ll ** 4 / 20.0 / rho2
 
         di1 = eta_ave * ll / rho
         di2 = ll / rho2
         di3 = ll / abs(rho) / rho2
         di4 = eta_ave * ll * (2.0 * elem.K + 1.0 / rho2) / rho \
-              - (eta0 * eps1 + eta3 * eps2) / rho
+            - (eta0 * eps1 + eta3 * eps2) / rho
         di5 = h_ave * ll / abs(rho) / rho2
         return numpy.array([di1, di2, di3, di4, di5])
 
@@ -397,6 +398,8 @@ def tapering(ring, multipoles=True, niter=1, **kwargs):
 
     KEYWORDS
         multipoles=True scale all multipoles
+        method          Method for energy loss computation
+                        (see get_energy_loss)
         niter=1         number of iteration
         XYStep=1.0e-8   transverse step for numerical computation
         DPStep=1.0E-6   momentum deviation used for computation of orbit6
@@ -404,6 +407,7 @@ def tapering(ring, multipoles=True, niter=1, **kwargs):
 
     xy_step = kwargs.pop('XYStep', DConstant.XYStep)
     dp_step = kwargs.pop('DPStep', DConstant.DPStep)
+    method = kwargs.pop('method', ELossMethod.TRACKING)
     dipoles = get_refpts(ring, Dipole)
     b0 = get_value_refpts(ring, dipoles, 'BendingAngle')
     k0 = get_value_refpts(ring, dipoles, 'PolynomB', index=0)
@@ -411,7 +415,7 @@ def tapering(ring, multipoles=True, niter=1, **kwargs):
 
     for i in range(niter):
         _, o6 = find_orbit6(ring, refpts=range(len(ring)+1),
-                            XYStep=xy_step, DPStep=dp_step)
+                            XYStep=xy_step, DPStep=dp_step, method=method)
         dpps = (o6[dipoles, 4] + o6[dipoles+1, 4]) / 2
         set_value_refpts(ring, dipoles, 'PolynomB', b0/ld*dpps+k0*(1+dpps),
                          index=0)
@@ -420,7 +424,7 @@ def tapering(ring, multipoles=True, niter=1, **kwargs):
         mults = get_refpts(ring, Multipole)
         k0 = get_value_refpts(ring, dipoles, 'PolynomB', index=0)
         _, o6 = find_orbit6(ring, refpts=range(len(ring)+1),
-                            XYStep=xy_step, DPStep=dp_step)
+                            XYStep=xy_step, DPStep=dp_step, method=method)
         dpps = (o6[mults, 4] + o6[mults+1, 4]) / 2
         for dpp, el in zip(dpps, ring[mults]):
             el.PolynomB *= 1+dpp

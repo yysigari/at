@@ -70,9 +70,17 @@ def get_energy_loss(ring, method=ELossMethod.INTEGRAL):
                                      sextupole_pass=None,
                                      octupole_pass=None,
                                      copy=True)
-        o0 = numpy.zeros(6)
-        o6 = numpy.squeeze(lattice_pass(ringtmp, o0, refpts=len(ringtmp)))
-        return -o6[4] * ring.energy
+
+        o6 = numpy.squeeze(lattice_pass(ringtmp, numpy.zeros(6),
+                           refpts=len(ringtmp)))
+        if numpy.isnan(o6[0]):
+            dp = 0
+            for e in ringtmp:
+                ot = numpy.squeeze(lattice_pass([e], numpy.zeros(6)))
+                dp += -ot[4] * ring.energy
+            return dp
+        else:
+            return -o6[4] * ring.energy
 
     if isinstance(method, str):
         method = ELossMethod[method.upper()]
@@ -111,6 +119,12 @@ def get_timelag_fromU0(ring, method=ELossMethod.INTEGRAL, cavpts=None):
             raise AtError('values not equal for all cavities')
         return vals[0]
 
+    def eq(x):
+        return numpy.sum(rfv*numpy.sin(2*pi*freq*(x+tl0)/clight))-u0
+
+    def deq(x):
+        return numpy.sum(rfv*numpy.cos(2*pi*freq*(x+tl0)/clight))
+
     if cavpts is None:
         cavpts = get_cells(ring, checktype(RFCavity))
     u0 = get_energy_loss(ring, method=method) / ring.periodicity
@@ -125,8 +139,6 @@ def get_timelag_fromU0(ring, method=ELossMethod.INTEGRAL, cavpts=None):
             raise AtError('Not enough RF voltage: unstable ring')
         ctmax = 1/numpy.amin(freq)*clight/2
         tt0 = tl0[numpy.argmin(freq)]
-        eq = lambda x: numpy.sum(rfv*numpy.sin(2*pi*freq*(x+tl0)/clight))-u0
-        deq = lambda x: numpy.sum(rfv*numpy.cos(2*pi*freq*(x+tl0)/clight))
         zero_diff = least_squares(deq, -tt0+ctmax/2,
                                   bounds=(-tt0, ctmax-tt0)).x[0]
         if numpy.sign(deq(zero_diff-1.0e-6)) > 0:
@@ -146,15 +158,15 @@ def get_timelag_fromU0(ring, method=ELossMethod.INTEGRAL, cavpts=None):
     return timelag, ts
 
 
-def set_cavity_phase(ring, method=ELossMethod.INTEGRAL,
+def set_cavity_phase(ring, method=ELossMethod.TRACKING,
                      refpts=None, cavpts=None, copy=False):
     """
    Adjust the TimeLag attribute of RF cavities based on frequency,
    voltage and energy loss per turn, so that the synchronous phase is zero.
    An error occurs if all cavities do not have the same frequency.
 
-   !!!!WARNING!!!: This function changes the time reference, this should be 
-   avoided
+   !!!!WARNING!!!: This function changes the time reference,
+   this should be avoided
 
     PARAMETERS
         ring        lattice description
