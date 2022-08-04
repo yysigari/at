@@ -32,11 +32,6 @@ typedef PyObject atElem;
 #define GETTRACKFCN(libfilename) GetProcAddress((libfilename),ATPY_PASS)
 #define SEPARATOR "\\"
 #define OBJECTEXT ".pyd"
-#if PY_MINOR_VERSION < 7    /* module sysconfig wrong on windows for python<3.7 */
-#define SYSCONFIG "distutils.sysconfig"
-#else
-#define SYSCONFIG "sysconfig"
-#endif /*PY_MINOR_VERSION*/
 #else
 #include <dlfcn.h>
 #define LIBRARYHANDLETYPE void *
@@ -45,9 +40,9 @@ typedef PyObject atElem;
 #define GETTRACKFCN(libfilename) dlsym((libfilename),ATPY_PASS)
 #define SEPARATOR "/"
 #define OBJECTEXT ".so"
-#define SYSCONFIG "sysconfig"
 #endif
 
+#define SYSCONFIG "sysconfig"
 #define LIMIT_AMPLITUDE		1
 #define C0  	2.99792458e8
 
@@ -300,6 +295,25 @@ void set_energy_particle(PyObject *lattice, PyObject *energy,
     PyErr_Clear();
 }
 
+void set_current_fillpattern(PyArrayObject *bspos, PyArrayObject *bcurrents,
+                             struct parameters *param){ 
+    if(bcurrents != NULL){
+        PyObject *bcurrentsum = PyArray_Sum(bcurrents, NPY_MAXDIMS, 
+                                            PyArray_DESCR(bcurrents)->type_num,
+                                            NULL); 
+        param->beam_current = PyFloat_AsDouble(bcurrentsum);
+        Py_DECREF(bcurrentsum);    
+        param->nbunch = PyArray_SIZE(bspos);
+        param->bunch_spos = PyArray_DATA(bspos);
+        param->bunch_currents = PyArray_DATA(bcurrents); 
+    }else{
+        param->beam_current=0.0;
+        param->nbunch=1;
+        param->bunch_spos = (double[1]){0.0};
+        param->bunch_currents = (double[1]){0.0};
+    }   
+}
+
 /*
  * Parse the arguments to atpass, set things up, and execute.
  * Arguments:
@@ -312,7 +326,8 @@ void set_energy_particle(PyObject *lattice, PyObject *energy,
 static PyObject *at_atpass(PyObject *self, PyObject *args, PyObject *kwargs) {
     static char *kwlist[] = {"line","rin","nturns","refpts","turn",
                              "energy", "particle", "keep_counter",
-                             "reuse","omp_num_threads","losses", NULL};
+                             "reuse","omp_num_threads","losses",
+                             "bunch_spos", "bunch_currents", NULL};
     static double lattice_length = 0.0;
     static int last_turn = 0;
     static int valid = 0;
@@ -332,6 +347,8 @@ static PyObject *at_atpass(PyObject *self, PyObject *args, PyObject *kwargs) {
     int *ixnelem = NULL;
     bool *bxlost = NULL;
     double *dxlostcoord = NULL;
+    PyArrayObject *bcurrents;
+    PyArrayObject *bspos;
     int num_turns;
     npy_uint32 omp_num_threads=0;
     npy_uint32 num_particles, np6;
@@ -357,11 +374,15 @@ static PyObject *at_atpass(PyObject *self, PyObject *args, PyObject *kwargs) {
     particle=NULL;
     energy=NULL;
     refs=NULL;
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O!O!i|O!$iO!O!ppIp", kwlist,
+    bspos=NULL;
+    bcurrents=NULL;
+    
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O!O!i|O!$iO!O!ppIpO!O!", kwlist,
         &PyList_Type, &lattice, &PyArray_Type, &rin, &num_turns,
         &PyArray_Type, &refs, &counter,
         &PyFloat_Type ,&energy, particle_type, &particle,
-        &keep_counter, &keep_lattice, &omp_num_threads, &losses)) {
+        &keep_counter, &keep_lattice, &omp_num_threads, &losses,
+        &PyArray_Type, &bspos, &PyArray_Type, &bcurrents)) {
         return NULL;
     }
     if (PyArray_DIM(rin,0) != 6) {
@@ -376,12 +397,15 @@ static PyObject *at_atpass(PyObject *self, PyObject *args, PyObject *kwargs) {
 
     param.energy=0.0;
     param.rest_energy=0.0;
-    param.charge=-1.0;
+    param.charge=-1.0;       
+    
     if (keep_counter)
         param.nturn = last_turn;
     else
         param.nturn = counter;
-    set_energy_particle(lattice, energy, particle, &param);
+
+    set_energy_particle(lattice, energy, particle, &param);   
+    set_current_fillpattern(bspos, bcurrents, &param);
 
     num_particles = (PyArray_SIZE(rin)/6);
     np6 = num_particles*6;
@@ -634,6 +658,10 @@ static PyObject *at_elempass(PyObject *self, PyObject *args, PyObject *kwargs)
 
     param.RingLength = 0.0;
     param.T0 = 0.0;
+    param.beam_current=0.0;
+    param.nbunch=1;
+    param.bunch_spos = (double[1]){0.0};
+    param.bunch_currents = (double[1]){0.0};
 
     PyPassMethod = PyObject_GetAttrString(element, "PassMethod");
     if (!PyPassMethod) return NULL;
@@ -680,34 +708,40 @@ static PyObject *ismpi(PyObject *self)
 
 static PyMethodDef AtMethods[] = {
     {"atpass",  (PyCFunction)at_atpass, METH_VARARGS | METH_KEYWORDS,
-    PyDoc_STR("rout = atpass(line, rin, n_turns, refpts=[], reuse=False, omp_num_threads=0)\n\n"
+    PyDoc_STR("atpass(line: Sequence[Element], rin, n_turns: int, refpts: Uint32_refs = [], "
+              "reuse: Optional[bool] = False, omp_num_threads: Optional[int] = 0)\n\n"
               "Track input particles rin along line for nturns turns.\n"
               "Record 6D phase space at elements corresponding to refpts for each turn.\n\n"
-              "line:    list of elements\n"
-              "rin:     6 x n_particles Fortran-ordered numpy array.\n"
-              "         On return, rin contains the final coordinates of the particles\n"
-              "n_turns: number of turns to be tracked\n"
-              "refpts:  numpy array of indices of elements where output is desired\n"
-              "         0 means entrance of the first element\n"
-              "         len(line) means end of the last element\n"
-              "energy:  nominal energy [eV]\n"
-              "rest_energy:  rest_energy of the particle [eV]\n"
-              "charge:  particle charge [elementary charge]\n"
-              "reuse:   if True, use previously cached description of the lattice.\n\n"
-              "omp_num_threads: number of OpenMP threads (default 0: automatic)\n"
-              "losses:  if True, process losses\n"
-              "rout:    6 x n_particles x n_refpts x n_turns Fortran-ordered numpy array\n"
-              "         of particle coordinates\n"
+              "Parameters:\n"
+              "    line:    list of elements\n"
+              "    rin:     6 x n_particles Fortran-ordered numpy array.\n"
+              "      On return, rin contains the final coordinates of the particles\n"
+              "    n_turns: number of turns to be tracked\n"
+              "    refpts:  numpy array of indices of elements where output is desired\n\n"
+              "      0 means entrance of the first element\n\n"
+              "      len(line) means end of the last element\n"
+              "    energy:  nominal energy [eV]\n"
+              "    rest_energy:  rest_energy of the particle [eV]\n"
+              "    charge:  particle charge [elementary charge]\n"
+              "    reuse:   if True, use previously cached description of the lattice.\n"
+              "    omp_num_threads: number of OpenMP threads (default 0: automatic)\n"
+              "    losses:  if True, process losses\n\n"
+              "Returns:\n"
+              "    rout:    6 x n_particles x n_refpts x n_turns Fortran-ordered numpy array\n"
+              "         of particle coordinates\n\n"
+              ":meta private:"
               )},
     {"elempass",  (PyCFunction)at_elempass, METH_VARARGS | METH_KEYWORDS,
     PyDoc_STR("elempass(element, rin)\n\n"
               "Track input particles rin through a single element.\n\n"
-              "element: AT element\n"
-              "rin:     6 x n_particles Fortran-ordered numpy array.\n"
-              "         On return, rin contains the final coordinates of the particles\n"
-              "energy:  nominal energy [eV]\n"
-              "rest_energy:  rest_energy of the particle [eV]\n"
-              "charge:  particle charge [elementary charge]\n"
+              "Parameters:\n"
+              "    element: AT element\n"
+              "    rin:     6 x n_particles Fortran-ordered numpy array.\n"
+              "      On return, rin contains the final coordinates of the particles\n"
+              "    energy:  nominal energy [eV]\n"
+              "    rest_energy:  rest_energy of the particle [eV]\n"
+              "    charge:  particle charge [elementary charge]\n\n"
+              ":meta private:"
             )},
     {"isopenmp",  (PyCFunction)isopenmp, METH_NOARGS,
     PyDoc_STR("isopenmp()\n\n"
