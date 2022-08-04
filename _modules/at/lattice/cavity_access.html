@@ -1,0 +1,462 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>at.lattice.cavity_access &#8212; Accelerator Toolbox 0.1.dev1+gb2ba30f documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom_at.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    <img src="../../../_static/AT.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/AT.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../p/index.html">
+  Python
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../m/index.html">
+  Matlab
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../pabout.html">
+  About
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/atcollab/at" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <h1>Source code for at.lattice.cavity_access</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Access to properties of RF cavities&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">.elements</span> <span class="kn">import</span> <span class="n">RFCavity</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">AtError</span><span class="p">,</span> <span class="n">checktype</span><span class="p">,</span> <span class="n">make_copy</span><span class="p">,</span> <span class="n">get_cells</span><span class="p">,</span> <span class="n">Refpts</span>
+<span class="kn">from</span> <span class="nn">.lattice_object</span> <span class="kn">import</span> <span class="n">Lattice</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;get_rf_frequency&#39;</span><span class="p">,</span> <span class="s1">&#39;get_rf_voltage&#39;</span><span class="p">,</span> <span class="s1">&#39;set_rf_voltage&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;get_rf_timelag&#39;</span><span class="p">,</span> <span class="s1">&#39;set_rf_timelag&#39;</span><span class="p">,</span> <span class="s1">&#39;set_cavity&#39;</span><span class="p">,</span> <span class="s1">&#39;Frf&#39;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="Frf"><a class="viewcode-back" href="../../../p/api/at.lattice.cavity_access.html#at.lattice.cavity_access.Frf">[docs]</a><span class="k">class</span> <span class="nc">Frf</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Enum class for frequency setting&quot;&quot;&quot;</span>
+    <span class="n">NOMINAL</span> <span class="o">=</span> <span class="s1">&#39;nominal&#39;</span></div>
+
+
+<span class="k">def</span> <span class="nf">_select_cav</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">cavpts</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Select the cavities&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">cavpts</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">cavpts</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">cavpts</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">cavpts</span> <span class="o">=</span> <span class="n">get_cells</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">checktype</span><span class="p">(</span><span class="n">RFCavity</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">cavpts</span>
+
+
+<span class="k">def</span> <span class="nf">_singlev</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the single value&quot;&quot;&quot;</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">AtError</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> not equal for all cavities&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">attr</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">vals</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+
+<span class="c1"># noinspection PyUnusedLocal</span>
+<span class="k">def</span> <span class="nf">_sumv</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the sum of values&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_fundmask</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">cavpts</span><span class="p">):</span>
+    <span class="n">freqs</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">cav</span><span class="o">.</span><span class="n">Frequency</span> <span class="k">for</span> <span class="n">cav</span> <span class="ow">in</span> <span class="n">ring</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">cavpts</span><span class="p">)])</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">freqs</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">AtError</span><span class="p">(</span><span class="s1">&#39;No cavity found in the lattice&#39;</span><span class="p">)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">freqs</span> <span class="o">==</span> <span class="nb">min</span><span class="p">(</span><span class="n">freqs</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">mask</span>
+
+
+<span class="k">def</span> <span class="nf">_get_cavity</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">fsingle</span><span class="p">,</span> <span class="n">cavpts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">array</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">cavpts</span> <span class="o">=</span> <span class="n">_select_cav</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">cavpts</span><span class="p">)</span>
+    <span class="n">vcell</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">getattr</span><span class="p">(</span><span class="n">cav</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span> <span class="k">for</span> <span class="n">cav</span> <span class="ow">in</span> <span class="n">ring</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">cavpts</span><span class="p">)])</span>
+    <span class="k">if</span> <span class="n">array</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">vcell</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">fundmask</span> <span class="o">=</span> <span class="n">_fundmask</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">cavpts</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">fundmask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">vcell</span> <span class="o">=</span> <span class="n">vcell</span><span class="p">[</span><span class="n">fundmask</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">fsingle</span><span class="p">(</span><span class="n">vcell</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="get_rf_frequency"><a class="viewcode-back" href="../../../p/api/at.lattice.cavity_access.html#at.lattice.cavity_access.get_rf_frequency">[docs]</a><span class="k">def</span> <span class="nf">get_rf_frequency</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Return the RF frequency</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        ring:           Lattice description</span>
+
+<span class="sd">    Keyword Arguments:</span>
+<span class="sd">        cavpts=None:    Cavity location. If None, look for ring.cavpts,</span>
+<span class="sd">                          otherwise take all cavities.</span>
+<span class="sd">        array=False:    If False, return the frequency of the selected cavities</span>
+<span class="sd">                          with the lowest frequency.</span>
+
+<span class="sd">                          If True, return the frequency of all selected cavities</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        rf_freq:    RF frequency</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_get_cavity</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="s1">&#39;Frequency&#39;</span><span class="p">,</span> <span class="n">_singlev</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_rf_voltage"><a class="viewcode-back" href="../../../p/api/at.lattice.cavity_access.html#at.lattice.cavity_access.get_rf_voltage">[docs]</a><span class="k">def</span> <span class="nf">get_rf_voltage</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Return the total RF voltage (full ring)</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        ring:           Lattice description</span>
+
+<span class="sd">    Keyword Arguments:</span>
+<span class="sd">        cavpts=None:    Cavity location. If None, look for ring.cavpts,</span>
+<span class="sd">                          otherwise take all cavities.</span>
+<span class="sd">        array=False:    If False, return the frequency of the selected cavities</span>
+<span class="sd">                          with the lowest frequency.</span>
+
+<span class="sd">                          If True, return the frequency of all selected cavities</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        rf_v:       Total RF voltage (full ring)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">vcell</span> <span class="o">=</span> <span class="n">_get_cavity</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="s1">&#39;Voltage&#39;</span><span class="p">,</span> <span class="n">_sumv</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ring</span><span class="o">.</span><span class="n">periodicity</span> <span class="o">*</span> <span class="n">vcell</span></div>
+
+
+<div class="viewcode-block" id="get_rf_timelag"><a class="viewcode-back" href="../../../p/api/at.lattice.cavity_access.html#at.lattice.cavity_access.get_rf_timelag">[docs]</a><span class="k">def</span> <span class="nf">get_rf_timelag</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Return the RF time lag</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        ring:           Lattice description</span>
+
+<span class="sd">    Keyword Arguments:</span>
+<span class="sd">        cavpts=None:    Cavity location. If None, look for ring.cavpts,</span>
+<span class="sd">                          otherwise take all cavities.</span>
+<span class="sd">        array=False:    If False, return the frequency of the selected cavities</span>
+<span class="sd">                          with the lowest frequency.</span>
+
+<span class="sd">                          If True, return the frequency of all selected cavities</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        rf_timelag: RF time lag</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_get_cavity</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="s1">&#39;TimeLag&#39;</span><span class="p">,</span> <span class="n">_singlev</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="set_rf_voltage"><a class="viewcode-back" href="../../../p/api/at.lattice.cavity_access.html#at.lattice.cavity_access.set_rf_voltage">[docs]</a><span class="k">def</span> <span class="nf">set_rf_voltage</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">voltage</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Set the RF voltage for the full ring</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        ring:           Lattice description</span>
+<span class="sd">        voltage:        Total RF voltage (full ring)</span>
+
+<span class="sd">    Keyword Arguments:</span>
+<span class="sd">        cavpts=None:    Cavity location. If None, look for ring.cavpts,</span>
+<span class="sd">                          otherwise take all cavities.</span>
+<span class="sd">        array=False:    If False, return the frequency of the selected cavities</span>
+<span class="sd">                          with the lowest frequency.</span>
+
+<span class="sd">                          If True, return the frequency of all selected cavities</span>
+<span class="sd">        copy=False:     If True, returns a shallow copy of ``ring`` with new</span>
+<span class="sd">                          cavity elements. Otherwise, modify ``ring`` in-place.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">set_cavity</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">Voltage</span><span class="o">=</span><span class="n">voltage</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="set_rf_timelag"><a class="viewcode-back" href="../../../p/api/at.lattice.cavity_access.html#at.lattice.cavity_access.set_rf_timelag">[docs]</a><span class="k">def</span> <span class="nf">set_rf_timelag</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">timelag</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Set the RF time lag</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        ring:           Lattice description</span>
+<span class="sd">        timelag:        RF time lag</span>
+
+<span class="sd">    Keyword Arguments:</span>
+<span class="sd">        cavpts=None:    Cavity location. If None, look for ring.cavpts,</span>
+<span class="sd">                          otherwise take all cavities.</span>
+<span class="sd">        array=False:    If False, return the frequency of the selected cavities</span>
+<span class="sd">                          with the lowest frequency.</span>
+
+<span class="sd">                          If True, return the frequency of all selected cavities</span>
+<span class="sd">        copy=False:     If True, returns a shallow copy of ``ring`` with new</span>
+<span class="sd">                          cavity elements. Otherwise, modify ``ring`` in-place.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">set_cavity</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">TimeLag</span><span class="o">=</span><span class="n">timelag</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<span class="c1"># noinspection PyPep8Naming</span>
+<div class="viewcode-block" id="set_cavity"><a class="viewcode-back" href="../../../p/api/at.lattice.cavity_access.html#at.lattice.cavity_access.set_cavity">[docs]</a><span class="k">def</span> <span class="nf">set_cavity</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">Voltage</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+               <span class="n">Frequency</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+               <span class="n">TimeLag</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+               <span class="n">cavpts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Refpts</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+               <span class="n">copy</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+               <span class="n">array</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set the parameters of the RF cavities</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        ring:       lattice description</span>
+<span class="sd">        Frequency:  RF frequency [Hz]</span>
+<span class="sd">        Voltage:    RF voltage [V]</span>
+<span class="sd">        TimeLag:    RF time shift [-ct]</span>
+<span class="sd">        cavpts:     Cavity location. If None, look for ring.cavpts, or</span>
+<span class="sd">                      otherwise take all cavities</span>
+<span class="sd">        array:      If False, the value is applied as described for</span>
+<span class="sd">                      set_rf_voltage, set_rf_timelag and set_rf_frequency</span>
+<span class="sd">                      If True, directly apply the value to the selected</span>
+<span class="sd">                      cavities. The value must be broadcastable to the number</span>
+<span class="sd">                      of cavities.</span>
+<span class="sd">        copy:       If True, returns a shallow copy of ring with new</span>
+<span class="sd">                      cavity elements. Otherwise, modify ring in-place</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># noinspection PyShadowingNames</span>
+    <span class="k">def</span> <span class="nf">getv</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">refpts</span><span class="p">):</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">getattr</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ring</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">refpts</span><span class="p">)])</span>
+        <span class="n">valfund</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">fundmask</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">values</span><span class="p">,</span> <span class="n">valfund</span>
+
+    <span class="n">cavpts</span> <span class="o">=</span> <span class="n">_select_cav</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">cavpts</span><span class="p">)</span>
+    <span class="n">fundmask</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">array</span> <span class="k">else</span> <span class="n">_fundmask</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">cavpts</span><span class="p">)</span>
+
+    <span class="n">modif</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="n">Frequency</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">Frequency</span> <span class="ow">is</span> <span class="n">Frf</span><span class="o">.</span><span class="n">NOMINAL</span><span class="p">:</span>
+            <span class="n">Frequency</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">revolution_frequency</span> <span class="o">*</span> <span class="n">ring</span><span class="o">.</span><span class="n">harmonic_number</span>
+        <span class="k">if</span> <span class="n">fundmask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">vall</span><span class="p">,</span> <span class="n">vmain</span> <span class="o">=</span> <span class="n">getv</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="s1">&#39;Frequency&#39;</span><span class="p">,</span> <span class="n">cavpts</span><span class="p">)</span>
+            <span class="n">vmain</span> <span class="o">=</span> <span class="n">vmain</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">vmain</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+                <span class="n">vall</span><span class="p">[</span><span class="n">fundmask</span><span class="p">]</span> <span class="o">=</span> <span class="n">Frequency</span>
+                <span class="n">Frequency</span> <span class="o">=</span> <span class="n">vall</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">Frequency</span> <span class="o">*=</span> <span class="n">vall</span><span class="o">/</span><span class="n">vmain</span>
+        <span class="n">modif</span><span class="p">[</span><span class="s1">&#39;Frequency&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Frequency</span>
+
+    <span class="k">if</span> <span class="n">TimeLag</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">fundmask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">vall</span><span class="p">,</span> <span class="n">vmain</span> <span class="o">=</span> <span class="n">getv</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="s1">&#39;TimeLag&#39;</span><span class="p">,</span> <span class="n">cavpts</span><span class="p">)</span>
+            <span class="n">TimeLag</span> <span class="o">+=</span> <span class="n">vall</span><span class="o">-</span><span class="n">_singlev</span><span class="p">(</span><span class="n">vmain</span><span class="p">,</span> <span class="s1">&#39;TimeLag&#39;</span><span class="p">)</span>
+        <span class="n">modif</span><span class="p">[</span><span class="s1">&#39;TimeLag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">TimeLag</span>
+
+    <span class="k">if</span> <span class="n">Voltage</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">vcell</span> <span class="o">=</span> <span class="n">Voltage</span> <span class="o">/</span> <span class="n">ring</span><span class="o">.</span><span class="n">periodicity</span>
+        <span class="k">if</span> <span class="n">fundmask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">vall</span><span class="p">,</span> <span class="n">vmain</span> <span class="o">=</span> <span class="n">getv</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="s1">&#39;Voltage&#39;</span><span class="p">,</span> <span class="n">cavpts</span><span class="p">)</span>
+            <span class="n">vmain</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">vmain</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">vmain</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+                <span class="n">vall</span><span class="p">[</span><span class="n">fundmask</span><span class="p">]</span> <span class="o">=</span> <span class="n">vcell</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">fundmask</span><span class="p">)</span>
+                <span class="n">vcell</span> <span class="o">=</span> <span class="n">vall</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">vcell</span> <span class="o">*=</span> <span class="n">vall</span><span class="o">/</span><span class="n">vmain</span>
+        <span class="n">modif</span><span class="p">[</span><span class="s1">&#39;Voltage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vcell</span>
+
+    <span class="c1"># noinspection PyShadowingNames</span>
+    <span class="nd">@make_copy</span><span class="p">(</span><span class="n">copy</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">cavpts</span><span class="p">,</span> <span class="n">modif</span><span class="p">):</span>
+        <span class="n">ncavs</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">refcount</span><span class="p">(</span><span class="n">cavpts</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">modif</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">values</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">modif</span><span class="p">[</span><span class="n">attr</span><span class="p">],</span> <span class="p">(</span><span class="n">ncavs</span><span class="p">,))</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">AtError</span><span class="p">(</span><span class="s1">&#39;set_cavity args should be either scalar or &#39;</span>
+                              <span class="s1">&#39;a (</span><span class="si">{0}</span><span class="s1">,) vector&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ncavs</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">val</span><span class="p">,</span> <span class="n">cavity</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">ring</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">cavpts</span><span class="p">)):</span>
+                <span class="n">cavity</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">attr</span><span class="p">:</span> <span class="n">val</span><span class="p">})</span>
+
+    <span class="k">return</span> <span class="n">apply</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">cavpts</span><span class="p">,</span> <span class="n">modif</span><span class="p">)</span></div>
+
+
+<span class="n">Lattice</span><span class="o">.</span><span class="n">get_rf_voltage</span> <span class="o">=</span> <span class="n">get_rf_voltage</span>
+<span class="n">Lattice</span><span class="o">.</span><span class="n">get_rf_frequency</span> <span class="o">=</span> <span class="n">get_rf_frequency</span>
+<span class="n">Lattice</span><span class="o">.</span><span class="n">get_rf_timelag</span> <span class="o">=</span> <span class="n">get_rf_timelag</span>
+<span class="n">Lattice</span><span class="o">.</span><span class="n">set_rf_voltage</span> <span class="o">=</span> <span class="n">set_rf_voltage</span>
+<span class="n">Lattice</span><span class="o">.</span><span class="n">set_rf_timelag</span> <span class="o">=</span> <span class="n">set_rf_timelag</span>
+<span class="n">Lattice</span><span class="o">.</span><span class="n">set_cavity</span> <span class="o">=</span> <span class="n">set_cavity</span>
+<span class="n">Lattice</span><span class="o">.</span><span class="n">rf_voltage</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">get_rf_voltage</span><span class="p">,</span> <span class="n">set_rf_voltage</span><span class="p">,</span>
+                              <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;RF voltage of the full ring [V]&quot;</span><span class="p">)</span>
+<span class="n">Lattice</span><span class="o">.</span><span class="n">rf_timelag</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">get_rf_timelag</span><span class="p">,</span> <span class="n">set_rf_timelag</span><span class="p">,</span>
+                              <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Time lag of the fundamental mode [m]&quot;</span><span class="p">)</span>
+</pre></div>
+
+              </article>
+              
+
+              
+              <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              </footer>
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2022, ATCollab.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

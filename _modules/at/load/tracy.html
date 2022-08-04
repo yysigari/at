@@ -1,0 +1,593 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>at.load.tracy &#8212; Accelerator Toolbox 0.1.dev1+gb2ba30f documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom_at.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    <img src="../../../_static/AT.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/AT.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../p/index.html">
+  Python
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../m/index.html">
+  Matlab
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../pabout.html">
+  About
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/atcollab/at" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <h1>Source code for at.load.tracy</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Load a lattice from a Tracy file (.lat).</span>
+
+<span class="sd">This is not complete but can parse the example files that I have.</span>
+<span class="sd">This parser is quite similar to the Elegant parser in elegant.py.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">logging</span> <span class="k">as</span> <span class="nn">log</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">abspath</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">at.lattice.elements</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Drift</span><span class="p">,</span>
+    <span class="n">Dipole</span><span class="p">,</span>
+    <span class="n">Quadrupole</span><span class="p">,</span>
+    <span class="n">Sextupole</span><span class="p">,</span>
+    <span class="n">Multipole</span><span class="p">,</span>
+    <span class="n">Corrector</span><span class="p">,</span>
+    <span class="n">Marker</span><span class="p">,</span>
+    <span class="n">RFCavity</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">Lattice</span>
+<span class="kn">from</span> <span class="nn">at.load</span> <span class="kn">import</span> <span class="n">register_format</span><span class="p">,</span> <span class="n">utils</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;load_tracy&#39;</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">create_drift</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="n">parse_float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">variables</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Drift</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+
+<span class="c1"># noinspection PyUnusedLocal</span>
+<span class="k">def</span> <span class="nf">create_marker</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Marker</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">create_quad</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="n">parse_float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">variables</span><span class="p">)</span>
+    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;NumIntSteps&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">parse_float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">variables</span><span class="p">)</span>
+    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;k&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">parse_float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;k&quot;</span><span class="p">),</span> <span class="n">variables</span><span class="p">)</span>
+    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;PassMethod&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;StrMPoleSymplectic4Pass&quot;</span>
+    <span class="k">return</span> <span class="n">Quadrupole</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">create_sext</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="n">parse_float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">variables</span><span class="p">)</span>
+    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;NumIntSteps&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">parse_float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">variables</span><span class="p">)</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">parse_float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">variables</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Sextupole</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">create_dipole</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="n">parse_float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">variables</span><span class="p">)</span>
+    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;NumIntSteps&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">parse_float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+                                        <span class="n">variables</span><span class="p">)</span>
+    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;PassMethod&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;BndMPoleSymplectic4Pass&quot;</span>
+    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;BendingAngle&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">parse_float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">),</span>
+                              <span class="n">variables</span><span class="p">)</span> <span class="o">/</span> <span class="mi">180</span><span class="p">)</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span>
+    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;EntranceAngle&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">parse_float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;t1&quot;</span><span class="p">),</span>
+                               <span class="n">variables</span><span class="p">)</span> <span class="o">/</span> <span class="mi">180</span><span class="p">)</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span>
+    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;ExitAngle&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">parse_float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;t2&quot;</span><span class="p">),</span>
+                           <span class="n">variables</span><span class="p">)</span> <span class="o">/</span> <span class="mi">180</span><span class="p">)</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span>
+    <span class="c1"># Tracy is encoding gap plus fringe int in the &#39;gap&#39; field.</span>
+    <span class="c1"># Since BndMPoleSymplectic4Pass only uses the product of FringeInt</span>
+    <span class="c1"># and gap we can substitute the following.</span>
+    <span class="k">if</span> <span class="s2">&quot;gap&quot;</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;FullGap&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">parse_float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;gap&quot;</span><span class="p">),</span> <span class="n">variables</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;FringeInt1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;FringeInt2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">parse_float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">variables</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s2">&quot;PolynomB&quot;</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;PolynomB&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;PolynomB&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">Dipole</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">create_corrector</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="n">parse_float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">variables</span><span class="p">)</span>
+    <span class="c1"># Is there a property for this?</span>
+    <span class="n">kick_angle</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">Corrector</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">kick_angle</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">create_multipole</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="n">parse_float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">variables</span><span class="p">)</span>
+    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;NumIntSteps&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">parse_float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">variables</span><span class="p">)</span>
+    <span class="n">poly_a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">poly_b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">Multipole</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">poly_a</span><span class="p">,</span> <span class="n">poly_b</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">create_cavity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="n">parse_float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">variables</span><span class="p">)</span>
+    <span class="n">voltage</span> <span class="o">=</span> <span class="n">parse_float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;voltage&quot;</span><span class="p">),</span> <span class="n">variables</span><span class="p">)</span>
+    <span class="n">frequency</span> <span class="o">=</span> <span class="n">parse_float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;frequency&quot;</span><span class="p">),</span> <span class="n">variables</span><span class="p">)</span>
+    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;Phi&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">parse_float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;phi&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">variables</span><span class="p">)</span>
+    <span class="n">harmonic_number</span> <span class="o">=</span> <span class="n">variables</span><span class="p">[</span><span class="s2">&quot;harmonic_number&quot;</span><span class="p">]</span>
+    <span class="n">energy</span> <span class="o">=</span> <span class="n">variables</span><span class="p">[</span><span class="s2">&quot;energy&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">RFCavity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">voltage</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span>
+                    <span class="n">harmonic_number</span><span class="p">,</span> <span class="n">energy</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+
+<span class="n">ELEMENT_MAP</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;drift&quot;</span><span class="p">:</span> <span class="n">create_drift</span><span class="p">,</span>
+    <span class="s2">&quot;bending&quot;</span><span class="p">:</span> <span class="n">create_dipole</span><span class="p">,</span>
+    <span class="s2">&quot;quadrupole&quot;</span><span class="p">:</span> <span class="n">create_quad</span><span class="p">,</span>
+    <span class="s2">&quot;sextupole&quot;</span><span class="p">:</span> <span class="n">create_sext</span><span class="p">,</span>
+    <span class="s2">&quot;multipole&quot;</span><span class="p">:</span> <span class="n">create_multipole</span><span class="p">,</span>
+    <span class="s2">&quot;corrector&quot;</span><span class="p">:</span> <span class="n">create_corrector</span><span class="p">,</span>
+    <span class="s2">&quot;marker&quot;</span><span class="p">:</span> <span class="n">create_marker</span><span class="p">,</span>
+    <span class="s2">&quot;map&quot;</span><span class="p">:</span> <span class="n">create_marker</span><span class="p">,</span>
+    <span class="s2">&quot;beampositionmonitor&quot;</span><span class="p">:</span> <span class="n">create_marker</span><span class="p">,</span>
+    <span class="s2">&quot;cavity&quot;</span><span class="p">:</span> <span class="n">create_cavity</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">tokenise_expression</span><span class="p">(</span><span class="n">expression</span><span class="p">):</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">current_token</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">expression</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">char</span><span class="o">.</span><span class="n">isspace</span><span class="p">():</span>  <span class="c1"># complete the current token</span>
+            <span class="k">if</span> <span class="n">current_token</span><span class="p">:</span>
+                <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_token</span><span class="p">)</span>
+                <span class="n">current_token</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">char</span> <span class="ow">in</span> <span class="s2">&quot;+-&quot;</span> <span class="ow">and</span> <span class="n">current_token</span> <span class="ow">and</span> <span class="n">current_token</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="s2">&quot;de&quot;</span><span class="p">:</span>
+            <span class="c1"># special case for 1e-4, 1.23e+3, 2.2d6:</span>
+            <span class="c1"># + or - are part of the current token, not their own token.</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># If d or e refers to a number, it must be possible</span>
+                <span class="c1"># to convert the preceding characters into a float.</span>
+                <span class="nb">float</span><span class="p">(</span><span class="n">current_token</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">current_token</span> <span class="o">+=</span> <span class="n">char</span>
+                <span class="k">continue</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">pass</span>
+        <span class="k">if</span> <span class="n">char</span> <span class="ow">in</span> <span class="s2">&quot;+-*/()&quot;</span><span class="p">:</span>
+            <span class="c1"># standalone tokens: complete the current token and add this</span>
+            <span class="k">if</span> <span class="n">current_token</span><span class="p">:</span>
+                <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_token</span><span class="p">)</span>
+                <span class="n">current_token</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">current_token</span> <span class="o">+=</span> <span class="n">char</span>
+
+    <span class="k">if</span> <span class="n">current_token</span><span class="p">:</span>
+        <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_token</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tokens</span>
+
+
+<span class="k">def</span> <span class="nf">parse_float</span><span class="p">(</span><span class="n">expression</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Evaluate the provided arithmetic expression substituting variables.&quot;&quot;&quot;</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;parse_float </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">expression</span><span class="p">))</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="n">raw_tokens</span> <span class="o">=</span> <span class="n">tokenise_expression</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">raw_tokens</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">:</span>
+                <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">variables</span><span class="p">[</span><span class="n">token</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Handle unusual format 2.2d6 which means 2.2e+6.</span>
+                <span class="n">dformat_matches</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;(-?</span><span class="se">\\</span><span class="s2">d+.?</span><span class="se">\\</span><span class="s2">d*)d(-?</span><span class="se">\\</span><span class="s2">d+)&quot;</span><span class="p">,</span> <span class="n">token</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">dformat_matches</span><span class="p">:</span>
+                    <span class="n">mantissa</span><span class="p">,</span> <span class="n">exponent</span> <span class="o">=</span> <span class="n">dformat_matches</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+                    <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">e</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mantissa</span><span class="p">,</span> <span class="n">exponent</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+
+        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;+&quot;</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;-&quot;</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="o">-</span><span class="nb">float</span><span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+            <span class="c1"># Remove superfluous outer parentheses.</span>
+            <span class="k">if</span> <span class="n">tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;(&quot;</span> <span class="ow">and</span> <span class="n">tokens</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;)&quot;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="c1"># First evaluate contents of parentheses.</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">b1</span> <span class="o">=</span> <span class="n">tokens</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;(&quot;</span><span class="p">)</span>
+                <span class="n">b2</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">tokens</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;)&quot;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">tokens</span><span class="p">[:</span><span class="n">b1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">evaluate</span><span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="n">b1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span><span class="n">b2</span><span class="p">])]</span>
+                                <span class="o">+</span> <span class="n">tokens</span><span class="p">[</span><span class="n">b2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:])</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="c1"># No open parentheses found.</span>
+                <span class="k">pass</span>
+            <span class="c1"># Evaluate / and * from left to right.</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">token</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tokens</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+                <span class="k">if</span> <span class="n">token</span> <span class="o">==</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">tokens</span><span class="p">[:</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                                    <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])]</span> <span class="o">+</span> <span class="n">tokens</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">:])</span>
+                <span class="k">if</span> <span class="n">token</span> <span class="o">==</span> <span class="s2">&quot;*&quot;</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">tokens</span><span class="p">[:</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                                    <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])]</span> <span class="o">+</span> <span class="n">tokens</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">:])</span>
+            <span class="c1"># Evaluate + and - from left to right.</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">token</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tokens</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+                <span class="k">if</span> <span class="n">token</span> <span class="o">==</span> <span class="s2">&quot;+&quot;</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">tokens</span><span class="p">[:</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                                    <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])]</span> <span class="o">+</span> <span class="n">tokens</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">:])</span>
+                <span class="k">if</span> <span class="n">token</span> <span class="o">==</span> <span class="s2">&quot;-&quot;</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">tokens</span><span class="p">[:</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                                    <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])]</span> <span class="o">+</span> <span class="n">tokens</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">:])</span>
+
+        <span class="k">return</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">parse_lines</span><span class="p">(</span><span class="n">contents</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return individual lines.</span>
+
+<span class="sd">    Remove comments and whitespace, convert to lowercase, and split on</span>
+<span class="sd">    semicolons.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Nested comments not handled.</span>
+    <span class="n">in_comment</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">stripped_contents</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">contents</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">char</span> <span class="o">==</span> <span class="s2">&quot;{&quot;</span><span class="p">:</span>
+            <span class="n">in_comment</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">elif</span> <span class="n">char</span> <span class="o">==</span> <span class="s2">&quot;}&quot;</span><span class="p">:</span>
+            <span class="n">in_comment</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">in_comment</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">char</span><span class="o">.</span><span class="n">isspace</span><span class="p">():</span>
+            <span class="n">stripped_contents</span> <span class="o">+=</span> <span class="n">char</span>
+    <span class="k">return</span> <span class="n">stripped_contents</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">parse_chunk</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">elements</span><span class="p">,</span> <span class="n">chunks</span><span class="p">):</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Parse_chunk </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="n">chunk</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">split_ignoring_parentheses</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">)</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;symmetry&quot;</span> <span class="ow">in</span> <span class="n">part</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="s2">&quot;inv&quot;</span> <span class="ow">in</span> <span class="n">part</span><span class="p">:</span>
+            <span class="c1"># Reverse a sequence of elements. When doing this, swap</span>
+            <span class="c1"># the entrance and exit angles for any dipoles.</span>
+            <span class="n">chunk_to_invert</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;inv</span><span class="se">\\</span><span class="s2">((.*)</span><span class="se">\\</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">part</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">inverted_chunk</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">chunks</span><span class="p">[</span><span class="n">chunk_to_invert</span><span class="p">]):</span>
+                <span class="k">if</span> <span class="n">el</span><span class="o">.</span><span class="vm">__class__</span> <span class="o">==</span> <span class="n">Dipole</span><span class="p">:</span>
+                    <span class="n">inverted_dipole</span> <span class="o">=</span> <span class="n">el</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                    <span class="n">inverted_dipole</span><span class="o">.</span><span class="n">EntranceAngle</span> <span class="o">=</span> <span class="n">el</span><span class="o">.</span><span class="n">ExitAngle</span>
+                    <span class="n">inverted_dipole</span><span class="o">.</span><span class="n">ExitAngle</span> <span class="o">=</span> <span class="n">el</span><span class="o">.</span><span class="n">EntranceAngle</span>
+                    <span class="n">inverted_chunk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inverted_dipole</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">inverted_chunk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">el</span><span class="p">)</span>
+            <span class="n">chunk</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">inverted_chunk</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="s2">&quot;*&quot;</span> <span class="ow">in</span> <span class="n">part</span><span class="p">:</span>
+            <span class="n">num</span><span class="p">,</span> <span class="n">contents</span> <span class="o">=</span> <span class="n">part</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">contents</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;(&quot;</span><span class="p">):</span>
+                <span class="k">assert</span> <span class="n">contents</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;)&quot;</span>
+                <span class="n">contents</span> <span class="o">=</span> <span class="n">contents</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">chunk</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">*</span> <span class="n">parse_chunk</span><span class="p">(</span><span class="n">contents</span><span class="p">,</span> <span class="n">elements</span><span class="p">,</span> <span class="n">chunks</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">:</span>
+            <span class="n">chunk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="n">part</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">chunks</span><span class="p">:</span>
+            <span class="n">chunk</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">chunks</span><span class="p">[</span><span class="n">part</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;part </span><span class="si">{}</span><span class="s2"> not understood&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">part</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">chunk</span>
+
+
+<span class="k">def</span> <span class="nf">expand_tracy</span><span class="p">(</span><span class="n">contents</span><span class="p">,</span> <span class="n">lattice_key</span><span class="p">,</span> <span class="n">harmonic_number</span><span class="p">):</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">parse_lines</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;definelattice&quot;</span>
+    <span class="k">assert</span> <span class="n">lines</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;end&quot;</span>
+    <span class="k">assert</span> <span class="n">lines</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">variables</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;harmonic_number&quot;</span><span class="p">:</span> <span class="n">harmonic_number</span><span class="p">}</span>
+    <span class="n">elements</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">chunks</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="s2">&quot;:&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+            <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;energy&quot;</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">parse_float</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">variables</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e9</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">variables</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">parse_float</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">variables</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="n">variables</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">in</span> <span class="n">ELEMENT_MAP</span><span class="p">:</span>
+                <span class="n">elements</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">tracy_element_from_string</span><span class="p">(</span><span class="n">key</span><span class="p">,</span>
+                                                          <span class="n">value</span><span class="p">,</span>
+                                                          <span class="n">variables</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">chunk</span> <span class="o">=</span> <span class="n">parse_chunk</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">elements</span><span class="p">,</span> <span class="n">chunks</span><span class="p">)</span>
+                <span class="n">chunks</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">chunk</span>
+
+    <span class="k">return</span> <span class="n">chunks</span><span class="p">[</span><span class="n">lattice_key</span><span class="p">],</span> <span class="n">variables</span><span class="p">[</span><span class="s2">&quot;energy&quot;</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">parse_hom</span><span class="p">(</span><span class="n">hom_string</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Parse &#39;hom&#39; string from lattice file. Note that PolynomB</span>
+<span class="sd">    is before PolynomA.</span>
+
+<span class="sd">    hom(3, 1.2, 3.4) =&gt; [0, 0, 3.4], [0, 0, 1.2]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">hom_parts</span> <span class="o">=</span> <span class="p">[</span><span class="n">part</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">hom_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)]</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">hom_parts</span><span class="p">)</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="n">max_order</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">hom_parts</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">polynom_a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_order</span><span class="p">)</span>
+    <span class="n">polynom_b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_order</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hom_parts</span><span class="p">)</span> <span class="o">//</span> <span class="mi">3</span><span class="p">):</span>
+        <span class="n">order</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">hom_parts</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">3</span><span class="p">])</span>
+        <span class="c1"># PolynomB before PolynomA.</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">parse_float</span><span class="p">(</span><span class="n">hom_parts</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">variables</span><span class="p">)</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">parse_float</span><span class="p">(</span><span class="n">hom_parts</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="p">],</span> <span class="n">variables</span><span class="p">)</span>
+        <span class="n">polynom_a</span><span class="p">[</span><span class="n">order</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
+        <span class="n">polynom_b</span><span class="p">[</span><span class="n">order</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span>
+
+    <span class="k">return</span> <span class="n">polynom_a</span><span class="p">,</span> <span class="n">polynom_b</span>
+
+
+<span class="k">def</span> <span class="nf">tracy_element_from_string</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">element_string</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Parsing tracy element </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">element_string</span><span class="p">))</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">split_ignoring_parentheses</span><span class="p">(</span><span class="n">element_string</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">)</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">element_type</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">split_ignoring_parentheses</span><span class="p">(</span><span class="n">part</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">part</span><span class="p">,</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">variables</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;hom&quot;</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;(&quot;</span>
+            <span class="k">assert</span> <span class="n">value</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;)&quot;</span>
+            <span class="n">polynom_a</span><span class="p">,</span> <span class="n">polynom_b</span> <span class="o">=</span> <span class="n">parse_hom</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">variables</span><span class="p">)</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;PolynomA&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">polynom_a</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;PolynomB&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">polynom_b</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">params</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">return</span> <span class="n">ELEMENT_MAP</span><span class="p">[</span><span class="n">element_type</span><span class="p">](</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">variables</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="load_tracy"><a class="viewcode-back" href="../../../p/api/at.load.tracy.html#at.load.tracy.load_tracy">[docs]</a><span class="k">def</span> <span class="nf">load_tracy</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Lattice</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Create a :py:class:`.Lattice`  from a Tracy file</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        filename:           Name of a Tracy file</span>
+
+<span class="sd">    Keyword Args:</span>
+<span class="sd">        name (str):         Name of the lattice. Default: taken from</span>
+<span class="sd">          the file.</span>
+<span class="sd">        energy (float):     Energy of the lattice [eV]</span>
+<span class="sd">        periodicity(int):   Number of periods. Default: taken from the</span>
+<span class="sd">          elements, or 1</span>
+<span class="sd">        *:                  All other keywords will be set as Lattice</span>
+<span class="sd">          attributes</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        lattice (Lattice):  New :py:class:`.Lattice` object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">harmonic_number</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;harmonic_number&quot;</span><span class="p">)</span>
+        <span class="n">lattice_key</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;lattice_key&quot;</span><span class="p">,</span> <span class="s2">&quot;cell&quot;</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">elem_iterator</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">tracy_file</span><span class="p">):</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;tracy_file&quot;</span><span class="p">,</span> <span class="n">tracy_file</span><span class="p">))</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">contents</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                <span class="n">element_lines</span><span class="p">,</span> <span class="n">energy</span> <span class="o">=</span> <span class="n">expand_tracy</span><span class="p">(</span>
+                    <span class="n">contents</span><span class="p">,</span> <span class="n">lattice_key</span><span class="p">,</span> <span class="n">harmonic_number</span>
+                <span class="p">)</span>
+                <span class="n">params</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;energy&quot;</span><span class="p">,</span> <span class="n">energy</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">element_lines</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">line</span>
+
+        <span class="k">return</span> <span class="n">Lattice</span><span class="p">(</span><span class="n">abspath</span><span class="p">(</span><span class="n">filename</span><span class="p">),</span> <span class="n">iterator</span><span class="o">=</span><span class="n">elem_iterator</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Failed to load tracy &#39;</span>
+                         <span class="s1">&#39;lattice </span><span class="si">{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span></div>
+
+
+<span class="n">register_format</span><span class="p">(</span><span class="s2">&quot;.lat&quot;</span><span class="p">,</span> <span class="n">load_tracy</span><span class="p">,</span> <span class="n">descr</span><span class="o">=</span><span class="s2">&quot;Tracy format&quot;</span><span class="p">)</span>
+</pre></div>
+
+              </article>
+              
+
+              
+              <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              </footer>
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2022, ATCollab.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

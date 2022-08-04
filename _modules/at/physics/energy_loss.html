@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>at.physics.energy_loss &#8212; Accelerator Toolbox 0.1.dev1+gb2ba30f documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom_at.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    <img src="../../../_static/AT.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/AT.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../p/index.html">
+  Python
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../m/index.html">
+  Matlab
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../pabout.html">
+  About
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/atcollab/at" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <h1>Source code for at.physics.energy_loss</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">least_squares</span>
+<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">Dipole</span><span class="p">,</span> <span class="n">Wiggler</span><span class="p">,</span> <span class="n">RFCavity</span><span class="p">,</span> <span class="n">Refpts</span>
+<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">check_radiation</span><span class="p">,</span> <span class="n">AtError</span><span class="p">,</span> <span class="n">AtWarning</span>
+<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">checktype</span><span class="p">,</span> <span class="n">set_value_refpts</span><span class="p">,</span> <span class="n">get_cells</span><span class="p">,</span> <span class="n">refpts_len</span>
+<span class="kn">from</span> <span class="nn">at.constants</span> <span class="kn">import</span> <span class="n">clight</span><span class="p">,</span> <span class="n">Cgamma</span>
+<span class="kn">from</span> <span class="nn">at.tracking</span> <span class="kn">import</span> <span class="n">lattice_pass</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;get_energy_loss&#39;</span><span class="p">,</span> <span class="s1">&#39;set_cavity_phase&#39;</span><span class="p">,</span> <span class="s1">&#39;ELossMethod&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;get_timelag_fromU0&#39;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="ELossMethod"><a class="viewcode-back" href="../../../p/api/at.physics.energy_loss.html#at.physics.energy_loss.ELossMethod">[docs]</a><span class="k">class</span> <span class="nc">ELossMethod</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;methods for the computation of energy losses&quot;&quot;&quot;</span>
+    <span class="c1">#: The losses are obtained from</span>
+    <span class="c1">#: :math:`E_{loss}=C_\gamma/2\pi . E^4 . I_2`.</span>
+    <span class="c1">#: Takes into account bending magnets and wigglers.</span>
+    <span class="n">INTEGRAL</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="c1">#: The losses are obtained by tracking without cavities.</span>
+    <span class="c1">#: Needs radiation ON, takes into account all radiating elements</span>
+    <span class="n">TRACKING</span> <span class="o">=</span> <span class="mi">2</span></div>
+
+
+<div class="viewcode-block" id="get_energy_loss"><a class="viewcode-back" href="../../../p/api/at.physics.energy_loss.html#at.physics.energy_loss.get_energy_loss">[docs]</a><span class="k">def</span> <span class="nf">get_energy_loss</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span>
+                    <span class="n">method</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ELossMethod</span><span class="p">]</span> <span class="o">=</span> <span class="n">ELossMethod</span><span class="o">.</span><span class="n">INTEGRAL</span>
+                    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Computes the energy loss per turn</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        ring:           Lattice description</span>
+<span class="sd">        method:         Method for energy loss computation.</span>
+<span class="sd">          See :py:class:`ELossMethod`.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        eloss (float):  Energy loss per turn [eV]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># noinspection PyShadowingNames</span>
+    <span class="k">def</span> <span class="nf">integral</span><span class="p">(</span><span class="n">ring</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Losses = Cgamma / 2pi * EGeV^4 * i2</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">wiggler_i2</span><span class="p">(</span><span class="n">wiggler</span><span class="p">:</span> <span class="n">Wiggler</span><span class="p">):</span>
+            <span class="n">rhoinv</span> <span class="o">=</span> <span class="n">wiggler</span><span class="o">.</span><span class="n">Bmax</span> <span class="o">/</span> <span class="n">ring</span><span class="o">.</span><span class="n">BRho</span>
+            <span class="n">coefh</span> <span class="o">=</span> <span class="n">wiggler</span><span class="o">.</span><span class="n">By</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">coefv</span> <span class="o">=</span> <span class="n">wiggler</span><span class="o">.</span><span class="n">Bx</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="k">return</span> <span class="n">wiggler</span><span class="o">.</span><span class="n">Length</span> <span class="o">*</span> <span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">coefh</span> <span class="o">*</span> <span class="n">coefh</span><span class="p">)</span> <span class="o">+</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+                <span class="n">coefv</span><span class="o">*</span><span class="n">coefv</span><span class="p">))</span> <span class="o">*</span> <span class="n">rhoinv</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span>
+
+        <span class="k">def</span> <span class="nf">dipole_i2</span><span class="p">(</span><span class="n">dipole</span><span class="p">:</span> <span class="n">Dipole</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">dipole</span><span class="o">.</span><span class="n">BendingAngle</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">dipole</span><span class="o">.</span><span class="n">Length</span>
+
+        <span class="n">i2</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">ring</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">Dipole</span><span class="p">):</span>
+                <span class="n">i2</span> <span class="o">+=</span> <span class="n">dipole_i2</span><span class="p">(</span><span class="n">el</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">Wiggler</span><span class="p">)</span> <span class="ow">and</span> <span class="n">el</span><span class="o">.</span><span class="n">PassMethod</span> <span class="o">!=</span> <span class="s1">&#39;DriftPass&#39;</span><span class="p">:</span>
+                <span class="n">i2</span> <span class="o">+=</span> <span class="n">wiggler_i2</span><span class="p">(</span><span class="n">el</span><span class="p">)</span>
+        <span class="n">e_loss</span> <span class="o">=</span> <span class="n">Cgamma</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">ring</span><span class="o">.</span><span class="n">energy</span> <span class="o">**</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">i2</span>
+        <span class="k">return</span> <span class="n">e_loss</span>
+
+    <span class="c1"># noinspection PyShadowingNames</span>
+    <span class="nd">@check_radiation</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">tracking</span><span class="p">(</span><span class="n">ring</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Losses from tracking</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ringtmp</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">radiation_off</span><span class="p">(</span><span class="n">dipole_pass</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                     <span class="n">quadrupole_pass</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                     <span class="n">wiggler_pass</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                     <span class="n">sextupole_pass</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                     <span class="n">octupole_pass</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                     <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">o6</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">lattice_pass</span><span class="p">(</span><span class="n">ringtmp</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>
+                           <span class="n">refpts</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">ringtmp</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">o6</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="n">dp</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">ringtmp</span><span class="p">:</span>
+                <span class="n">ot</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">lattice_pass</span><span class="p">([</span><span class="n">e</span><span class="p">],</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">6</span><span class="p">)))</span>
+                <span class="n">dp</span> <span class="o">+=</span> <span class="o">-</span><span class="n">ot</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">*</span> <span class="n">ring</span><span class="o">.</span><span class="n">energy</span>
+            <span class="k">return</span> <span class="n">dp</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="n">o6</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">*</span> <span class="n">ring</span><span class="o">.</span><span class="n">energy</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">method</span> <span class="o">=</span> <span class="n">ELossMethod</span><span class="p">[</span><span class="n">method</span><span class="o">.</span><span class="n">upper</span><span class="p">()]</span>
+        <span class="n">warn</span><span class="p">(</span><span class="ne">FutureWarning</span><span class="p">(</span><span class="s1">&#39;You should use </span><span class="si">{0!s}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">method</span><span class="p">)))</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="ow">is</span> <span class="n">ELossMethod</span><span class="o">.</span><span class="n">INTEGRAL</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ring</span><span class="o">.</span><span class="n">periodicity</span> <span class="o">*</span> <span class="n">integral</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="n">ELossMethod</span><span class="o">.</span><span class="n">TRACKING</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ring</span><span class="o">.</span><span class="n">periodicity</span> <span class="o">*</span> <span class="n">tracking</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">AtError</span><span class="p">(</span><span class="s1">&#39;Invalid method: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">method</span><span class="p">))</span></div>
+
+
+<span class="c1"># noinspection PyPep8Naming</span>
+<div class="viewcode-block" id="get_timelag_fromU0"><a class="viewcode-back" href="../../../p/api/at.physics.energy_loss.html#at.physics.energy_loss.get_timelag_fromU0">[docs]</a><span class="k">def</span> <span class="nf">get_timelag_fromU0</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span>
+                       <span class="n">method</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ELossMethod</span><span class="p">]</span> <span class="o">=</span> <span class="n">ELossMethod</span><span class="o">.</span><span class="n">TRACKING</span><span class="p">,</span>
+                       <span class="n">cavpts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Refpts</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                       <span class="n">divider</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the TimeLag attribute of RF cavities based on frequency,</span>
+<span class="sd">    voltage and energy loss per turn, so that the synchronous phase is zero.</span>
+<span class="sd">    An error occurs if all cavities do not have the same frequency.</span>
+<span class="sd">    Used in set_cavity_phase()</span>
+
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        ring:               Lattice description</span>
+<span class="sd">        method:             Method for energy loss computation.</span>
+<span class="sd">          See :py:class:`ELossMethod`.</span>
+<span class="sd">        cavpts:             Cavity location. If None, use all cavities.</span>
+<span class="sd">          This allows to ignore harmonic cavities.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        timelag (float):    Timelag</span>
+<span class="sd">        ts (float):         Time difference with the present value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">singlev</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+        <span class="n">vals</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">AtError</span><span class="p">(</span><span class="s1">&#39;values not equal for all cavities&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">vals</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">eq</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">rfv</span><span class="p">,</span> <span class="n">tl0</span><span class="p">,</span> <span class="n">u0</span><span class="p">):</span>
+        <span class="n">omf</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">freq</span><span class="o">/</span><span class="n">clight</span>
+        <span class="n">eq1</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">-</span><span class="n">rfv</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">omf</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">tl0</span><span class="p">)))</span><span class="o">-</span><span class="n">u0</span>
+        <span class="n">eq2</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">-</span><span class="n">omf</span><span class="o">*</span><span class="n">rfv</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">omf</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">tl0</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="n">eq2</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">eq1</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">eq2</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">eq1</span>
+
+    <span class="k">if</span> <span class="n">cavpts</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">cavpts</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">get_cells</span><span class="p">(</span><span class="n">checktype</span><span class="p">(</span><span class="n">RFCavity</span><span class="p">))</span>
+    <span class="n">u0</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">get_energy_loss</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">)</span> <span class="o">/</span> <span class="n">ring</span><span class="o">.</span><span class="n">periodicity</span>
+    <span class="n">freq</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">cav</span><span class="o">.</span><span class="n">Frequency</span> <span class="k">for</span> <span class="n">cav</span> <span class="ow">in</span> <span class="n">ring</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">cavpts</span><span class="p">)])</span>
+    <span class="n">rfv</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">cav</span><span class="o">.</span><span class="n">Voltage</span> <span class="k">for</span> <span class="n">cav</span> <span class="ow">in</span> <span class="n">ring</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">cavpts</span><span class="p">)])</span>
+    <span class="n">tl0</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">cav</span><span class="o">.</span><span class="n">TimeLag</span> <span class="k">for</span> <span class="n">cav</span> <span class="ow">in</span> <span class="n">ring</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">cavpts</span><span class="p">)])</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">frf</span> <span class="o">=</span> <span class="n">singlev</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span>
+        <span class="n">tml</span> <span class="o">=</span> <span class="n">singlev</span><span class="p">(</span><span class="n">tl0</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">AtError</span><span class="p">:</span>
+        <span class="n">ctmax</span> <span class="o">=</span> <span class="n">clight</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+        <span class="n">tt0</span> <span class="o">=</span> <span class="n">tl0</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">freq</span><span class="p">)]</span>
+        <span class="n">bounds</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">ctmax</span><span class="p">,</span> <span class="n">ctmax</span><span class="p">)</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">freq</span><span class="p">,</span><span class="n">rfv</span><span class="p">,</span><span class="n">tl0</span><span class="p">,</span><span class="n">u0</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">divider</span><span class="p">):</span>
+            <span class="n">fact</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">divider</span>
+            <span class="n">r</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">least_squares</span><span class="p">(</span><span class="n">eq</span><span class="p">,</span><span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">fact</span><span class="o">+</span><span class="n">tt0</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="o">+</span><span class="n">tt0</span><span class="p">))</span>
+            <span class="n">r</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">least_squares</span><span class="p">(</span><span class="n">eq</span><span class="p">,</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">fact</span><span class="o">+</span><span class="n">tt0</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="n">bounds</span><span class="o">+</span><span class="n">tt0</span><span class="p">))</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">abs</span><span class="p">(</span><span class="n">ri</span><span class="o">.</span><span class="n">fun</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">ri</span> <span class="ow">in</span> <span class="n">r</span><span class="p">])</span>
+        <span class="n">ok</span> <span class="o">=</span> <span class="n">res</span> <span class="o">&lt;</span> <span class="mf">1.0e-6</span>
+        <span class="n">vals</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">abs</span><span class="p">(</span><span class="n">ri</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">decimals</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span> <span class="k">for</span> <span class="n">ri</span> <span class="ow">in</span> <span class="n">r</span><span class="p">])</span>    
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">numpy</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">ok</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">AtError</span><span class="p">(</span><span class="s1">&#39;No solution found for Phis, please check &#39;</span>
+                          <span class="s1">&#39;RF settings&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">vals</span><span class="p">[</span><span class="n">ok</span><span class="p">]))</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">warn</span><span class="p">(</span><span class="n">AtWarning</span><span class="p">(</span><span class="s1">&#39;More than one solution found for Phis: use &#39;</span>
+                           <span class="s1">&#39;best fit, please check RF settings&#39;</span><span class="p">))</span>
+        <span class="n">ts</span> <span class="o">=</span> <span class="o">-</span><span class="n">r</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">res</span><span class="p">)]</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">timelag</span> <span class="o">=</span> <span class="n">ts</span><span class="o">+</span><span class="n">tl0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">u0</span> <span class="o">&gt;</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">rfv</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">AtError</span><span class="p">(</span><span class="s1">&#39;Not enough RF voltage: unstable ring&#39;</span><span class="p">)</span>
+        <span class="n">vrf</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">rfv</span><span class="p">)</span>
+        <span class="n">timelag</span> <span class="o">=</span> <span class="n">clight</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">frf</span><span class="p">)</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">u0</span><span class="o">/</span><span class="n">vrf</span><span class="p">)</span>
+        <span class="n">ts</span> <span class="o">=</span> <span class="n">timelag</span> <span class="o">-</span> <span class="n">tml</span>
+        <span class="n">timelag</span> <span class="o">*=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">refpts_len</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">cavpts</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">timelag</span><span class="p">,</span> <span class="n">ts</span></div>
+
+
+<div class="viewcode-block" id="set_cavity_phase"><a class="viewcode-back" href="../../../p/api/at.physics.energy_loss.html#at.physics.energy_loss.set_cavity_phase">[docs]</a><span class="k">def</span> <span class="nf">set_cavity_phase</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span>
+                     <span class="n">method</span><span class="p">:</span> <span class="n">ELossMethod</span> <span class="o">=</span> <span class="n">ELossMethod</span><span class="o">.</span><span class="n">TRACKING</span><span class="p">,</span>
+                     <span class="n">refpts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Refpts</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                     <span class="n">cavpts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Refpts</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                     <span class="n">copy</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adjust the TimeLag attribute of RF cavities based on frequency,</span>
+<span class="sd">    voltage and energy loss per turn, so that the synchronous phase is zero.</span>
+<span class="sd">    An error occurs if all cavities do not have the same frequency.</span>
+
+<span class="sd">    .. Warning::</span>
+
+<span class="sd">       This function changes the time reference, this should be avoided</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        ring:       Lattice description</span>
+<span class="sd">        method:     Method for energy loss computation.</span>
+<span class="sd">          See :py:class:`ELossMethod`.</span>
+<span class="sd">        cavpts:     Cavity location. If None, use all cavities.</span>
+<span class="sd">          This allows to ignore harmonic cavities.</span>
+<span class="sd">        copy:       If True, returns a shallow copy of ring with new</span>
+<span class="sd">          cavity elements. Otherwise, modify ring in-place.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># refpts is kept for backward compatibility</span>
+    <span class="k">if</span> <span class="n">cavpts</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">refpts</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">warn</span><span class="p">(</span><span class="ne">FutureWarning</span><span class="p">(</span><span class="s1">&#39;You should use &quot;cavpts&quot; instead of &quot;refpts&quot;&#39;</span><span class="p">))</span>
+        <span class="n">cavpts</span> <span class="o">=</span> <span class="n">refpts</span>
+    <span class="k">elif</span> <span class="n">cavpts</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">cavpts</span> <span class="o">=</span> <span class="n">get_cells</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">checktype</span><span class="p">(</span><span class="n">RFCavity</span><span class="p">))</span>
+    <span class="n">timelag</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">get_timelag_fromU0</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">cavpts</span><span class="o">=</span><span class="n">cavpts</span><span class="p">)</span>
+    <span class="n">set_value_refpts</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">cavpts</span><span class="p">,</span> <span class="s1">&#39;TimeLag&#39;</span><span class="p">,</span> <span class="n">timelag</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span></div>
+
+
+<span class="n">Lattice</span><span class="o">.</span><span class="n">get_energy_loss</span> <span class="o">=</span> <span class="n">get_energy_loss</span>
+<span class="n">Lattice</span><span class="o">.</span><span class="n">energy_loss</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">get_energy_loss</span><span class="p">)</span>
+<span class="n">Lattice</span><span class="o">.</span><span class="n">set_cavity_phase</span> <span class="o">=</span> <span class="n">set_cavity_phase</span>
+</pre></div>
+
+              </article>
+              
+
+              
+              <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              </footer>
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2022, ATCollab.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

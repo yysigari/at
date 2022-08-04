@@ -1,0 +1,474 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>at.physics.harmonic_analysis &#8212; Accelerator Toolbox 0.1.dev1+gb2ba30f documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom_at.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    <img src="../../../_static/AT.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/AT.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../p/index.html">
+  Python
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../m/index.html">
+  Matlab
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../pabout.html">
+  About
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/atcollab/at" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <h1>Source code for at.physics.harmonic_analysis</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Original author of HarmonicAnalysis class</span>
+<span class="sd">Jaime Maria Coello De Portugal - Martinez Vazquez</span>
+
+
+<span class="sd">Written while at CERN circa 2016</span>
+<span class="sd">This is a reduced version keeping only the key components.</span>
+<span class="sd">Full code can be found at: https://github.com/pylhc/harpy</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="n">PI2I</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="nb">complex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">ZERO_PAD_DEF</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">HANN_DEF</span> <span class="o">=</span> <span class="kc">False</span>
+
+
+<div class="viewcode-block" id="HarmonicAnalysis"><a class="viewcode-back" href="../../../p/api/at.physics.harmonic_analysis.html#at.physics.harmonic_analysis.HarmonicAnalysis">[docs]</a><span class="k">class</span> <span class="nc">HarmonicAnalysis</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">zero_pad</span><span class="o">=</span><span class="n">ZERO_PAD_DEF</span><span class="p">,</span> <span class="n">hann</span><span class="o">=</span><span class="n">HANN_DEF</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_samples</span> <span class="o">=</span> <span class="n">samples</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_compute_orbit</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">zero_pad</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_pad_signal</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_samples</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_int_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_length</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hann_window</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">hann</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_hann_window</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hanning</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_length</span><span class="p">)</span>
+
+<div class="viewcode-block" id="HarmonicAnalysis.laskar_method"><a class="viewcode-back" href="../../../p/api/at.physics.harmonic_analysis.html#at.physics.harmonic_analysis.HarmonicAnalysis.laskar_method">[docs]</a>    <span class="k">def</span> <span class="nf">laskar_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_harmonics</span><span class="p">):</span>
+        <span class="n">samples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_samples</span><span class="p">[:]</span>  <span class="c1"># Copy the samples array.</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_length</span>
+        <span class="n">coefficients</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">frequencies</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_harmonics</span><span class="p">):</span>
+            <span class="c1"># Compute this harmonic frequency and coefficient.</span>
+            <span class="n">dft_data</span> <span class="o">=</span> <span class="n">HarmonicAnalysis</span><span class="o">.</span><span class="n">_fft</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+            <span class="n">frequency</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jacobsen</span><span class="p">(</span><span class="n">dft_data</span><span class="p">)</span>
+            <span class="n">coefficient</span> <span class="o">=</span> <span class="n">HarmonicAnalysis</span><span class="o">.</span><span class="n">_compute_coef</span><span class="p">(</span>
+                <span class="n">samples</span><span class="p">,</span>
+                <span class="n">frequency</span> <span class="o">*</span> <span class="n">n</span>
+            <span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+
+            <span class="c1"># Store frequency and amplitude</span>
+            <span class="n">coefficients</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coefficient</span><span class="p">)</span>
+            <span class="n">frequencies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>
+
+            <span class="c1"># Subtract the found pure tune from the signal</span>
+            <span class="n">new_signal</span> <span class="o">=</span> <span class="n">coefficient</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">PI2I</span>
+                                              <span class="o">*</span> <span class="n">frequency</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_int_range</span><span class="p">)</span>
+            <span class="n">samples</span> <span class="o">=</span> <span class="n">samples</span> <span class="o">-</span> <span class="n">new_signal</span>
+
+        <span class="n">coefficients</span><span class="p">,</span> <span class="n">frequencies</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">coefficients</span><span class="p">,</span>
+                                                    <span class="n">frequencies</span><span class="p">),</span>
+                                        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="nb">tuple</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="nb">tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                                        <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">frequencies</span><span class="p">,</span> <span class="n">coefficients</span></div>
+
+<div class="viewcode-block" id="HarmonicAnalysis.get_signal"><a class="viewcode-back" href="../../../p/api/at.physics.harmonic_analysis.html#at.physics.harmonic_analysis.HarmonicAnalysis.get_signal">[docs]</a>    <span class="k">def</span> <span class="nf">get_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hann_window</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_samples</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hann_window</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_samples</span></div>
+
+<div class="viewcode-block" id="HarmonicAnalysis.get_coefficient_for_freq"><a class="viewcode-back" href="../../../p/api/at.physics.harmonic_analysis.html#at.physics.harmonic_analysis.HarmonicAnalysis.get_coefficient_for_freq">[docs]</a>    <span class="k">def</span> <span class="nf">get_coefficient_for_freq</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">freq</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_coef</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_samples</span><span class="p">,</span>
+                                  <span class="n">freq</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_length</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_length</span></div>
+
+    <span class="k">def</span> <span class="nf">_pad_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Pads the signal with zeros to a &quot;good&quot; FFT size.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_samples</span><span class="p">)</span>
+        <span class="c1"># TODO Think proper pad size</span>
+        <span class="n">pad_length</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">bit_length</span><span class="p">())</span> <span class="o">-</span> <span class="n">length</span>
+        <span class="c1"># pad_length = 6600 - length</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_samples</span><span class="p">,</span>
+            <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pad_length</span><span class="p">),</span>
+            <span class="s1">&#39;constant&#39;</span>
+        <span class="p">)</span>
+        <span class="c1"># self._samples = self._samples[:6000]</span>
+
+    <span class="k">def</span> <span class="nf">_jacobsen</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dft_values</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This method interpolates the real frequency of the</span>
+<span class="sd">        signal using the three highest peaks in the FFT.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">dft_values</span><span class="p">))</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_length</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">dft_values</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span>
+        <span class="n">kp</span> <span class="o">=</span> <span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span>
+        <span class="n">km</span> <span class="o">=</span> <span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="n">delta</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">((</span><span class="n">r</span><span class="p">[</span><span class="n">km</span><span class="p">]</span> <span class="o">-</span> <span class="n">r</span><span class="p">[</span><span class="n">kp</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">r</span><span class="p">[</span><span class="n">km</span><span class="p">]</span> <span class="o">-</span> <span class="n">r</span><span class="p">[</span><span class="n">kp</span><span class="p">]))</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="n">delta</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_compute_coef_simple</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">kprime</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the coefficient of the Discrete Time Fourier</span>
+<span class="sd">        Transform corresponding to the given frequency (kprime).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+        <span class="n">freq</span> <span class="o">=</span> <span class="n">kprime</span> <span class="o">/</span> <span class="n">n</span>
+        <span class="n">exponents</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">PI2I</span> <span class="o">*</span> <span class="n">freq</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+        <span class="n">coef</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">exponents</span> <span class="o">*</span> <span class="n">samples</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">coef</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_compute_coef_goertzel</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">kprime</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the coefficient of the Discrete Time Fourier</span>
+<span class="sd">        Transform corresponding to the given frequency (kprime).</span>
+<span class="sd">        This function is faster than the previous one if compiled</span>
+<span class="sd">        with Numba.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">kprime</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="nb">complex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="nb">complex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span>
+                   <span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">kprime</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span> <span class="o">*</span>
+                   <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">s0</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="n">s1</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="n">s2</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">s0</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">s1</span> <span class="o">-</span> <span class="n">s2</span>
+            <span class="n">s2</span> <span class="o">=</span> <span class="n">s1</span>
+            <span class="n">s1</span> <span class="o">=</span> <span class="n">s0</span>
+        <span class="n">s0</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">s1</span> <span class="o">-</span> <span class="n">s2</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">s0</span> <span class="o">-</span> <span class="n">s1</span> <span class="o">*</span> <span class="n">c</span>
+        <span class="k">return</span> <span class="n">y</span> <span class="o">*</span> <span class="n">d</span>
+
+    <span class="k">def</span> <span class="nf">_compute_orbit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">closed_orbit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_samples</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">closed_orbit_rms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_samples</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">peak_to_peak</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_samples</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_samples</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_conditional_import_compute_coef</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Checks if Numba is installed.</span>
+<span class="sd">        If it is, it sets the compiled goertzel algorithm as the</span>
+<span class="sd">        coefficient function to use. If it isn&#39;t, it uses the</span>
+<span class="sd">        normal Numpy one.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">jit</span>
+            <span class="c1"># print(&quot;Using compiled Numba functions.&quot;)</span>
+            <span class="k">return</span> <span class="n">jit</span><span class="p">(</span><span class="n">HarmonicAnalysis</span><span class="o">.</span><span class="n">_compute_coef_goertzel</span><span class="p">,</span>
+                       <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nogil</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="c1"># print(&quot;Numba not found, using numpy functions.&quot;)</span>
+            <span class="k">return</span> <span class="n">HarmonicAnalysis</span><span class="o">.</span><span class="n">_compute_coef_simple</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_conditional_import_fft</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        If SciPy is installed, it will set its fft as the one</span>
+<span class="sd">        to use as it is slightly faster. Otherwise it will use</span>
+<span class="sd">        the Numpy one.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">scipy.fftpack</span> <span class="kn">import</span> <span class="n">fft</span> <span class="k">as</span> <span class="n">scipy_fft</span>
+            <span class="kn">from</span> <span class="nn">scipy.fftpack</span> <span class="kn">import</span> <span class="n">fftfreq</span> <span class="k">as</span> <span class="n">scipy_fftfreq</span>
+            <span class="n">fft</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">scipy_fft</span><span class="p">)</span>
+            <span class="n">fftfreq</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">scipy_fftfreq</span><span class="p">)</span>
+            <span class="c1"># print(&quot;Scipy found, using scipy FFT.&quot;)</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">numpy.fft</span> <span class="kn">import</span> <span class="n">fft</span> <span class="k">as</span> <span class="n">numpy_fft</span>
+            <span class="kn">from</span> <span class="nn">numpy.fft</span> <span class="kn">import</span> <span class="n">fftfreq</span> <span class="k">as</span> <span class="n">numpy_fftfreq</span>
+            <span class="n">fft</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">numpy_fft</span><span class="p">)</span>
+            <span class="n">fftfreq</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span><span class="n">numpy_fftfreq</span><span class="p">)</span>
+            <span class="c1"># print(&quot;Scipy not found, using numpy FFT.&quot;)</span>
+        <span class="k">return</span> <span class="n">fft</span><span class="p">,</span> <span class="n">fftfreq</span></div>
+
+
+<span class="c1"># Set up conditional functions on load</span>
+<span class="c1">##############################################</span>
+<span class="n">HarmonicAnalysis</span><span class="o">.</span><span class="n">_compute_coef</span> <span class="o">=</span> <span class="nb">staticmethod</span><span class="p">(</span>
+    <span class="n">HarmonicAnalysis</span><span class="o">.</span><span class="n">_conditional_import_compute_coef</span><span class="p">())</span>
+<span class="n">HarmonicAnalysis</span><span class="o">.</span><span class="n">_fft</span><span class="p">,</span> <span class="n">HarmonicAnalysis</span><span class="o">.</span><span class="n">_fftfreq</span> <span class="o">=</span> \
+    <span class="n">HarmonicAnalysis</span><span class="o">.</span><span class="n">_conditional_import_fft</span><span class="p">()</span>
+<span class="c1">##############################################</span>
+
+
+<div class="viewcode-block" id="get_spectrum_harmonic"><a class="viewcode-back" href="../../../p/api/at.physics.harmonic_analysis.html#at.physics.harmonic_analysis.get_spectrum_harmonic">[docs]</a><span class="k">def</span> <span class="nf">get_spectrum_harmonic</span><span class="p">(</span><span class="n">cent</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;laskar&#39;</span><span class="p">,</span>
+                          <span class="n">num_harmonics</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+                          <span class="n">hann</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Frequency analysis of beam motion</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        cent:           Centroid motions of the particle</span>
+<span class="sd">        method:         ``&#39;laskar&#39;`` or ``&#39;fft&#39;``. Default: ``&#39;laskar&#39;``</span>
+<span class="sd">        num_harmonics:  Number of harmonic components to compute (before mask</span>
+<span class="sd">          applied)</span>
+<span class="sd">        hann:           Turn on Hanning window. Default: :py:obj:`False`</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        frequency (ndarray): (num_harmonics,) array of frequencies</span>
+<span class="sd">        amplitude (ndarray): (num_harmonics,) array of amplitudes</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ha</span> <span class="o">=</span> <span class="n">HarmonicAnalysis</span><span class="p">(</span><span class="n">cent</span><span class="p">,</span> <span class="n">hann</span><span class="o">=</span><span class="n">hann</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;laskar&#39;</span><span class="p">:</span>
+        <span class="n">ha_tune</span><span class="p">,</span> <span class="n">ha_amp</span> <span class="o">=</span> <span class="n">ha</span><span class="o">.</span><span class="n">laskar_method</span><span class="p">(</span><span class="n">num_harmonics</span><span class="o">=</span><span class="n">num_harmonics</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;fft&#39;</span><span class="p">:</span>
+        <span class="n">signal</span> <span class="o">=</span> <span class="n">ha</span><span class="o">.</span><span class="n">get_signal</span><span class="p">()</span>
+        <span class="n">fft</span> <span class="o">=</span> <span class="n">ha</span><span class="o">.</span><span class="n">_fft</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+        <span class="n">ha_tune</span><span class="p">,</span> <span class="n">ha_amp</span> <span class="o">=</span> <span class="n">ha</span><span class="o">.</span><span class="n">_fftfreq</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fft</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fft</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;The method &#39;</span> <span class="o">+</span> <span class="n">method</span> <span class="o">+</span> <span class="s1">&#39; is undefined&#39;</span><span class="p">)</span>
+
+    <span class="n">ha_amp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ha_amp</span><span class="p">))</span>
+    <span class="n">ha_tune</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ha_tune</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ha_tune</span><span class="p">,</span> <span class="n">ha_amp</span></div>
+
+
+<div class="viewcode-block" id="get_tunes_harmonic"><a class="viewcode-back" href="../../../p/api/at.physics.harmonic_analysis.html#at.physics.harmonic_analysis.get_tunes_harmonic">[docs]</a><span class="k">def</span> <span class="nf">get_tunes_harmonic</span><span class="p">(</span><span class="n">cents</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;laskar&#39;</span><span class="p">,</span>
+                       <span class="n">num_harmonics</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">hann</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                       <span class="n">fmin</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">fmax</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Computes tunes from harmonic analysis</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        cents:          Centroid motions of the particle</span>
+<span class="sd">        method:         ``&#39;laskar&#39;`` or ``&#39;fft&#39;``. Default: ``&#39;laskar&#39;``</span>
+<span class="sd">        num_harmonics:  Number of harmonic components to compute (before mask</span>
+<span class="sd">          applied)</span>
+<span class="sd">        fmin:           Lower bound for tune</span>
+<span class="sd">        fmax:           Upper bound for tune</span>
+<span class="sd">        hann:           Turn on Hanning window. Default: :py:obj:`False`</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        tunes (ndarray):    numpy array of length len(cents), max of the</span>
+<span class="sd">          spectrum within [fmin fmax]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">get_max_spectrum</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">amp</span><span class="p">,</span> <span class="n">fmin</span><span class="p">,</span> <span class="n">fmax</span><span class="p">):</span>
+        <span class="n">msk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">freq</span> <span class="o">&gt;=</span> <span class="n">fmin</span><span class="p">,</span> <span class="n">freq</span> <span class="o">&lt;=</span> <span class="n">fmax</span><span class="p">)</span>
+        <span class="n">amp</span> <span class="o">=</span> <span class="n">amp</span><span class="p">[</span><span class="n">msk</span><span class="p">]</span>
+        <span class="n">freq</span> <span class="o">=</span> <span class="n">freq</span><span class="p">[</span><span class="n">msk</span><span class="p">]</span>
+        <span class="n">tune</span> <span class="o">=</span> <span class="n">freq</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">amp</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="n">tune</span>
+
+    <span class="n">cents</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cents</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">cents</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">npart</span> <span class="o">=</span> <span class="n">cents</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">cents</span> <span class="o">=</span> <span class="p">[</span><span class="n">cents</span><span class="p">]</span>
+        <span class="n">npart</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">tunes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">npart</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">npart</span><span class="p">):</span>
+        <span class="n">freq</span><span class="p">,</span> <span class="n">amp</span> <span class="o">=</span> <span class="n">get_spectrum_harmonic</span><span class="p">(</span><span class="n">cents</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                          <span class="n">num_harmonics</span><span class="o">=</span><span class="n">num_harmonics</span><span class="p">,</span>
+                                          <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+                                          <span class="n">hann</span><span class="o">=</span><span class="n">hann</span><span class="p">)</span>
+        <span class="n">tunes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_max_spectrum</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">amp</span><span class="p">,</span> <span class="n">fmin</span><span class="p">,</span> <span class="n">fmax</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">tunes</span></div>
+</pre></div>
+
+              </article>
+              
+
+              
+              <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              </footer>
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2022, ATCollab.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

@@ -4,9 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
-    <title>Welcome to AT &#8212; Accelerator Toolbox 0.1.dev1+gb2ba30f documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search &#8212; Accelerator Toolbox 0.1.dev1+gb2ba30f documentation</title>
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
   document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
@@ -31,6 +30,7 @@
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
 
+    
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
@@ -38,11 +38,15 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Welcome to pyAT’s documentation!" href="p/index.html" />
+    <link rel="search" title="Search" href="#" />
+  <script src="searchindex.js" defer></script>
+  
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="en">
+
   </head>
   
   
@@ -61,7 +65,7 @@
   
 
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="index.html">
   
   
   
@@ -137,70 +141,66 @@
       <div class="bd-container__inner row">
           
 
-<div class="sidebar-primary col-12 col-md-1 col-xl-2 bd-sidebar no-sidebar"></div>
-
-
-          
-
-
-<div class="bd-sidebar-secondary d-none d-md-block col-md-2 bd-toc">
-  
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="#" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
     
-    <div class="toc-item">
-      
-<div class="tocsection onthispage mt-5 pt-1 pb-3">
-    <i class="fas fa-list"></i> On this page
-</div>
-
-<nav id="bd-toc-nav">
-    <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   Introduction
-  </a>
- </li>
-</ul>
-
+  </div>
 </nav>
-    </div>
-    
-    <div class="toc-item">
-      
-    </div>
-    
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
   
 </div>
 
 
           
           
-          <div class="bd-content col-12 col-md-9 col-xl-8">
+          <div class="bd-content col-12 col-md-9 col-xl-7">
               
               <article class="bd-article" role="main">
                 
-  <section id="welcome-to-at">
-<h1>Welcome to AT<a class="headerlink" href="#welcome-to-at" title="Permalink to this heading">#</a></h1>
-<section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
-<p>Accelerator Toolbox (AT) is a collection of tools to model storage rings and beam transport lines.</p>
-<p>With AT, it is possible to:</p>
-<ul class="simple">
-<li><p><strong>create and manipulate accelerator lattice elements</strong>,</p></li>
-<li><p><strong>track particles through the lattice</strong>, selecting the appropriate integrator to represent the physics</p></li>
-<li><p><strong>compute accelerator parameters and beam properties</strong>, generating new scripts or taking advantage of the existing ones</p></li>
-</ul>
-<p>AT is based on a 6-D modular tracking engine written in C/C++ for efficiency.
-Lattice manipulation and computation of accelerator physics parameters are provided
-by two interfaces:</p>
-<ul class="simple">
-<li><p>a <a class="reference internal" href="m/index.html"><span class="doc">Matlab interface</span></a>, available as a Matlab toolbox,</p></li>
-<li><p>a <a class="reference internal" href="p/index.html"><span class="doc">python interface</span></a>, available as a python package.</p></li>
-</ul>
-<div class="toctree-wrapper compound">
-</div>
-</section>
-</section>
-
+  <h1 id="search-documentation">Search</h1>
+  
+  <noscript>
+  <div class="admonition warning">
+  <p>
+    Please activate JavaScript to enable the search
+    functionality.
+  </p>
+  </div>
+  </noscript>
+  
+  
+  <p>
+    Searching for multiple words only shows matches that contain
+    all words.
+  </p>
+  
+  
+  <form action="" method="get">
+    <input type="text" name="q" aria-labelledby="search-documentation" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+    <input type="submit" value="search" />
+    <span id="search-progress" style="padding-left: 10px"></span>
+  </form>
+  
+  
+  
+  <div id="search-results">
+  
+  </div>
+  
 
               </article>
               
@@ -209,13 +209,6 @@ by two interfaces:</p>
               <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='right-next' id="next-link" href="p/index.html" title="next page">
-  <div class="prev-next-info">
-      <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">Welcome to pyAT’s documentation!</p>
-  </div>
-  <i class="fas fa-angle-right"></i>
-  </a>
 </div>
               </footer>
               

@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>at.collective.wake_functions &#8212; Accelerator Toolbox 0.1.dev1+gb2ba30f documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom_at.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+    <img src="../../../_static/AT.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/AT.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../p/index.html">
+  Python
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../m/index.html">
+  Matlab
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../pabout.html">
+  About
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/atcollab/at" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <h1>Source code for at.collective.wake_functions</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Analytical wake functions</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">at.constants</span> <span class="kn">import</span> <span class="n">clight</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">interp1d</span>
+
+
+<div class="viewcode-block" id="convolve_wakefun"><a class="viewcode-back" href="../../../p/api/at.collective.wake_functions.html#at.collective.wake_functions.convolve_wakefun">[docs]</a><span class="k">def</span> <span class="nf">convolve_wakefun</span><span class="p">(</span><span class="n">srange</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">sigs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convolution of a wake function with a pulse of rms</span>
+<span class="sd">    length sigs, this is use to generate a wake potential</span>
+<span class="sd">    that can be added to the output of EM code like GDFIDL&quot;&quot;&quot;</span>
+    <span class="n">sigt</span> <span class="o">=</span> <span class="n">sigs</span><span class="o">/</span><span class="n">clight</span>
+    <span class="n">min_step</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">srange</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">t_out</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">srange</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">srange</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">min_step</span><span class="p">)</span>
+    <span class="n">sdiff</span> <span class="o">=</span> <span class="n">t_out</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t_out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">npoints</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_out</span><span class="p">)</span>
+    <span class="n">nt</span> <span class="o">=</span> <span class="n">npoints</span><span class="o">+</span><span class="n">npoints</span><span class="o">-</span><span class="mi">1</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">srange</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">bounds_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">wout</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">t_out</span><span class="p">)</span>
+    <span class="n">wout</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">wout</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nt</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">wout</span><span class="p">)))</span>
+    <span class="n">fftr</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">wout</span><span class="p">)</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">npoints</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">sdiff</span><span class="p">,</span>
+                           <span class="p">(</span><span class="n">npoints</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">sdiff</span><span class="p">,</span> <span class="n">nt</span><span class="p">))</span>
+    <span class="n">fftl</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">f</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">sigt</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">wout</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">fftr</span><span class="o">*</span><span class="n">fftl</span><span class="p">)</span>
+    <span class="n">wout</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">wout</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">npoints</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">t_out</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t_out</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t_out</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">nt</span><span class="p">)</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">t_out</span><span class="p">,</span> <span class="n">wout</span><span class="p">,</span> <span class="n">bounds_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">wout</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">srange</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wout</span></div>
+
+
+<div class="viewcode-block" id="long_resonator_wf"><a class="viewcode-back" href="../../../p/api/at.collective.wake_functions.html#at.collective.wake_functions.long_resonator_wf">[docs]</a><span class="k">def</span> <span class="nf">long_resonator_wf</span><span class="p">(</span><span class="n">srange</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">qfactor</span><span class="p">,</span> <span class="n">rshunt</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Define the wake function (longitudinal) of a resonator</span>
+<span class="sd">    with the given parameters according to Alex Chao&#39;s resonator</span>
+<span class="sd">    model (Eq. 2.82) and definitions of the resonator in HEADTAIL.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">omega</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">frequency</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">omega</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">qfactor</span><span class="p">)</span>
+    <span class="n">omegabar</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">omega</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">alpha</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="o">-</span><span class="n">srange</span><span class="o">/</span><span class="p">(</span><span class="n">beta</span> <span class="o">*</span> <span class="n">clight</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">qfactor</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">:</span>
+        <span class="n">wake</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">rshunt</span> <span class="o">*</span> <span class="n">alpha</span> <span class="o">*</span>
+                <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">omegabar</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span> <span class="o">+</span>
+                <span class="n">alpha</span> <span class="o">/</span> <span class="n">omegabar</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">omegabar</span><span class="o">*</span><span class="n">dt</span><span class="p">)))</span>
+    <span class="k">elif</span> <span class="n">qfactor</span> <span class="o">==</span> <span class="mf">0.5</span><span class="p">:</span>
+        <span class="n">wake</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">rshunt</span> <span class="o">*</span> <span class="n">alpha</span> <span class="o">*</span>
+                <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">dt</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">qfactor</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span>
+        <span class="n">wake</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">rshunt</span> <span class="o">*</span> <span class="n">alpha</span> <span class="o">*</span>
+                <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">omegabar</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span> <span class="o">+</span>
+                <span class="n">alpha</span> <span class="o">/</span> <span class="n">omegabar</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">omegabar</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">wake</span></div>
+
+
+<div class="viewcode-block" id="transverse_resonator_wf"><a class="viewcode-back" href="../../../p/api/at.collective.wake_functions.html#at.collective.wake_functions.transverse_resonator_wf">[docs]</a><span class="k">def</span> <span class="nf">transverse_resonator_wf</span><span class="p">(</span><span class="n">srange</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">qfactor</span><span class="p">,</span> <span class="n">rshunt</span><span class="p">,</span>
+                            <span class="n">yokoya_factor</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Define the wake function (transverse) of a resonator</span>
+<span class="sd">    with the given parameters according to Alex Chao&#39;s</span>
+<span class="sd">    resonator model (Eq. 2.82) and definitions of the resonator</span>
+<span class="sd">    in HEADTAIL.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">omega</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">frequency</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">omega</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">qfactor</span><span class="p">)</span>
+    <span class="n">omegabar</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">omega</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">alpha</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="o">-</span><span class="n">srange</span><span class="o">/</span><span class="p">(</span><span class="n">beta</span> <span class="o">*</span> <span class="n">clight</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">qfactor</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">:</span>
+        <span class="n">wake</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">yokoya_factor</span> <span class="o">*</span> <span class="n">rshunt</span> <span class="o">*</span> <span class="n">omega</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span>
+                <span class="p">(</span><span class="n">qfactor</span> <span class="o">*</span> <span class="n">omegabar</span><span class="p">)</span> <span class="o">*</span>
+                <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">alpha</span><span class="o">*</span><span class="n">dt</span><span class="p">)</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">omegabar</span><span class="o">*</span><span class="n">dt</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">qfactor</span> <span class="o">==</span> <span class="mf">0.5</span><span class="p">:</span>
+        <span class="n">wake</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">yokoya_factor</span> <span class="o">*</span> <span class="n">rshunt</span> <span class="o">*</span> <span class="n">omega</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span>
+                <span class="n">qfactor</span> <span class="o">*</span>
+                <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">wake</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">yokoya_factor</span> <span class="o">*</span> <span class="n">rshunt</span> <span class="o">*</span> <span class="n">omega</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span>
+                <span class="p">(</span><span class="n">qfactor</span> <span class="o">*</span> <span class="n">omegabar</span><span class="p">)</span> <span class="o">*</span>
+                <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">alpha</span><span class="o">*</span><span class="n">dt</span><span class="p">)</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">omegabar</span><span class="o">*</span><span class="n">dt</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">wake</span></div>
+
+
+<div class="viewcode-block" id="transverse_reswall_wf"><a class="viewcode-back" href="../../../p/api/at.collective.wake_functions.html#at.collective.wake_functions.transverse_reswall_wf">[docs]</a><span class="k">def</span> <span class="nf">transverse_reswall_wf</span><span class="p">(</span><span class="n">srange</span><span class="p">,</span> <span class="n">yokoya_factor</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">rvac</span><span class="p">,</span> <span class="n">conduct</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Define the wake function (transverse) of a resistive wall with the given</span>
+<span class="sd">    parameters according to Alex Chao&#39;s RW model (2.53) and definitions used in</span>
+<span class="sd">    HEADTAIL</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">srange</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">                        Provided srange has either negative values or 0s</span>
+<span class="s2">                        This is not allowed for the transverse resistive wall</span>
+<span class="s2">                        wake function. Please correct.</span>
+<span class="s2">                        &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="n">z0</span> <span class="o">=</span> <span class="mf">119.9169832</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="o">-</span><span class="n">srange</span><span class="o">/</span><span class="p">(</span><span class="n">beta</span> <span class="o">*</span> <span class="n">clight</span><span class="p">)</span>
+    <span class="n">wake</span> <span class="o">=</span> <span class="p">(</span><span class="n">yokoya_factor</span> <span class="o">*</span> <span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.</span> <span class="o">*</span>
+            <span class="n">beta</span> <span class="o">*</span> <span class="n">length</span> <span class="o">/</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">rvac</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span>
+            <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">z0</span> <span class="o">*</span> <span class="n">clight</span> <span class="o">/</span> <span class="n">conduct</span> <span class="o">/</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">dt</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">wake</span></div>
+</pre></div>
+
+              </article>
+              
+
+              
+              <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              </footer>
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2022, ATCollab.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>
