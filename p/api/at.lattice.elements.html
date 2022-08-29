@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>at.lattice.elements &#8212; Accelerator Toolbox 0.1.dev1+gb2ba30f documentation</title>
+    <title>at.lattice.elements &#8212; Accelerator Toolbox 0.1.dev1+gba07c8d documentation</title>
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
   document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
@@ -725,6 +725,14 @@ responsibility to ensure that the appropriate attributes are present.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="at.lattice.elements.Dipole.items">
+<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Dipole.items"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Dipole.items" title="Permalink to this definition">#</a></dt>
+<dd><p>Iterates through the data members</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="at.lattice.elements.Dipole.merge">
 <span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Dipole.merge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Dipole.merge" title="Permalink to this definition">#</a></dt>
 <dd><p>Merge another element</p>
@@ -866,7 +874,7 @@ __eq__ method when comparing lattices.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="at.lattice.elements.Element.items">
 <span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Element.items"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Element.items" title="Permalink to this definition">#</a></dt>
-<dd><p>Iterates through the data members including slots and properties</p>
+<dd><p>Iterates through the data members</p>
 <dl class="field-list simple">
 </dl>
 </dd></dl>
@@ -1035,6 +1043,12 @@ non-zero polynomial coefficients</p></li>
 </dd></dl>
 
 <dl class="py property">
+<dt class="sig sig-object py" id="at.lattice.elements.Multipole.H">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">H</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a></em><a class="headerlink" href="#at.lattice.elements.Multipole.H" title="Permalink to this definition">#</a></dt>
+<dd><p>Sextupolar strength</p>
+</dd></dl>
+
+<dl class="py property">
 <dt class="sig sig-object py" id="at.lattice.elements.Multipole.K">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">K</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a></em><a class="headerlink" href="#at.lattice.elements.Multipole.K" title="Permalink to this definition">#</a></dt>
 <dd><p>Focusing strength [mˆ-2]</p>
@@ -1114,6 +1128,14 @@ non-zero polynomial coefficients</p></li>
 </dd>
 </dl>
 <p>Default PassMethod: <code class="docutils literal notranslate"><span class="pre">StrMPoleSymplectic4Pass</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="at.lattice.elements.Quadrupole.items">
+<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Quadrupole.items"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Quadrupole.items" title="Permalink to this definition">#</a></dt>
+<dd><p>Iterates through the data members</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="at.lattice.elements.Quadrupole.DefaultOrder">
 <span class="sig-name descname"><span class="pre">DefaultOrder</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#at.lattice.elements.Quadrupole.DefaultOrder" title="Permalink to this definition">#</a></dt>
@@ -1194,16 +1216,18 @@ non-zero polynomial coefficients</p></li>
 </dd>
 </dl>
 <p>Default PassMethod: <code class="docutils literal notranslate"><span class="pre">StrMPoleSymplectic4Pass</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="at.lattice.elements.Sextupole.items">
+<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Sextupole.items"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Sextupole.items" title="Permalink to this definition">#</a></dt>
+<dd><p>Iterates through the data members</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="at.lattice.elements.Sextupole.DefaultOrder">
 <span class="sig-name descname"><span class="pre">DefaultOrder</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#at.lattice.elements.Sextupole.DefaultOrder" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="at.lattice.elements.Sextupole.H">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">H</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a></em><a class="headerlink" href="#at.lattice.elements.Sextupole.H" title="Permalink to this definition">#</a></dt>
-<dd><p>Sextupolar strength</p>
-</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="at.lattice.elements.Sextupole.REQUIRED_ATTRIBUTES">

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>at.lattice.lattice_object &#8212; Accelerator Toolbox 0.1.dev1+gb2ba30f documentation</title>
+    <title>at.lattice.lattice_object &#8212; Accelerator Toolbox 0.1.dev1+gba07c8d documentation</title>
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
   document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
@@ -1282,9 +1282,7 @@ It can be use to select quadrants. For example, default values are:</p>
 </ul>
 </p></li>
 <li><p><strong>use_mp</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>]</em>) – Use python multiprocessing (<a class="reference internal" href="at.tracking.patpass.html#at.tracking.patpass.patpass" title="at.tracking.patpass.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a>,
-default use <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multi-processing is not
-enabled, <code class="docutils literal notranslate"><span class="pre">grid_mode</span></code> is forced to <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a>
-(most efficient in single core)</p></li>
+default use <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>).</p></li>
 <li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>]</em>) – Print out some information</p></li>
 <li><p><strong>divider</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>]</em>) – Value of the divider used in
 <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a> boundary search</p></li>
@@ -1301,8 +1299,8 @@ considered unsafe.</p></li>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>boundary</strong> – (2,n) array: 2D acceptance</p></li>
-<li><p><strong>tracked</strong> – (2,n) array: Coordinates of tracked particles</p></li>
 <li><p><strong>survived</strong> – (2,n) array: Coordinates of surviving particles</p></li>
+<li><p><strong>tracked</strong> – (2,n) array: Coordinates of tracked particles</p></li>
 </ul>
 </dd>
 </dl>
@@ -1315,6 +1313,14 @@ array per ref. point.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">bf</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>When``use_mp=True`` all the available CPUs will be used.
+This behavior can be changed by setting
+<code class="docutils literal notranslate"><span class="pre">at.DConstant.patpass_poolsize</span></code> to the desired value</p></li>
+</ul>
 </div>
 </dd></dl>
 
@@ -1392,7 +1398,7 @@ attribute equal to 0.0 are True</p>
 <li><p><strong>method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – <p><code class="docutils literal notranslate"><span class="pre">'linopt'</span></code> returns the tunes from the <a class="reference internal" href="#at.lattice.lattice_object.Lattice.linopt6" title="at.lattice.lattice_object.Lattice.linopt6"><code class="xref py py-func docutils literal notranslate"><span class="pre">linopt6()</span></code></a>
 function,</p>
 <p><code class="docutils literal notranslate"><span class="pre">'fft'</span></code> tracks a single particle and computes the tunes with
-<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.fftpack.fft.html#scipy.fftpack.fft" title="(in SciPy v1.9.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">fft()</span></code></a>,</p>
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.fftpack.fft.html#scipy.fftpack.fft" title="(in SciPy v1.9.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">fft()</span></code></a>,</p>
 <p><code class="docutils literal notranslate"><span class="pre">'laskar'</span></code> tracks a single particle and computes the tunes with
 NAFF.</p>
 </p></li>
@@ -1478,6 +1484,31 @@ See <code class="xref py py-class docutils literal notranslate"><span class="pre
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="at.lattice.lattice_object.Lattice.get_geometry">
+<span class="sig-name descname"><span class="pre">get_geometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#at.lattice.lattice_object.Lattice.get_geometry" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute the 2D ring geometry in cartesian coordinates</p>
+<p>Usage:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ring</span><span class="o">.</span><span class="n">get_geometry</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ring</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><em>List</em></a><em>[</em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em>) – Lattice description</p></li>
+<li><p><strong>start_coordinates</strong> – x,y,angle at starting point</p></li>
+<li><p><strong>centered</strong> – it True the coordinates origin is the center of the ring</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>geomdata</strong> – recarray containing, x, y, angle</p></li>
+<li><p><strong>radius</strong> – machine radius</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="at.lattice.lattice_object.Lattice.get_horizontal_acceptance">
 <span class="sig-name descname"><span class="pre">get_horizontal_acceptance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resolution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amplitude</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#at.lattice.lattice_object.Lattice.get_horizontal_acceptance" title="Permalink to this definition">#</a></dt>
 <dd><p>Computes the 1D horizontal acceptance at <code class="docutils literal notranslate"><span class="pre">refpts</span></code> observation points</p>
@@ -1509,9 +1540,9 @@ max. amplitude</p></li>
 </ul>
 </p></li>
 <li><p><strong>use_mp</strong> – Use python multiprocessing (<a class="reference internal" href="at.tracking.patpass.html#at.tracking.patpass.patpass" title="at.tracking.patpass.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a>,
-default use <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multi-processing is not
-enabled, <code class="docutils literal notranslate"><span class="pre">grid_mode</span></code> is forced to <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a>
-(most efficient in single core)</p></li>
+default use <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multi-processing
+is not enabled, <code class="docutils literal notranslate"><span class="pre">grid_mode</span></code> is forced to
+<a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a> (most efficient in single core)</p></li>
 <li><p><strong>verbose</strong> – Print out some information</p></li>
 <li><p><strong>divider</strong> – Value of the divider used in
 <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a> boundary search</p></li>
@@ -1535,6 +1566,14 @@ unsafe.</p></li>
 </dl>
 <p>In case of multiple <code class="docutils literal notranslate"><span class="pre">tracked</span></code> and <code class="docutils literal notranslate"><span class="pre">survived</span></code> are lists of arrays,
 with one array per ref. point.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>When``use_mp=True`` all the available CPUs will be used.
+This behavior can be changed by setting
+<code class="docutils literal notranslate"><span class="pre">at.DConstant.patpass_poolsize</span></code> to the desired value</p></li>
+</ul>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -1641,9 +1680,9 @@ max. amplitude</p></li>
 </ul>
 </p></li>
 <li><p><strong>use_mp</strong> – Use python multiprocessing (<a class="reference internal" href="at.tracking.patpass.html#at.tracking.patpass.patpass" title="at.tracking.patpass.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a>,
-default use <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multi-processing is not
-enabled, <code class="docutils literal notranslate"><span class="pre">grid_mode</span></code> is forced to <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a>
-(most efficient in single core)</p></li>
+default use <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multi-processing is
+not enabled, <code class="docutils literal notranslate"><span class="pre">grid_mode</span></code> is forced to
+<a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a> (most efficient in single core)</p></li>
 <li><p><strong>verbose</strong> – Print out some information</p></li>
 <li><p><strong>divider</strong> – Value of the divider used in
 <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a> boundary search</p></li>
@@ -1667,6 +1706,14 @@ unsafe.</p></li>
 </dl>
 <p>In case of multiple <code class="docutils literal notranslate"><span class="pre">tracked</span></code> and <code class="docutils literal notranslate"><span class="pre">survived</span></code> are lists of arrays,
 with one array per ref. point.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>When``use_mp=True`` all the available CPUs will be used.
+This behavior can be changed by setting
+<code class="docutils literal notranslate"><span class="pre">at.DConstant.patpass_poolsize</span></code> to the desired value</p></li>
+</ul>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -1990,6 +2037,7 @@ compute (before mask applied, default: 20)</p></li>
 <li><p><strong>fmax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Upper tune bound. Default: 1</p></li>
 <li><p><strong>hann</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – Turn on Hanning window.
 Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p></li>
+<li><p><strong>get_integer</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – Turn on integer tune (slower)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2060,9 +2108,9 @@ max. amplitude</p></li>
 </ul>
 </p></li>
 <li><p><strong>use_mp</strong> – Use python multiprocessing (<a class="reference internal" href="at.tracking.patpass.html#at.tracking.patpass.patpass" title="at.tracking.patpass.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a>,
-default use <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multi-processing is not
-enabled, <code class="docutils literal notranslate"><span class="pre">grid_mode</span></code> is forced to <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a>
-(most efficient in single core)</p></li>
+default use <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multi-processing
+is not enabled, <code class="docutils literal notranslate"><span class="pre">grid_mode</span></code> is forced to
+<a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a> (most efficient in single core)</p></li>
 <li><p><strong>verbose</strong> – Print out some information</p></li>
 <li><p><strong>divider</strong> – Value of the divider used in
 <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a> boundary search</p></li>
@@ -2086,6 +2134,14 @@ unsafe.</p></li>
 </dl>
 <p>In case of multiple <code class="docutils literal notranslate"><span class="pre">tracked</span></code> and <code class="docutils literal notranslate"><span class="pre">survived</span></code> are lists of arrays,
 with one array per ref. point.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>When``use_mp=True`` all the available CPUs will be used.
+This behavior can be changed by setting
+<code class="docutils literal notranslate"><span class="pre">at.DConstant.patpass_poolsize</span></code> to the desired value</p></li>
+</ul>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -2778,6 +2834,35 @@ Default: <a class="reference internal" href="at.lattice.options.html#at.lattice.
 <li><p><strong>twiss_in</strong> – Initial conditions for transfer line optics. Record
 array as output by <a class="reference internal" href="at.physics.linear.html#at.physics.linear.linopt2" title="at.physics.linear.linopt2"><code class="xref py py-func docutils literal notranslate"><span class="pre">linopt2()</span></code></a>, <a class="reference internal" href="at.physics.linear.html#at.physics.linear.linopt6" title="at.physics.linear.linopt6"><code class="xref py py-func docutils literal notranslate"><span class="pre">linopt6()</span></code></a>, or
 dictionary.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="at.lattice.lattice_object.Lattice.plot_geometry">
+<span class="sig-name descname"><span class="pre">plot_geometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#at.lattice.lattice_object.Lattice.plot_geometry" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute the 2D ring geometry in cartesian coordinates.</p>
+<p>Usage:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ring</span><span class="o">.</span><span class="n">plot_geometry</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ring</strong> (<a class="reference internal" href="#at.lattice.lattice_object.Lattice" title="at.lattice.lattice_object.Lattice"><em>Lattice</em></a>) – Lattice description</p></li>
+<li><p><strong>start_coordinates</strong> – x,y,angle at starting point</p></li>
+<li><p><strong>centered</strong> – it True the coordinates origin is the center of the ring</p></li>
+<li><p><strong>offset</strong> – (dx, dy) offsets coordinates by the given amount</p></li>
+<li><p><strong>ax</strong> – axes where to plot, if not given axes are created</p></li>
+<li><p><strong>label</strong> – label of curve</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>geomdata</strong> – recarray containing, x, y, angle</p></li>
+<li><p><strong>radius</strong> – machine radius</p></li>
+<li><p><strong>ax</strong> – plot axis</p></li>
 </ul>
 </dd>
 </dl>

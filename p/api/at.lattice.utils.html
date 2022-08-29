@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>at.lattice.utils &#8212; Accelerator Toolbox 0.1.dev1+gb2ba30f documentation</title>
+    <title>at.lattice.utils &#8212; Accelerator Toolbox 0.1.dev1+gba07c8d documentation</title>
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
   document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
@@ -618,6 +618,9 @@ elements are True.</p></li>
 <tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.utils.set_value_refpts" title="at.lattice.utils.set_value_refpts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_value_refpts</span></code></a>(ring, refpts, attrname, ...)</p></td>
 <td><p>Set the values of an attribute of an array of elements based on their refpts</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.utils.get_geometry" title="at.lattice.utils.get_geometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_geometry</span></code></a>(ring[, start_coordinates, centered])</p></td>
+<td><p>Compute the 2D ring geometry in cartesian coordinates</p></td>
+</tr>
 </tbody>
 </table>
 <p class="rubric">Exceptions</p>
@@ -826,6 +829,31 @@ matches.</p></li>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>elem_list</strong> (<em>list</em>) – list of <code class="docutils literal notranslate"><span class="pre">Elements</span></code> matching key</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="at.lattice.utils.get_geometry">
+<span class="sig-name descname"><span class="pre">get_geometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/utils.html#get_geometry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.utils.get_geometry" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute the 2D ring geometry in cartesian coordinates</p>
+<p>Usage:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ring</span><span class="o">.</span><span class="n">get_geometry</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ring</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><em>List</em></a><em>[</em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em>) – Lattice description</p></li>
+<li><p><strong>start_coordinates</strong> – x,y,angle at starting point</p></li>
+<li><p><strong>centered</strong> – it True the coordinates origin is the center of the ring</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>geomdata</strong> – recarray containing, x, y, angle</p></li>
+<li><p><strong>radius</strong> – machine radius</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>

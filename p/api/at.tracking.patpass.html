@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>at.tracking.patpass &#8212; Accelerator Toolbox 0.1.dev1+gb2ba30f documentation</title>
+    <title>at.tracking.patpass &#8212; Accelerator Toolbox 0.1.dev1+gba07c8d documentation</title>
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
   document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
@@ -627,6 +627,10 @@ that survived</p>
 <code class="docutils literal notranslate"><span class="pre">patpass(lattice,</span> <span class="pre">r_in,</span> <span class="pre">refpts=[])</span></code> can be used. An empty list
 is returned and the tracking results of the last turn are stored in
 <code class="docutils literal notranslate"><span class="pre">r_in</span></code>.</p></li>
+<li><p>By default, <code class="docutils literal notranslate"><span class="pre">patpass</span></code> will use all the available CPUs, to change
+the number of cores used in ALL functions using <code class="docutils literal notranslate"><span class="pre">patpass</span></code>
+(<code class="docutils literal notranslate"><span class="pre">acceptance</span></code> module for example) it is possible to set
+<code class="docutils literal notranslate"><span class="pre">at.DConstant.patpass_poolsize</span></code> to the desired value</p></li>
 </ul>
 </div>
 </dd></dl>

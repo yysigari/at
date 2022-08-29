@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>at.acceptance.boundary &#8212; Accelerator Toolbox 0.1.dev1+gb2ba30f documentation</title>
+    <title>at.acceptance.boundary &#8212; Accelerator Toolbox 0.1.dev1+gba07c8d documentation</title>
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
   document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
@@ -336,15 +336,14 @@
 <span class="sd">    Track a grid through the ring and extract survived particles</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">use_mp</span><span class="p">:</span>
-        <span class="n">pout</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">patpass</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">parts</span><span class="p">,</span>
-                                     <span class="n">nturns</span><span class="o">=</span><span class="n">nturns</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="n">patpass</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">parts</span><span class="p">,</span> <span class="n">nturns</span><span class="o">=</span><span class="n">nturns</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">pout</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">lattice_pass</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">parts</span><span class="p">,</span>
-                             <span class="n">nturns</span><span class="o">=</span><span class="n">nturns</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">pout</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">pout</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="n">lattice_pass</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">parts</span><span class="p">,</span> <span class="n">nturns</span><span class="o">=</span><span class="n">nturns</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">parts</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">survived</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">pout</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="n">survived</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]))</span>
+    <span class="k">return</span> <span class="n">survived</span>
 
 
 <span class="k">def</span> <span class="nf">get_grid_boundary</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
@@ -438,6 +437,10 @@
             <span class="n">bnd</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">search_bnd</span><span class="p">(</span><span class="n">ma</span><span class="p">,</span> <span class="n">sa</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">bnd</span>
 
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">numpy</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">mask</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">AtError</span><span class="p">(</span><span class="s2">&quot;No particle survived, please check your grid &quot;</span>
+                      <span class="s2">&quot;or lattice.&quot;</span><span class="p">)</span>
+
     <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">mode</span> <span class="ow">is</span> <span class="n">GridMode</span><span class="o">.</span><span class="n">RADIAL</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">radial_boundary</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">grid</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">config</span><span class="o">.</span><span class="n">mode</span> <span class="ow">is</span> <span class="n">GridMode</span><span class="o">.</span><span class="n">CARTESIAN</span><span class="p">:</span>
@@ -525,8 +528,12 @@
                                  <span class="n">pm</span><span class="p">[</span><span class="n">planesi</span><span class="p">]])</span> <span class="k">if</span> <span class="n">mask</span><span class="o">.</span><span class="n">size</span> <span class="k">else</span> <span class="n">pm</span><span class="p">[</span><span class="n">planesi</span><span class="p">]</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">angles</span><span class="p">)):</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">survived</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">and</span> <span class="n">fact</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">ftol</span><span class="p">:</span>
-                    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">pi</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">planesi</span><span class="p">):</span>
-                        <span class="n">part</span><span class="p">[</span><span class="n">pi</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">cs</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">rsteps</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">fact</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                    <span class="n">deltas</span> <span class="o">=</span> <span class="n">cs</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">rsteps</span><span class="p">[:]</span><span class="o">*</span><span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">fact</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                    <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">deltas</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">abs</span><span class="p">(</span><span class="n">part</span><span class="p">[</span><span class="n">planesi</span><span class="p">,</span> <span class="n">i</span><span class="p">])):</span>
+                        <span class="n">part</span><span class="p">[</span><span class="n">planesi</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">pi</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">planesi</span><span class="p">):</span>
+                            <span class="n">part</span><span class="p">[</span><span class="n">pi</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">deltas</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
                     <span class="n">survived</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
                     <span class="n">fact</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*=</span> <span class="mi">1</span><span class="o">/</span><span class="n">divider</span>
 

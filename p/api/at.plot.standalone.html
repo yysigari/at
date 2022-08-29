@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>at.plot.standalone &#8212; Accelerator Toolbox 0.1.dev1+gb2ba30f documentation</title>
+    <title>at.plot.standalone &#8212; Accelerator Toolbox 0.1.dev1+gba07c8d documentation</title>
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
   document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
@@ -545,6 +545,9 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#at.plot.standalone.plot_acceptance" title="at.plot.standalone.plot_acceptance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_acceptance</span></code></a>(ring, *args, **kwargs)</p></td>
 <td><p>Plots the acceptance</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.plot.standalone.plot_geometry" title="at.plot.standalone.plot_geometry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_geometry</span></code></a>(ring[, start_coordinates, ...])</p></td>
+<td><p>Compute the 2D ring geometry in cartesian coordinates.</p></td>
+</tr>
 </tbody>
 </table>
 <dl class="py function">
@@ -623,6 +626,35 @@ considered unsafe.</p></li>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="at.plot.standalone.plot_geometry">
+<span class="sig-name descname"><span class="pre">plot_geometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">centered</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/plot/standalone.html#plot_geometry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.plot.standalone.plot_geometry" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute the 2D ring geometry in cartesian coordinates.</p>
+<p>Usage:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ring</span><span class="o">.</span><span class="n">plot_geometry</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ring</strong> (<a class="reference internal" href="at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice" title="at.lattice.lattice_object.Lattice"><em>Lattice</em></a>) – Lattice description</p></li>
+<li><p><strong>start_coordinates</strong> – x,y,angle at starting point</p></li>
+<li><p><strong>centered</strong> – it True the coordinates origin is the center of the ring</p></li>
+<li><p><strong>offset</strong> – (dx, dy) offsets coordinates by the given amount</p></li>
+<li><p><strong>ax</strong> – axes where to plot, if not given axes are created</p></li>
+<li><p><strong>label</strong> – label of curve</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>geomdata</strong> – recarray containing, x, y, angle</p></li>
+<li><p><strong>radius</strong> – machine radius</p></li>
+<li><p><strong>ax</strong> – plot axis</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

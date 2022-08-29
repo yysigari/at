@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>at.acceptance.acceptance &#8212; Accelerator Toolbox 0.1.dev1+gb2ba30f documentation</title>
+    <title>at.acceptance.acceptance &#8212; Accelerator Toolbox 0.1.dev1+gba07c8d documentation</title>
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
   document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
@@ -590,9 +590,9 @@ max. amplitude</p></li>
 </ul>
 </p></li>
 <li><p><strong>use_mp</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>]</em>) – Use python multiprocessing (<a class="reference internal" href="at.tracking.patpass.html#at.tracking.patpass.patpass" title="at.tracking.patpass.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a>,
-default use <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multi-processing is not
-enabled, <code class="docutils literal notranslate"><span class="pre">grid_mode</span></code> is forced to <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a>
-(most efficient in single core)</p></li>
+default use <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multi-processing
+is not enabled, <code class="docutils literal notranslate"><span class="pre">grid_mode</span></code> is forced to
+<a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a> (most efficient in single core)</p></li>
 <li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>]</em>) – Print out some information</p></li>
 <li><p><strong>divider</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>]</em>) – Value of the divider used in
 <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a> boundary search</p></li>
@@ -616,6 +616,14 @@ unsafe.</p></li>
 </dl>
 <p>In case of multiple <code class="docutils literal notranslate"><span class="pre">tracked</span></code> and <code class="docutils literal notranslate"><span class="pre">survived</span></code> are lists of arrays,
 with one array per ref. point.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>When``use_mp=True`` all the available CPUs will be used.
+This behavior can be changed by setting
+<code class="docutils literal notranslate"><span class="pre">at.DConstant.patpass_poolsize</span></code> to the desired value</p></li>
+</ul>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -658,9 +666,7 @@ It can be use to select quadrants. For example, default values are:</p>
 </ul>
 </p></li>
 <li><p><strong>use_mp</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>]</em>) – Use python multiprocessing (<a class="reference internal" href="at.tracking.patpass.html#at.tracking.patpass.patpass" title="at.tracking.patpass.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a>,
-default use <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multi-processing is not
-enabled, <code class="docutils literal notranslate"><span class="pre">grid_mode</span></code> is forced to <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a>
-(most efficient in single core)</p></li>
+default use <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>).</p></li>
 <li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>]</em>) – Print out some information</p></li>
 <li><p><strong>divider</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>]</em>) – Value of the divider used in
 <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a> boundary search</p></li>
@@ -677,8 +683,8 @@ considered unsafe.</p></li>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>boundary</strong> – (2,n) array: 2D acceptance</p></li>
-<li><p><strong>tracked</strong> – (2,n) array: Coordinates of tracked particles</p></li>
 <li><p><strong>survived</strong> – (2,n) array: Coordinates of surviving particles</p></li>
+<li><p><strong>tracked</strong> – (2,n) array: Coordinates of tracked particles</p></li>
 </ul>
 </dd>
 </dl>
@@ -691,6 +697,14 @@ array per ref. point.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">bf</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>When``use_mp=True`` all the available CPUs will be used.
+This behavior can be changed by setting
+<code class="docutils literal notranslate"><span class="pre">at.DConstant.patpass_poolsize</span></code> to the desired value</p></li>
+</ul>
 </div>
 </dd></dl>
 
@@ -726,9 +740,9 @@ max. amplitude</p></li>
 </ul>
 </p></li>
 <li><p><strong>use_mp</strong> – Use python multiprocessing (<a class="reference internal" href="at.tracking.patpass.html#at.tracking.patpass.patpass" title="at.tracking.patpass.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a>,
-default use <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multi-processing is not
-enabled, <code class="docutils literal notranslate"><span class="pre">grid_mode</span></code> is forced to <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a>
-(most efficient in single core)</p></li>
+default use <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multi-processing
+is not enabled, <code class="docutils literal notranslate"><span class="pre">grid_mode</span></code> is forced to
+<a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a> (most efficient in single core)</p></li>
 <li><p><strong>verbose</strong> – Print out some information</p></li>
 <li><p><strong>divider</strong> – Value of the divider used in
 <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a> boundary search</p></li>
@@ -752,6 +766,14 @@ unsafe.</p></li>
 </dl>
 <p>In case of multiple <code class="docutils literal notranslate"><span class="pre">tracked</span></code> and <code class="docutils literal notranslate"><span class="pre">survived</span></code> are lists of arrays,
 with one array per ref. point.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>When``use_mp=True`` all the available CPUs will be used.
+This behavior can be changed by setting
+<code class="docutils literal notranslate"><span class="pre">at.DConstant.patpass_poolsize</span></code> to the desired value</p></li>
+</ul>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -786,9 +808,9 @@ max. amplitude</p></li>
 </ul>
 </p></li>
 <li><p><strong>use_mp</strong> – Use python multiprocessing (<a class="reference internal" href="at.tracking.patpass.html#at.tracking.patpass.patpass" title="at.tracking.patpass.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a>,
-default use <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multi-processing is not
-enabled, <code class="docutils literal notranslate"><span class="pre">grid_mode</span></code> is forced to <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a>
-(most efficient in single core)</p></li>
+default use <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multi-processing is
+not enabled, <code class="docutils literal notranslate"><span class="pre">grid_mode</span></code> is forced to
+<a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a> (most efficient in single core)</p></li>
 <li><p><strong>verbose</strong> – Print out some information</p></li>
 <li><p><strong>divider</strong> – Value of the divider used in
 <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a> boundary search</p></li>
@@ -812,6 +834,14 @@ unsafe.</p></li>
 </dl>
 <p>In case of multiple <code class="docutils literal notranslate"><span class="pre">tracked</span></code> and <code class="docutils literal notranslate"><span class="pre">survived</span></code> are lists of arrays,
 with one array per ref. point.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>When``use_mp=True`` all the available CPUs will be used.
+This behavior can be changed by setting
+<code class="docutils literal notranslate"><span class="pre">at.DConstant.patpass_poolsize</span></code> to the desired value</p></li>
+</ul>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -846,9 +876,9 @@ max. amplitude</p></li>
 </ul>
 </p></li>
 <li><p><strong>use_mp</strong> – Use python multiprocessing (<a class="reference internal" href="at.tracking.patpass.html#at.tracking.patpass.patpass" title="at.tracking.patpass.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a>,
-default use <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multi-processing is not
-enabled, <code class="docutils literal notranslate"><span class="pre">grid_mode</span></code> is forced to <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a>
-(most efficient in single core)</p></li>
+default use <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multi-processing
+is not enabled, <code class="docutils literal notranslate"><span class="pre">grid_mode</span></code> is forced to
+<a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a> (most efficient in single core)</p></li>
 <li><p><strong>verbose</strong> – Print out some information</p></li>
 <li><p><strong>divider</strong> – Value of the divider used in
 <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a> boundary search</p></li>
@@ -872,6 +902,14 @@ unsafe.</p></li>
 </dl>
 <p>In case of multiple <code class="docutils literal notranslate"><span class="pre">tracked</span></code> and <code class="docutils literal notranslate"><span class="pre">survived</span></code> are lists of arrays,
 with one array per ref. point.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>When``use_mp=True`` all the available CPUs will be used.
+This behavior can be changed by setting
+<code class="docutils literal notranslate"><span class="pre">at.DConstant.patpass_poolsize</span></code> to the desired value</p></li>
+</ul>
+</div>
 </dd></dl>
 
 </section>
