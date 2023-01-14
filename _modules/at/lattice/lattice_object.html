@@ -5,54 +5,77 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>at.lattice.lattice_object &#8212; Accelerator Toolbox 0.1.dev1+gba07c8d documentation</title>
-<script>
-  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
-</script>
-
+    <title>at.lattice.lattice_object &#8212; Accelerator Toolbox 0.0.4 documentation</title>
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+  <link href="../../../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
 
-
+  
   <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom_at.css" />
-
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/at/lattice/lattice_object';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="docsearch:language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
   </head>
   
   
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
-    <div class="bd-header-announcement container-fluid" id="banner">
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
       
-
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
     </div>
+  </div>
 
-    
-    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
-
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
   <div id="navbar-start">
     
     
@@ -60,9 +83,15 @@
 
 
 <a class="navbar-brand logo" href="../../../index.html">
+
   
   
   
+  
+  
+  
+  
+
   
     <img src="../../../_static/AT.png" class="logo__image only-light" alt="Logo image">
     <img src="../../../_static/AT.png" class="logo__image only-dark" alt="Logo image">
@@ -72,54 +101,70 @@
     
   </div>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="fas fa-bars"></span>
-  </button>
-
   
-  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+  <div class="col-lg-9 navbar-header-items">
     <div id="navbar-center" class="mr-auto">
       
       <div class="navbar-center-item">
-        <ul id="navbar-main-elements" class="navbar-nav">
-    <li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../../p/index.html">
-  Python
- </a>
-</li>
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../p/index.html">
+                        Python
+                    </a>
+                </li>
+                
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../../m/index.html">
-  Matlab
- </a>
-</li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../m/index.html">
+                        Matlab
+                    </a>
+                </li>
+                
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../../pabout.html">
-  About
- </a>
-</li>
-
-    
-</ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../pabout.html">
+                        About
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
       </div>
       
     </div>
 
     <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
       
       <div class="navbar-end-item">
-        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
-    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
-    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
-    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
 </span>
       </div>
       
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/atcollab/at" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/atcollab/at" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
             <label class="sr-only">GitHub</label></a>
         </li>
       </ul>
@@ -127,44 +172,124 @@
       
     </div>
   </div>
-</div>
-    </nav>
-    
-
-    <div class="bd-container container-xl">
-      <div class="bd-container__inner row">
-          
-
-<!-- Only show if we have sidebars configured, else just a small margin  -->
-<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
-  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <div class="bd-toc-item active">
-    
-  </div>
-</nav>
-  </div>
-  <div class="sidebar-end-items">
-  </div>
-</div>
 
 
-          
-
-
-<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
   
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
 </div>
+  </nav>
+  
 
-
-          
-          
-          <div class="bd-content col-12 col-md-9 col-xl-7">
-              
-              <article class="bd-article" role="main">
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../p/index.html">
+                        Python
+                    </a>
+                </li>
                 
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../m/index.html">
+                        Matlab
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../pabout.html">
+                        About
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/atcollab/at" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
   <h1>Source code for at.lattice.lattice_object</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;Lattice object</span>
 
@@ -183,7 +308,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">itertools</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Dict</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Tuple</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Generator</span>
 <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">.</span><span class="n">minor</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">:</span>
     <span class="n">SupportsIndex</span> <span class="o">=</span> <span class="nb">int</span>
@@ -194,16 +319,41 @@
 <span class="kn">from</span> <span class="nn">.particle_object</span> <span class="kn">import</span> <span class="n">Particle</span>
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">AtError</span><span class="p">,</span> <span class="n">AtWarning</span><span class="p">,</span> <span class="n">Refpts</span>
 <span class="c1"># noinspection PyProtectedMember</span>
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">_uint32_refs</span><span class="p">,</span> <span class="n">_bool_refs</span><span class="p">,</span> <span class="n">Uint32Refpts</span>
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">refpts_iterator</span><span class="p">,</span> <span class="n">refpts_len</span><span class="p">,</span> <span class="n">checktype</span>
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">get_s_pos</span><span class="p">,</span> <span class="n">get_elements</span><span class="p">,</span> <span class="n">get_cells</span><span class="p">,</span> <span class="n">get_refpts</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">get_uint32_index</span><span class="p">,</span> <span class="n">get_bool_index</span><span class="p">,</span> <span class="n">_refcount</span><span class="p">,</span> <span class="n">Uint32Refpts</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">refpts_iterator</span><span class="p">,</span> <span class="n">checktype</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">get_s_pos</span><span class="p">,</span> <span class="n">get_elements</span>
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">get_value_refpts</span><span class="p">,</span> <span class="n">set_value_refpts</span>
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">set_shift</span><span class="p">,</span> <span class="n">set_tilt</span><span class="p">,</span> <span class="n">get_geometry</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">elements</span>
-<span class="kn">from</span> <span class="nn">.elements</span> <span class="kn">import</span> <span class="n">Element</span><span class="p">,</span> <span class="n">Monitor</span><span class="p">,</span> <span class="n">RFCavity</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">elements</span> <span class="k">as</span> <span class="n">elt</span>
+<span class="kn">from</span> <span class="nn">.elements</span> <span class="kn">import</span> <span class="n">Element</span>
 
 <span class="n">_TWO_PI_ERROR</span> <span class="o">=</span> <span class="mf">1.E-4</span>
 <span class="n">Filter</span> <span class="o">=</span> <span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Element</span><span class="p">]]</span>
+
+<span class="n">_DEFAULT_PASS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="kc">False</span><span class="p">:</span> <span class="p">(</span>
+        <span class="p">(</span><span class="s1">&#39;cavity_pass&#39;</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">RFCavity</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;dipole_pass&#39;</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">Dipole</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;quadrupole_pass&#39;</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">Quadrupole</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;wiggler_pass&#39;</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">Wiggler</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;sextupole_pass&#39;</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">Sextupole</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;octupole_pass&#39;</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">Octupole</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;multipole_pass&#39;</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">Multipole</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;collective_pass&#39;</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">Collective</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;diffusion_pass&#39;</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">QuantumDiffusion</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">),</span>
+    <span class="p">),</span>
+    <span class="kc">True</span><span class="p">:</span> <span class="p">(</span>
+        <span class="p">(</span><span class="s1">&#39;cavity_pass&#39;</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">RFCavity</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;dipole_pass&#39;</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">Dipole</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;quadrupole_pass&#39;</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">Quadrupole</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;wiggler_pass&#39;</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">Wiggler</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;sextupole_pass&#39;</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">Sextupole</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;octupole_pass&#39;</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">Octupole</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;multipole_pass&#39;</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">Multipole</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;collective_pass&#39;</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">Collective</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;diffusion_pass&#39;</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">QuantumDiffusion</span><span class="p">,</span> <span class="s1">&#39;auto&#39;</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">}</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Lattice&#39;</span><span class="p">,</span> <span class="s1">&#39;type_filter&#39;</span><span class="p">,</span> <span class="s1">&#39;params_filter&#39;</span><span class="p">,</span> <span class="s1">&#39;lattice_filter&#39;</span><span class="p">,</span>
            <span class="s1">&#39;elem_generator&#39;</span><span class="p">,</span> <span class="s1">&#39;no_filter&#39;</span><span class="p">]</span>
@@ -214,7 +364,7 @@
 
 <span class="c1"># noinspection PyAttributeOutsideInit</span>
 <div class="viewcode-block" id="Lattice"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice">[docs]</a><span class="k">class</span> <span class="nc">Lattice</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Lattice object.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Lattice object.</span>
 
 <span class="sd">    An AT lattice is a sequence of AT elements. In addition to :py:class:`list`</span>
 <span class="sd">    methods, :py:class:`Lattice` supports</span>
@@ -235,16 +385,16 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span>
                  <span class="n">iterator</span><span class="p">:</span> <span class="n">Filter</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                  <span class="n">scan</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Lattice(elements, **params)</span>
 <span class="sd">        Lattice(filter, [filter, ...,] iterator=iter,**params)</span>
 
 <span class="sd">        Parameters:</span>
 <span class="sd">            elements: iterable of Element objects</span>
-<span class="sd">            iter: function called as ``iter(params, *args)``. It must return an</span>
-<span class="sd">              iterable of Element objects for building the lattice. It must</span>
-<span class="sd">              also fill the``params`` dictionary providing the Lattice</span>
-<span class="sd">              attributes.</span>
+<span class="sd">            iter: function called as :pycode:`iter(params, *args)`. It must</span>
+<span class="sd">              return an iterable of :py:class:`.Element` objects for building</span>
+<span class="sd">              the lattice. It must also fill the *params* dictionary providing</span>
+<span class="sd">              the Lattice attributes.</span>
 <span class="sd">            params: dictionary of lattice parameters. A custom iterator may</span>
 <span class="sd">              add, remove or modify parameters. Finally, the remaining</span>
 <span class="sd">              parameters will be set as Lattice attributes.</span>
@@ -336,12 +486,13 @@
         <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;_particle&#39;</span><span class="p">,</span> <span class="n">Particle</span><span class="p">())</span>
         <span class="c1"># dummy initialization in case the harmonic number is not there</span>
         <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;_fillpattern&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-        <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;beam_current&#39;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
         <span class="c1"># Remove temporary keywords</span>
         <span class="n">frequency</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;_frequency&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="n">cell_length</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;_length&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="n">cell_h</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;_harmnumber&#39;</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
         <span class="n">ring_h</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;harmonic_number&#39;</span><span class="p">,</span> <span class="n">periodicity</span><span class="o">*</span><span class="n">cell_h</span><span class="p">)</span>
+        <span class="n">bcurrent</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;beam_current&#39;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;_beam_current&#39;</span><span class="p">,</span> <span class="n">bcurrent</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="s1">&#39;energy&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
             <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;_energy&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
@@ -357,7 +508,11 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">frequency</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">frequency</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">):</span>
             <span class="n">rev</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span> <span class="o">*</span> <span class="n">clight</span> <span class="o">/</span> <span class="n">cell_length</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_cell_harmnumber</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">frequency</span> <span class="o">/</span> <span class="n">rev</span><span class="p">))</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">set_fillpattern</span><span class="p">()</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">fp</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;_fillpattern&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">set_fillpattern</span><span class="p">(</span><span class="n">bunches</span><span class="o">=</span><span class="n">fp</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">AssertionError</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">set_fillpattern</span><span class="p">()</span>
         <span class="k">elif</span> <span class="ow">not</span> <span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">ring_h</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">harmonic_number</span> <span class="o">=</span> <span class="n">ring_h</span>
 
@@ -368,7 +523,7 @@
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">slice</span><span class="p">):</span>      <span class="c1"># Slice</span>
                 <span class="n">rg</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="o">*</span><span class="n">key</span><span class="o">.</span><span class="n">indices</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)))</span>
             <span class="k">else</span><span class="p">:</span>                           <span class="c1"># Array of integers or boolean</span>
-                <span class="n">rg</span> <span class="o">=</span> <span class="n">_uint32_refs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+                <span class="n">rg</span> <span class="o">=</span> <span class="n">get_uint32_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">Lattice</span><span class="p">(</span><span class="n">elem_generator</span><span class="p">,</span>
                            <span class="p">(</span><span class="nb">super</span><span class="p">(</span><span class="n">Lattice</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">rg</span><span class="p">),</span>
                            <span class="n">iterator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs_filter</span><span class="p">)</span>
@@ -377,7 +532,7 @@
         <span class="k">try</span><span class="p">:</span>                                <span class="c1"># Integer or slice</span>
             <span class="nb">super</span><span class="p">(</span><span class="n">Lattice</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>                   <span class="c1"># Array of integers or boolean</span>
-            <span class="n">rg</span> <span class="o">=</span> <span class="n">_uint32_refs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+            <span class="n">rg</span> <span class="o">=</span> <span class="n">get_uint32_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">broadcast_arrays</span><span class="p">(</span><span class="n">rg</span><span class="p">,</span> <span class="n">values</span><span class="p">)):</span>
                 <span class="nb">super</span><span class="p">(</span><span class="n">Lattice</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
 
@@ -385,7 +540,7 @@
         <span class="k">try</span><span class="p">:</span>                                <span class="c1"># Integer or slice</span>
             <span class="nb">super</span><span class="p">(</span><span class="n">Lattice</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__delitem__</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>                   <span class="c1"># Array of integers or boolean</span>
-            <span class="n">rg</span> <span class="o">=</span> <span class="n">_uint32_refs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+            <span class="n">rg</span> <span class="o">=</span> <span class="n">get_uint32_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">rg</span><span class="p">):</span>
                 <span class="nb">super</span><span class="p">(</span><span class="n">Lattice</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__delitem__</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 
@@ -398,7 +553,7 @@
         <span class="k">return</span> <span class="s1">&#39;Lattice(&lt;</span><span class="si">{0}</span><span class="s1"> elements&gt;, </span><span class="si">{1}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">ks</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elems</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add elems, an iterable of AT elements, to the lattice&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add elems, an iterable of AT elements, to the lattice&quot;&quot;&quot;</span>
         <span class="n">newring</span> <span class="o">=</span> <span class="n">Lattice</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">newring</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">elems</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">newring</span>
@@ -407,7 +562,7 @@
         <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">Lattice</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__iadd__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_addition_filter</span><span class="p">(</span><span class="n">elems</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Repeats n times the lattice&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Repeats n times the lattice&quot;&quot;&quot;</span>
         <span class="n">periodicity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">periodicity</span>
         <span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">periodicity</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">nbp</span> <span class="o">=</span> <span class="n">periodicity</span> <span class="o">/</span> <span class="n">n</span>
@@ -427,13 +582,15 @@
         <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">type_filter</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">elems</span><span class="p">):</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">elements</span><span class="o">.</span><span class="n">RFCavity</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">RFCavity</span><span class="p">):</span>
                 <span class="n">cavities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
                 <span class="n">elem</span><span class="o">.</span><span class="n">Energy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_energy</span>
             <span class="k">elif</span> <span class="n">elem</span><span class="o">.</span><span class="n">PassMethod</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;RadPass&#39;</span><span class="p">):</span>
                 <span class="n">elem</span><span class="o">.</span><span class="n">Energy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_energy</span>
             <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="s1">&#39;Energy&#39;</span><span class="p">):</span>
                 <span class="k">del</span> <span class="n">elem</span><span class="o">.</span><span class="n">Energy</span>
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="s1">&#39;_turnhistory&#39;</span><span class="p">):</span>
+                <span class="n">elem</span><span class="o">.</span><span class="n">clear_history</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
             <span class="n">length</span> <span class="o">+=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="s1">&#39;Length&#39;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
             <span class="k">yield</span> <span class="n">elem</span>
 
@@ -466,7 +623,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">attrs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Dictionary of lattice attributes&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Dictionary of lattice attributes&quot;&quot;&quot;</span>
         <span class="k">def</span> <span class="nf">extattr</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_disp_attributes</span><span class="p">:</span>
                 <span class="n">d</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
@@ -480,14 +637,14 @@
         <span class="k">return</span> <span class="n">res</span>
 
 <div class="viewcode-block" id="Lattice.rotate"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.rotate">[docs]</a>    <span class="k">def</span> <span class="nf">rotate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Lattice&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return a new lattice rotated left by n elements&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a new lattice rotated left by n elements&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>      <span class="c1"># works for n&lt;0</span>
         <span class="k">return</span> <span class="bp">self</span><span class="p">[</span><span class="n">n</span><span class="p">:]</span> <span class="o">+</span> <span class="bp">self</span><span class="p">[:</span><span class="n">n</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="Lattice.update"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        update(**kwargs)</span>
 <span class="sd">        update(mapping, **kwargs)</span>
 <span class="sd">        update(iterable, **kwargs)</span>
@@ -499,16 +656,16 @@
             <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Lattice.copy"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Lattice&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns a shallow copy of the lattice&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a shallow copy of the lattice&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Lattice.deepcopy"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.deepcopy">[docs]</a>    <span class="k">def</span> <span class="nf">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Lattice&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Returns a deep copy of the lattice&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a deep copy of the lattice&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Lattice.slice"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.slice">[docs]</a>    <span class="k">def</span> <span class="nf">slice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">slices</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> \
             <span class="o">-&gt;</span> <span class="s2">&quot;Lattice&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Create a new lattice by slicing the range of interest into small</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new lattice by slicing the range of interest into small</span>
 <span class="sd">        elements</span>
 
 <span class="sd">        Keyword arguments:</span>
@@ -542,12 +699,12 @@
 
 <div class="viewcode-block" id="Lattice.attrs_filter"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.attrs_filter">[docs]</a>    <span class="k">def</span> <span class="nf">attrs_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">elem_filter</span><span class="p">:</span> <span class="n">Filter</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> \
             <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Element</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Filter function which duplicates the lattice attributes</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Filter function which duplicates the lattice attributes</span>
 
 <span class="sd">        Parameters:</span>
 <span class="sd">            params:         Dictionary of Lattice attributes</span>
 <span class="sd">            elem_filter:    Element filter</span>
-<span class="sd">            *args:          Arguments provided to ``elem_filter``</span>
+<span class="sd">            *args:          Arguments provided to *elem_filter*</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_std_attributes</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
@@ -557,8 +714,9 @@
         <span class="k">return</span> <span class="n">elem_filter</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span></div>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">s_range</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Range of interest: [s_min, s_max]. ``None`` means the full cell.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">s_range</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Range of interest: (s_min, s_max). :py:obj:`None` means</span>
+<span class="sd">          the full cell.&quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_s_range</span>
         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
@@ -583,24 +741,24 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">i_range</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Uint32Refpts</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Range of elements inside the range of interest&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Range of elements inside the range of interest&quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">i_range</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_i_range</span>
         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">s_range</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="n">i_range</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_i_range</span>
-        <span class="k">return</span> <span class="n">_uint32_refs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i_range</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">get_uint32_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i_range</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">energy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Lattice energy&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Lattice energy&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_energy</span>
 
     <span class="nd">@energy</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">energy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">energy</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
         <span class="c1"># Set the Energy attribute of radiating elements</span>
         <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="p">(</span><span class="n">elements</span><span class="o">.</span><span class="n">RFCavity</span><span class="p">,</span> <span class="n">elements</span><span class="o">.</span><span class="n">Wiggler</span><span class="p">))</span> <span class="ow">or</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="p">(</span><span class="n">elt</span><span class="o">.</span><span class="n">RFCavity</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">Wiggler</span><span class="p">))</span> <span class="ow">or</span>
                     <span class="n">elem</span><span class="o">.</span><span class="n">PassMethod</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;RadPass&#39;</span><span class="p">)):</span>
                 <span class="n">elem</span><span class="o">.</span><span class="n">Energy</span> <span class="o">=</span> <span class="n">energy</span>
         <span class="c1"># Set the energy attribute of the Lattice</span>
@@ -609,19 +767,64 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_energy</span> <span class="o">=</span> <span class="n">energy</span>
 
     <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cell_length</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cell length (1 cell) [m]</span>
+
+<span class="sd">        See Also:</span>
+
+<span class="sd">            :py:meth:`circumference`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_s_pos</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cell_revolution_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Revolution frequency for 1 cell [Hz]</span>
+
+<span class="sd">        See Also:</span>
+
+<span class="sd">            :py:meth:`revolution_frequency`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">beta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span>
+        <span class="k">return</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">clight</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">cell_length</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cell_harmnumber</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Harmonic number per cell</span>
+
+<span class="sd">        See Also:</span>
+
+<span class="sd">            :py:meth:`harmonic_number`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cell_harmnumber</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;harmonic_number undefined: &#39;</span>
+                                 <span class="s1">&#39;No cavity found in the lattice&#39;</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
+
+    <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">circumference</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Ring circumference (full self) [m]&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Ring circumference (full ring) [m]</span>
+
+<span class="sd">        See Also:</span>
+
+<span class="sd">            :py:meth:`cell_length`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">periodicity</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_s_pos</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">revolution_frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Revolution frequency (fullring) [Hz]&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Revolution frequency (full ring) [Hz]</span>
+
+<span class="sd">        See Also:</span>
+
+<span class="sd">            :py:meth:`cell_revolution_frequency`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">beta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span>
         <span class="k">return</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">clight</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">circumference</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">particle</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Particle</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Circulating particle&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Circulating particle&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_particle</span>
 
     <span class="nd">@particle</span><span class="o">.</span><span class="n">setter</span>
@@ -631,8 +834,17 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_particle</span> <span class="o">=</span> <span class="n">Particle</span><span class="p">(</span><span class="n">particle</span><span class="p">)</span>
 
+<div class="viewcode-block" id="Lattice.set_wake_turnhistory"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.set_wake_turnhistory">[docs]</a>    <span class="k">def</span> <span class="nf">set_wake_turnhistory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Function to reset the shape of the turn history</span>
+<span class="sd">        in collective elements based on the number of slices,</span>
+<span class="sd">        turns and bunches</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">is_collective</span><span class="p">:</span>
+                <span class="n">e</span><span class="o">.</span><span class="n">clear_history</span><span class="p">(</span><span class="n">ring</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="Lattice.set_fillpattern"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.set_fillpattern">[docs]</a>    <span class="k">def</span> <span class="nf">set_fillpattern</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bunches</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Function to generate the filling pattern lof the ring.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Function to generate the filling pattern lof the ring.</span>
 <span class="sd">        The filling pattern is computed as:</span>
 
 <span class="sd">        ``bunches/numpy.sum(bunches)``</span>
@@ -670,49 +882,70 @@
             <span class="k">assert</span> <span class="n">numpy</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">bunches</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">),</span> \
                 <span class="s1">&#39;bunches array can contain only positive numbers&#39;</span>
             <span class="n">fp</span> <span class="o">=</span> <span class="n">bunches</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_fillpattern</span> <span class="o">=</span> <span class="n">fp</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fillpattern</span> <span class="o">=</span> <span class="n">fp</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_wake_turnhistory</span><span class="p">()</span></div>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">fillpattern</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Filling pattern describing the bunch relative</span>
+    <span class="k">def</span> <span class="nf">fillpattern</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Filling pattern describing the bunch relative</span>
 <span class="sd">        amplitudes such that ``sum(fillpattern)=1``</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fillpattern</span>
 
     <span class="nd">@fillpattern</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">fillpattern</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Filling pattern describing the bunch relative</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Filling pattern describing the bunch relative</span>
 <span class="sd">        amplitudes such that ``sum(fillpattern)=1``.</span>
 <span class="sd">        Calls the function ``Lattice.set_fillpattern``.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_fillpattern</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">bunch_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Indices of filled bunches&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">bunch_list</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Indices of filled bunches&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">flatnonzero</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fillpattern</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">bunch_currents</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Bunch currents [A]&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">beam_current</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_beam_current</span>
+
+    <span class="nd">@beam_current</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">beam_current</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">clear_history</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_beam_current</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">if</span> <span class="n">clear_history</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_wake_turnhistory</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">bunch_currents</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Bunch currents [A]&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">beam_current</span> <span class="o">*</span> \
             <span class="bp">self</span><span class="o">.</span><span class="n">_fillpattern</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_fillpattern</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">bunch_spos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Bunch position around the ring [m]&quot;&quot;&quot;</span>
-        <span class="n">bs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">circumference</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fillpattern</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">bunch_spos</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Bunch position around the ring [m]&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">circ</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span> <span class="o">*</span> <span class="n">clight</span> <span class="o">*</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">harmonic_number</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">rf_frequency</span>
+        <span class="k">except</span> <span class="n">AtError</span><span class="p">:</span>
+            <span class="n">circ</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">circumference</span>       
+        <span class="n">bs</span> <span class="o">=</span> <span class="n">circ</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fillpattern</span><span class="p">)</span>
         <span class="n">allpos</span> <span class="o">=</span> <span class="n">bs</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fillpattern</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">allpos</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_fillpattern</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">nbunch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Number of bunches&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">nbunch</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Number of bunches&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fillpattern</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">harmonic_number</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Ring harmonic number (full self)&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">harmonic_number</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Ring harmonic number (full ring)</span>
+
+<span class="sd">        See Also:</span>
+
+<span class="sd">            :py:meth:`cell_harmnumber`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">periodicity</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cell_harmnumber</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
@@ -737,7 +970,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">gamma</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Relativistic :math:`\gamma` of the particles&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Relativistic :math:`\gamma` of the particles&quot;&quot;&quot;</span>
         <span class="n">rest_energy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">particle</span><span class="o">.</span><span class="n">rest_energy</span>
         <span class="k">if</span> <span class="n">rest_energy</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
             <span class="n">rest_energy</span> <span class="o">=</span> <span class="n">e_mass</span>
@@ -745,7 +978,7 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">beta</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Relativistic :math:`\beta` of the particles&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Relativistic :math:`\beta` of the particles&quot;&quot;&quot;</span>
         <span class="n">rest_energy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">particle</span><span class="o">.</span><span class="n">rest_energy</span>
         <span class="k">if</span> <span class="n">rest_energy</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
             <span class="k">return</span> <span class="mf">1.0</span>
@@ -756,33 +989,58 @@
     <span class="c1"># noinspection PyPep8Naming</span>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">BRho</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Magnetic rigidity [T.m]&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">energy</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">particle</span><span class="o">.</span><span class="n">rest_energy</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">clight</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Magnetic rigidity [T.m]&quot;&quot;&quot;</span>
+        <span class="n">rest_energy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">particle</span><span class="o">.</span><span class="n">rest_energy</span>
+        <span class="k">if</span> <span class="n">rest_energy</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="n">rest_energy</span> <span class="o">=</span> <span class="n">e_mass</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">energy</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">rest_energy</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">clight</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">radiation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;If True, at least one element modifies the beam energy&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">is_6d</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;True if at least one element modifies the beam momentum</span>
+
+<span class="sd">        See Also:</span>
+
+<span class="sd">            :py:meth:`enable_6d`, :py:meth:`disable_6d`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_radiation</span>
         <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
             <span class="n">radiate</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">PassMethod</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;RadPass&#39;</span><span class="p">)</span> <span class="ow">or</span>
-                        <span class="n">elem</span><span class="o">.</span><span class="n">PassMethod</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;CavityPass&#39;</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">elem</span><span class="o">.</span><span class="n">longt_motion</span><span class="p">:</span>
                     <span class="n">radiate</span> <span class="o">=</span> <span class="kc">True</span>
                     <span class="k">break</span>
             <span class="c1"># noinspection PyAttributeOutsideInit</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_radiation</span> <span class="o">=</span> <span class="n">radiate</span>
             <span class="k">return</span> <span class="n">radiate</span>
 
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_collective</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;:py:obj:`True` if any element involves collective effects&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">elem</span><span class="o">.</span><span class="n">is_collective</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">has_cavity</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;:py:obj:`True` if the lattice contains an active</span>
+<span class="sd">        :py:class:`RFCavity`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">elem</span><span class="o">.</span><span class="n">PassMethod</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;CavityPass&#39;</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
     <span class="c1"># noinspection PyShadowingNames</span>
 <div class="viewcode-block" id="Lattice.modify_elements"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.modify_elements">[docs]</a>    <span class="k">def</span> <span class="nf">modify_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elem_modify</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
                         <span class="n">copy</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Modify selected elements, in-place or in a lattice copy</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Modify selected elements, in-place or in a lattice copy</span>
 
 <span class="sd">        Parameters:</span>
 <span class="sd">            elem_modify : element selection function.</span>
-<span class="sd">              If ``elem_modify(elem)`` returns ``None``, the element is</span>
+<span class="sd">              If ``elem_modify(elem)`` returns :py:obj:`None`, the element is</span>
 <span class="sd">              unchanged. Otherwise, ``elem_modify(elem)`` must return a</span>
 <span class="sd">              dictionary of attribute name and values, to be set to elem.</span>
 <span class="sd">            copy:         If True, return a shallow copy of the lattice.</span>
@@ -790,34 +1048,33 @@
 <span class="sd">              If False, the modification is done in-place</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            newring:    New lattice if copy is True, None if copy is False</span>
+<span class="sd">            newring:    New lattice if copy is :py:obj:`True`, :py:obj:`None`</span>
+<span class="sd">              if copy is :py:obj:`False`</span>
 
 <span class="sd">        Keyword Arguments:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">def</span> <span class="nf">lattice_modify</span><span class="p">(</span><span class="o">**</span><span class="n">kws</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;Modifies the Lattice with elements modified by elem_modify&quot;&quot;&quot;</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Modifies the Lattice with elements modified by elem_modify&quot;&quot;&quot;</span>
             <span class="n">radiate</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
                 <span class="n">attrs</span> <span class="o">=</span> <span class="n">elem_modify</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">attrs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="n">elem</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">PassMethod</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;RadPass&#39;</span><span class="p">)</span> <span class="ow">or</span>
-                        <span class="n">elem</span><span class="o">.</span><span class="n">PassMethod</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;CavityPass&#39;</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">elem</span><span class="o">.</span><span class="n">longt_motion</span><span class="p">:</span>
                     <span class="n">radiate</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_radiation</span> <span class="o">=</span> <span class="n">radiate</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kws</span><span class="p">)</span>
 
         <span class="k">def</span> <span class="nf">lattice_copy</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;Custom iterator for the creation of a new lattice&quot;&quot;&quot;</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Custom iterator for the creation of a new lattice&quot;&quot;&quot;</span>
             <span class="n">radiate</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
                 <span class="n">attrs</span> <span class="o">=</span> <span class="n">elem_modify</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">attrs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="n">elem</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
                     <span class="n">elem</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">attrs</span><span class="p">)</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">PassMethod</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;RadPass&#39;</span><span class="p">)</span> <span class="ow">or</span>
-                        <span class="n">elem</span><span class="o">.</span><span class="n">PassMethod</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;CavityPass&#39;</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">elem</span><span class="o">.</span><span class="n">longt_motion</span><span class="p">:</span>
                     <span class="n">radiate</span> <span class="o">=</span> <span class="kc">True</span>
                 <span class="k">yield</span> <span class="n">elem</span>
             <span class="n">params</span><span class="p">[</span><span class="s1">&#39;_radiation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">radiate</span>
@@ -827,178 +1084,274 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">lattice_modify</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_radiation_attrs</span><span class="p">(</span><span class="n">cavity_func</span><span class="p">,</span> <span class="n">dipole_func</span><span class="p">,</span>
-                         <span class="n">quadrupole_func</span><span class="p">,</span> <span class="n">wiggler_func</span><span class="p">,</span>
-                         <span class="n">sextupole_func</span><span class="p">,</span> <span class="n">octupole_func</span><span class="p">,</span>
-                         <span class="n">multipole_func</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a function returning the modified attributes&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">_set_6d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enable</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the lattice radiation state&quot;&quot;&quot;</span>
 
-        <span class="k">def</span> <span class="nf">elem_func</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">lattice_modify</span><span class="p">():</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Modifies the Lattice in place&quot;&quot;&quot;</span>
+            <span class="n">radiate</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+                <span class="n">new_pass</span> <span class="o">=</span> <span class="n">getpass</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">new_pass</span><span class="p">:</span>
+                    <span class="n">elem</span><span class="o">.</span><span class="n">set_longt_motion</span><span class="p">(</span><span class="n">enable</span><span class="p">,</span> <span class="n">new_pass</span><span class="o">=</span><span class="n">new_pass</span><span class="p">,</span> <span class="o">**</span><span class="n">vargs</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">elem</span><span class="o">.</span><span class="n">longt_motion</span><span class="p">:</span>
+                    <span class="n">radiate</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_radiation</span> <span class="o">=</span> <span class="n">radiate</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
 
-            <span class="k">def</span> <span class="nf">isdipole</span><span class="p">(</span><span class="n">el</span><span class="p">):</span>
-                <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">elements</span><span class="o">.</span><span class="n">Dipole</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span>
-                        <span class="n">el</span><span class="o">.</span><span class="n">BendingAngle</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">lattice_copy</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Custom iterator for the creation of a new lattice&quot;&quot;&quot;</span>
+            <span class="n">radiate</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+                <span class="n">new_pass</span> <span class="o">=</span> <span class="n">getpass</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">new_pass</span><span class="p">:</span>
+                    <span class="n">elem</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">set_longt_motion</span><span class="p">(</span><span class="n">enable</span><span class="p">,</span> <span class="n">new_pass</span><span class="o">=</span><span class="n">new_pass</span><span class="p">,</span>
+                                                 <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">vargs</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">elem</span><span class="o">.</span><span class="n">longt_motion</span><span class="p">:</span>
+                    <span class="n">radiate</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">yield</span> <span class="n">elem</span>
+            <span class="n">params</span><span class="p">[</span><span class="s1">&#39;_radiation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">radiate</span>
 
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">elements</span><span class="o">.</span><span class="n">RFCavity</span><span class="p">):</span>
-                <span class="k">return</span> <span class="n">cavity_func</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="n">isdipole</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
-                <span class="k">return</span> <span class="n">dipole_func</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">elements</span><span class="o">.</span><span class="n">Quadrupole</span><span class="p">):</span>
-                <span class="k">return</span> <span class="n">quadrupole_func</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">elements</span><span class="o">.</span><span class="n">Wiggler</span><span class="p">):</span>
-                <span class="k">return</span> <span class="n">wiggler_func</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">elements</span><span class="o">.</span><span class="n">Sextupole</span><span class="p">):</span>
-                <span class="k">return</span> <span class="n">sextupole_func</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">elements</span><span class="o">.</span><span class="n">Octupole</span><span class="p">):</span>
-                <span class="k">return</span> <span class="n">octupole_func</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">elements</span><span class="o">.</span><span class="n">Multipole</span><span class="p">):</span>
-                <span class="k">return</span> <span class="n">multipole_func</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
+        <span class="n">cp</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;copy&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">def</span> <span class="nf">getpass</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+                <span class="k">return</span> <span class="s1">&#39;auto&#39;</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="nb">issubclass</span><span class="p">(</span><span class="n">cl</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">LongtMotion</span><span class="p">)</span> <span class="k">for</span> <span class="n">cl</span> <span class="ow">in</span> <span class="n">args</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;All arguments must be subclasses of&quot;</span>
+                                <span class="s2">&quot; &#39;LongtMotion&#39;&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">AtError</span><span class="p">(</span><span class="s1">&#39;No keyword is allowed in this mode&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">def</span> <span class="nf">getpass</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">eltype</span><span class="p">,</span> <span class="n">psm</span> <span class="ow">in</span> <span class="n">pass_table</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">eltype</span><span class="p">):</span>
+                        <span class="k">return</span> <span class="n">psm</span>
                 <span class="k">return</span> <span class="kc">None</span>
 
-        <span class="k">return</span> <span class="n">elem_func</span>
+            <span class="k">def</span> <span class="nf">passm</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">eltype</span><span class="p">,</span> <span class="n">def_pass</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">allset</span><span class="p">:</span>
+                    <span class="n">def_pass</span> <span class="o">=</span> <span class="n">all_pass</span>
+                <span class="k">return</span> <span class="n">eltype</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">def_pass</span><span class="p">)</span>
 
-    <span class="c1"># noinspection PyShadowingNames</span>
-<div class="viewcode-block" id="Lattice.radiation_on"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.radiation_on">[docs]</a>    <span class="k">def</span> <span class="nf">radiation_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cavity_pass</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;RFCavityPass&#39;</span><span class="p">,</span>
-                     <span class="n">dipole_pass</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>
-                     <span class="n">quadrupole_pass</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>
-                     <span class="n">wiggler_pass</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>
-                     <span class="n">sextupole_pass</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-                     <span class="n">octupole_pass</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-                     <span class="n">multipole_pass</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-                     <span class="n">copy</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Turn acceleration and radiation on and return the lattice</span>
+            <span class="c1"># Look for global defaults</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">all_pass</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;all_pass&#39;</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="n">allset</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">allset</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="c1"># Build table of PassMethods</span>
+            <span class="n">pass_table</span> <span class="o">=</span> <span class="p">[</span><span class="n">passm</span><span class="p">(</span><span class="o">*</span><span class="n">defs</span><span class="p">)</span> <span class="k">for</span> <span class="n">defs</span> <span class="ow">in</span> <span class="n">_DEFAULT_PASS</span><span class="p">[</span><span class="n">enable</span><span class="p">]]</span>
+
+        <span class="n">vargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">energy</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">energy</span><span class="p">)</span> <span class="k">if</span> <span class="n">enable</span> <span class="k">else</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">cp</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Lattice</span><span class="p">(</span><span class="n">lattice_copy</span><span class="p">,</span> <span class="n">iterator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs_filter</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">lattice_modify</span><span class="p">()</span>
+
+    <span class="c1"># noinspection PyShadowingNames,PyIncorrectDocstring</span>
+<div class="viewcode-block" id="Lattice.enable_6d"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.enable_6d">[docs]</a>    <span class="k">def</span> <span class="nf">enable_6d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Lattice&quot;</span><span class="p">]:</span>
+        <span class="c1"># noinspection PyUnresolvedReferences</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        enable_6d(elem_class[, elem_class]..., copy=False)</span>
+<span class="sd">        enable_6d(cavity_pass=&#39;auto&#39;[, dipole_pass=&#39;auto&#39;]..., copy=False)</span>
+
+<span class="sd">        Turn longitudinal motion on. By default, turn on</span>
+<span class="sd">        radiation in dipoles and quadrupoles, turn on RF cavities, activates</span>
+<span class="sd">        collective effects and other elements acting on momentum.</span>
+
+<span class="sd">        Modify the lattice in-place or creates a new lattice, depending on the</span>
+<span class="sd">        ``copy`` keyword argument.</span>
+
+<span class="sd">        **Syntax using positional arguments:**</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            elem_class:                 :py:class:`.LongtMotion` subclass.</span>
+<span class="sd">              Longitudinal motion is turned on for elements which are</span>
+<span class="sd">              instances of any given ``elem_class``.</span>
+
+<span class="sd">              In adition to single element classes, a few grouping classes are</span>
+<span class="sd">              available:</span>
+
+<span class="sd">              * :py:class:`.LongtMotion`: all elements possibly acting on</span>
+<span class="sd">                momentum,</span>
+<span class="sd">              * :py:class:`.Radiative`: default radiative elements:</span>
+<span class="sd">                :py:class:`.Dipole`, :py:class:`.Quadrupole`,</span>
+<span class="sd">                :py:class:`.Wiggler`,</span>
+<span class="sd">              * :py:class:`.Collective`: all elements dealing with collective</span>
+<span class="sd">                effects.</span>
+
+<span class="sd">              The default PassMethod conversion is used, as with the ``&#39;auto&#39;``</span>
+<span class="sd">              keyword value..</span>
+
+<span class="sd">              **No keyword except** ``copy`` **is allowed in this syntax.**</span>
+
+<span class="sd">        **Syntax using keyword arguments:**</span>
 
 <span class="sd">        Keyword arguments:</span>
-<span class="sd">            cavity_pass=&#39;RFCavityPass&#39;: PassMethod set on cavities</span>
+<span class="sd">            all_pass:                   PassMethod overloading the default</span>
+<span class="sd">              values for all elements (:py:obj:`None` or &#39;auto&#39;)</span>
+<span class="sd">            cavity_pass=&#39;auto&#39;:         PassMethod set on cavities</span>
 <span class="sd">            dipole_pass=&#39;auto&#39;:         PassMethod set on dipoles</span>
 <span class="sd">            quadrupole_pass=&#39;auto&#39;:     PassMethod set on quadrupoles</span>
 <span class="sd">            wiggler_pass=&#39;auto&#39;:        PassMethod set on wigglers</span>
-<span class="sd">            copy=False: If ``False``, the modification is done in-place,</span>
+<span class="sd">            sextupole_pass=None:        PassMethod set on sextupoles</span>
+<span class="sd">            octupole_pass=None:         PassMethod set on octupoles</span>
+<span class="sd">            multipole_pass=None  :      PassMethod set on higher order</span>
+<span class="sd">              multipoles</span>
+<span class="sd">            collective_pass=&#39;auto&#39;:     PassMethod set on collective effect</span>
+<span class="sd">              elements (:py:class:`.WakeElement`,...)</span>
+<span class="sd">            diffusion_pass=&#39;auto&#39;:      PassMethod set on</span>
+<span class="sd">              :py:class:`.QuantumDiffusion`</span>
+<span class="sd">            copy=False: If :py:obj:`False`, the modification is done in-place,</span>
 <span class="sd">              If ``True``, return a shallow copy of the lattice. Only the</span>
 <span class="sd">              radiating elements are copied with PassMethod modified.</span>
 
 <span class="sd">              .. Caution::</span>
 
-<span class="sd">                 a shallow copy means that all non-radiating</span>
-<span class="sd">                 elements are shared with the original lattice.</span>
-<span class="sd">                 Any further modification will affect in both lattices.</span>
+<span class="sd">                 a shallow copy means that all non-modified elements are shared</span>
+<span class="sd">                 with the original lattice. Any further modification will</span>
+<span class="sd">                 affect both lattices.</span>
 
 <span class="sd">        For PassMethod names, the convention is:</span>
 
-<span class="sd">        * ``None``:        no change</span>
-<span class="sd">        * &#39;auto&#39;:          replace \*Pass by \*RadPass</span>
+<span class="sd">        * :py:obj:`None`:        No change</span>
+<span class="sd">        * &#39;auto&#39;:          Use the default conversion (replace \*Pass by</span>
+<span class="sd">          \*RadPass)</span>
 <span class="sd">        * anything else:   set as the new PassMethod</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; ring.enable_6d()</span>
+
+<span class="sd">            Modify `ring` in-place, turn cavities ON, turn synchrotron</span>
+<span class="sd">            radiation ON in Dipoles and Quadrupoles, turn collective effects</span>
+<span class="sd">            ON.</span>
+
+<span class="sd">            &gt;&gt;&gt; ring.enable_6d(at.RFCavity, at.Radiative)</span>
+
+<span class="sd">            Modify `ring` in-place, turn cavities ON, turn synchrotron</span>
+<span class="sd">            radiation ON in dipoles and quadupoles.</span>
+
+<span class="sd">            &gt;&gt;&gt; newring = ring.enable_6d(at.Collective, copy=True)</span>
+
+<span class="sd">            Returns a new lattice with collective effects turned ON and nothing</span>
+<span class="sd">            else changed</span>
+
+<span class="sd">            &gt;&gt;&gt; newring = ring.enable_6d(all_pass=None, collective_pass=&#39;auto&#39;,</span>
+<span class="sd">            ... copy=True)</span>
+
+<span class="sd">            Same as the previous example, using the keyword syntax.</span>
+
+<span class="sd">        See Also:</span>
+
+<span class="sd">            :py:meth:`disable_6d`, :py:attr:`is_6d`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_6d</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
-        <span class="k">def</span> <span class="nf">repfunc</span><span class="p">(</span><span class="n">pass_method</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">pass_method</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="c1"># noinspection PyUnusedLocal</span>
-                <span class="k">def</span> <span class="nf">ff</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
-                    <span class="k">return</span> <span class="kc">None</span>
-            <span class="k">elif</span> <span class="n">pass_method</span> <span class="o">==</span> <span class="s1">&#39;auto&#39;</span><span class="p">:</span>
-                <span class="k">def</span> <span class="nf">ff</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
-                    <span class="k">if</span> <span class="ow">not</span> <span class="n">elem</span><span class="o">.</span><span class="n">PassMethod</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;RadPass&#39;</span><span class="p">):</span>
-                        <span class="n">pass_m</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">elem</span><span class="o">.</span><span class="n">PassMethod</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;RadPass&#39;</span><span class="p">))</span>
-                        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;PassMethod&#39;</span><span class="p">:</span> <span class="n">pass_m</span><span class="p">,</span>
-                                <span class="s1">&#39;Energy&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">energy</span><span class="p">}</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="k">return</span> <span class="kc">None</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">def</span> <span class="nf">ff</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
-                    <span class="k">if</span> <span class="n">elem</span><span class="o">.</span><span class="n">PassMethod</span> <span class="o">!=</span> <span class="n">pass_method</span><span class="p">:</span>
-                        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;PassMethod&#39;</span><span class="p">:</span> <span class="n">pass_method</span><span class="p">,</span>
-                                <span class="s1">&#39;Energy&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">energy</span><span class="p">}</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="k">return</span> <span class="kc">None</span>
-            <span class="k">return</span> <span class="n">ff</span>
+    <span class="c1"># noinspection PyShadowingNames,PyIncorrectDocstring</span>
+<div class="viewcode-block" id="Lattice.disable_6d"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.disable_6d">[docs]</a>    <span class="k">def</span> <span class="nf">disable_6d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Lattice&quot;</span><span class="p">]:</span>
+        <span class="c1"># noinspection PyUnresolvedReferences</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        disable_6d(elem_class[, elem_class]... , copy=False)</span>
+<span class="sd">        disable_6d(cavity_pass=&#39;auto&#39;[, dipole_pass=&#39;auto&#39;]..., copy=False)</span>
 
-        <span class="n">elem_func</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_radiation_attrs</span><span class="p">(</span><span class="n">repfunc</span><span class="p">(</span><span class="n">cavity_pass</span><span class="p">),</span>
-                                          <span class="n">repfunc</span><span class="p">(</span><span class="n">dipole_pass</span><span class="p">),</span>
-                                          <span class="n">repfunc</span><span class="p">(</span><span class="n">quadrupole_pass</span><span class="p">),</span>
-                                          <span class="n">repfunc</span><span class="p">(</span><span class="n">wiggler_pass</span><span class="p">),</span>
-                                          <span class="n">repfunc</span><span class="p">(</span><span class="n">sextupole_pass</span><span class="p">),</span>
-                                          <span class="n">repfunc</span><span class="p">(</span><span class="n">octupole_pass</span><span class="p">),</span>
-                                          <span class="n">repfunc</span><span class="p">(</span><span class="n">multipole_pass</span><span class="p">))</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">modify_elements</span><span class="p">(</span><span class="n">elem_func</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span></div>
+<span class="sd">        Turn longitudinal motion off. By default, remove all longitudinal</span>
+<span class="sd">        motion.</span>
 
-    <span class="c1"># noinspection PyShadowingNames</span>
-<div class="viewcode-block" id="Lattice.radiation_off"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.radiation_off">[docs]</a>    <span class="k">def</span> <span class="nf">radiation_off</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cavity_pass</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>
-                      <span class="n">dipole_pass</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>
-                      <span class="n">quadrupole_pass</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>
-                      <span class="n">wiggler_pass</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>
-                      <span class="n">sextupole_pass</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>
-                      <span class="n">octupole_pass</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>
-                      <span class="n">multipole_pass</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>
-                      <span class="n">copy</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
-        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Turn acceleration and radiation off and return the lattice</span>
+<span class="sd">        Modify the lattice in-place or creates a new lattice, depending on the</span>
+<span class="sd">        ``copy`` keyword argument.</span>
+
+<span class="sd">        **Syntax using positional arguments:**</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            elem_class:                 :py:class:`.LongtMotion` subclass.</span>
+<span class="sd">              Longitudinal motion is turned off for elements which are</span>
+<span class="sd">              instances of any given ``elem_class``.</span>
+
+<span class="sd">              In adition to single element classes, a few grouping classes are</span>
+<span class="sd">              available:</span>
+
+<span class="sd">              * :py:class:`.LongtMotion`: all elements possibly acting on</span>
+<span class="sd">                momentum,</span>
+<span class="sd">              * :py:class:`.Radiative`: default radiative elements:</span>
+<span class="sd">                :py:class:`.Dipole`, :py:class:`.Quadrupole`,</span>
+<span class="sd">                :py:class:`.Wiggler`,</span>
+<span class="sd">              * :py:class:`.Collective`: all elements dealing with collective</span>
+<span class="sd">                effects.</span>
+
+<span class="sd">              The default PassMethod conversion is used, as with the ``&#39;auto&#39;``</span>
+<span class="sd">              keyword value.</span>
+
+<span class="sd">              **No keyword except** ``copy`` **is allowed in this syntax.**</span>
+
+<span class="sd">        **Syntax using keyword arguments:**</span>
 
 <span class="sd">        Keyword arguments:</span>
-<span class="sd">            cavity_pass=&#39;IdentityPass&#39;: PassMethod set on cavities</span>
+<span class="sd">            all_pass:                   PassMethod overloading the default</span>
+<span class="sd">              values for all elements (:py:obj:`None` or &#39;auto&#39;)</span>
+<span class="sd">            cavity_pass=&#39;auto&#39;:         PassMethod set on cavities</span>
 <span class="sd">            dipole_pass=&#39;auto&#39;:         PassMethod set on dipoles</span>
-<span class="sd">            quadrupole_pass=None:       PassMethod set on quadrupoles</span>
+<span class="sd">            quadrupole_pass=auto:       PassMethod set on quadrupoles</span>
 <span class="sd">            wiggler_pass=&#39;auto&#39;:        PassMethod set on wigglers</span>
-<span class="sd">            copy=False: If ``False``, the modification is done in-place,</span>
+<span class="sd">            sextupole_pass=&#39;auto&#39;:      PassMethod set on sextupoles</span>
+<span class="sd">            octupole_pass=&#39;auto&#39;:       PassMethod set on octupoles</span>
+<span class="sd">            multipole_pass=&#39;auto&#39;:      PassMethod set on higher order</span>
+<span class="sd">              multipoles</span>
+<span class="sd">            collective_pass=&#39;auto&#39;:     PassMethod set on collective effect</span>
+<span class="sd">              elements (:py:class:`.WakeElement`,...)</span>
+<span class="sd">            diffusion_pass=&#39;auto&#39;:      PassMethod set on</span>
+<span class="sd">              :py:class:`.QuantumDiffusion`</span>
+<span class="sd">            copy=False: If :py:obj:`False`, the modification is done in-place,</span>
 <span class="sd">              If ``True``, return a shallow copy of the lattice. Only the</span>
 <span class="sd">              radiating elements are copied with PassMethod modified.</span>
 
 <span class="sd">              .. Caution::</span>
 
-<span class="sd">                 a shallow copy means that all non-radiating</span>
-<span class="sd">                 elements are shared with the original lattice.</span>
-<span class="sd">                 Any further modification will affect in both lattices.</span>
+<span class="sd">                 a shallow copy means that all non-modified elements are shared</span>
+<span class="sd">                 with the original lattice. Any further modification will</span>
+<span class="sd">                 affect both lattices.</span>
 
 <span class="sd">        For PassMethod names, the convention is:</span>
 
-<span class="sd">        * ``None``:        no change</span>
-<span class="sd">        * &#39;auto&#39;:          replace \*RadPass by \*Pass</span>
+<span class="sd">        * :py:obj:`None`:        no change</span>
+<span class="sd">        * &#39;auto&#39;:          Use the default conversion (replace \*RadPass by</span>
+<span class="sd">          \*Pass)</span>
 <span class="sd">        * anything else:   set as the new PassMethod</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; ring.disable_6d()</span>
+
+<span class="sd">            Modify `ring` in-place, turn OFF everything affecting the</span>
+<span class="sd">            longitudinal momentum.</span>
+
+<span class="sd">            &gt;&gt;&gt; ring.disable_6d(at.RFCavity)</span>
+
+<span class="sd">            Turn cavities OFF (nothing else modified).</span>
+
+<span class="sd">            &gt;&gt;&gt; ring.disable_6d(all_pass=None, cavity_pass=&#39;auto&#39;)</span>
+
+<span class="sd">            Same as the previous example, but using the keyword syntax.</span>
+
+<span class="sd">            &gt;&gt;&gt; newring = ring.disable_6d(cavity_pass=None, copy=True)</span>
+
+<span class="sd">            Return a new Lattice (shallow copy of `ring`) with everything</span>
+<span class="sd">            turned OFF except RF cavities.</span>
+
+<span class="sd">            &gt;&gt;&gt; newring = ring.disable_6d(all_pass=None,</span>
+<span class="sd">            ... sextupole_pass=&#39;DriftPass&#39;, copy=True)</span>
+
+<span class="sd">            Return a new Lattice (shallow copy of `ring`) with sextupoles</span>
+<span class="sd">            turned into Drifts (turned off) and everything else unchangedd.</span>
+
+<span class="sd">        See Also:</span>
+
+<span class="sd">            :py:meth:`enable_6d`, :py:attr:`is_6d`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">def</span> <span class="nf">auto_cavity_pass</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
-            <span class="n">newpass</span> <span class="o">=</span> <span class="s1">&#39;IdentityPass&#39;</span> <span class="k">if</span> <span class="n">elem</span><span class="o">.</span><span class="n">Length</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;DriftPass&#39;</span>
-            <span class="k">if</span> <span class="n">elem</span><span class="o">.</span><span class="n">PassMethod</span> <span class="o">!=</span> <span class="n">newpass</span><span class="p">:</span>
-                <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;PassMethod&#39;</span><span class="p">:</span> <span class="n">newpass</span><span class="p">}</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="kc">None</span>
-
-        <span class="k">def</span> <span class="nf">auto_multipole_pass</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">elem</span><span class="o">.</span><span class="n">PassMethod</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;RadPass&#39;</span><span class="p">):</span>
-                <span class="n">newpass</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">elem</span><span class="o">.</span><span class="n">PassMethod</span><span class="p">[:</span><span class="o">-</span><span class="mi">7</span><span class="p">],</span> <span class="s1">&#39;Pass&#39;</span><span class="p">))</span>
-                <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;PassMethod&#39;</span><span class="p">:</span> <span class="n">newpass</span><span class="p">}</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="kc">None</span>
-
-        <span class="k">def</span> <span class="nf">repfunc</span><span class="p">(</span><span class="n">pass_method</span><span class="p">,</span> <span class="n">auto_method</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">pass_method</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="c1"># noinspection PyUnusedLocal</span>
-                <span class="k">def</span> <span class="nf">ff</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
-                    <span class="k">return</span> <span class="kc">None</span>
-            <span class="k">elif</span> <span class="n">pass_method</span> <span class="o">==</span> <span class="s1">&#39;auto&#39;</span><span class="p">:</span>
-                <span class="n">ff</span> <span class="o">=</span> <span class="n">auto_method</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">def</span> <span class="nf">ff</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
-                    <span class="k">if</span> <span class="n">elem</span><span class="o">.</span><span class="n">PassMethod</span> <span class="o">!=</span> <span class="n">pass_method</span><span class="p">:</span>
-                        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;PassMethod&#39;</span><span class="p">:</span> <span class="n">pass_method</span><span class="p">}</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="k">return</span> <span class="kc">None</span>
-            <span class="k">return</span> <span class="n">ff</span>
-
-        <span class="n">elem_func</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_radiation_attrs</span><span class="p">(</span>
-            <span class="n">repfunc</span><span class="p">(</span><span class="n">cavity_pass</span><span class="p">,</span> <span class="n">auto_cavity_pass</span><span class="p">),</span>
-            <span class="n">repfunc</span><span class="p">(</span><span class="n">dipole_pass</span><span class="p">,</span> <span class="n">auto_multipole_pass</span><span class="p">),</span>
-            <span class="n">repfunc</span><span class="p">(</span><span class="n">quadrupole_pass</span><span class="p">,</span> <span class="n">auto_multipole_pass</span><span class="p">),</span>
-            <span class="n">repfunc</span><span class="p">(</span><span class="n">wiggler_pass</span><span class="p">,</span> <span class="n">auto_multipole_pass</span><span class="p">),</span>
-            <span class="n">repfunc</span><span class="p">(</span><span class="n">sextupole_pass</span><span class="p">,</span> <span class="n">auto_multipole_pass</span><span class="p">),</span>
-            <span class="n">repfunc</span><span class="p">(</span><span class="n">octupole_pass</span><span class="p">,</span> <span class="n">auto_multipole_pass</span><span class="p">),</span>
-            <span class="n">repfunc</span><span class="p">(</span><span class="n">multipole_pass</span><span class="p">,</span> <span class="n">auto_multipole_pass</span><span class="p">))</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">modify_elements</span><span class="p">(</span><span class="n">elem_func</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_6d</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Lattice.sbreak"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.sbreak">[docs]</a>    <span class="k">def</span> <span class="nf">sbreak</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">break_s</span><span class="p">,</span> <span class="n">break_elems</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Insert elements at selected locations in the lattice</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Insert elements at selected locations in the lattice</span>
 
 <span class="sd">        Parameters:</span>
 <span class="sd">            break_s:        location or array of locations of breakpoints</span>
@@ -1010,10 +1363,10 @@
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">def</span> <span class="nf">sbreak_iterator</span><span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">itmk</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;Iterate over elements and breaks where necessary&quot;&quot;&quot;</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Iterate over elements and breaks where necessary&quot;&quot;&quot;</span>
 
             <span class="k">def</span> <span class="nf">next_mk</span><span class="p">():</span>
-                <span class="sd">&quot;&quot;&quot;Extract the next element to insert&quot;&quot;&quot;</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;Extract the next element to insert&quot;&quot;&quot;</span>
                 <span class="k">try</span><span class="p">:</span>
                     <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="n">itmk</span><span class="p">)</span>
                 <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
@@ -1040,7 +1393,7 @@
 
         <span class="c1"># set default insertion</span>
         <span class="k">if</span> <span class="n">break_elems</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">break_elems</span> <span class="o">=</span> <span class="n">elements</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span><span class="s1">&#39;sbreak&#39;</span><span class="p">)</span>
+            <span class="n">break_elems</span> <span class="o">=</span> <span class="n">elt</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span><span class="s1">&#39;sbreak&#39;</span><span class="p">)</span>
         <span class="n">break_elems</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">break_elems</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="c1"># Check element lengths</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">Length</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">break_elems</span><span class="p">):</span>
@@ -1054,7 +1407,7 @@
                        <span class="n">iterator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs_filter</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Lattice.reduce"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.reduce">[docs]</a>    <span class="k">def</span> <span class="nf">reduce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Lattice&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Removes all elements with an ``IdentityPass`` PassMethod and merges</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Removes all elements with an ``IdentityPass`` PassMethod and merges</span>
 <span class="sd">        compatible consecutive elements.</span>
 
 <span class="sd">        The &quot;reduced&quot; lattice has the same optics as the original one, but</span>
@@ -1081,33 +1434,81 @@
                     <span class="n">elem</span> <span class="o">=</span> <span class="n">nxt</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
             <span class="k">yield</span> <span class="n">elem</span>
 
-        <span class="n">kp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_cells</span><span class="p">(</span><span class="k">lambda</span> <span class="n">el</span><span class="p">:</span> <span class="n">el</span><span class="o">.</span><span class="n">PassMethod</span> <span class="o">!=</span> <span class="s1">&#39;IdentityPass&#39;</span><span class="p">)</span>
+        <span class="n">kp</span> <span class="o">=</span> <span class="n">get_bool_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">el</span><span class="p">:</span> <span class="n">el</span><span class="o">.</span><span class="n">PassMethod</span> <span class="o">!=</span> <span class="s1">&#39;IdentityPass&#39;</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">keep</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bool_refpts</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;keep&#39;</span><span class="p">))</span>
+            <span class="n">keep</span> <span class="o">=</span> <span class="n">get_bool_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;keep&#39;</span><span class="p">))</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-            <span class="n">keep</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_cells</span><span class="p">(</span><span class="n">checktype</span><span class="p">((</span><span class="n">Monitor</span><span class="p">,</span> <span class="n">RFCavity</span><span class="p">)))</span>
+            <span class="n">keep</span> <span class="o">=</span> <span class="n">get_bool_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">checktype</span><span class="p">((</span><span class="n">elt</span><span class="o">.</span><span class="n">Monitor</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">RFCavity</span><span class="p">)))</span>
 
         <span class="k">return</span> <span class="n">Lattice</span><span class="p">(</span><span class="n">reduce_filter</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">kp</span> <span class="o">|</span> <span class="n">keep</span><span class="p">),</span>
                        <span class="n">iterator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs_filter</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Lattice.replace"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.replace">[docs]</a>    <span class="k">def</span> <span class="nf">replace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;Lattice&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Return a shallow copy of the lattice replacing the selected</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a shallow copy of the lattice replacing the selected</span>
 <span class="sd">        elements by a deep copy</span>
 
 <span class="sd">        Parameters:</span>
 <span class="sd">            refpts: element selector</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">refpts</span><span class="p">):</span>
-            <span class="n">check</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">check</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">_bool_refs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">refpts</span><span class="p">))</span>
+        <span class="n">check</span> <span class="o">=</span> <span class="n">get_bool_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">refpts</span><span class="p">)</span>
         <span class="n">elems</span> <span class="o">=</span> <span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">()</span> <span class="k">if</span> <span class="n">ok</span> <span class="k">else</span> <span class="n">el</span> <span class="k">for</span> <span class="n">el</span><span class="p">,</span> <span class="n">ok</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">check</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">Lattice</span><span class="p">(</span><span class="n">elem_generator</span><span class="p">,</span> <span class="n">elems</span><span class="p">,</span>
-                       <span class="n">iterator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs_filter</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
+                       <span class="n">iterator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">attrs_filter</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+    <span class="c1"># Obsolete methods kept for compatibility</span>
+<div class="viewcode-block" id="Lattice.radiation_on"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.radiation_on">[docs]</a>    <span class="k">def</span> <span class="nf">radiation_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Lattice&quot;</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Obsolete. Turn longitudinal motion on</span>
+
+<span class="sd">        The function name is misleading, since the function deals with</span>
+<span class="sd">        longitudinal motion in general.</span>
+
+<span class="sd">        For this reason **the method is obsolete** and replaced by</span>
+<span class="sd">        :py:meth:`.enable_6d`</span>
+
+<span class="sd">        See Also:</span>
+<span class="sd">            :py:meth:`.enable_6d`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+            <span class="nb">zip</span><span class="p">((</span><span class="s1">&#39;cavity_pass&#39;</span><span class="p">,</span> <span class="s1">&#39;dipole_pass&#39;</span><span class="p">,</span> <span class="s1">&#39;quadrupole_pass&#39;</span><span class="p">),</span> <span class="n">args</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_6d</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Lattice.radiation_off"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.radiation_off">[docs]</a>    <span class="k">def</span> <span class="nf">radiation_off</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Lattice&quot;</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Obsolete. Turn longitudinal motion off</span>
+
+<span class="sd">        The function name is misleading, since the function deals with</span>
+<span class="sd">        longitudinal motion in general.</span>
+
+<span class="sd">        For this reason **the method is obsolete** and replaced by</span>
+<span class="sd">        :py:meth:`.disable_6d`</span>
+
+<span class="sd">        See Also:</span>
+<span class="sd">            :py:meth:`disable_6d`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+            <span class="nb">zip</span><span class="p">((</span><span class="s1">&#39;cavity_pass&#39;</span><span class="p">,</span> <span class="s1">&#39;dipole_pass&#39;</span><span class="p">,</span> <span class="s1">&#39;quadrupole_pass&#39;</span><span class="p">),</span> <span class="n">args</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_6d</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">radiation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Obsolete (see :py:attr:`is_6d` instead)</span>
+
+<span class="sd">        :meta private:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_radiation</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">radiate</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">elem</span><span class="o">.</span><span class="n">longt_motion</span><span class="p">:</span>
+                    <span class="n">radiate</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="k">break</span>
+            <span class="c1"># noinspection PyAttributeOutsideInit</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_radiation</span> <span class="o">=</span> <span class="n">radiate</span>
+            <span class="k">return</span> <span class="n">radiate</span></div>
 
 
 <div class="viewcode-block" id="lattice_filter"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.lattice_filter">[docs]</a><span class="k">def</span> <span class="nf">lattice_filter</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">lattice</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Copy lattice parameters and run through all lattice elements</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Copy lattice parameters and run through all lattice elements</span>
 
 <span class="sd">    Parameters:</span>
 <span class="sd">        params:     Dictionary of Lattice attributes</span>
@@ -1121,7 +1522,7 @@
 
 <span class="c1"># noinspection PyUnusedLocal</span>
 <div class="viewcode-block" id="elem_generator"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.elem_generator">[docs]</a><span class="k">def</span> <span class="nf">elem_generator</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">elems</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Element</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Element</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Run through all elements without any check</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Run through all elements without any check</span>
 
 <span class="sd">    Parameters:</span>
 <span class="sd">        params:     Dictionary of Lattice attributes</span>
@@ -1138,7 +1539,7 @@
 
 <div class="viewcode-block" id="type_filter"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.type_filter">[docs]</a><span class="k">def</span> <span class="nf">type_filter</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">elems</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Element</span><span class="p">])</span> \
         <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Element</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Run through all elements and check element validity.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Run through all elements and check element validity.</span>
 <span class="sd">    Analyse elements for radiation state</span>
 
 <span class="sd">    Parameters:</span>
@@ -1151,8 +1552,7 @@
     <span class="n">radiate</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">elems</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">Element</span><span class="p">):</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">PassMethod</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;RadPass&#39;</span><span class="p">)</span> <span class="ow">or</span>
-                    <span class="n">elem</span><span class="o">.</span><span class="n">PassMethod</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;CavityPass&#39;</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">elem</span><span class="o">.</span><span class="n">longt_motion</span><span class="p">:</span>
                 <span class="n">radiate</span> <span class="o">=</span> <span class="kc">True</span>
             <span class="k">yield</span> <span class="n">elem</span>
         <span class="k">else</span><span class="p">:</span>
@@ -1163,7 +1563,7 @@
 
 <div class="viewcode-block" id="params_filter"><a class="viewcode-back" href="../../../p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.params_filter">[docs]</a><span class="k">def</span> <span class="nf">params_filter</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">elem_filter</span><span class="p">:</span> <span class="n">Filter</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> \
         <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Element</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Run through all elements, looking for energy and periodicity.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Run through all elements, looking for energy and periodicity.</span>
 <span class="sd">    Remove the Energy attribute of non-radiating elements</span>
 
 <span class="sd">    Parameters:</span>
@@ -1197,12 +1597,12 @@
     <span class="n">cell_length</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">elem_filter</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)):</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">elements</span><span class="o">.</span><span class="n">RFCavity</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">RFCavity</span><span class="p">):</span>
             <span class="n">cavities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
         <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="s1">&#39;Energy&#39;</span><span class="p">):</span>
             <span class="n">el_energies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">Energy</span><span class="p">)</span>
             <span class="k">del</span> <span class="n">elem</span><span class="o">.</span><span class="n">Energy</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">elements</span><span class="o">.</span><span class="n">Dipole</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">Dipole</span><span class="p">):</span>
             <span class="n">thetas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">BendingAngle</span><span class="p">)</span>
         <span class="n">cell_length</span> <span class="o">+=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="s1">&#39;Length&#39;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
         <span class="k">yield</span> <span class="n">elem</span>
@@ -1241,56 +1641,88 @@
         <span class="n">params</span><span class="p">[</span><span class="s1">&#39;periodicity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">periodicity</span></div>
 
 
-<span class="n">Lattice</span><span class="o">.</span><span class="n">uint32_refpts</span> <span class="o">=</span> <span class="n">_uint32_refs</span>
-<span class="n">Lattice</span><span class="o">.</span><span class="n">bool_refpts</span> <span class="o">=</span> <span class="n">_bool_refs</span>
-<span class="n">Lattice</span><span class="o">.</span><span class="n">get_cells</span> <span class="o">=</span> <span class="n">get_cells</span>
-<span class="n">Lattice</span><span class="o">.</span><span class="n">get_refpts</span> <span class="o">=</span> <span class="n">get_refpts</span>
+<span class="n">Lattice</span><span class="o">.</span><span class="n">get_uint32_index</span> <span class="o">=</span> <span class="n">get_uint32_index</span>
+<span class="n">Lattice</span><span class="o">.</span><span class="n">get_bool_index</span> <span class="o">=</span> <span class="n">get_bool_index</span>
+<span class="n">Lattice</span><span class="o">.</span><span class="n">refcount</span> <span class="o">=</span> <span class="n">_refcount</span>
 <span class="n">Lattice</span><span class="o">.</span><span class="n">set_shift</span> <span class="o">=</span> <span class="n">set_shift</span>
 <span class="n">Lattice</span><span class="o">.</span><span class="n">set_tilt</span> <span class="o">=</span> <span class="n">set_tilt</span>
 <span class="n">Lattice</span><span class="o">.</span><span class="n">get_elements</span> <span class="o">=</span> <span class="n">get_elements</span>
 <span class="n">Lattice</span><span class="o">.</span><span class="n">get_s_pos</span> <span class="o">=</span> <span class="n">get_s_pos</span>
 <span class="n">Lattice</span><span class="o">.</span><span class="n">select</span> <span class="o">=</span> <span class="n">refpts_iterator</span>
-<span class="n">Lattice</span><span class="o">.</span><span class="n">refcount</span> <span class="o">=</span> <span class="n">refpts_len</span>
 <span class="n">Lattice</span><span class="o">.</span><span class="n">get_value_refpts</span> <span class="o">=</span> <span class="n">get_value_refpts</span>
 <span class="n">Lattice</span><span class="o">.</span><span class="n">set_value_refpts</span> <span class="o">=</span> <span class="n">set_value_refpts</span>
 <span class="n">Lattice</span><span class="o">.</span><span class="n">get_geometry</span> <span class="o">=</span> <span class="n">get_geometry</span>
 </pre></div>
 
-              </article>
-              
-
-              
-              <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+            </article>
+            
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'>
 </div>
-              </footer>
-              
+            </footer>
+            
           </div>
           
-      </div>
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
     </div>
+  </div>
 
   
-  
+    
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
 
-<footer class="bd-footer"><div class="bd-footer__inner container">
+  <footer class="bd-footer"><div class="bd-footer__inner container">
   
   <div class="footer-item">
-    <p class="copyright">
+    
+<p class="copyright">
+
     &copy; Copyright 2022, ATCollab.<br>
+
 </p>
+
   </div>
   
   <div class="footer-item">
-    <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
 </p>
+
   </div>
   
 </div>
-</footer>
+  </footer>
   </body>
 </html>

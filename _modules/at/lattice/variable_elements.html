@@ -1,0 +1,508 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>at.lattice.variable_elements &#8212; Accelerator Toolbox 0.0.4 documentation</title>
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+
+  
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom_at.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/at/lattice/variable_elements';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../../../_static/AT.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/AT.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../p/index.html">
+                        Python
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../m/index.html">
+                        Matlab
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../pabout.html">
+                        About
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/atcollab/at" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../p/index.html">
+                        Python
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../m/index.html">
+                        Matlab
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../pabout.html">
+                        About
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/atcollab/at" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <h1>Source code for at.lattice.variable_elements</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">.elements</span> <span class="kn">import</span> <span class="n">Element</span><span class="p">,</span> <span class="n">_array</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">AtError</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">IntEnum</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+
+<div class="viewcode-block" id="ACMode"><a class="viewcode-back" href="../../../p/api/at.lattice.variable_elements.html#at.lattice.variable_elements.ACMode">[docs]</a><span class="k">class</span> <span class="nc">ACMode</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Class to define the excitation types&quot;&quot;&quot;</span>
+    <span class="n">SINE</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">WHITENOISE</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">ARBITRARY</span> <span class="o">=</span> <span class="mi">2</span></div>
+
+
+<div class="viewcode-block" id="VariableMultipole"><a class="viewcode-back" href="../../../p/api/at.lattice.variable_elements.html#at.lattice.variable_elements.VariableMultipole">[docs]</a><span class="k">class</span> <span class="nc">VariableMultipole</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Class to generate an AT variable thin multipole element</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_BUILD_ATTRIBUTES</span> <span class="o">=</span> <span class="n">Element</span><span class="o">.</span><span class="n">_BUILD_ATTRIBUTES</span>
+    <span class="n">_conversions</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">Element</span><span class="o">.</span><span class="n">_conversions</span><span class="p">,</span>
+                        <span class="n">Mode</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+                        <span class="n">AmplitudeA</span><span class="o">=</span><span class="n">_array</span><span class="p">,</span> <span class="n">AmplitudeB</span><span class="o">=</span><span class="n">_array</span><span class="p">,</span>
+                        <span class="n">FrequencyA</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">FrequencyB</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+                        <span class="n">PhaseA</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">PhaseB</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+                        <span class="n">Seed</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">NSamplesA</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">NSamplesB</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+                        <span class="n">FuncA</span><span class="o">=</span><span class="n">_array</span><span class="p">,</span> <span class="n">FuncB</span><span class="o">=</span><span class="n">_array</span><span class="p">,</span> <span class="n">Ramps</span><span class="o">=</span><span class="n">_array</span><span class="p">,</span>
+                        <span class="n">Periodic</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">family_name</span><span class="p">,</span> <span class="n">AmplitudeA</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">AmplitudeB</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">mode</span><span class="o">=</span><span class="n">ACMode</span><span class="o">.</span><span class="n">SINE</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># noinspection PyUnresolvedReferences</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            family_name(str):    Element name</span>
+
+<span class="sd">        Keyword Arguments:</span>
+<span class="sd">            AmplitudeA(list,float): Amplitude of the excitation for PolynomA. Default None</span>
+<span class="sd">            AmplitudeB(list,float): Amplitude of the excitation for PolynomB. Default None</span>
+<span class="sd">            mode(ACMode): defines the evaluation grid. Default ACMode.SINE</span>
+
+<span class="sd">              * :py:attr:`.ACMode.SINE`: sine function</span>
+<span class="sd">              * :py:attr:`.ACMode.WHITENOISE`: gaussian white noise</span>
+<span class="sd">              * :py:attr:`.GridMode.ARBITRARY`: user defined turn-by-turn kick list</span>
+<span class="sd">            FrequencyA(float): Frequency of the sine excitation for PolynomA</span>
+<span class="sd">            FrequencyB(float): Frequency of the sine excitation for PolynomB</span>
+<span class="sd">            PhaseA(float): Phase of the sine excitation for PolynomA. Default 0</span>
+<span class="sd">            PhaseB(float): Phase of the sine excitation for PolynomB. Default 0</span>
+<span class="sd">            MaxOrder(int): Order of the multipole for scalar amplitude. Default 0</span>
+<span class="sd">            Seed(int): Seed of the random number generator for white</span>
+<span class="sd">                       noise excitation. Default datetime.now()</span>
+<span class="sd">            FuncA(list): User defined tbt kick list for PolynomA</span>
+<span class="sd">            FuncB(list): User defined tbt kick list for PolynomB</span>
+<span class="sd">            Periodic(bool): If True (default) the user defined kick is repeated</span>
+<span class="sd">            Ramps(list): Vector (t0, t1, t2, t3) in turn number to define the ramping </span>
+<span class="sd">                         of the excitation</span>
+
+<span class="sd">              * ``t&lt;t0``: excitation amplitude is zero</span>
+<span class="sd">              * ``t0&lt;t&lt;t1``: exciation amplitude is linearly ramped up</span>
+<span class="sd">              * ``t1&lt;t&lt;t2``: exciation amplitude is constant             </span>
+<span class="sd">              * ``t2&lt;t&lt;t3``: exciation amplitude is linearly ramped down</span>
+<span class="sd">              * ``t3&lt;t``: exciation amplitude is zero           </span>
+
+<span class="sd">        Examples:</span>
+
+<span class="sd">            &gt;&gt;&gt; acmpole = at.VariableMultipole(&#39;ACMPOLE&#39;, AmplitudeB=amp, FrequencyB=frequency)</span>
+<span class="sd">            &gt;&gt;&gt; acmpole = at.VariableMultipole(&#39;ACMPOLE&#39;, AmplitudeB=amp, mode=at.ACMode.WHITENOISE)</span>
+<span class="sd">            &gt;&gt;&gt; acmpole = at.VariableMultipole(&#39;ACMPOLE&#39;, AmplitudeB=amp, FuncB=fun, mode=at.ACMode.ARBITRARY)</span>
+
+<span class="sd">        .. note::</span>
+
+<span class="sd">            * For all excitation modes all least one amplitude has to be provided.</span>
+<span class="sd">              The default excitation is ``ACMode.SINE``</span>
+<span class="sd">            * For ``mode=ACMode.SINE`` the ``Frequency(A,B)`` corresponding to the</span>
+<span class="sd">              ``Amplitude(A,B)`` has to be provided</span>
+<span class="sd">            * For ``mode=ACMode.ARBITRARY`` the ``Func(A,B)`` corresponding to the</span>
+<span class="sd">              ``Amplitude(A,B)`` has to be provided</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;PassMethod&#39;</span><span class="p">,</span> <span class="s1">&#39;VariableThinMPolePass&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">MaxOrder</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;MaxOrder&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Periodic</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;Periodic&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Mode</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">AmplitudeA</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">AmplitudeB</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">AtError</span><span class="p">(</span><span class="s1">&#39;Please provide at least one amplitude for A or B&#39;</span><span class="p">)</span>
+        <span class="n">AmplitudeB</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_params</span><span class="p">(</span><span class="n">AmplitudeB</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">AmplitudeA</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_params</span><span class="p">(</span><span class="n">AmplitudeA</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_setmaxorder</span><span class="p">(</span><span class="n">AmplitudeA</span><span class="p">,</span> <span class="n">AmplitudeB</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="n">ACMode</span><span class="o">.</span><span class="n">WHITENOISE</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Seed</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;Seed&#39;</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">PolynomA</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">MaxOrder</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">PolynomB</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">MaxOrder</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ramps</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;Ramps&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ramps</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">ramps</span><span class="p">)</span><span class="o">==</span><span class="mi">4</span><span class="p">,</span> \
+                <span class="s1">&#39;Ramps has to be a vector with 4 elements&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Ramps</span> <span class="o">=</span> <span class="n">ramps</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">VariableMultipole</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">family_name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_setmaxorder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ampa</span><span class="p">,</span> <span class="n">ampb</span><span class="p">):</span>
+        <span class="n">mxa</span><span class="p">,</span> <span class="n">mxb</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">ampa</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mxa</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">ampa</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">ampb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mxb</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">ampb</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">MaxOrder</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">mxa</span><span class="p">,</span> <span class="n">mxb</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ampa</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">delta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">MaxOrder</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">ampa</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">delta</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">ampa</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">ampa</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">delta</span><span class="p">))</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;AmplitudeA&#39;</span><span class="p">,</span> <span class="n">ampa</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ampb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">delta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">MaxOrder</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">ampb</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">delta</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">ampb</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">ampb</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">delta</span><span class="p">))</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;AmplitudeB&#39;</span><span class="p">,</span> <span class="n">ampb</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_set_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">ab</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">amplitude</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">amplitude</span><span class="p">):</span>
+                <span class="n">amp</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">MaxOrder</span><span class="p">)</span>
+                <span class="n">amplitude</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">amp</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="n">ACMode</span><span class="o">.</span><span class="n">SINE</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_set_sine</span><span class="p">(</span><span class="n">ab</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="n">ACMode</span><span class="o">.</span><span class="n">ARBITRARY</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_set_arb</span><span class="p">(</span><span class="n">ab</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">amplitude</span>
+
+    <span class="k">def</span> <span class="nf">_set_sine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ab</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">frequency</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span> <span class="o">+</span> <span class="n">ab</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">phase</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;Phase&#39;</span> <span class="o">+</span> <span class="n">ab</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">frequency</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> \
+            <span class="s1">&#39;Please provide a value for Frequency&#39;</span> <span class="o">+</span> <span class="n">ab</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;Frequency&#39;</span> <span class="o">+</span> <span class="n">ab</span><span class="p">,</span> <span class="n">frequency</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;Phase&#39;</span> <span class="o">+</span> <span class="n">ab</span><span class="p">,</span> <span class="n">phase</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_set_arb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ab</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">func</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;Func&#39;</span> <span class="o">+</span> <span class="n">ab</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">nsamp</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">func</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> \
+            <span class="s1">&#39;Please provide a value for Func&#39;</span> <span class="o">+</span> <span class="n">ab</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;Func&#39;</span> <span class="o">+</span> <span class="n">ab</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;NSamples&#39;</span> <span class="o">+</span> <span class="n">ab</span><span class="p">,</span> <span class="n">nsamp</span><span class="p">)</span></div>
+</pre></div>
+
+            </article>
+            
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022, ATCollab.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>

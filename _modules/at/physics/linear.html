@@ -5,54 +5,77 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>at.physics.linear &#8212; Accelerator Toolbox 0.1.dev1+gba07c8d documentation</title>
-<script>
-  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
-</script>
-
+    <title>at.physics.linear &#8212; Accelerator Toolbox 0.0.4 documentation</title>
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+  <link href="../../../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
 
-
+  
   <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom_at.css" />
-
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/at/physics/linear';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="docsearch:language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
   </head>
   
   
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
-    <div class="bd-header-announcement container-fluid" id="banner">
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
       
-
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
     </div>
+  </div>
 
-    
-    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
-
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
   <div id="navbar-start">
     
     
@@ -60,9 +83,15 @@
 
 
 <a class="navbar-brand logo" href="../../../index.html">
+
   
   
   
+  
+  
+  
+  
+
   
     <img src="../../../_static/AT.png" class="logo__image only-light" alt="Logo image">
     <img src="../../../_static/AT.png" class="logo__image only-dark" alt="Logo image">
@@ -72,54 +101,70 @@
     
   </div>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="fas fa-bars"></span>
-  </button>
-
   
-  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+  <div class="col-lg-9 navbar-header-items">
     <div id="navbar-center" class="mr-auto">
       
       <div class="navbar-center-item">
-        <ul id="navbar-main-elements" class="navbar-nav">
-    <li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../../p/index.html">
-  Python
- </a>
-</li>
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../p/index.html">
+                        Python
+                    </a>
+                </li>
+                
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../../m/index.html">
-  Matlab
- </a>
-</li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../m/index.html">
+                        Matlab
+                    </a>
+                </li>
+                
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../../pabout.html">
-  About
- </a>
-</li>
-
-    
-</ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../pabout.html">
+                        About
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
       </div>
       
     </div>
 
     <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
       
       <div class="navbar-end-item">
-        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
-    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
-    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
-    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
 </span>
       </div>
       
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/atcollab/at" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/atcollab/at" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
             <label class="sr-only">GitHub</label></a>
         </li>
       </ul>
@@ -127,56 +172,136 @@
       
     </div>
   </div>
-</div>
-    </nav>
-    
-
-    <div class="bd-container container-xl">
-      <div class="bd-container__inner row">
-          
-
-<!-- Only show if we have sidebars configured, else just a small margin  -->
-<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
-  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <div class="bd-toc-item active">
-    
-  </div>
-</nav>
-  </div>
-  <div class="sidebar-end-items">
-  </div>
-</div>
 
 
-          
-
-
-<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
   
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
 </div>
+  </nav>
+  
 
-
-          
-          
-          <div class="bd-content col-12 col-md-9 col-xl-7">
-              
-              <article class="bd-article" role="main">
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../p/index.html">
+                        Python
+                    </a>
+                </li>
                 
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../m/index.html">
+                        Matlab
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../pabout.html">
+                        About
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/atcollab/at" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
   <h1>Source code for at.physics.linear</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Coupled or non-coupled 4x4 linear motion</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">atan2</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Callable</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">solve</span>
 <span class="kn">from</span> <span class="nn">..constants</span> <span class="kn">import</span> <span class="n">clight</span>
-<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">DConstant</span><span class="p">,</span> <span class="n">get_s_pos</span><span class="p">,</span> <span class="n">Refpts</span>
-<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">AtWarning</span><span class="p">,</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">check_radiation</span>
+<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">DConstant</span><span class="p">,</span> <span class="n">Refpts</span><span class="p">,</span> <span class="n">get_bool_index</span><span class="p">,</span> <span class="n">get_uint32_index</span>
+<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">AtWarning</span><span class="p">,</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">check_6d</span><span class="p">,</span> <span class="n">get_s_pos</span>
 <span class="kn">from</span> <span class="nn">..tracking</span> <span class="kn">import</span> <span class="n">lattice_pass</span>
 <span class="kn">from</span> <span class="nn">.orbit</span> <span class="kn">import</span> <span class="n">Orbit</span><span class="p">,</span> <span class="n">find_orbit4</span><span class="p">,</span> <span class="n">find_orbit6</span>
 <span class="kn">from</span> <span class="nn">.matrix</span> <span class="kn">import</span> <span class="n">find_m44</span><span class="p">,</span> <span class="n">find_m66</span>
@@ -225,7 +350,7 @@
 
 
 <span class="k">def</span> <span class="nf">_twiss22</span><span class="p">(</span><span class="n">t12</span><span class="p">,</span> <span class="n">alpha0</span><span class="p">,</span> <span class="n">beta0</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Propagate Twiss parameters&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Propagate Twiss parameters&quot;&quot;&quot;</span>
     <span class="n">bbb</span> <span class="o">=</span> <span class="n">t12</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
     <span class="n">aaa</span> <span class="o">=</span> <span class="n">t12</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">beta0</span> <span class="o">-</span> <span class="n">bbb</span> <span class="o">*</span> <span class="n">alpha0</span>
     <span class="n">beta</span> <span class="o">=</span> <span class="p">(</span><span class="n">aaa</span> <span class="o">*</span> <span class="n">aaa</span> <span class="o">+</span> <span class="n">bbb</span> <span class="o">*</span> <span class="n">bbb</span><span class="p">)</span> <span class="o">/</span> <span class="n">beta0</span>
@@ -253,8 +378,8 @@
 
 <span class="c1"># noinspection PyShadowingNames,PyPep8Naming</span>
 <span class="k">def</span> <span class="nf">_tunes</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">ring</span><span class="o">.</span><span class="n">radiation</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">ring</span><span class="o">.</span><span class="n">is_6d</span><span class="p">:</span>
         <span class="n">mt</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">find_m66</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">mt</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">find_m44</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -264,7 +389,7 @@
 
 
 <span class="k">def</span> <span class="nf">_analyze2</span><span class="p">(</span><span class="n">mt</span><span class="p">,</span> <span class="n">ms</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Analysis of a 2D 1-turn transfer matrix&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Analysis of a 2D 1-turn transfer matrix&quot;&quot;&quot;</span>
     <span class="n">A</span> <span class="o">=</span> <span class="n">mt</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
     <span class="n">B</span> <span class="o">=</span> <span class="n">mt</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span> <span class="mi">2</span><span class="p">:]</span>
     <span class="n">alp0_a</span><span class="p">,</span> <span class="n">bet0_a</span><span class="p">,</span> <span class="n">vp_a</span> <span class="o">=</span> <span class="n">_closure</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -282,7 +407,7 @@
 
 
 <span class="k">def</span> <span class="nf">_analyze4</span><span class="p">(</span><span class="n">mt</span><span class="p">,</span> <span class="n">ms</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Analysis of a 4D 1-turn transfer matrix according to Sagan, Rubin&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Analysis of a 4D 1-turn transfer matrix according to Sagan, Rubin&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">propagate</span><span class="p">(</span><span class="n">t12</span><span class="p">):</span>
         <span class="n">M</span> <span class="o">=</span> <span class="n">t12</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
         <span class="n">N</span> <span class="o">=</span> <span class="n">t12</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span> <span class="mi">2</span><span class="p">:]</span>
@@ -343,14 +468,14 @@
 
 
 <span class="k">def</span> <span class="nf">_analyze6</span><span class="p">(</span><span class="n">mt</span><span class="p">,</span> <span class="n">ms</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Analysis of a 2D, 4D, 6D 1-turn transfer matrix</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Analysis of a 2D, 4D, 6D 1-turn transfer matrix</span>
 <span class="sd">    according to Wolski&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">get_phase</span><span class="p">(</span><span class="n">a22</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the phase for A standardization&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the phase for A standardization&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">atan2</span><span class="p">(</span><span class="n">a22</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">a22</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 
     <span class="k">def</span> <span class="nf">standardize</span><span class="p">(</span><span class="n">aa</span><span class="p">,</span> <span class="n">slcs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Apply rotation to put A in std form&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Apply rotation to put A in std form&quot;&quot;&quot;</span>
         <span class="k">def</span> <span class="nf">rot2</span><span class="p">(</span><span class="n">slc</span><span class="p">):</span>
             <span class="n">rot</span> <span class="o">=</span> <span class="o">-</span><span class="n">get_phase</span><span class="p">(</span><span class="n">aa</span><span class="p">[</span><span class="n">slc</span><span class="p">,</span> <span class="n">slc</span><span class="p">])</span>
             <span class="n">cs</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">rot</span><span class="p">)</span>
@@ -413,12 +538,13 @@
 
 
 <span class="c1"># noinspection PyShadowingNames,PyPep8Naming</span>
-<span class="k">def</span> <span class="nf">_linopt</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">analyze</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dct</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">orbit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-            <span class="n">twiss_in</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">get_chrom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">get_w</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">keep_lattice</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-            <span class="n">mname</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="n">add0</span><span class="o">=</span><span class="p">(),</span> <span class="n">adds</span><span class="o">=</span><span class="p">(),</span> <span class="n">cavpts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">_linopt</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">analyze</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dct</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">orbit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">twiss_in</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">get_chrom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">get_w</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">keep_lattice</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">mname</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="n">add0</span><span class="o">=</span><span class="p">(),</span> <span class="n">adds</span><span class="o">=</span><span class="p">(),</span> <span class="n">cavpts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;&quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">build_sigma</span><span class="p">(</span><span class="n">twin</span><span class="p">,</span> <span class="n">orbit</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Build the initial distribution at entrance of the transfer line&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build the initial distribution at entrance of the transfer line&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">orbit</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">orbit</span> <span class="o">=</span> <span class="n">twiss_in</span><span class="p">[</span><span class="s1">&#39;closed_orbit&#39;</span><span class="p">]</span>
@@ -443,7 +569,7 @@
         <span class="k">return</span> <span class="n">orbit</span><span class="p">,</span> <span class="n">sigm</span><span class="p">,</span> <span class="n">d0</span>
 
     <span class="k">def</span> <span class="nf">chrom_w</span><span class="p">(</span><span class="n">ringup</span><span class="p">,</span> <span class="n">ringdn</span><span class="p">,</span> <span class="n">orbitup</span><span class="p">,</span> <span class="n">orbitdn</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Compute the chromaticity and W-functions&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the chromaticity and W-functions&quot;&quot;&quot;</span>
         <span class="c1"># noinspection PyShadowingNames</span>
         <span class="k">def</span> <span class="nf">off_momentum</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span> <span class="n">orb0</span><span class="p">):</span>
             <span class="n">mt</span><span class="p">,</span> <span class="n">ms</span> <span class="o">=</span> <span class="n">get_matrix</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="n">refpts</span><span class="p">,</span> <span class="n">orbit</span><span class="o">=</span><span class="n">orb0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -452,7 +578,7 @@
             <span class="k">return</span> <span class="n">tunes</span><span class="p">,</span> <span class="n">el0</span><span class="p">,</span> <span class="n">els</span>
 
         <span class="k">def</span> <span class="nf">wget</span><span class="p">(</span><span class="n">ddp</span><span class="p">,</span> <span class="n">elup</span><span class="p">,</span> <span class="n">eldn</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;Compute the chromatic amplitude function&quot;&quot;&quot;</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Compute the chromatic amplitude function&quot;&quot;&quot;</span>
             <span class="n">alpha_up</span><span class="p">,</span> <span class="n">beta_up</span> <span class="o">=</span> <span class="n">elup</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># Extract alpha and beta</span>
             <span class="n">alpha_dn</span><span class="p">,</span> <span class="n">beta_dn</span> <span class="o">=</span> <span class="n">eldn</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
             <span class="n">db</span> <span class="o">=</span> <span class="p">(</span><span class="n">beta_up</span> <span class="o">-</span> <span class="n">beta_dn</span><span class="p">)</span> <span class="o">/</span> <span class="n">ddp</span>
@@ -472,7 +598,7 @@
         <span class="k">return</span> <span class="n">chrom</span><span class="p">,</span> <span class="n">w0</span><span class="p">,</span> <span class="n">ws</span>
 
     <span class="k">def</span> <span class="nf">unwrap</span><span class="p">(</span><span class="n">mu</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Remove the phase jumps&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove the phase jumps&quot;&quot;&quot;</span>
         <span class="n">dmu</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">dms</span><span class="p">)),</span>
                                             <span class="n">mu</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">jumps</span> <span class="o">=</span> <span class="n">dmu</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">1.e-3</span>
@@ -481,7 +607,7 @@
     <span class="n">dp_step</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;DPStep&#39;</span><span class="p">,</span> <span class="n">DConstant</span><span class="o">.</span><span class="n">DPStep</span><span class="p">)</span>
     <span class="n">addtype</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;addtype&#39;</span><span class="p">,</span> <span class="p">[])</span>
 
-    <span class="k">if</span> <span class="n">ring</span><span class="o">.</span><span class="n">radiation</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ring</span><span class="o">.</span><span class="n">is_6d</span><span class="p">:</span>
         <span class="n">get_matrix</span> <span class="o">=</span> <span class="n">find_m66</span>
         <span class="n">get_orbit</span> <span class="o">=</span> <span class="n">find_orbit6</span>
     <span class="k">else</span><span class="p">:</span>
@@ -490,7 +616,7 @@
 
     <span class="k">if</span> <span class="n">twiss_in</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>        <span class="c1"># Ring</span>
         <span class="k">if</span> <span class="n">orbit</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">orbit</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">get_orbit</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="n">dp</span><span class="p">,</span> <span class="n">dct</span><span class="o">=</span><span class="n">dct</span><span class="p">,</span>
+            <span class="n">orbit</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">get_orbit</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="n">dp</span><span class="p">,</span> <span class="n">dct</span><span class="o">=</span><span class="n">dct</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
                                  <span class="n">keep_lattice</span><span class="o">=</span><span class="n">keep_lattice</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
             <span class="n">keep_lattice</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="c1"># Get 1-turn transfer matrix</span>
@@ -522,8 +648,7 @@
     <span class="c1"># Propagate the closed orbit</span>
     <span class="n">orb0</span><span class="p">,</span> <span class="n">orbs</span> <span class="o">=</span> <span class="n">get_orbit</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="n">refpts</span><span class="p">,</span> <span class="n">orbit</span><span class="o">=</span><span class="n">orbit</span><span class="p">,</span>
                            <span class="n">keep_lattice</span><span class="o">=</span><span class="n">keep_lattice</span><span class="p">)</span>
-    <span class="c1"># avoid problem if refpts is None</span>
-    <span class="n">spos</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">get_s_pos</span><span class="p">(</span><span class="n">ring</span><span class="o">.</span><span class="n">uint32_refpts</span><span class="p">(</span><span class="n">refpts</span><span class="p">))</span>
+    <span class="n">spos</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">get_s_pos</span><span class="p">(</span><span class="n">refpts</span><span class="p">)</span>
 
     <span class="n">nrefs</span> <span class="o">=</span> <span class="n">orbs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">dms</span> <span class="o">=</span> <span class="n">vps</span><span class="o">.</span><span class="n">size</span>
@@ -535,7 +660,7 @@
         <span class="n">datas</span> <span class="o">=</span> <span class="p">(</span><span class="n">orbs</span><span class="p">,</span> <span class="n">ms</span><span class="p">,</span> <span class="n">spos</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">get_chrom</span> <span class="ow">or</span> <span class="n">get_w</span><span class="p">:</span>
             <span class="n">f0</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">get_rf_frequency</span><span class="p">(</span><span class="n">cavpts</span><span class="o">=</span><span class="n">cavpts</span><span class="p">)</span>
-            <span class="n">df</span> <span class="o">=</span> <span class="n">dp_step</span> <span class="o">*</span> <span class="n">ring</span><span class="o">.</span><span class="n">radiation_off</span><span class="p">(</span><span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">slip_factor</span> <span class="o">*</span> <span class="n">f0</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">dp_step</span> <span class="o">*</span> <span class="n">ring</span><span class="o">.</span><span class="n">disable_6d</span><span class="p">(</span><span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">slip_factor</span> <span class="o">*</span> <span class="n">f0</span>
             <span class="n">rgup</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">set_rf_frequency</span><span class="p">(</span><span class="n">f0</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">df</span><span class="p">,</span> <span class="n">cavpts</span><span class="o">=</span><span class="n">cavpts</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="n">rgdn</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">set_rf_frequency</span><span class="p">(</span><span class="n">f0</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">df</span><span class="p">,</span> <span class="n">cavpts</span><span class="o">=</span><span class="n">cavpts</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="n">o0up</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">get_orbit</span><span class="p">(</span><span class="n">rgup</span><span class="p">,</span> <span class="n">guess</span><span class="o">=</span><span class="n">orb0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -603,9 +728,9 @@
     <span class="k">return</span> <span class="n">elemdata0</span><span class="p">,</span> <span class="n">beamdata</span><span class="p">,</span> <span class="n">elemdata</span>
 
 
-<div class="viewcode-block" id="linopt2"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.linopt2">[docs]</a><span class="nd">@check_radiation</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<div class="viewcode-block" id="linopt2"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.linopt2">[docs]</a><span class="nd">@check_6d</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">linopt2</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Linear analysis of an uncoupled lattice</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Linear analysis of an uncoupled lattice</span>
 
 <span class="sd">    Parameters:</span>
 <span class="sd">        ring:   Lattice description.</span>
@@ -621,10 +746,11 @@
 <span class="sd">          2. an ordered list of such integers without duplicates,</span>
 <span class="sd">          3. a numpy array of booleans of maximum length len(ring)+1,</span>
 <span class="sd">             where selected elements are :py:obj:`True`.</span>
-<span class="sd">        dp (Optional[float]):   Momentum deviation.</span>
-<span class="sd">        dct (Optional[float]):  Path lengthening. If specified, ``dp`` is</span>
-<span class="sd">          ignored and the off-momentum is deduced from the path lengthening.</span>
-<span class="sd">        orbit (Orbit): Avoids looking for the closed orbit if is</span>
+<span class="sd">        dp (float):             Momentum deviation. Defaults to :py:obj:`None`</span>
+<span class="sd">        dct (float):            Path lengthening. Defaults to :py:obj:`None`</span>
+<span class="sd">        df (float):             Deviation of RF frequency. Defaults to</span>
+<span class="sd">          :py:obj:`None`</span>
+<span class="sd">        orbit (Orbit):          Avoids looking for the closed orbit if it is</span>
 <span class="sd">          already known ((6,) array)</span>
 <span class="sd">        get_chrom (bool):       Compute chromaticities. Needs computing</span>
 <span class="sd">          the tune at 2 different momentum deviations around the central one.</span>
@@ -654,7 +780,7 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        elemdata0:      Linear optics data at the entrance of the ring</span>
 <span class="sd">        ringdata:       Lattice properties</span>
-<span class="sd">        elemdata:       Linear optics at the points refered to by ``refpts``,</span>
+<span class="sd">        elemdata:       Linear optics at the points refered to by *refpts*,</span>
 <span class="sd">          if refpts is :py:obj:`None` an empty lindata structure is returned.</span>
 
 <span class="sd">    **elemdata** is a record array with fields:</span>
@@ -669,19 +795,18 @@
 <span class="sd">    **alpha**           :math:`\left[ \alpha_x,\alpha_y \right]` vector</span>
 <span class="sd">    **mu**              :math:`\left[ \mu_x,\mu_y \right]`, betatron phase</span>
 <span class="sd">                        (modulo :math:`2\pi`)</span>
-<span class="sd">    **W**               :math:`\left[ W_x,W_y \right]` only if ``get_w``</span>
+<span class="sd">    **W**               :math:`\left[ W_x,W_y \right]` only if *get_w*</span>
 <span class="sd">                        is :py:obj:`True`: chromatic amplitude function</span>
 <span class="sd">    ================    ===================================================</span>
 
 <span class="sd">    All values given at the entrance of each element specified in refpts.</span>
-<span class="sd">    Field values can be obtained with either</span>
-<span class="sd">    ``lindata[&#39;idx&#39;]`` or ``lindata.idx``</span>
+<span class="sd">    Field values can be obtained with either *lindata[&#39;idx&#39;]* or *lindata.idx*</span>
 
 <span class="sd">    **ringdata** is a record array with fields:</span>
 
 <span class="sd">    =================   ======</span>
 <span class="sd">    **tune**            Fractional tunes</span>
-<span class="sd">    **chromaticity**    Chromaticities, only computed if ``get_chrom`` is</span>
+<span class="sd">    **chromaticity**    Chromaticities, only computed if *get_chrom* is</span>
 <span class="sd">                        :py:obj:`True`</span>
 <span class="sd">    =================   ======</span>
 
@@ -699,9 +824,9 @@
     <span class="k">return</span> <span class="n">_linopt</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">_analyze2</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="linopt4"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.linopt4">[docs]</a><span class="nd">@check_radiation</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<div class="viewcode-block" id="linopt4"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.linopt4">[docs]</a><span class="nd">@check_6d</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">linopt4</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Linear analysis of a H/V coupled lattice</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Linear analysis of a H/V coupled lattice</span>
 
 <span class="sd">    4D-analysis of coupled motion following Sagan/Rubin</span>
 
@@ -719,10 +844,11 @@
 <span class="sd">          2. an ordered list of such integers without duplicates,</span>
 <span class="sd">          3. a numpy array of booleans of maximum length len(ring)+1,</span>
 <span class="sd">             where selected elements are :py:obj:`True`.</span>
-<span class="sd">        dp (Optional[float]):   Momentum deviation.</span>
-<span class="sd">        dct (Optional[float]):  Path lengthening. If specified, ``dp`` is</span>
-<span class="sd">          ignored and the off-momentum is deduced from the path lengthening.</span>
-<span class="sd">        orbit (Orbit): Avoids looking for the closed orbit if is</span>
+<span class="sd">        dp (float):             Momentum deviation. Defaults to :py:obj:`None`</span>
+<span class="sd">        dct (float):            Path lengthening. Defaults to :py:obj:`None`</span>
+<span class="sd">        df (float):             Deviation of RF frequency. Defaults to</span>
+<span class="sd">          :py:obj:`None`</span>
+<span class="sd">        orbit (Orbit):          Avoids looking for the closed orbit if it is</span>
 <span class="sd">          already known ((6,) array)</span>
 <span class="sd">        get_chrom (bool):       Compute chromaticities. Needs computing</span>
 <span class="sd">          the tune at 2 different momentum deviations around the central one.</span>
@@ -745,13 +871,6 @@
 <span class="sd">          dispersion</span>
 <span class="sd">            Optional (6,) array, default 0</span>
 
-<span class="sd">          alpha, beta</span>
-<span class="sd">            mandatory (2,) arrays</span>
-<span class="sd">          closed_orbit</span>
-<span class="sd">            Optional (6,) array, default 0</span>
-<span class="sd">          dispersion</span>
-<span class="sd">            Optional (6,) array, default 0</span>
-
 <span class="sd">          If present, the attribute **R** will be used, otherwise the</span>
 <span class="sd">          attributes **alpha** and **beta** will be used. All other attributes</span>
 <span class="sd">          are ignored.</span>
@@ -759,7 +878,7 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        elemdata0:      Linear optics data at the entrance of the ring</span>
 <span class="sd">        ringdata:       Lattice properties</span>
-<span class="sd">        elemdata:       Linear optics at the points refered to by ``refpts``,</span>
+<span class="sd">        elemdata:       Linear optics at the points refered to by *refpts*,</span>
 <span class="sd">          if refpts is :py:obj:`None` an empty lindata structure is returned.</span>
 
 <span class="sd">    **elemdata** is a record array with fields:</span>
@@ -776,19 +895,19 @@
 <span class="sd">                        (modulo :math:`2\pi`)</span>
 <span class="sd">    **gamma**           gamma parameter of the transformation to</span>
 <span class="sd">                        eigenmodes [7]_</span>
-<span class="sd">    **W**               :math:`\left[ W_x,W_y \right]` only if ``get_w``</span>
+<span class="sd">    **W**               :math:`\left[ W_x,W_y \right]` only if *get_w*</span>
 <span class="sd">                        is :py:obj:`True`: chromatic amplitude function</span>
 <span class="sd">    ================    ===================================================</span>
 
 <span class="sd">    All values given at the entrance of each element specified in refpts.</span>
 <span class="sd">    Field values can be obtained with either</span>
-<span class="sd">    ``lindata[&#39;idx&#39;]`` or ``lindata.idx``</span>
+<span class="sd">    *lindata[&#39;idx&#39;]* or *lindata.idx*</span>
 
 <span class="sd">    **ringdata** is a record array with fields:</span>
 
 <span class="sd">    =================   ======</span>
 <span class="sd">    **tune**            Fractional tunes</span>
-<span class="sd">    **chromaticity**    Chromaticities, only computed if ``get_chrom`` is</span>
+<span class="sd">    **chromaticity**    Chromaticities, only computed if *get_chrom* is</span>
 <span class="sd">                        :py:obj:`True`</span>
 <span class="sd">    =================   ======</span>
 
@@ -807,12 +926,12 @@
 
 
 <div class="viewcode-block" id="linopt6"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.linopt6">[docs]</a><span class="k">def</span> <span class="nf">linopt6</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Linear analysis of a fully coupled lattice using normal modes</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Linear analysis of a fully coupled lattice using normal modes</span>
 
 <span class="sd">    For circular machines, :py:func:`linopt6` analyses</span>
 
-<span class="sd">    * the 4x4 1-turn transfer matrix if radiation is OFF, or</span>
-<span class="sd">    * the 6x6 1-turn transfer matrix if radiation is ON.</span>
+<span class="sd">    * the 4x4 1-turn transfer matrix if *ring* is 4D, or</span>
+<span class="sd">    * the 6x6 1-turn transfer matrix if  *ring* is 6D.</span>
 
 <span class="sd">    For a transfer line, The &quot;twiss_in&quot; intput must contain either:</span>
 
@@ -833,10 +952,11 @@
 <span class="sd">          2. an ordered list of such integers without duplicates,</span>
 <span class="sd">          3. a numpy array of booleans of maximum length len(ring)+1,</span>
 <span class="sd">             where selected elements are :py:obj:`True`.</span>
-<span class="sd">        dp (Optional[float]):   Momentum deviation.</span>
-<span class="sd">        dct (Optional[float]):  Path lengthening. If specified, ``dp`` is</span>
-<span class="sd">          ignored and the off-momentum is deduced from the path lengthening.</span>
-<span class="sd">        orbit (Orbit): Avoids looking for the closed orbit if is</span>
+<span class="sd">        dp (float):             Momentum deviation. Defaults to :py:obj:`None`</span>
+<span class="sd">        dct (float):            Path lengthening. Defaults to :py:obj:`None`</span>
+<span class="sd">        df (float):             Deviation of RF frequency. Defaults to</span>
+<span class="sd">          :py:obj:`None`</span>
+<span class="sd">        orbit (Orbit):          Avoids looking for the closed orbit if it is</span>
 <span class="sd">          already known ((6,) array)</span>
 <span class="sd">        get_chrom (bool):       Compute chromaticities. Needs computing</span>
 <span class="sd">          the tune at 2 different momentum deviations around the central one.</span>
@@ -862,12 +982,12 @@
 <span class="sd">          If present, the attribute **R** will be used, otherwise the</span>
 <span class="sd">          attributes **alpha** and **beta** will be used. All other attributes</span>
 <span class="sd">          are ignored.</span>
-<span class="sd">        cavpts (Optional[Refpts]):  Cavity location for off-momentum tuning</span>
+<span class="sd">        cavpts (Refpts):        Cavity location for off-momentum tuning</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        elemdata0:      Linear optics data at the entrance of the ring</span>
 <span class="sd">        ringdata:       Lattice properties</span>
-<span class="sd">        elemdata:       Linear optics at the points refered to by ``refpts``,</span>
+<span class="sd">        elemdata:       Linear optics at the points refered to by *refpts*,</span>
 <span class="sd">          if refpts is :py:obj:`None` an empty lindata structure is returned.</span>
 
 <span class="sd">    **elemdata** is a record array with fields:</span>
@@ -884,19 +1004,19 @@
 <span class="sd">    **alpha**           :math:`\left[ \alpha_x,\alpha_y \right]` vector</span>
 <span class="sd">    **mu**              :math:`\left[ \mu_x,\mu_y \right]`, betatron phase</span>
 <span class="sd">                        (modulo :math:`2\pi`)</span>
-<span class="sd">    **W**               :math:`\left[ W_x,W_y \right]` only if ``get_w``</span>
+<span class="sd">    **W**               :math:`\left[ W_x,W_y \right]` only if *get_w*</span>
 <span class="sd">                        is :py:obj:`True`: chromatic amplitude function</span>
 <span class="sd">    ================    ===================================================</span>
 
 <span class="sd">    All values given at the entrance of each element specified in refpts.</span>
 <span class="sd">    Field values can be obtained with either</span>
-<span class="sd">    ``lindata[&#39;idx&#39;]`` or ``lindata.idx``</span>
+<span class="sd">    *lindata[&#39;idx&#39;]* or *lindata.idx*</span>
 
 <span class="sd">    **ringdata** is a record array with fields:</span>
 
 <span class="sd">    =================   ======</span>
 <span class="sd">    **tune**            Fractional tunes</span>
-<span class="sd">    **chromaticity**    Chromaticities, only computed if ``get_chrom`` is</span>
+<span class="sd">    **chromaticity**    Chromaticities, only computed if *get_chrom* is</span>
 <span class="sd">                        :py:obj:`True`</span>
 <span class="sd">    **damping_time**    Damping times [s] (only if radiation is ON)</span>
 <span class="sd">    =================   ======</span>
@@ -913,44 +1033,45 @@
 
 
 <span class="k">def</span> <span class="nf">linopt_auto</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This is a convenience function to automatically switch to the faster</span>
-<span class="sd">    :py:func:`linopt2` in case coupled=:py:obj:`False` **and**</span>
-<span class="sd">    ring.radiation=:py:obj:`False`. Otherwise the default :py:func:`linopt6`</span>
-<span class="sd">    is used</span>
+<span class="sd">    :py:func:`linopt2` in case the *coupled* keyword argument is</span>
+<span class="sd">    :py:obj:`False` **and** ring.is_6d is :py:obj:`False`.</span>
+<span class="sd">    Otherwise the default :py:func:`linopt6` is used</span>
 
 <span class="sd">    Parameters: Same as :py:func:`.linopt2` or :py:func:`.linopt6`</span>
 
 <span class="sd">    Keyword Args;</span>
 <span class="sd">        coupled (bool):     If set to :py:obj:`False`, H/V coupling</span>
-<span class="sd">          will be ignored to simplify the calculation, needs radiation OFF</span>
+<span class="sd">          will be ignored to simplify the calculation (needs ring.is_6d</span>
+<span class="sd">          :py:obj:`False`)</span>
 
 
 <span class="sd">    Returns:</span>
 <span class="sd">        elemdata0:      Linear optics data at the entrance of the ring</span>
 <span class="sd">        ringdata:       Lattice properties</span>
-<span class="sd">        elemdata:       Linear optics at the points refered to by ``refpts``,</span>
+<span class="sd">        elemdata:       Linear optics at the points refered to by *refpts*,</span>
 <span class="sd">          if refpts is :py:obj:`None` an empty lindata structure is returned.</span>
 
 <span class="sd">    Warning:</span>
 <span class="sd">        The output varies depending whether :py:func:`.linopt2` or</span>
 <span class="sd">        :py:func:`.linopt6` is called. To be used with care!</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;coupled&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> <span class="ow">or</span> <span class="n">ring</span><span class="o">.</span><span class="n">radiation</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;coupled&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> <span class="ow">or</span> <span class="n">ring</span><span class="o">.</span><span class="n">is_6d</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">linopt2</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">linopt6</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="get_optics"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.get_optics">[docs]</a><span class="k">def</span> <span class="nf">get_optics</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Refpts</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-               <span class="n">dp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<div class="viewcode-block" id="get_optics"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.get_optics">[docs]</a><span class="k">def</span> <span class="nf">get_optics</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+               <span class="n">dp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                <span class="n">method</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">=</span> <span class="n">linopt6</span><span class="p">,</span>
                <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Linear analysis of a fully coupled lattice</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Linear analysis of a fully coupled lattice</span>
 
 <span class="sd">    Parameters:</span>
-<span class="sd">        ring:   Lattice description.</span>
-<span class="sd">        refpts (Optional[Refpts]): Elements at which data is returned.</span>
+<span class="sd">        ring:                   Lattice description.</span>
+<span class="sd">        refpts:                 Elements at which data is returned.</span>
 <span class="sd">          It can be:</span>
 
 <span class="sd">          1. an integer in the range [-len(ring), len(ring)-1]</span>
@@ -960,8 +1081,8 @@
 <span class="sd">          2. an ordered list of such integers without duplicates,</span>
 <span class="sd">          3. a numpy array of booleans of maximum length len(ring)+1,</span>
 <span class="sd">             where selected elements are :py:obj:`True`.</span>
-<span class="sd">        dp (Optional[float]):   Momentum deviation.</span>
-<span class="sd">        method (Callable):  Method for linear optics:</span>
+<span class="sd">        dp:                     Momentum deviation.</span>
+<span class="sd">        method (Callable):      Method for linear optics:</span>
 
 <span class="sd">          :py:obj:`~.linear.linopt2`: no longitudinal motion, no H/V coupling,</span>
 
@@ -972,9 +1093,10 @@
 <span class="sd">          motion, normal mode analysis</span>
 
 <span class="sd">    Keyword Args:</span>
-<span class="sd">        dct (Optional[float]):  Path lengthening. If specified, ``dp`` is</span>
-<span class="sd">          ignored and the off-momentum is deduced from the path lengthening.</span>
-<span class="sd">        orbit (Orbit): Avoids looking for the closed orbit if is</span>
+<span class="sd">        dct (float):            Path lengthening. Defaults to :py:obj:`None`</span>
+<span class="sd">        df (float):             Deviation of RF frequency. Defaults to</span>
+<span class="sd">          :py:obj:`None`</span>
+<span class="sd">        orbit (Orbit):          Avoids looking for the closed orbit if it is</span>
 <span class="sd">          already known ((6,) array)</span>
 <span class="sd">        get_chrom (bool):       Compute chromaticities. Needs computing</span>
 <span class="sd">          the tune at 2 different momentum deviations around the central one.</span>
@@ -1004,7 +1126,7 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        elemdata0:      Linear optics data at the entrance of the ring</span>
 <span class="sd">        ringdata:       Lattice properties</span>
-<span class="sd">        elemdata:       Linear optics at the points refered to by ``refpts``,</span>
+<span class="sd">        elemdata:       Linear optics at the points refered to by *refpts*,</span>
 <span class="sd">          if refpts is :py:obj:`None` an empty lindata structure is returned.</span>
 
 <span class="sd">    Warning:</span>
@@ -1015,16 +1137,15 @@
 
 
 <span class="c1"># noinspection PyPep8Naming</span>
-<span class="nd">@check_radiation</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">linopt</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">dp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
-           <span class="n">refpts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Refpts</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="nd">@check_6d</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">linopt</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">dp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
            <span class="n">get_chrom</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Linear analysis of a H/V coupled lattice (deprecated)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Linear analysis of a H/V coupled lattice (deprecated)</span>
 
-<span class="sd">    PARAMETERS</span>
-<span class="sd">        lattice         lattice description.</span>
-<span class="sd">        dp=0.0          momentum deviation.</span>
-<span class="sd">        refpts=None     elements at which data is returned. It can be:</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        ring:           lattice description.</span>
+<span class="sd">        dp:             momentum deviation.</span>
+<span class="sd">        refpts:         elements at which data is returned. It can be:</span>
 <span class="sd">                        1) an integer in the range [-len(ring), len(ring)-1]</span>
 <span class="sd">                           selecting the element according to python indexing</span>
 <span class="sd">                           rules. As a special case, len(ring) is allowed and</span>
@@ -1033,7 +1154,7 @@
 <span class="sd">                        3) a numpy array of booleans of maximum length</span>
 <span class="sd">                           len(ring)+1, where selected elements are</span>
 <span class="sd">                           :py:obj:`True`.</span>
-<span class="sd">    KEYWORDS</span>
+<span class="sd">    Keyword Args:</span>
 <span class="sd">        orbit           avoids looking for the closed orbit if is already known</span>
 <span class="sd">                        ((6,) array)</span>
 <span class="sd">        get_chrom=False compute chromaticities. Needs computing the tune at</span>
@@ -1094,17 +1215,16 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">analyze</span> <span class="o">=</span> <span class="n">_analyze4</span> <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;coupled&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> <span class="k">else</span> <span class="n">_analyze2</span>
     <span class="n">eld0</span><span class="p">,</span> <span class="n">bd</span><span class="p">,</span> <span class="n">eld</span> <span class="o">=</span> <span class="n">_linopt</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">analyze</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="n">dp</span><span class="p">,</span> <span class="n">get_chrom</span><span class="o">=</span><span class="n">get_chrom</span><span class="p">,</span>
-                            <span class="n">add0</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,),</span> <span class="n">adds</span><span class="o">=</span><span class="p">(</span><span class="n">ring</span><span class="o">.</span><span class="n">uint32_refpts</span><span class="p">(</span><span class="n">refpts</span><span class="p">),),</span>
+                            <span class="n">add0</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,),</span> <span class="n">adds</span><span class="o">=</span><span class="p">(</span><span class="n">get_uint32_index</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">),),</span>
                             <span class="n">addtype</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;idx&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">uint32</span><span class="p">)],</span>
                             <span class="n">mname</span><span class="o">=</span><span class="s1">&#39;m44&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">eld0</span><span class="p">,</span> <span class="n">bd</span><span class="o">.</span><span class="n">tune</span><span class="p">,</span> <span class="n">bd</span><span class="o">.</span><span class="n">chromaticity</span><span class="p">,</span> <span class="n">eld</span>
 
 
 <span class="c1"># noinspection PyPep8Naming</span>
-<div class="viewcode-block" id="avlinopt"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.avlinopt">[docs]</a><span class="nd">@check_radiation</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">avlinopt</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">dp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
-             <span class="n">refpts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Refpts</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Linear analysis of a lattice with average values</span>
+<div class="viewcode-block" id="avlinopt"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.avlinopt">[docs]</a><span class="nd">@check_6d</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">avlinopt</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">dp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Linear analysis of a lattice with average values</span>
 
 <span class="sd">    :py:func:`avlinopt` returns average beta, mu, dispersion over the lattice</span>
 <span class="sd">    elements.</span>
@@ -1124,9 +1244,10 @@
 <span class="sd">             where selected elements are :py:obj:`True`.</span>
 
 <span class="sd">    Keyword Args:</span>
-<span class="sd">        dct (Optional[float]):  Path lengthening. If specified, ``dp`` is</span>
-<span class="sd">          ignored and the off-momentum is deduced from the path lengthening.</span>
-<span class="sd">        orbit (Orbit): Avoids looking for the closed orbit if is</span>
+<span class="sd">        dct (float):            Path lengthening. Defaults to :py:obj:`None`</span>
+<span class="sd">        df (float):             Deviation of RF frequency. Defaults to</span>
+<span class="sd">          :py:obj:`None`</span>
+<span class="sd">        orbit (Orbit):          Avoids looking for the closed orbit if it is</span>
 <span class="sd">          already known ((6,) array)</span>
 <span class="sd">        get_chrom (bool):       Compute chromaticities. Needs computing</span>
 <span class="sd">          the tune at 2 different momentum deviations around the central one.</span>
@@ -1154,15 +1275,15 @@
 <span class="sd">          are ignored.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        elemdata:   Linear optics at the points refered to by ``refpts``,</span>
+<span class="sd">        elemdata:   Linear optics at the points refered to by *refpts*,</span>
 <span class="sd">          if refpts is :py:obj:`None` an empty lindata structure is returned.</span>
 <span class="sd">        avebeta:    Average beta functions [:math:`\hat{\beta_x},\hat{\beta_y}`]</span>
-<span class="sd">          at ``refpts``</span>
+<span class="sd">          at *refpts*</span>
 <span class="sd">        avemu:      Average phase advances [:math:`\hat{\mu_x},\hat{\mu_y}`]</span>
-<span class="sd">          at ``refpts``</span>
+<span class="sd">          at *refpts*</span>
 <span class="sd">        avedisp:    Average dispersion [:math:`\hat{\eta_x}, \hat{\eta&#39;_x},</span>
-<span class="sd">          \hat{\eta_y}, \hat{\eta&#39;_y}`] at ``refpts``</span>
-<span class="sd">        avespos:    Average s position at ``refpts``</span>
+<span class="sd">          \hat{\eta_y}, \hat{\eta&#39;_y}`] at *refpts*</span>
+<span class="sd">        avespos:    Average s position at *refpts*</span>
 <span class="sd">        tune:       [:math:`\nu_1,\nu_2`], linear tunes for the two normal</span>
 <span class="sd">          modes of linear motion [1]</span>
 <span class="sd">        chrom:      [:math:`\xi_1,\xi_2`], chromaticities</span>
@@ -1188,10 +1309,10 @@
     <span class="k">def</span> <span class="nf">dispfoc</span><span class="p">(</span><span class="n">dispp0</span><span class="p">,</span> <span class="n">dispp1</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="n">lg</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">dispp0</span> <span class="o">-</span> <span class="n">dispp1</span><span class="p">)</span> <span class="o">/</span> <span class="n">k2</span> <span class="o">/</span> <span class="n">lg</span>
 
-    <span class="n">boolrefs</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">bool_refpts</span><span class="p">(</span><span class="n">refpts</span><span class="p">)</span>
+    <span class="n">boolrefs</span> <span class="o">=</span> <span class="n">get_bool_index</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">)</span>
     <span class="n">length</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">el</span><span class="o">.</span><span class="n">Length</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">ring</span><span class="p">[</span><span class="n">boolrefs</span><span class="p">]])</span>
     <span class="n">strength</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">get_strength</span><span class="p">(</span><span class="n">el</span><span class="p">)</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">ring</span><span class="p">[</span><span class="n">boolrefs</span><span class="p">]])</span>
-    <span class="n">longelem</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">bool_refpts</span><span class="p">([])</span>
+    <span class="n">longelem</span> <span class="o">=</span> <span class="n">get_bool_index</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">longelem</span><span class="p">[</span><span class="n">boolrefs</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
 
     <span class="n">shorti_refpts</span> <span class="o">=</span> <span class="p">(</span><span class="o">~</span><span class="n">longelem</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">boolrefs</span>
@@ -1236,24 +1357,24 @@
     <span class="k">return</span> <span class="n">lindata</span><span class="p">,</span> <span class="n">avebeta</span><span class="p">,</span> <span class="n">avemu</span><span class="p">,</span> <span class="n">avedisp</span><span class="p">,</span> <span class="n">aves</span><span class="p">,</span> <span class="n">bd</span><span class="o">.</span><span class="n">tune</span><span class="p">,</span> <span class="n">bd</span><span class="o">.</span><span class="n">chromaticity</span></div>
 
 
-<div class="viewcode-block" id="get_tune"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.get_tune">[docs]</a><span class="k">def</span> <span class="nf">get_tune</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;linopt&#39;</span><span class="p">,</span>
-             <span class="n">dp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dct</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-             <span class="n">orbit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Orbit</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes the tunes using several available methods</span>
+<div class="viewcode-block" id="get_tune"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.get_tune">[docs]</a><span class="k">def</span> <span class="nf">get_tune</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;linopt&#39;</span><span class="p">,</span>
+             <span class="n">dp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dct</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+             <span class="n">orbit</span><span class="p">:</span> <span class="n">Orbit</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes the tunes using several available methods</span>
 
 <span class="sd">    Parameters:</span>
-<span class="sd">        ring:       Lattice description</span>
-<span class="sd">        method:     ``&#39;linopt&#39;`` returns the tunes from the :py:func:`.linopt6`</span>
-<span class="sd">          function,</span>
+<span class="sd">        ring:                   Lattice description</span>
+<span class="sd">        method:                 ``&#39;linopt&#39;`` returns the tunes from the</span>
+<span class="sd">          :py:func:`.linopt6` function,</span>
 
 <span class="sd">          ``&#39;fft&#39;`` tracks a single particle and computes the tunes with fft,</span>
 
 <span class="sd">          ``&#39;laskar&#39;`` tracks a single particle and computes the tunes with</span>
 <span class="sd">          NAFF.</span>
-<span class="sd">        dp:         Momentum deviation.</span>
-<span class="sd">        dct:        Path lengthening. If specified, ``dp`` is ignored and</span>
-<span class="sd">          the off-momentum is deduced from the path lengthening.</span>
-<span class="sd">        orbit (Optional[Orbit]): Avoids looking for the closed orbit if is</span>
+<span class="sd">        dp (float):             Momentum deviation.</span>
+<span class="sd">        dct (float):            Path lengthening.</span>
+<span class="sd">        df (float):             Deviation of RF frequency.</span>
+<span class="sd">        orbit (Orbit):          Avoids looking for the closed orbit if it is</span>
 <span class="sd">          already known ((6,) array)</span>
 
 <span class="sd">    for the ``&#39;fft&#39;`` and ``&#39;laskar&#39;`` methods only:</span>
@@ -1262,7 +1383,7 @@
 <span class="sd">        nturns (int):           Number of turns. Default: 512</span>
 <span class="sd">        amplitude (float):      Amplitude of oscillation.</span>
 <span class="sd">          Default: 1.E-6</span>
-<span class="sd">        remove_dc (bool:        Remove the mean of oscillation data.</span>
+<span class="sd">        remove_dc (bool):       Remove the mean of oscillation data.</span>
 <span class="sd">          Default: :py:obj:`True`</span>
 <span class="sd">        num_harmonics (int):    Number of harmonic components to</span>
 <span class="sd">          compute (before mask applied, default: 20)</span>
@@ -1294,58 +1415,59 @@
            <span class="s1">&#39;Integer tune only accessible with method=linopt&#39;</span>
     <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;linopt&#39;</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">get_integer</span><span class="p">:</span>
-            <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">get_optics</span><span class="p">(</span><span class="n">refpts</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">get_optics</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span>
+                                 <span class="n">dp</span><span class="o">=</span><span class="n">dp</span><span class="p">,</span> <span class="n">dct</span><span class="o">=</span><span class="n">dct</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">orbit</span><span class="o">=</span><span class="n">orbit</span><span class="p">)</span>
             <span class="n">tunes</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">mu</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">tunes</span> <span class="o">=</span> <span class="n">_tunes</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="n">dp</span><span class="p">,</span> <span class="n">dct</span><span class="o">=</span><span class="n">dct</span><span class="p">,</span> <span class="n">orbit</span><span class="o">=</span><span class="n">orbit</span><span class="p">)</span>
+            <span class="n">tunes</span> <span class="o">=</span> <span class="n">_tunes</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="n">dp</span><span class="p">,</span> <span class="n">dct</span><span class="o">=</span><span class="n">dct</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">orbit</span><span class="o">=</span><span class="n">orbit</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">nturns</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;nturns&#39;</span><span class="p">,</span> <span class="mi">512</span><span class="p">)</span>
         <span class="n">ampl</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;ampl&#39;</span><span class="p">,</span> <span class="mf">1.0e-6</span><span class="p">)</span>
         <span class="n">remove_dc</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;remove_dc&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-        <span class="n">ld</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">linopt6</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="n">dp</span><span class="p">,</span> <span class="n">dct</span><span class="o">=</span><span class="n">dct</span><span class="p">,</span> <span class="n">orbit</span><span class="o">=</span><span class="n">orbit</span><span class="p">)</span>
+        <span class="n">ld</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">linopt6</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="n">dp</span><span class="p">,</span> <span class="n">dct</span><span class="o">=</span><span class="n">dct</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">orbit</span><span class="o">=</span><span class="n">orbit</span><span class="p">)</span>
         <span class="n">cents</span> <span class="o">=</span> <span class="n">gen_centroid</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">ampl</span><span class="p">,</span> <span class="n">nturns</span><span class="p">,</span> <span class="n">remove_dc</span><span class="p">,</span> <span class="n">ld</span><span class="p">)</span>
         <span class="n">tunes</span> <span class="o">=</span> <span class="n">get_tunes_harmonic</span><span class="p">(</span><span class="n">cents</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">tunes</span></div>
 
 
-<div class="viewcode-block" id="get_chrom"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.get_chrom">[docs]</a><span class="k">def</span> <span class="nf">get_chrom</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;linopt&#39;</span><span class="p">,</span>
-              <span class="n">dp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dct</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-              <span class="n">cavpts</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Refpts</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes the chromaticities using several available methods</span>
+<div class="viewcode-block" id="get_chrom"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.get_chrom">[docs]</a><span class="k">def</span> <span class="nf">get_chrom</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;linopt&#39;</span><span class="p">,</span>
+              <span class="n">dp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dct</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+              <span class="n">cavpts</span><span class="p">:</span> <span class="n">Refpts</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes the chromaticities using several available methods</span>
 
 <span class="sd">    Parameters:</span>
-<span class="sd">        ring:       Lattice description.</span>
-<span class="sd">        method:     ``&#39;linopt&#39;`` returns the tunes from the :py:func:`linopt6`</span>
-<span class="sd">          function,</span>
+<span class="sd">        ring:               Lattice description.</span>
+<span class="sd">        method:             ``&#39;linopt&#39;`` returns the tunes from the</span>
+<span class="sd">          :py:func:`linopt6` function,</span>
 
 <span class="sd">          ``&#39;fft&#39;`` tracks a single particle and computes the tunes with</span>
 <span class="sd">          :py:func:`~scipy.fftpack.fft`,</span>
 
 <span class="sd">          ``&#39;laskar&#39;`` tracks a single particle and computes the tunes with</span>
 <span class="sd">          NAFF.</span>
-<span class="sd">        dp:         Momentum deviation.</span>
-<span class="sd">        dct:        Path lengthening. If specified, ``dp`` is ignored and</span>
-<span class="sd">          the off-momentum is deduced from the path lengthening.</span>
+<span class="sd">        dp (float):         Momentum deviation.</span>
+<span class="sd">        dct (float):        Path lengthening.</span>
+<span class="sd">        df (float):         Deviation of RF frequency.</span>
 <span class="sd">        cavpts:     If :py:obj:`None`, look for ring.cavpts, or</span>
 <span class="sd">          otherwise take all cavities.</span>
 
 <span class="sd">    Keyword Args:</span>
-<span class="sd">        DPStep (float):       Momentum step for differentiation</span>
+<span class="sd">        DPStep (float):     Momentum step for differentiation</span>
 <span class="sd">          Default: :py:data:`DConstant.DPStep &lt;.DConstant&gt;`</span>
 
 <span class="sd">    for the ``&#39;fft&#39;`` and ``&#39;laskar&#39;`` methods only:</span>
 
 <span class="sd">    Keyword Args:</span>
-<span class="sd">        nturns (int):           Number of turns. Default: 512</span>
-<span class="sd">        amplitude (float):      Amplitude of oscillation.</span>
+<span class="sd">        nturns (int):       Number of turns. Default: 512</span>
+<span class="sd">        amplitude (float):  Amplitude of oscillation.</span>
 <span class="sd">          Default: 1.E-6</span>
-<span class="sd">        remove_dc (bool):       Remove the mean of oscillation data.</span>
+<span class="sd">        remove_dc (bool):   Remove the mean of oscillation data.</span>
 <span class="sd">          Default: :py:obj:`True`</span>
-<span class="sd">        num_harmonics (int):    Number of harmonic components to</span>
+<span class="sd">        num_harmonics (int):Number of harmonic components to</span>
 <span class="sd">          compute (before mask applied, default: 20)</span>
-<span class="sd">        fmin (float):           Lower tune bound. Default: 0</span>
-<span class="sd">        fmax (float):           Upper tune bound. Default: 1</span>
-<span class="sd">        hann (bool):            Turn on Hanning window.</span>
+<span class="sd">        fmin (float):       Lower tune bound. Default: 0</span>
+<span class="sd">        fmax (float):       Upper tune bound. Default: 1</span>
+<span class="sd">        hann (bool):        Turn on Hanning window.</span>
 <span class="sd">          Default: :py:obj:`False`</span>
 
 <span class="sd">    Returns:</span>
@@ -1357,9 +1479,9 @@
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning fft method not accurate to get the &#39;</span> <span class="o">+</span>
               <span class="s1">&#39;chromaticity&#39;</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">ring</span><span class="o">.</span><span class="n">radiation</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ring</span><span class="o">.</span><span class="n">is_6d</span><span class="p">:</span>
         <span class="n">f0</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">get_rf_frequency</span><span class="p">(</span><span class="n">cavpts</span><span class="o">=</span><span class="n">cavpts</span><span class="p">)</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="n">dp_step</span> <span class="o">*</span> <span class="n">ring</span><span class="o">.</span><span class="n">radiation_off</span><span class="p">(</span><span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">slip_factor</span> <span class="o">*</span> <span class="n">f0</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">dp_step</span> <span class="o">*</span> <span class="n">ring</span><span class="o">.</span><span class="n">disable_6d</span><span class="p">(</span><span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">slip_factor</span> <span class="o">*</span> <span class="n">f0</span>
         <span class="n">rgup</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">set_rf_frequency</span><span class="p">(</span><span class="n">f0</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">df</span><span class="p">,</span> <span class="n">cavpts</span><span class="o">=</span><span class="n">cavpts</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">o0up</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">find_orbit6</span><span class="p">(</span><span class="n">rgup</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">tune_up</span> <span class="o">=</span> <span class="n">get_tune</span><span class="p">(</span><span class="n">rgup</span><span class="p">,</span>  <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">orbit</span><span class="o">=</span><span class="n">o0up</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1368,9 +1490,10 @@
         <span class="n">tune_down</span> <span class="o">=</span> <span class="n">get_tune</span><span class="p">(</span><span class="n">rgdn</span><span class="p">,</span>  <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">orbit</span><span class="o">=</span><span class="n">o0dn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">dp_step</span> <span class="o">=</span> <span class="n">o0up</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="n">o0dn</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">dct</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">orbit</span> <span class="o">=</span> <span class="n">find_orbit4</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">dct</span><span class="o">=</span><span class="n">dct</span><span class="p">)</span>
-            <span class="n">dp</span> <span class="o">=</span> <span class="n">orbit</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">dct</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">df</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dp</span> <span class="o">=</span> <span class="n">find_orbit4</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">dct</span><span class="o">=</span><span class="n">dct</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">4</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">dp</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dp</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="n">tune_up</span> <span class="o">=</span> <span class="n">get_tune</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="n">dp</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">dp_step</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">tune_down</span> <span class="o">=</span> <span class="n">get_tune</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
                              <span class="n">dp</span><span class="o">=</span><span class="n">dp</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">dp_step</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1384,46 +1507,79 @@
 <span class="n">Lattice</span><span class="o">.</span><span class="n">linopt6</span> <span class="o">=</span> <span class="n">linopt6</span>
 <span class="n">Lattice</span><span class="o">.</span><span class="n">get_optics</span> <span class="o">=</span> <span class="n">get_optics</span>
 <span class="n">Lattice</span><span class="o">.</span><span class="n">avlinopt</span> <span class="o">=</span> <span class="n">avlinopt</span>
-<span class="n">Lattice</span><span class="o">.</span><span class="n">avlinopt</span> <span class="o">=</span> <span class="n">avlinopt</span>
 <span class="n">Lattice</span><span class="o">.</span><span class="n">get_tune</span> <span class="o">=</span> <span class="n">get_tune</span>
 <span class="n">Lattice</span><span class="o">.</span><span class="n">get_chrom</span> <span class="o">=</span> <span class="n">get_chrom</span>
 </pre></div>
 
-              </article>
-              
-
-              
-              <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+            </article>
+            
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'>
 </div>
-              </footer>
-              
+            </footer>
+            
           </div>
           
-      </div>
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
     </div>
+  </div>
 
   
-  
+    
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
 
-<footer class="bd-footer"><div class="bd-footer__inner container">
+  <footer class="bd-footer"><div class="bd-footer__inner container">
   
   <div class="footer-item">
-    <p class="copyright">
+    
+<p class="copyright">
+
     &copy; Copyright 2022, ATCollab.<br>
+
 </p>
+
   </div>
   
   <div class="footer-item">
-    <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
 </p>
+
   </div>
   
 </div>
-</footer>
+  </footer>
   </body>
 </html>

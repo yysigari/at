@@ -4,58 +4,81 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>at.lattice.elements &#8212; Accelerator Toolbox 0.1.dev1+gba07c8d documentation</title>
-<script>
-  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
-</script>
-
+    <title>at.lattice.elements &#8212; Accelerator Toolbox 0.0.4 documentation</title>
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+  <link href="../../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
 
-
+  
   <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom_at.css" />
-
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'p/api/at.lattice.elements';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="at.lattice.lattice_object" href="at.lattice.lattice_object.html" />
-    <link rel="prev" title="at.lattice.cavity_access" href="at.lattice.cavity_access.html" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="docsearch:language" content="en">
+    <link rel="prev" title="at.lattice.deprecated" href="at.lattice.deprecated.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
   </head>
   
   
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
-    <div class="bd-header-announcement container-fluid" id="banner">
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
       
-
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
     </div>
+  </div>
 
-    
-    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
-
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
   <div id="navbar-start">
     
     
@@ -63,9 +86,15 @@
 
 
 <a class="navbar-brand logo" href="../../index.html">
+
   
   
   
+  
+  
+  
+  
+
   
     <img src="../../_static/AT.png" class="logo__image only-light" alt="Logo image">
     <img src="../../_static/AT.png" class="logo__image only-dark" alt="Logo image">
@@ -75,54 +104,70 @@
     
   </div>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="fas fa-bars"></span>
-  </button>
-
   
-  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+  <div class="col-lg-9 navbar-header-items">
     <div id="navbar-center" class="mr-auto">
       
       <div class="navbar-center-item">
-        <ul id="navbar-main-elements" class="navbar-nav">
-    <li class="toctree-l1 current active nav-item">
- <a class="reference internal nav-link" href="../index.html">
-  Python
- </a>
-</li>
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../index.html">
+                        Python
+                    </a>
+                </li>
+                
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../m/index.html">
-  Matlab
- </a>
-</li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../m/index.html">
+                        Matlab
+                    </a>
+                </li>
+                
 
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="../../pabout.html">
-  About
- </a>
-</li>
-
-    
-</ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="../../pabout.html">
+                        About
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
       </div>
       
     </div>
 
     <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
       
       <div class="navbar-end-item">
-        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
-    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
-    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
-    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
 </span>
       </div>
       
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/atcollab/at" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/atcollab/at" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
             <label class="sr-only">GitHub</label></a>
         </li>
       </ul>
@@ -130,472 +175,311 @@
       
     </div>
   </div>
-</div>
-    </nav>
-    
-
-    <div class="bd-container container-xl">
-      <div class="bd-container__inner row">
-          
-
-<!-- Only show if we have sidebars configured, else just a small margin  -->
-<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
-  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <div class="bd-toc-item active">
-    <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Getting started:
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../getting_started.html">
-   pyAT
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  How to:
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../howto/Installation.html">
-   Installation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../howto/Primer.html">
-   PyAT Primer
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../howto/CavityControl.html">
-   Cavity Control
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../howto/Collective.html">
-   Collective
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Packages:
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="at.acceptance.html">
-   at.acceptance
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.acceptance.acceptance.html">
-     at.acceptance.acceptance
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.acceptance.boundary.html">
-     at.acceptance.boundary
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.acceptance.touschek.html">
-     at.acceptance.touschek
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="at.collective.html">
-   at.collective
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.collective.haissinski.html">
-     at.collective.haissinski
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.collective.wake_elements.html">
-     at.collective.wake_elements
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.collective.wake_functions.html">
-     at.collective.wake_functions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.collective.wake_object.html">
-     at.collective.wake_object
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="at.lattice.html">
-   at.lattice
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.lattice.cavity_access.html">
-     at.lattice.cavity_access
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     at.lattice.elements
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.lattice.lattice_object.html">
-     at.lattice.lattice_object
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.lattice.options.html">
-     at.lattice.options
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.lattice.particle_object.html">
-     at.lattice.particle_object
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.lattice.utils.html">
-     at.lattice.utils
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="at.load.html">
-   at.load
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.load.allfiles.html">
-     at.load.allfiles
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.load.elegant.html">
-     at.load.elegant
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.load.matfile.html">
-     at.load.matfile
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.load.reprfile.html">
-     at.load.reprfile
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.load.tracy.html">
-     at.load.tracy
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.load.utils.html">
-     at.load.utils
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="at.matching.html">
-   at.matching
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.matching.globalfit.html">
-     at.matching.globalfit
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.matching.matching.html">
-     at.matching.matching
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="at.physics.html">
-   at.physics
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.physics.amat.html">
-     at.physics.amat
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.physics.diffmatrix.html">
-     at.physics.diffmatrix
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.physics.energy_loss.html">
-     at.physics.energy_loss
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.physics.fastring.html">
-     at.physics.fastring
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.physics.harmonic_analysis.html">
-     at.physics.harmonic_analysis
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.physics.linear.html">
-     at.physics.linear
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.physics.matrix.html">
-     at.physics.matrix
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.physics.nonlinear.html">
-     at.physics.nonlinear
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.physics.orbit.html">
-     at.physics.orbit
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.physics.radiation.html">
-     at.physics.radiation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.physics.revolution.html">
-     at.physics.revolution
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.physics.ring_parameters.html">
-     at.physics.ring_parameters
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="at.plot.html">
-   at.plot
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.plot.generic.html">
-     at.plot.generic
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.plot.specific.html">
-     at.plot.specific
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.plot.standalone.html">
-     at.plot.standalone
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.plot.synopt.html">
-     at.plot.synopt
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="at.tracking.html">
-   at.tracking
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.tracking.atpass.html">
-     at.tracking.atpass
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.tracking.particles.html">
-     at.tracking.particles
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.tracking.patpass.html">
-     at.tracking.patpass
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="at.tracking.track.html">
-     at.tracking.track
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="at.constants.html">
-   at.constants
-  </a>
- </li>
-</ul>
-
-  </div>
-</nav>
-  </div>
-  <div class="sidebar-end-items">
-  </div>
-</div>
 
 
-          
-
-
-<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
   
-    
-    <div class="toc-item">
-      
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
 
-<nav id="bd-toc-nav">
-    
-</nav>
-    </div>
-    
-    <div class="toc-item">
-      
-    </div>
-    
   
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
 </div>
+  </nav>
+  
 
-
-          
-          
-          <div class="bd-content col-12 col-md-9 col-xl-7">
-              
-              <article class="bd-article" role="main">
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item current active">
+                    <a class="nav-link" href="../index.html">
+                        Python
+                    </a>
+                </li>
                 
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../m/index.html">
+                        Matlab
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../pabout.html">
+                        About
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/atcollab/at" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Section navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">
+    Section Navigation
+  </p>
+  <div class="bd-toc-item navbar-nav">
+    <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">pyAT</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">How to:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../howto/Installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/multiprocessing.html">Parallel processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/Primer.html">PyAT Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/CavityControl.html">Cavity Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/Collective.html">Collective</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="at.acceptance.html">at.acceptance</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="at.acceptance.acceptance.html">at.acceptance.acceptance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.acceptance.boundary.html">at.acceptance.boundary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.acceptance.touschek.html">at.acceptance.touschek</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="at.collective.html">at.collective</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="at.collective.beam_loading.html">at.collective.beam_loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.collective.haissinski.html">at.collective.haissinski</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.collective.wake_elements.html">at.collective.wake_elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.collective.wake_functions.html">at.collective.wake_functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.collective.wake_object.html">at.collective.wake_object</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="at.lattice.html">at.lattice</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.cavity_access.html">at.lattice.cavity_access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.deprecated.html">at.lattice.deprecated</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">at.lattice.elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.lattice_object.html">at.lattice.lattice_object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.options.html">at.lattice.options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.particle_object.html">at.lattice.particle_object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.utils.html">at.lattice.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.variable_elements.html">at.lattice.variable_elements</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="at.load.html">at.load</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="at.load.allfiles.html">at.load.allfiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.load.elegant.html">at.load.elegant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.load.matfile.html">at.load.matfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.load.reprfile.html">at.load.reprfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.load.tracy.html">at.load.tracy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.load.utils.html">at.load.utils</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="at.matching.html">at.matching</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="at.matching.globalfit.html">at.matching.globalfit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.matching.matching.html">at.matching.matching</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="at.physics.html">at.physics</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="at.physics.amat.html">at.physics.amat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.physics.diffmatrix.html">at.physics.diffmatrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.physics.energy_loss.html">at.physics.energy_loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.physics.fastring.html">at.physics.fastring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.physics.harmonic_analysis.html">at.physics.harmonic_analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.physics.linear.html">at.physics.linear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.physics.matrix.html">at.physics.matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.physics.nonlinear.html">at.physics.nonlinear</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.physics.orbit.html">at.physics.orbit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.physics.radiation.html">at.physics.radiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.physics.revolution.html">at.physics.revolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.physics.ring_parameters.html">at.physics.ring_parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="at.plot.html">at.plot</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="at.plot.generic.html">at.plot.generic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.plot.specific.html">at.plot.specific</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.plot.standalone.html">at.plot.standalone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.plot.synopt.html">at.plot.synopt</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="at.tracking.html">at.tracking</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="at.tracking.atpass.html">at.tracking.atpass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.tracking.particles.html">at.tracking.particles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.tracking.patpass.html">at.tracking.patpass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.tracking.track.html">at.tracking.track</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.tracking.utils.html">at.tracking.utils</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="at.constants.html">at.constants</a></li>
+</ul>
+
+  </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
   <section id="module-at.lattice.elements">
 <span id="at-lattice-elements"></span><h1>at.lattice.elements<a class="headerlink" href="#module-at.lattice.elements" title="Permalink to this heading">#</a></h1>
 <p>Module to define common elements used in AT.</p>
 <p>Each element has a default PassMethod attribute for which it should have the
 appropriate attributes.  If a different PassMethod is set, it is the caller’s
 responsibility to ensure that the appropriate attributes are present.</p>
+<p class="rubric">Functions</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.build_class_map" title="at.lattice.elements.build_class_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build_class_map</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.get_class_map" title="at.lattice.elements.get_class_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_class_map</span></code></a>()</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Classes</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.Aperture" title="at.lattice.elements.Aperture"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Aperture</span></code></a>(family_name, limits, **kwargs)</p></td>
-<td><p>pyAT aperture element</p></td>
+<td><p>Aperture element</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.Bend" title="at.lattice.elements.Bend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Bend</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.BeamMoments" title="at.lattice.elements.BeamMoments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BeamMoments</span></code></a>(family_name, **kwargs)</p></td>
+<td><p>Element to compute bunches mean and std</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.Bend" title="at.lattice.elements.Bend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Bend</span></code></a></p></td>
 <td><p>alias of <a class="reference internal" href="#at.lattice.elements.Dipole" title="at.lattice.elements.Dipole"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dipole</span></code></a></p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.Collective" title="at.lattice.elements.Collective"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Collective</span></code></a>()</p></td>
+<td><p>Mixin class for elements representing collective effects</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.Collimator" title="at.lattice.elements.Collimator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Collimator</span></code></a>(family_name, length, limits, **kwargs)</p></td>
-<td><p>pyAT collimator element</p></td>
+<td><p>Collimator element</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.Corrector" title="at.lattice.elements.Corrector"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Corrector</span></code></a>(family_name, length, kick_angle, ...)</p></td>
-<td><p>pyAT corrector element</p></td>
+<td><p>Corrector element</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.Dipole" title="at.lattice.elements.Dipole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dipole</span></code></a>(family_name, length[, bending_angle, k])</p></td>
-<td><p>pyAT dipole element</p></td>
+<td><p>Dipole element</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.Drift" title="at.lattice.elements.Drift"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Drift</span></code></a>(family_name, length, **kwargs)</p></td>
-<td><p>pyAT drift space element</p></td>
+<td><p>Drift space element</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Element</span></code></a>(family_name, **kwargs)</p></td>
 <td><p>Base class for AT elements</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.LongElement" title="at.lattice.elements.LongElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LongElement</span></code></a>(family_name, length, *args, **kwargs)</p></td>
-<td><p>pyAT long element</p></td>
+<td><p>Base class for long elements</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.M66" title="at.lattice.elements.M66"><code class="xref py py-obj docutils literal notranslate"><span class="pre">M66</span></code></a>(family_name[, m66])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.LongtMotion" title="at.lattice.elements.LongtMotion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LongtMotion</span></code></a>()</p></td>
+<td><p>Abstract Base class for all Element classes whose instances may modify the particle momentum</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.M66" title="at.lattice.elements.M66"><code class="xref py py-obj docutils literal notranslate"><span class="pre">M66</span></code></a>(family_name[, m66])</p></td>
 <td><p>Linear (6, 6) transfer matrix</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.Marker" title="at.lattice.elements.Marker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Marker</span></code></a>(family_name, **kwargs)</p></td>
-<td><p>pyAT marker element</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.Marker" title="at.lattice.elements.Marker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Marker</span></code></a>(family_name, **kwargs)</p></td>
+<td><p>Marker element</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.Monitor" title="at.lattice.elements.Monitor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Monitor</span></code></a>(family_name, **kwargs)</p></td>
-<td><p>pyAT monitor element</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.Monitor" title="at.lattice.elements.Monitor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Monitor</span></code></a>(family_name, **kwargs)</p></td>
+<td><p>Monitor element</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.Multipole" title="at.lattice.elements.Multipole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Multipole</span></code></a>(family_name, length, poly_a, ...)</p></td>
-<td><p>pyAT multipole element</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.Multipole" title="at.lattice.elements.Multipole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Multipole</span></code></a>(family_name, length, poly_a, ...)</p></td>
+<td><p>Multipole element</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.Octupole" title="at.lattice.elements.Octupole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Octupole</span></code></a>(family_name, length, poly_a, ...)</p></td>
-<td><p>pyAT octupole element, with no changes from multipole at present</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.Octupole" title="at.lattice.elements.Octupole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Octupole</span></code></a>(family_name, length, poly_a, ...)</p></td>
+<td><p>Octupole element, with no changes from multipole at present</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.Quadrupole" title="at.lattice.elements.Quadrupole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Quadrupole</span></code></a>(FamName, Length[, Strength])</p></td>
-<td><p>pyAT quadrupole element</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.Quadrupole" title="at.lattice.elements.Quadrupole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Quadrupole</span></code></a>(FamName, Length[, Strength])</p></td>
+<td><p>Quadrupole element</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.QuantumDiffusion" title="at.lattice.elements.QuantumDiffusion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QuantumDiffusion</span></code></a>(family_name, lmatp, **kwargs)</p></td>
+<td><p>Quantum diffusion element</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.RFCavity" title="at.lattice.elements.RFCavity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RFCavity</span></code></a>(family_name, length, voltage, ...)</p></td>
-<td><p>pyAT RF cavity element</p></td>
+<td><p>RF cavity element</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.Sextupole" title="at.lattice.elements.Sextupole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sextupole</span></code></a>(family_name, length[, h])</p></td>
-<td><p>pyAT sextupole element</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.Radiative" title="at.lattice.elements.Radiative"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Radiative</span></code></a>()</p></td>
+<td><p>Mixin class for default radiating elements (<a class="reference internal" href="#at.lattice.elements.Dipole" title="at.lattice.elements.Dipole"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dipole</span></code></a>, <a class="reference internal" href="#at.lattice.elements.Quadrupole" title="at.lattice.elements.Quadrupole"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quadrupole</span></code></a>, <a class="reference internal" href="#at.lattice.elements.Wiggler" title="at.lattice.elements.Wiggler"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wiggler</span></code></a>)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.ThinMultipole" title="at.lattice.elements.ThinMultipole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ThinMultipole</span></code></a>(family_name, poly_a, poly_b, ...)</p></td>
-<td><p>pyAT thin multipole element</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.Sextupole" title="at.lattice.elements.Sextupole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sextupole</span></code></a>(family_name, length[, h])</p></td>
+<td><p>Sextupole element</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.Wiggler" title="at.lattice.elements.Wiggler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Wiggler</span></code></a>(family_name, length, wiggle_period, ...)</p></td>
-<td><p>pyAT wiggler element</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.ThinMultipole" title="at.lattice.elements.ThinMultipole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ThinMultipole</span></code></a>(family_name, poly_a, poly_b, ...)</p></td>
+<td><p>Thin multipole element</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.Wiggler" title="at.lattice.elements.Wiggler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Wiggler</span></code></a>(family_name, length, wiggle_period, ...)</p></td>
+<td><p>Wiggler element</p></td>
 </tr>
 </tbody>
 </table>
@@ -603,7 +487,7 @@ responsibility to ensure that the appropriate attributes are present.</p>
 <dt class="sig sig-object py" id="at.lattice.elements.Aperture">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Aperture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limits</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Aperture"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Aperture" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
-<p>pyAT aperture element</p>
+<p>Aperture element</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -614,9 +498,32 @@ responsibility to ensure that the appropriate attributes are present.</p>
 </dd>
 </dl>
 <p>Default PassMethod: <code class="docutils literal notranslate"><span class="pre">AperturePass</span></code></p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="at.lattice.elements.Aperture.REQUIRED_ATTRIBUTES">
-<span class="sig-name descname"><span class="pre">REQUIRED_ATTRIBUTES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['FamName',</span> <span class="pre">'Limits']</span></em><a class="headerlink" href="#at.lattice.elements.Aperture.REQUIRED_ATTRIBUTES" title="Permalink to this definition">#</a></dt>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="at.lattice.elements.BeamMoments">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BeamMoments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#BeamMoments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.BeamMoments" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
+<p>Element to compute bunches mean and std</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p>
+</dd>
+</dl>
+<p>All keywords will be set as attributes of the element</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="at.lattice.elements.BeamMoments.set_buffers">
+<span class="sig-name descname"><span class="pre">set_buffers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nturns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbunch</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#BeamMoments.set_buffers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.BeamMoments.set_buffers" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="at.lattice.elements.BeamMoments.means">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">means</span></span><a class="headerlink" href="#at.lattice.elements.BeamMoments.means" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="at.lattice.elements.BeamMoments.stds">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">stds</span></span><a class="headerlink" href="#at.lattice.elements.BeamMoments.stds" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -628,61 +535,82 @@ responsibility to ensure that the appropriate attributes are present.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="at.lattice.elements.Collective">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Collective</span></span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Collective"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Collective" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_DictLongtMotion</span></code></p>
+<p>Mixin class for elements representing collective effects</p>
+<p>Derived classes will automatically set the <a class="reference internal" href="#at.lattice.elements.Element.is_collective" title="at.lattice.elements.Element.is_collective"><code class="xref py py-attr docutils literal notranslate"><span class="pre">is_collective</span></code></a>
+property when the element is active.</p>
+<p>The class must have a <code class="docutils literal notranslate"><span class="pre">default_pass</span></code> class attribute, a dictionary such
+that:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">default_pass[False]</span></code> is the PassMethod when collective effects
+are turned OFF,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">default_pass[True]</span></code> is the default PassMethod when collective effects
+are turned ON.</p></li>
+</ul>
+<p>The <a class="reference internal" href="#at.lattice.elements.Collective" title="at.lattice.elements.Collective"><code class="xref py py-class docutils literal notranslate"><span class="pre">Collective</span></code></a> class must be set as the first base class.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">WakeElement</span><span class="p">(</span><span class="n">Collective</span><span class="p">,</span> <span class="n">Element</span><span class="p">):</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="n">default_pass</span> <span class="o">=</span> <span class="p">{</span><span class="kc">False</span><span class="p">:</span> <span class="s1">&#39;IdentityPass&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">:</span> <span class="s1">&#39;WakeFieldPass&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Defines a class where the <a class="reference internal" href="#at.lattice.elements.Element.is_collective" title="at.lattice.elements.Element.is_collective"><code class="xref py py-attr docutils literal notranslate"><span class="pre">is_collective</span></code></a> property is
+handled</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="at.lattice.elements.Collective.clear_history">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">clear_history</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Collective.clear_history"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Collective.clear_history" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="at.lattice.elements.Collimator">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Collimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limits</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Collimator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Collimator" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#at.lattice.elements.Drift" title="at.lattice.elements.Drift"><code class="xref py py-class docutils literal notranslate"><span class="pre">Drift</span></code></a></p>
-<p>pyAT collimator element</p>
+<p>Collimator element</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Name of the element</p></li>
-<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Element length [m]</p></li>
+<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p></li>
+<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Element length [m]</p></li>
 <li><p><strong>limits</strong> – (4,) array of physical aperture:
 [xmin, xmax, zmin, zmax] [m]</p></li>
 </ul>
 </dd>
 </dl>
 <p>Default PassMethod: <code class="docutils literal notranslate"><span class="pre">DriftPass</span></code></p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="at.lattice.elements.Collimator.REQUIRED_ATTRIBUTES">
-<span class="sig-name descname"><span class="pre">REQUIRED_ATTRIBUTES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['FamName',</span> <span class="pre">'Length',</span> <span class="pre">'RApertures']</span></em><a class="headerlink" href="#at.lattice.elements.Collimator.REQUIRED_ATTRIBUTES" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="at.lattice.elements.Corrector">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Corrector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kick_angle</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Corrector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Corrector" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#at.lattice.elements.LongElement" title="at.lattice.elements.LongElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">LongElement</span></code></a></p>
-<p>pyAT corrector element</p>
+<p>Corrector element</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Name of the element</p></li>
-<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Element length [m]</p></li>
+<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p></li>
+<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Element length [m]</p></li>
 <li><p><strong>KickAngle</strong> – Correction deviation angles (H, V)</p></li>
 </ul>
 </dd>
 </dl>
 <p>Default PassMethod: <code class="docutils literal notranslate"><span class="pre">CorrectorPass</span></code></p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="at.lattice.elements.Corrector.REQUIRED_ATTRIBUTES">
-<span class="sig-name descname"><span class="pre">REQUIRED_ATTRIBUTES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['FamName',</span> <span class="pre">'Length',</span> <span class="pre">'KickAngle']</span></em><a class="headerlink" href="#at.lattice.elements.Corrector.REQUIRED_ATTRIBUTES" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="at.lattice.elements.Dipole">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Dipole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bending_angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Dipole"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Dipole" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#at.lattice.elements.Multipole" title="at.lattice.elements.Multipole"><code class="xref py py-class docutils literal notranslate"><span class="pre">Multipole</span></code></a></p>
-<p>pyAT dipole element</p>
+<dd><p>Bases: <a class="reference internal" href="#at.lattice.elements.Radiative" title="at.lattice.elements.Radiative"><code class="xref py py-class docutils literal notranslate"><span class="pre">Radiative</span></code></a>, <a class="reference internal" href="#at.lattice.elements.Multipole" title="at.lattice.elements.Multipole"><code class="xref py py-class docutils literal notranslate"><span class="pre">Multipole</span></code></a></p>
+<p>Dipole element</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Name of the element</p></li>
-<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Element length [m]</p></li>
-<li><p><strong>bending_angle</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>]</em>) – Bending angle [rd]</p></li>
+<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p></li>
+<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Element length [m]</p></li>
+<li><p><strong>bending_angle</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – Bending angle [rd]</p></li>
 <li><p><strong>poly_a</strong> – Array of normal multipole components</p></li>
 <li><p><strong>poly_b</strong> – Array of skew multipole components</p></li>
 <li><p><strong>k=0</strong> – Field index</p></li>
@@ -719,7 +647,7 @@ responsibility to ensure that the appropriate attributes are present.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="at.lattice.elements.Dipole.is_compatible">
 <span class="sig-name descname"><span class="pre">is_compatible</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Dipole.is_compatible"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Dipole.is_compatible" title="Permalink to this definition">#</a></dt>
-<dd><p>Checks if another Element can be merged</p>
+<dd><p>Checks if another <a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a> can be merged</p>
 <dl class="field-list simple">
 </dl>
 </dd></dl>
@@ -745,23 +673,18 @@ responsibility to ensure that the appropriate attributes are present.</p>
 <span class="sig-name descname"><span class="pre">DefaultOrder</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#at.lattice.elements.Dipole.DefaultOrder" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="at.lattice.elements.Dipole.REQUIRED_ATTRIBUTES">
-<span class="sig-name descname"><span class="pre">REQUIRED_ATTRIBUTES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['FamName',</span> <span class="pre">'Length',</span> <span class="pre">'BendingAngle',</span> <span class="pre">'K']</span></em><a class="headerlink" href="#at.lattice.elements.Dipole.REQUIRED_ATTRIBUTES" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="at.lattice.elements.Drift">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Drift</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Drift"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Drift" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#at.lattice.elements.LongElement" title="at.lattice.elements.LongElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">LongElement</span></code></a></p>
-<p>pyAT drift space element</p>
+<p>Drift space element</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Name of the element</p></li>
-<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Element length [m]</p></li>
+<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p></li>
+<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Element length [m]</p></li>
 </ul>
 </dd>
 </dl>
@@ -772,12 +695,12 @@ responsibility to ensure that the appropriate attributes are present.</p>
 <dd><p>insert elements inside a drift</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>insert_list</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterable" title="(in Python v3.10)"><em>Iterable</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.10)"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><em>Optional</em></a><em>[</em><a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em><em>]</em><em>]</em>) – <p>iterable, each item of insert_list is itself an
+<dd class="field-odd"><p><strong>insert_list</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterable" title="(in Python v3.11)"><em>Iterable</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em><em>]</em><em>]</em>) – <p>iterable, each item of insert_list is itself an
 iterable with 2 objects:</p>
 <ol class="arabic simple">
 <li><p>the location where the center of the element
 will be inserted, given as a fraction of the Drift length.</p></li>
-<li><p>an element to be inserted at that location. If <code class="docutils literal notranslate"><span class="pre">None</span></code>,
+<li><p>an element to be inserted at that location. If <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>,
 the drift will be divided but no element will be inserted.</p></li>
 </ol>
 </p>
@@ -808,11 +731,11 @@ the drift will be divided but no element will be inserted.</p></li>
 <dl class="py class">
 <dt class="sig sig-object py" id="at.lattice.elements.Element">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Element"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Element" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Base class for AT elements</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Name of the element</p>
+<dd class="field-odd"><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p>
 </dd>
 </dl>
 <p>All keywords will be set as attributes of the element</p>
@@ -866,7 +789,7 @@ __eq__ method when comparing lattices.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="at.lattice.elements.Element.is_compatible">
 <span class="sig-name descname"><span class="pre">is_compatible</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Element.is_compatible"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Element.is_compatible" title="Permalink to this definition">#</a></dt>
-<dd><p>Checks if another Element can be merged</p>
+<dd><p>Checks if another <a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a> can be merged</p>
 <dl class="field-list simple">
 </dl>
 </dd></dl>
@@ -891,16 +814,23 @@ __eq__ method when comparing lattices.</p>
 <dt class="sig sig-object py" id="at.lattice.elements.Element.update">
 <span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Element.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Element.update" title="Permalink to this definition">#</a></dt>
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span></dt>
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mapping</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span></dt>
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterable</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.10)"><span class="pre">None</span></a></span></span></dt>
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterable</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><span class="pre">None</span></a></span></span></dt>
 <dd><p>Update the element attributes with the given arguments</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="at.lattice.elements.Element.REQUIRED_ATTRIBUTES">
-<span class="sig-name descname"><span class="pre">REQUIRED_ATTRIBUTES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['FamName']</span></em><a class="headerlink" href="#at.lattice.elements.Element.REQUIRED_ATTRIBUTES" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="at.lattice.elements.Element.is_collective">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_collective</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></em><a class="headerlink" href="#at.lattice.elements.Element.is_collective" title="Permalink to this definition">#</a></dt>
+<dd><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if the element involves collective effects</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="at.lattice.elements.Element.longt_motion">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">longt_motion</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></em><a class="headerlink" href="#at.lattice.elements.Element.longt_motion" title="Permalink to this definition">#</a></dt>
+<dd><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if longitudinal motion is affected by the element</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -908,13 +838,12 @@ __eq__ method when comparing lattices.</p>
 <dt class="sig sig-object py" id="at.lattice.elements.LongElement">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LongElement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#LongElement"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.LongElement" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
-<p>pyAT long element</p>
-<p>Bse class for long elements</p>
+<p>Base class for long elements</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Name of the element</p></li>
-<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Element length [m]</p></li>
+<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p></li>
+<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Element length [m]</p></li>
 </ul>
 </dd>
 </dl>
@@ -943,7 +872,7 @@ initial length. <code class="docutils literal notranslate"><span class="pre">sum
 <dl class="py method">
 <dt class="sig sig-object py" id="at.lattice.elements.LongElement.is_compatible">
 <span class="sig-name descname"><span class="pre">is_compatible</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#LongElement.is_compatible"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.LongElement.is_compatible" title="Permalink to this definition">#</a></dt>
-<dd><p>Checks if another Element can be merged</p>
+<dd><p>Checks if another <a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a> can be merged</p>
 <dl class="field-list simple">
 </dl>
 </dd></dl>
@@ -956,10 +885,44 @@ initial length. <code class="docutils literal notranslate"><span class="pre">sum
 </dl>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="at.lattice.elements.LongElement.REQUIRED_ATTRIBUTES">
-<span class="sig-name descname"><span class="pre">REQUIRED_ATTRIBUTES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['FamName',</span> <span class="pre">'Length']</span></em><a class="headerlink" href="#at.lattice.elements.LongElement.REQUIRED_ATTRIBUTES" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="at.lattice.elements.LongtMotion">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LongtMotion</span></span><a class="reference internal" href="../../_modules/at/lattice/elements.html#LongtMotion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.LongtMotion" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></a></p>
+<p>Abstract Base class for all Element classes whose instances may modify
+the particle momentum</p>
+<p>Allows to identify elements potentially inducing longitudinal motion.</p>
+<p>Subclasses of <a class="reference internal" href="#at.lattice.elements.LongtMotion" title="at.lattice.elements.LongtMotion"><code class="xref py py-class docutils literal notranslate"><span class="pre">LongtMotion</span></code></a> must provide two methods for
+enabling longitudinal motion:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_get_longt_motion(self)</span></code> must return the activation state,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set_longt_motion(self,</span> <span class="pre">enable,</span> <span class="pre">new_pass=None,</span> <span class="pre">copy=False,</span> <span class="pre">**kwargs)</span></code>
+must enable or disable longitudinal motion.</p></li>
+</ul>
+<dl class="py method">
+<dt class="sig sig-object py" id="at.lattice.elements.LongtMotion.set_longt_motion">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_longt_motion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_pass</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#LongtMotion.set_longt_motion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.LongtMotion.set_longt_motion" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable/Disable longitudinal motion</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>enable</strong> – <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>: for enabling, <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a> for
+disabling</p></li>
+<li><p><strong>new_pass</strong> – <p>New PassMethod:</p>
+<ul>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>: makes no change,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'auto'</span></code>: Uses the default conversion,</p></li>
+<li><p>Anything else is used as the new PassMethod.</p></li>
+</ul>
+</p></li>
+<li><p><strong>copy</strong> – If True, returns a modified copy of the element,
+otherwise modifies the element in-place</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -971,27 +934,22 @@ initial length. <code class="docutils literal notranslate"><span class="pre">sum
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Name of the element</p></li>
+<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p></li>
 <li><p><strong>m66</strong> – Transfer matrix. Default: Identity matrix</p></li>
 </ul>
 </dd>
 </dl>
 <p>Default PassMethod: <code class="docutils literal notranslate"><span class="pre">Matrix66Pass</span></code></p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="at.lattice.elements.M66.REQUIRED_ATTRIBUTES">
-<span class="sig-name descname"><span class="pre">REQUIRED_ATTRIBUTES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['FamName']</span></em><a class="headerlink" href="#at.lattice.elements.M66.REQUIRED_ATTRIBUTES" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="at.lattice.elements.Marker">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Marker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Marker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Marker" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
-<p>pyAT marker element</p>
+<p>Marker element</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Name of the element</p>
+<dd class="field-odd"><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p>
 </dd>
 </dl>
 <p>All keywords will be set as attributes of the element</p>
@@ -1001,10 +959,10 @@ initial length. <code class="docutils literal notranslate"><span class="pre">sum
 <dt class="sig sig-object py" id="at.lattice.elements.Monitor">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Monitor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Monitor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Monitor" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
-<p>pyAT monitor element</p>
+<p>Monitor element</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Name of the element</p>
+<dd class="field-odd"><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p>
 </dd>
 </dl>
 <p>All keywords will be set as attributes of the element</p>
@@ -1013,13 +971,13 @@ initial length. <code class="docutils literal notranslate"><span class="pre">sum
 <dl class="py class">
 <dt class="sig sig-object py" id="at.lattice.elements.Multipole">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Multipole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly_b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Multipole"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Multipole" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#at.lattice.elements.LongElement" title="at.lattice.elements.LongElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">LongElement</span></code></a>, <a class="reference internal" href="#at.lattice.elements.ThinMultipole" title="at.lattice.elements.ThinMultipole"><code class="xref py py-class docutils literal notranslate"><span class="pre">ThinMultipole</span></code></a></p>
-<p>pyAT multipole element</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_Radiative</span></code>, <a class="reference internal" href="#at.lattice.elements.LongElement" title="at.lattice.elements.LongElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">LongElement</span></code></a>, <a class="reference internal" href="#at.lattice.elements.ThinMultipole" title="at.lattice.elements.ThinMultipole"><code class="xref py py-class docutils literal notranslate"><span class="pre">ThinMultipole</span></code></a></p>
+<p>Multipole element</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Name of the element</p></li>
-<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Element length [m]</p></li>
+<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p></li>
+<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Element length [m]</p></li>
 <li><p><strong>poly_a</strong> – Array of normal multipole components</p></li>
 <li><p><strong>poly_b</strong> – Array of skew multipole components</p></li>
 </ul>
@@ -1037,27 +995,22 @@ non-zero polynomial coefficients</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="at.lattice.elements.Multipole.is_compatible">
 <span class="sig-name descname"><span class="pre">is_compatible</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Multipole.is_compatible"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Multipole.is_compatible" title="Permalink to this definition">#</a></dt>
-<dd><p>Checks if another Element can be merged</p>
+<dd><p>Checks if another <a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a> can be merged</p>
 <dl class="field-list simple">
 </dl>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="at.lattice.elements.Multipole.H">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">H</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a></em><a class="headerlink" href="#at.lattice.elements.Multipole.H" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">H</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#at.lattice.elements.Multipole.H" title="Permalink to this definition">#</a></dt>
 <dd><p>Sextupolar strength</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="at.lattice.elements.Multipole.K">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">K</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a></em><a class="headerlink" href="#at.lattice.elements.Multipole.K" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">K</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#at.lattice.elements.Multipole.K" title="Permalink to this definition">#</a></dt>
 <dd><p>Focusing strength [mˆ-2]</p>
 </dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="at.lattice.elements.Multipole.REQUIRED_ATTRIBUTES">
-<span class="sig-name descname"><span class="pre">REQUIRED_ATTRIBUTES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['FamName',</span> <span class="pre">'Length',</span> <span class="pre">'PolynomA',</span> <span class="pre">'PolynomB']</span></em><a class="headerlink" href="#at.lattice.elements.Multipole.REQUIRED_ATTRIBUTES" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
 
 </dd></dl>
 
@@ -1065,12 +1018,12 @@ non-zero polynomial coefficients</p></li>
 <dt class="sig sig-object py" id="at.lattice.elements.Octupole">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Octupole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly_b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Octupole"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Octupole" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#at.lattice.elements.Multipole" title="at.lattice.elements.Multipole"><code class="xref py py-class docutils literal notranslate"><span class="pre">Multipole</span></code></a></p>
-<p>pyAT octupole element, with no changes from multipole at present</p>
+<p>Octupole element, with no changes from multipole at present</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Name of the element</p></li>
-<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Element length [m]</p></li>
+<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p></li>
+<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Element length [m]</p></li>
 <li><p><strong>poly_a</strong> – Array of normal multipole components</p></li>
 <li><p><strong>poly_b</strong> – Array of skew multipole components</p></li>
 </ul>
@@ -1090,24 +1043,19 @@ non-zero polynomial coefficients</p></li>
 <span class="sig-name descname"><span class="pre">DefaultOrder</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#at.lattice.elements.Octupole.DefaultOrder" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="at.lattice.elements.Octupole.REQUIRED_ATTRIBUTES">
-<span class="sig-name descname"><span class="pre">REQUIRED_ATTRIBUTES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['FamName',</span> <span class="pre">'Length',</span> <span class="pre">'PolynomA',</span> <span class="pre">'PolynomB']</span></em><a class="headerlink" href="#at.lattice.elements.Octupole.REQUIRED_ATTRIBUTES" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="at.lattice.elements.Quadrupole">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Quadrupole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FamName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Strength</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">keywords</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Quadrupole"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Quadrupole" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#at.lattice.elements.Multipole" title="at.lattice.elements.Multipole"><code class="xref py py-class docutils literal notranslate"><span class="pre">Multipole</span></code></a></p>
-<p>pyAT quadrupole element</p>
+<dd><p>Bases: <a class="reference internal" href="#at.lattice.elements.Radiative" title="at.lattice.elements.Radiative"><code class="xref py py-class docutils literal notranslate"><span class="pre">Radiative</span></code></a>, <a class="reference internal" href="#at.lattice.elements.Multipole" title="at.lattice.elements.Multipole"><code class="xref py py-class docutils literal notranslate"><span class="pre">Multipole</span></code></a></p>
+<p>Quadrupole element</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Name of the element</p></li>
-<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Element length [m]</p></li>
-<li><p><strong>k</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>]</em>) – strength [mˆ-2]</p></li>
+<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p></li>
+<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Element length [m]</p></li>
+<li><p><strong>k</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – strength [mˆ-2]</p></li>
 </ul>
 </dd>
 <dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
@@ -1141,9 +1089,26 @@ non-zero polynomial coefficients</p></li>
 <span class="sig-name descname"><span class="pre">DefaultOrder</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#at.lattice.elements.Quadrupole.DefaultOrder" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="at.lattice.elements.QuantumDiffusion">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">QuantumDiffusion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lmatp</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#QuantumDiffusion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.QuantumDiffusion" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_DictLongtMotion</span></code>, <a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
+<p>Quantum diffusion element</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p></li>
+<li><p><strong>lmatp</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><em>ndarray</em></a>) – Diffusion matrix for generation (see
+<a class="reference internal" href="at.physics.radiation.html#at.physics.radiation.gen_quantdiff_elem" title="at.physics.radiation.gen_quantdiff_elem"><code class="xref py py-func docutils literal notranslate"><span class="pre">gen_quantdiff_elem()</span></code></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Default PassMethod: <code class="docutils literal notranslate"><span class="pre">QuantDiffPass</span></code></p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="at.lattice.elements.Quadrupole.REQUIRED_ATTRIBUTES">
-<span class="sig-name descname"><span class="pre">REQUIRED_ATTRIBUTES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['FamName',</span> <span class="pre">'Length',</span> <span class="pre">'K']</span></em><a class="headerlink" href="#at.lattice.elements.Quadrupole.REQUIRED_ATTRIBUTES" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="at.lattice.elements.QuantumDiffusion.default_pass">
+<span class="sig-name descname"><span class="pre">default_pass</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{False:</span> <span class="pre">'IdentityPass',</span> <span class="pre">True:</span> <span class="pre">'QuantDiffPass'}</span></em><a class="headerlink" href="#at.lattice.elements.QuantumDiffusion.default_pass" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1151,17 +1116,17 @@ non-zero polynomial coefficients</p></li>
 <dl class="py class">
 <dt class="sig sig-object py" id="at.lattice.elements.RFCavity">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RFCavity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">voltage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">harmonic_number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">energy</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#RFCavity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.RFCavity" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#at.lattice.elements.LongElement" title="at.lattice.elements.LongElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">LongElement</span></code></a></p>
-<p>pyAT RF cavity element</p>
+<dd><p>Bases: <a class="reference internal" href="#at.lattice.elements.LongtMotion" title="at.lattice.elements.LongtMotion"><code class="xref py py-class docutils literal notranslate"><span class="pre">LongtMotion</span></code></a>, <a class="reference internal" href="#at.lattice.elements.LongElement" title="at.lattice.elements.LongElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">LongElement</span></code></a></p>
+<p>RF cavity element</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Name of the element</p></li>
-<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Element length [m]</p></li>
-<li><p><strong>voltage</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – RF voltage [V]</p></li>
-<li><p><strong>frequency</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – RF frequency [Hz]</p></li>
-<li><p><strong>harmonic_number</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – </p></li>
-<li><p><strong>energy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – ring energy [eV]</p></li>
+<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p></li>
+<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Element length [m]</p></li>
+<li><p><strong>voltage</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – RF voltage [V]</p></li>
+<li><p><strong>frequency</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – RF frequency [Hz]</p></li>
+<li><p><strong>harmonic_number</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – </p></li>
+<li><p><strong>energy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – ring energy [eV]</p></li>
 </ul>
 </dd>
 <dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
@@ -1172,7 +1137,7 @@ non-zero polynomial coefficients</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="at.lattice.elements.RFCavity.is_compatible">
 <span class="sig-name descname"><span class="pre">is_compatible</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#RFCavity.is_compatible"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.RFCavity.is_compatible" title="Permalink to this definition">#</a></dt>
-<dd><p>Checks if another Element can be merged</p>
+<dd><p>Checks if another <a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a> can be merged</p>
 <dl class="field-list simple">
 </dl>
 </dd></dl>
@@ -1185,24 +1150,69 @@ non-zero polynomial coefficients</p></li>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="at.lattice.elements.RFCavity.set_longt_motion">
+<span class="sig-name descname"><span class="pre">set_longt_motion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_pass</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#RFCavity.set_longt_motion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.RFCavity.set_longt_motion" title="Permalink to this definition">#</a></dt>
+<dd><p>Enable/Disable longitudinal motion</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>enable</strong> – <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>: for enabling, <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a> for
+disabling</p></li>
+<li><p><strong>new_pass</strong> – <p>New PassMethod:</p>
+<ul>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>: makes no change,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'auto'</span></code>: Uses the default conversion,</p></li>
+<li><p>Anything else is used as the new PassMethod.</p></li>
+</ul>
+</p></li>
+<li><p><strong>copy</strong> – If True, returns a modified copy of the element,
+otherwise modifies the element in-place</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py attribute">
-<dt class="sig sig-object py" id="at.lattice.elements.RFCavity.REQUIRED_ATTRIBUTES">
-<span class="sig-name descname"><span class="pre">REQUIRED_ATTRIBUTES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['FamName',</span> <span class="pre">'Length',</span> <span class="pre">'Voltage',</span> <span class="pre">'Frequency',</span> <span class="pre">'HarmNumber',</span> <span class="pre">'Energy']</span></em><a class="headerlink" href="#at.lattice.elements.RFCavity.REQUIRED_ATTRIBUTES" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="at.lattice.elements.RFCavity.default_pass">
+<span class="sig-name descname"><span class="pre">default_pass</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{False:</span> <span class="pre">'DriftPass',</span> <span class="pre">True:</span> <span class="pre">'RFCavityPass'}</span></em><a class="headerlink" href="#at.lattice.elements.RFCavity.default_pass" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="at.lattice.elements.Radiative">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Radiative</span></span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Radiative"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Radiative" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_Radiative</span></code></p>
+<p>Mixin class for default radiating elements (<a class="reference internal" href="#at.lattice.elements.Dipole" title="at.lattice.elements.Dipole"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dipole</span></code></a>,
+<a class="reference internal" href="#at.lattice.elements.Quadrupole" title="at.lattice.elements.Quadrupole"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quadrupole</span></code></a>, <a class="reference internal" href="#at.lattice.elements.Wiggler" title="at.lattice.elements.Wiggler"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wiggler</span></code></a>)</p>
+<p><a class="reference internal" href="#at.lattice.elements.Radiative" title="at.lattice.elements.Radiative"><code class="xref py py-class docutils literal notranslate"><span class="pre">Radiative</span></code></a> is a base class for the subset of radiative elements
+considered as the ones to be turned on by default: <a class="reference internal" href="#at.lattice.elements.Dipole" title="at.lattice.elements.Dipole"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dipole</span></code></a>,
+<a class="reference internal" href="#at.lattice.elements.Quadrupole" title="at.lattice.elements.Quadrupole"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quadrupole</span></code></a> and <a class="reference internal" href="#at.lattice.elements.Wiggler" title="at.lattice.elements.Wiggler"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wiggler</span></code></a>, excluding the higher
+order multipoles.</p>
+<p><a class="reference internal" href="#at.lattice.elements.Radiative" title="at.lattice.elements.Radiative"><code class="xref py py-class docutils literal notranslate"><span class="pre">Radiative</span></code></a> inherits from <code class="xref py py-class docutils literal notranslate"><span class="pre">_Radiative</span></code> and does not
+add any new functionality. Its purpose is to identify the default set of
+radiating elements.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Dipole</span><span class="p">(</span><span class="n">Radiative</span><span class="p">,</span> <span class="n">Multipole</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>Defines a class belonging to the default radiating elements. It
+converts the PassMethod according to the “*Pass” or “*RadPass”
+suffix.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="at.lattice.elements.Sextupole">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Sextupole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Sextupole"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Sextupole" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#at.lattice.elements.Multipole" title="at.lattice.elements.Multipole"><code class="xref py py-class docutils literal notranslate"><span class="pre">Multipole</span></code></a></p>
-<p>pyAT sextupole element</p>
+<p>Sextupole element</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Name of the element</p></li>
-<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Element length [m]</p></li>
-<li><p><strong>h</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>]</em>) – strength [mˆ-3]</p></li>
+<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p></li>
+<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Element length [m]</p></li>
+<li><p><strong>h</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – strength [mˆ-3]</p></li>
 </ul>
 </dd>
 <dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
@@ -1229,22 +1239,17 @@ non-zero polynomial coefficients</p></li>
 <span class="sig-name descname"><span class="pre">DefaultOrder</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#at.lattice.elements.Sextupole.DefaultOrder" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="at.lattice.elements.Sextupole.REQUIRED_ATTRIBUTES">
-<span class="sig-name descname"><span class="pre">REQUIRED_ATTRIBUTES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['FamName',</span> <span class="pre">'Length',</span> <span class="pre">'H']</span></em><a class="headerlink" href="#at.lattice.elements.Sextupole.REQUIRED_ATTRIBUTES" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="at.lattice.elements.ThinMultipole">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ThinMultipole</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly_a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly_b</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#ThinMultipole"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.ThinMultipole" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
-<p>pyAT thin multipole element</p>
+<p>Thin multipole element</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Name of the element</p></li>
+<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p></li>
 <li><p><strong>poly_a</strong> – Array of normal multipole components</p></li>
 <li><p><strong>poly_b</strong> – Array of skew multipole components</p></li>
 </ul>
@@ -1255,28 +1260,23 @@ non-zero polynomial coefficients</p>
 </dd>
 </dl>
 <p>Default PassMethod: <code class="docutils literal notranslate"><span class="pre">ThinMPolePass</span></code></p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="at.lattice.elements.ThinMultipole.REQUIRED_ATTRIBUTES">
-<span class="sig-name descname"><span class="pre">REQUIRED_ATTRIBUTES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['FamName',</span> <span class="pre">'PolynomA',</span> <span class="pre">'PolynomB']</span></em><a class="headerlink" href="#at.lattice.elements.ThinMultipole.REQUIRED_ATTRIBUTES" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="at.lattice.elements.Wiggler">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Wiggler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wiggle_period</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">energy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nstep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nmeth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">By</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Bx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Wiggler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Wiggler" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#at.lattice.elements.LongElement" title="at.lattice.elements.LongElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">LongElement</span></code></a></p>
-<p>pyAT wiggler element</p>
+<dd><p>Bases: <a class="reference internal" href="#at.lattice.elements.Radiative" title="at.lattice.elements.Radiative"><code class="xref py py-class docutils literal notranslate"><span class="pre">Radiative</span></code></a>, <a class="reference internal" href="#at.lattice.elements.LongElement" title="at.lattice.elements.LongElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">LongElement</span></code></a></p>
+<p>Wiggler element</p>
 <p>See atwiggler.m</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – total length of the wiggler</p></li>
-<li><p><strong>wiggle_period</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – length must be a multiple of this</p></li>
-<li><p><strong>b_max</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – peak wiggler field [Tesla]</p></li>
-<li><p><strong>energy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – beam energy [eV]</p></li>
-<li><p><strong>Nstep</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>]</em>) – number of integration steps.</p></li>
-<li><p><strong>Nmeth</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.10)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>]</em>) – symplectic integration order: 2 or 4</p></li>
+<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – total length of the wiggler</p></li>
+<li><p><strong>wiggle_period</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – length must be a multiple of this</p></li>
+<li><p><strong>b_max</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – peak wiggler field [Tesla]</p></li>
+<li><p><strong>energy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – beam energy [eV]</p></li>
+<li><p><strong>Nstep</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em>) – number of integration steps.</p></li>
+<li><p><strong>Nmeth</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em>) – symplectic integration order: 2 or 4</p></li>
 <li><p><strong>Bx</strong> – harmonics for horizontal wiggler: (6, nHharm)
 array-like object</p></li>
 <li><p><strong>By</strong> – harmonics for vertical wiggler (6, nHharm)
@@ -1285,28 +1285,33 @@ array-like object</p></li>
 </dd>
 </dl>
 <p>Default PassMethod: <code class="docutils literal notranslate"><span class="pre">GWigSymplecticPass</span></code></p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="at.lattice.elements.Wiggler.REQUIRED_ATTRIBUTES">
-<span class="sig-name descname"><span class="pre">REQUIRED_ATTRIBUTES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['FamName',</span> <span class="pre">'Length',</span> <span class="pre">'Lw',</span> <span class="pre">'Bmax',</span> <span class="pre">'Energy']</span></em><a class="headerlink" href="#at.lattice.elements.Wiggler.REQUIRED_ATTRIBUTES" title="Permalink to this definition">#</a></dt>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="at.lattice.elements.build_class_map">
+<span class="sig-name descname"><span class="pre">build_class_map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#build_class_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.build_class_map" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
-</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="at.lattice.elements.get_class_map">
+<span class="sig-name descname"><span class="pre">get_class_map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#get_class_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.get_class_map" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
 
 </section>
 
 
-              </article>
-              
-
-              
-              <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+            </article>
+            
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="at.lattice.cavity_access.html" title="previous page">
-      <i class="fas fa-angle-left"></i>
+  <a class='left-prev' id="prev-link" href="at.lattice.deprecated.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">at.lattice.cavity_access</p>
+          <p class="prev-next-title">at.lattice.deprecated</p>
       </div>
   </a>
   <a class='right-next' id="next-link" href="at.lattice.lattice_object.html" title="next page">
@@ -1314,36 +1319,657 @@ array-like object</p></li>
       <p class="prev-next-subtitle">next</p>
       <p class="prev-next-title">at.lattice.lattice_object</p>
   </div>
-  <i class="fas fa-angle-right"></i>
+  <i class="fa-solid fa-angle-right"></i>
   </a>
 </div>
-              </footer>
-              
+            </footer>
+            
           </div>
           
-      </div>
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.Aperture">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Aperture
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.BeamMoments">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     BeamMoments
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.BeamMoments.set_buffers">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BeamMoments.set_buffers()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.BeamMoments.means">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BeamMoments.means
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.BeamMoments.stds">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       BeamMoments.stds
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.Bend">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Bend
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.Collective">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Collective
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Collective.clear_history">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Collective.clear_history()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.Collimator">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Collimator
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.Corrector">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Corrector
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.Dipole">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Dipole
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Dipole.is_compatible">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Dipole.is_compatible()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Dipole.items">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Dipole.items()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Dipole.merge">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Dipole.merge()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Dipole.DefaultOrder">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Dipole.DefaultOrder
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.Drift">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Drift
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Drift.insert">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Drift.insert()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.Element">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Element
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Element.copy">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Element.copy()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Element.deepcopy">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Element.deepcopy()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Element.divide">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Element.divide()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Element.equals">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Element.equals()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Element.is_compatible">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Element.is_compatible()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Element.items">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Element.items()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Element.merge">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Element.merge()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Element.update">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Element.update()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Element.is_collective">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Element.is_collective
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Element.longt_motion">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Element.longt_motion
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.LongElement">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     LongElement
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.LongElement.divide">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LongElement.divide()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.LongElement.is_compatible">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LongElement.is_compatible()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.LongElement.merge">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LongElement.merge()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.LongtMotion">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     LongtMotion
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.LongtMotion.set_longt_motion">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       LongtMotion.set_longt_motion()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.M66">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     M66
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.Marker">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Marker
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.Monitor">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Monitor
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.Multipole">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Multipole
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Multipole.is_compatible">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Multipole.is_compatible()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Multipole.H">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Multipole.H
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Multipole.K">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Multipole.K
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.Octupole">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Octupole
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Octupole.DefaultOrder">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Octupole.DefaultOrder
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.Quadrupole">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Quadrupole
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Quadrupole.items">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Quadrupole.items()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Quadrupole.DefaultOrder">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Quadrupole.DefaultOrder
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.QuantumDiffusion">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     QuantumDiffusion
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.QuantumDiffusion.default_pass">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       QuantumDiffusion.default_pass
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.RFCavity">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     RFCavity
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.RFCavity.is_compatible">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       RFCavity.is_compatible()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.RFCavity.merge">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       RFCavity.merge()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.RFCavity.set_longt_motion">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       RFCavity.set_longt_motion()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.RFCavity.default_pass">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       RFCavity.default_pass
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.Radiative">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Radiative
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.Sextupole">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Sextupole
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Sextupole.items">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Sextupole.items()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Sextupole.DefaultOrder">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Sextupole.DefaultOrder
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.ThinMultipole">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     ThinMultipole
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.Wiggler">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Wiggler
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.build_class_map">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     build_class_map()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.get_class_map">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     get_class_map()
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
     </div>
+  </div>
 
   
-  
+    
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
 
-<footer class="bd-footer"><div class="bd-footer__inner container">
+  <footer class="bd-footer"><div class="bd-footer__inner container">
   
   <div class="footer-item">
-    <p class="copyright">
+    
+<p class="copyright">
+
     &copy; Copyright 2022, ATCollab.<br>
+
 </p>
+
   </div>
   
   <div class="footer-item">
-    <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
 </p>
+
   </div>
   
 </div>
-</footer>
+  </footer>
   </body>
 </html>

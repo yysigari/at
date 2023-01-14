@@ -1,0 +1,648 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>at.collective.beam_loading &#8212; Accelerator Toolbox 0.0.4 documentation</title>
+  <script>
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+
+  
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom_at.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/at/collective/beam_loading';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../index.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../../../_static/AT.png" class="logo__image only-light" alt="Logo image">
+    <img src="../../../_static/AT.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../p/index.html">
+                        Python
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../m/index.html">
+                        Matlab
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../pabout.html">
+                        About
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      <div class="navbar-end-item navbar-end__search-button-container">
+        
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/atcollab/at" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  <div class="search-button-container--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+  </div>
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../p/index.html">
+                        Python
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../m/index.html">
+                        Matlab
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a class="nav-link" href="../../../pabout.html">
+                        About
+                    </a>
+                </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
+    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/atcollab/at" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+      </div>
+      <main class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+            <article class="bd-article" role="main">
+              
+  <h1>Source code for at.collective.beam_loading</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">IntEnum</span>
+<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">Lattice</span>
+<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">RFCavity</span><span class="p">,</span> <span class="n">Collective</span>
+<span class="kn">from</span> <span class="nn">at.lattice.elements</span> <span class="kn">import</span> <span class="n">_array</span>
+<span class="kn">from</span> <span class="nn">at.lattice.utils</span> <span class="kn">import</span> <span class="n">Refpts</span><span class="p">,</span> <span class="n">uint32_refpts</span><span class="p">,</span> <span class="n">make_copy</span>
+<span class="kn">from</span> <span class="nn">at.physics</span> <span class="kn">import</span> <span class="n">get_timelag_fromU0</span>
+<span class="kn">from</span> <span class="nn">at.constants</span> <span class="kn">import</span> <span class="n">clight</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
+
+
+<div class="viewcode-block" id="BLMode"><a class="viewcode-back" href="../../../p/api/at.collective.beam_loading.html#at.collective.beam_loading.BLMode">[docs]</a><span class="k">class</span> <span class="nc">BLMode</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+    <span class="n">WAKE</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">PHASOR</span> <span class="o">=</span> <span class="mi">2</span></div>
+
+
+<div class="viewcode-block" id="add_beamloading"><a class="viewcode-back" href="../../../p/api/at.collective.beam_loading.html#at.collective.beam_loading.add_beamloading">[docs]</a><span class="k">def</span> <span class="nf">add_beamloading</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">qfactor</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span>
+                    <span class="n">rshunt</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span>
+                    <span class="n">cavpts</span><span class="p">:</span> <span class="n">Refpts</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">copy</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                    <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function to add beam loading to a cavity element, the cavity</span>
+<span class="sd">    element is changed to a beam loading element that combines the energy</span>
+<span class="sd">    kick from both the cavity and the resonator</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        ring:           Lattice object</span>
+<span class="sd">        qfactor:        Q factor. Scalar or array of float are accepted</span>
+<span class="sd">        rshunt:         Shunt impedance, [:math:`\Omega`] for longitudinal</span>
+<span class="sd">                        Scalar or array of float are accepted</span>
+
+<span class="sd">    Keyword Arguments:</span>
+<span class="sd">        cavpts (Refpts):    refpts of the cavity. If None (default) apply</span>
+<span class="sd">                            to all cavity in the ring</span>
+<span class="sd">        Nslice (int):       Number of slices per bunch. Default: 101</span>
+<span class="sd">        Nturns (int):       Number of turn for the wake field. Default: 1</span>
+<span class="sd">        ZCuts:              Limits for fixed slicing, default is adaptive</span>
+<span class="sd">        NormFact (float):   Normalization factor</span>
+<span class="sd">        mode (BLMode):  method for beam loading calculation BLMode.PHASOR</span>
+<span class="sd">            (default) uses the phasor method, BLMode.WAKE uses the wake</span>
+<span class="sd">            function. For high Q resonator, the phasor method should be</span>
+<span class="sd">            used</span>
+<span class="sd">        copy:       If True, returns a shallow copy of ring with new</span>
+<span class="sd">                    beam loading elements. Otherwise, modify ring in-place</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nd">@make_copy</span><span class="p">(</span><span class="n">copy</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">cavpts</span><span class="p">,</span> <span class="n">newelems</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">ref</span><span class="p">,</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cavpts</span><span class="p">,</span> <span class="n">newelems</span><span class="p">):</span>
+            <span class="n">ring</span><span class="p">[</span><span class="n">ref</span><span class="p">]</span> <span class="o">=</span> <span class="n">elem</span>
+
+    <span class="k">if</span> <span class="n">cavpts</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">cavpts</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">get_refpts</span><span class="p">(</span><span class="n">RFCavity</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">cavpts</span> <span class="o">=</span> <span class="n">uint32_refpts</span><span class="p">(</span><span class="n">cavpts</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ring</span><span class="p">))</span>
+    <span class="n">qfactor</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">qfactor</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cavpts</span><span class="p">),</span> <span class="p">))</span>
+    <span class="n">rshunt</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">rshunt</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cavpts</span><span class="p">),</span> <span class="p">))</span>
+    <span class="n">new_elems</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">ref</span><span class="p">,</span> <span class="n">qf</span><span class="p">,</span> <span class="n">rs</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cavpts</span><span class="p">,</span> <span class="n">qfactor</span><span class="p">,</span> <span class="n">rshunt</span><span class="p">):</span>
+        <span class="n">cav</span> <span class="o">=</span> <span class="n">ring</span><span class="p">[</span><span class="n">ref</span><span class="p">]</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cav</span><span class="p">,</span> <span class="n">RFCavity</span><span class="p">),</span> \
+            <span class="s1">&#39;Beam loading can only be assigned to a cavity element&#39;</span>
+        <span class="n">new_elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">BeamLoadingElement</span><span class="o">.</span><span class="n">build_from_cav</span><span class="p">(</span><span class="n">cav</span><span class="p">,</span> <span class="n">ring</span><span class="p">,</span> <span class="n">qf</span><span class="p">,</span>
+                                                           <span class="n">rs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">apply</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">cavpts</span><span class="p">,</span> <span class="n">new_elems</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="remove_beamloading"><a class="viewcode-back" href="../../../p/api/at.collective.beam_loading.html#at.collective.beam_loading.remove_beamloading">[docs]</a><span class="k">def</span> <span class="nf">remove_beamloading</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">cavpts</span><span class="p">:</span> <span class="n">Refpts</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                       <span class="n">copy</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to remove beam loading from a cavity element, the beam</span>
+<span class="sd">    loading element is changed to a beam loading element that</span>
+<span class="sd">    combines the energy kick from both the cavity and the resonator</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        ring:           Lattice object</span>
+
+<span class="sd">    Keyword Arguments:</span>
+<span class="sd">        cavpts (Refpts):    refpts of the beam loading Elements.</span>
+<span class="sd">                            If None (default) apply to all elements</span>
+<span class="sd">        copy:       If True, returns a shallow copy of ring with new</span>
+<span class="sd">                      cavity elements. Otherwise, modify ring in-place</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nd">@make_copy</span><span class="p">(</span><span class="n">copy</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">cavpts</span><span class="p">,</span> <span class="n">newelems</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">ref</span><span class="p">,</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cavpts</span><span class="p">,</span> <span class="n">newelems</span><span class="p">):</span>
+            <span class="n">ring</span><span class="p">[</span><span class="n">ref</span><span class="p">]</span> <span class="o">=</span> <span class="n">elem</span>
+
+    <span class="k">if</span> <span class="n">cavpts</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">cavpts</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">get_refpts</span><span class="p">(</span><span class="n">BeamLoadingElement</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">cavpts</span> <span class="o">=</span> <span class="n">uint32_refpts</span><span class="p">(</span><span class="n">cavpts</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ring</span><span class="p">))</span>
+    <span class="n">new_elems</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">ref</span> <span class="ow">in</span> <span class="n">cavpts</span><span class="p">:</span>
+        <span class="n">bl</span> <span class="o">=</span> <span class="n">ring</span><span class="p">[</span><span class="n">ref</span><span class="p">]</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">bl</span><span class="p">,</span> <span class="n">BeamLoadingElement</span><span class="p">),</span> \
+            <span class="s1">&#39;Cannot remove beam loading: not a beam loading element&#39;</span>
+        <span class="n">family_name</span> <span class="o">=</span> <span class="n">bl</span><span class="o">.</span><span class="n">FamName</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_BL&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">harm</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">bl</span><span class="o">.</span><span class="n">Frequency</span><span class="o">*</span><span class="n">ring</span><span class="o">.</span><span class="n">circumference</span><span class="o">/</span><span class="n">clight</span><span class="p">)</span>
+        <span class="n">new_elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RFCavity</span><span class="p">(</span><span class="n">family_name</span><span class="p">,</span> <span class="n">bl</span><span class="o">.</span><span class="n">Length</span><span class="p">,</span> <span class="n">bl</span><span class="o">.</span><span class="n">Voltage</span><span class="p">,</span>
+                                  <span class="n">bl</span><span class="o">.</span><span class="n">Frequency</span><span class="p">,</span> <span class="n">harm</span><span class="p">,</span> <span class="n">bl</span><span class="o">.</span><span class="n">Energy</span><span class="p">,</span>
+                                  <span class="n">TimeLag</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="n">bl</span><span class="p">,</span> <span class="s1">&#39;TimeLag&#39;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+                                  <span class="n">PhaseLag</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="n">bl</span><span class="p">,</span> <span class="s1">&#39;PhaseLag&#39;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">apply</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">cavpts</span><span class="p">,</span> <span class="n">new_elems</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="BeamLoadingElement"><a class="viewcode-back" href="../../../p/api/at.collective.beam_loading.html#at.collective.beam_loading.BeamLoadingElement">[docs]</a><span class="k">class</span> <span class="nc">BeamLoadingElement</span><span class="p">(</span><span class="n">RFCavity</span><span class="p">,</span> <span class="n">Collective</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Class to generate a beamloading element, inherits from Element</span>
+<span class="sd">       additional argument are ring, cavity, qfactor, rshunt</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">default_pass</span> <span class="o">=</span> <span class="p">{</span><span class="kc">False</span><span class="p">:</span> <span class="s1">&#39;DriftPass&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">:</span> <span class="s1">&#39;BeamLoadingCavityPass&#39;</span><span class="p">}</span>
+    <span class="n">_conversions</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">RFCavity</span><span class="o">.</span><span class="n">_conversions</span><span class="p">,</span>
+                        <span class="n">Rshunt</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">Qfactor</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">NormFact</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+                        <span class="n">PhaseGain</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">VoltGain</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">_mode</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+                        <span class="n">_beta</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">_wakefact</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">_nslice</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
+                        <span class="n">ZCuts</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">_array</span><span class="p">(</span><span class="n">v</span><span class="p">),</span>
+                        <span class="n">_nturns</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">_phis</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
+                        <span class="n">_turnhistory</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">_array</span><span class="p">(</span><span class="n">v</span><span class="p">),</span>
+                        <span class="n">_vbunch</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">_array</span><span class="p">(</span><span class="n">v</span><span class="p">),</span>
+                        <span class="n">_vbeam_phasor</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">_array</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,)),</span>
+                        <span class="n">_vbeam</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">_array</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,)),</span>
+                        <span class="n">_vcav</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">_array</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,)),</span>
+                        <span class="n">_vgen</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">_array</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,)))</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">family_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">length</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">voltage</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+                 <span class="n">frequency</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">qfactor</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+                 <span class="n">rshunt</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BLMode</span><span class="p">]</span> <span class="o">=</span> <span class="n">BLMode</span><span class="o">.</span><span class="n">PHASOR</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            ring:            Lattice object</span>
+<span class="sd">            length:          Length of the cavity</span>
+<span class="sd">            voltage:         Cavity voltage [V]</span>
+<span class="sd">            frequency:       Cavity frequency [Hz]</span>
+<span class="sd">            qfactor:         Q factor</span>
+<span class="sd">            rshunt:          Shunt impedance, [:math:`\Omega`]</span>
+
+<span class="sd">        Keyword Arguments:</span>
+<span class="sd">            Nslice (int):       Number of slices per bunch. Default: 101</span>
+<span class="sd">            Nturns (int):       Number of turn for the wake field. Default: 1</span>
+<span class="sd">            ZCuts:              Limits for fixed slicing, default is adaptive</span>
+<span class="sd">            NormFact (float):   Normalization factor</span>
+<span class="sd">            mode (BLMode):  method for beam loading calculation BLMode.PHASOR</span>
+<span class="sd">                (default) uses the phasor method, BLMode.WAKE uses the wake</span>
+<span class="sd">                function. For high Q resonator, the phasor method should be</span>
+<span class="sd">                used</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            bl_elem (Element): beam loading element</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;PassMethod&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_pass</span><span class="p">[</span><span class="kc">True</span><span class="p">])</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">BLMode</span><span class="p">),</span> \
+            <span class="s1">&#39;Beam loading mode has to be an instance of BLMode&#39;</span>
+        <span class="n">zcuts</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;ZCuts&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">phil</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;phil&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">energy</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">energy</span>
+        <span class="n">harmonic_number</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">frequency</span><span class="o">*</span><span class="n">ring</span><span class="o">.</span><span class="n">circumference</span><span class="o">/</span><span class="n">clight</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Rshunt</span> <span class="o">=</span> <span class="n">rshunt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Qfactor</span> <span class="o">=</span> <span class="n">qfactor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">NormFact</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;NormFact&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">PhaseGain</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;PhaseGain&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">VoltGain</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;VoltGain&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_beta</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">beta</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_wakefact</span> <span class="o">=</span> <span class="o">-</span> <span class="n">ring</span><span class="o">.</span><span class="n">circumference</span><span class="o">/</span><span class="p">(</span><span class="n">clight</span> <span class="o">*</span>
+                                               <span class="n">ring</span><span class="o">.</span><span class="n">energy</span><span class="o">*</span><span class="n">ring</span><span class="o">.</span><span class="n">beta</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nslice</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;Nslice&#39;</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nturns</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;Nturns&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_turnhistory</span> <span class="o">=</span> <span class="kc">None</span>    <span class="c1"># Defined here to avoid warning</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vbunch</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">zcuts</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ZCuts</span> <span class="o">=</span> <span class="n">zcuts</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">BeamLoadingElement</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">family_name</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span>
+                                                 <span class="n">voltage</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span>
+                                                 <span class="n">harmonic_number</span><span class="p">,</span>
+                                                 <span class="n">energy</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="n">get_timelag_fromU0</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_phis</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">Frequency</span><span class="o">*</span><span class="p">(</span><span class="n">ts</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">TimeLag</span><span class="p">)</span><span class="o">/</span><span class="n">clight</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vbeam_phasor</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vbeam</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vgen</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vcav</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">Voltage</span><span class="p">,</span>
+                                  <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_phis</span><span class="o">-</span><span class="n">phil</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clear_history</span><span class="p">(</span><span class="n">ring</span><span class="o">=</span><span class="n">ring</span><span class="p">)</span>
+
+<div class="viewcode-block" id="BeamLoadingElement.is_compatible"><a class="viewcode-back" href="../../../p/api/at.collective.beam_loading.html#at.collective.beam_loading.BeamLoadingElement.is_compatible">[docs]</a>    <span class="k">def</span> <span class="nf">is_compatible</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="BeamLoadingElement.clear_history"><a class="viewcode-back" href="../../../p/api/at.collective.beam_loading.html#at.collective.beam_loading.BeamLoadingElement.clear_history">[docs]</a>    <span class="k">def</span> <span class="nf">clear_history</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ring</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">ring</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="n">nbunch</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">beam_current</span>
+            <span class="n">nbunch</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">nbunch</span>
+        <span class="n">tl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nturns</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_nslice</span><span class="o">*</span><span class="n">nbunch</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_turnhistory</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">tl</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vbunch</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nbunch</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_init_bl_params</span><span class="p">(</span><span class="n">current</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_init_bl_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current</span><span class="p">):</span>
+        <span class="n">theta</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_vcav</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span>
+        <span class="n">vb</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">current</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">Rshunt</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Voltage</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_phis</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Voltage</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_phis</span><span class="p">)</span><span class="o">-</span><span class="n">vb</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+        <span class="n">psi</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">b</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">b</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">vgen</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Voltage</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span> <span class="o">+</span> \
+            <span class="n">vb</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_phis</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vgen</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">vgen</span><span class="p">,</span> <span class="n">psi</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vbeam</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="o">*</span><span class="n">current</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">Rshunt</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">psi</span><span class="p">),</span>
+                                   <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="o">-</span><span class="n">psi</span><span class="p">])</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ResFrequency</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Resonator frequency&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">Frequency</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">numpy</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Vgen</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">Qfactor</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">Vbeam</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Beam phasor (amplitude, phase)&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vbeam</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">Vbunch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Bunch phasor (amplitude, phase)&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vbunch</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">Vcav</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cavity phasor (amplitude, phase)&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vcav</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">Vgen</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generator phasor (amplitude, phase)&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vgen</span>
+
+    <span class="nd">@Vgen</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">Vgen</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vgen</span> <span class="o">=</span> <span class="n">value</span>
+
+<div class="viewcode-block" id="BeamLoadingElement.build_from_cav"><a class="viewcode-back" href="../../../p/api/at.collective.beam_loading.html#at.collective.beam_loading.BeamLoadingElement.build_from_cav">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">build_from_cav</span><span class="p">(</span><span class="n">cav</span><span class="p">:</span> <span class="n">RFCavity</span><span class="p">,</span> <span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">,</span>
+                       <span class="n">qfactor</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">rshunt</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+                       <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BLMode</span><span class="p">]</span> <span class="o">=</span> <span class="n">BLMode</span><span class="o">.</span><span class="n">PHASOR</span><span class="p">,</span>
+                       <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Function to build the BeamLoadingElement from a cavity</span>
+<span class="sd">        the FamName, Length, Voltage, Frequency and HarmNumber are</span>
+<span class="sd">        taken from the cavity element</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            ring:            Lattice object</span>
+<span class="sd">            qfactor:         Q factor</span>
+<span class="sd">            rshunt:          Shunt impedance, [:math:`\Omega`]</span>
+
+<span class="sd">        Keyword Arguments:</span>
+<span class="sd">            Nslice (int):       Number of slices per bunch. Default: 101</span>
+<span class="sd">            Nturns (int):       Number of turn for the wake field. Default: 1</span>
+<span class="sd">            ZCuts:              Limits for fixed slicing, default is adaptive</span>
+<span class="sd">            NormFact (float):   Normalization factor</span>
+<span class="sd">            mode (BLMode):  method for beam loading calculation BLMode.PHASOR</span>
+<span class="sd">                (default) uses the phasor method, BLMode.WAKE uses the wake</span>
+<span class="sd">                function. For high Q resonator, the phasor method should be</span>
+<span class="sd">                used</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            bl_elem (Element): beam loading element</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_CAV_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Length&#39;</span><span class="p">,</span> <span class="s1">&#39;Voltage&#39;</span><span class="p">,</span> <span class="s1">&#39;Frequency&#39;</span><span class="p">]</span>
+        <span class="n">_EXCL_ATTRIBUTES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;PassMethod&#39;</span><span class="p">,</span> <span class="s1">&#39;Energy&#39;</span><span class="p">,</span> <span class="s1">&#39;HarmNumber&#39;</span><span class="p">]</span>
+        <span class="n">cav_attrs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">cav</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="n">family_name</span> <span class="o">=</span> <span class="n">cav_attrs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;FamName&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_BL&#39;</span>
+        <span class="p">[</span><span class="n">cav_attrs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">_EXCL_ATTRIBUTES</span><span class="p">]</span>
+        <span class="n">cav_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">cav_attrs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">cav</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span>
+                    <span class="n">_CAV_ATTRIBUTES</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">BeamLoadingElement</span><span class="p">(</span><span class="n">family_name</span><span class="p">,</span> <span class="o">*</span><span class="n">cav_args</span><span class="p">,</span> <span class="n">ring</span><span class="p">,</span>
+                                  <span class="n">qfactor</span><span class="p">,</span> <span class="n">rshunt</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+                                  <span class="o">**</span><span class="n">cav_attrs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Simplified __repr__ to avoid errors due to arguments</span>
+<span class="sd">        not defined as attributes</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">attrs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                     <span class="k">if</span> <span class="ow">not</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">))</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">(</span><span class="si">{1}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">attrs</span><span class="p">)</span></div>
+</pre></div>
+
+            </article>
+            
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022, ATCollab.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>
