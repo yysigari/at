@@ -9,7 +9,7 @@ methods are used by higher-level functions to provide physics results.
 Requirements
 ------------
 
-pyAT supports Python 3.6 to 3.10.
+pyAT supports Python 3.7 to 3.11.
 
 Installation
 ------------
@@ -32,11 +32,15 @@ From GitHub
 
 3. Go to the pyAT installation directory::
 
-    $ cd at/pyat
+    $ cd at
 
 4. Build and install::
 
     $ pip install .
+
+Parallel computation
+~~~~~~~~~~~~~~~~~~~~~
+PyAT can be compiled for parallel processing. See :ref:`parallel`
 
 Usage
 -----
