@@ -3,16 +3,13 @@ Closed orbit related functions
 """
 import numpy
 from at.constants import clight
-from at.lattice import AtError, AtWarning, check_6d, DConstant
-from at.lattice import Lattice, get_s_pos, Refpts
+from at.lattice import AtError, AtWarning, check_6d, DConstant, Orbit
+from at.lattice import Lattice, get_s_pos, Refpts, frequency_control
 from at.tracking import lattice_pass
-from . import ELossMethod, get_timelag_fromU0
+from .energy_loss import ELossMethod, get_timelag_fromU0
 import warnings
 
-Orbit = numpy.ndarray
-
-__all__ = ['Orbit', 'find_orbit4', 'find_sync_orbit', 'find_orbit6',
-           'find_orbit']
+__all__ = ['find_orbit4', 'find_sync_orbit', 'find_orbit6', 'find_orbit']
 
 
 @check_6d(False)
@@ -369,8 +366,8 @@ def _orbit6(ring: Lattice, cavpts=None, guess=None, keep_lattice=False,
 
 
 # noinspection PyIncorrectDocstring
+@frequency_control
 def find_orbit6(ring: Lattice, refpts: Refpts = None, *,
-                dp: float = None, dct: float = None, df: float = None,
                 orbit: Orbit = None, keep_lattice: bool = False, **kwargs):
     r"""Gets the closed orbit in the full 6-D phase space
 
@@ -406,11 +403,14 @@ def find_orbit6(ring: Lattice, refpts: Refpts = None, *,
             :math:`c*Nb/f_{RF}`,  Nb = 0:h-1
         5.  The value of the 6-th coordinate found at the cavity gives
             the equilibrium RF phase. If there is no radiation it is 0.
+        6.  ``dp``, ``dct`` and ``df`` arguments are applied with respect
+            to the **NOMINAL** on-momentum frequency. They overwrite
+            exisiting frequency offsets
+            
 
     Parameters:
         ring:           Lattice description
-        refpts:         Observation points.
-          See ":ref:`Selecting elements in a lattice <refpts>`"
+        refpts:         Observation points
         orbit:          Avoids looking for initial the closed orbit if it is
           already known ((6,) array). :py:func:`find_sync_orbit` propagates it
           to the specified *refpts*.
@@ -443,8 +443,6 @@ def find_orbit6(ring: Lattice, refpts: Refpts = None, *,
     See also:
         :py:func:`find_orbit4`, :py:func:`find_sync_orbit`
     """
-    if dp is not None or dct is not None or df is not None:
-        raise AtError("orbit6: in 6d, dp, dct and df are not allowed")
     if orbit is None:
         orbit = _orbit6(ring, keep_lattice=keep_lattice, **kwargs)
         keep_lattice = True

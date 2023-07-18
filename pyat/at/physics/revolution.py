@@ -4,44 +4,10 @@ from ..constants import clight
 from ..tracking import lattice_pass
 from .orbit import find_orbit4
 import numpy
-import functools
 from typing import Optional
 
-__all__ = ['frequency_control', 'get_mcf', 'get_slip_factor',
-           'get_revolution_frequency', 'set_rf_frequency']
-
-
-def frequency_control(func):
-    r""" Function to be used as decorator for :pycode:`func(ring, *args, **kwargs)`
-
-    If :pycode:`ring.is_6d` is :py:obj:`True` **and** *dp*, *dct* or *df*
-    is specified in *kwargs*, make a copy of *ring* with a modified
-    RF frequency, remove *dp*, *dct* or *df* from *kwargs* and call
-    *func* with the modified *ring*.
-
-    If :pycode:`ring.is_6d` is :py:obj:`False` **or** no *dp*, *dct* or
-    *df* is specified in *kwargs*, *func* is called unchanged.
-
-    Examples:
-
-        .. code-block:: python
-
-            @frequency_control
-            def func(ring, *args, dp=None, dct=None, **kwargs):
-                pass
-    """
-    @functools.wraps(func)
-    def wrapper(ring, *args, **kwargs):
-        if ring.is_6d:
-            momargs = {}
-            for key in ['dp', 'dct', 'df']:
-                v = kwargs.pop(key, None)
-                if v is not None:
-                    momargs[key] = v
-            if len(momargs) > 0:
-                ring = set_rf_frequency(ring, **momargs, copy=True)
-        return func(ring, *args, **kwargs)
-    return wrapper
+__all__ = ['get_mcf', 'get_slip_factor', 'get_revolution_frequency',
+           'set_rf_frequency']
 
 
 @check_6d(False)
@@ -151,16 +117,16 @@ def set_rf_frequency(ring: Lattice, frequency: float = None,
           *ring* in-place
     """
     if frequency is None:
-        frequency = ring.get_revolution_frequency(dp=dp, dct=dct, df=df) \
+        frequency = get_revolution_frequency(ring, dp=dp, dct=dct, df=df) \
                     * ring.harmonic_number
     return ring.set_cavity(Frequency=frequency, **kwargs)
 
 
 Lattice.mcf = property(get_mcf, doc="Momentum compaction factor")
 Lattice.slip_factor = property(get_slip_factor, doc="Slip factor")
-Lattice.get_revolution_frequency = get_revolution_frequency
 Lattice.get_mcf = get_mcf
 Lattice.get_slip_factor = get_slip_factor
+Lattice.get_revolution_frequency = get_revolution_frequency
 Lattice.set_rf_frequency = set_rf_frequency
 Lattice.rf_frequency = property(get_rf_frequency, set_rf_frequency,
     doc="Fundamental RF frequency [Hz]. The special value "

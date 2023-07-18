@@ -256,8 +256,8 @@ def test_linopt_line(hmba_lattice, refpts):
 def test_get_tune_chrom(hmba_lattice):
     qlin = hmba_lattice.get_tune()
     qplin = hmba_lattice.get_chrom()
-    qharm = hmba_lattice.get_tune(method='laskar')
-    qpharm = hmba_lattice.get_chrom(method='laskar')
+    qharm = hmba_lattice.get_tune(method='interp_fft')
+    qpharm = hmba_lattice.get_chrom(method='interp_fft')
     assert_close(qlin, [0.38156245, 0.85437541], rtol=1e-8)
     assert_close(qharm, [0.38156245, 0.85437541], rtol=1e-8)
     assert_close(qplin, [0.1791909, 0.12242558], rtol=1e-5)
@@ -267,9 +267,9 @@ def test_get_tune_chrom(hmba_lattice):
 def test_nl_detuning_chromaticity(hmba_lattice):
     nlqplin, _, _ = at.nonlinear.chromaticity(hmba_lattice, npoints=11)
     nlqpharm, _, _ = at.nonlinear.chromaticity(hmba_lattice,
-                                               method='laskar', npoints=11)
+                                               method='interp_fft', npoints=11)
     q0, q1, _, _, _, _ = at.nonlinear.detuning(hmba_lattice,
-                                               npoints=11, window=1)
+                                               npoints=11)
     assert_close(nlqplin, [[0.38156741, 0.17908231, 1.18656034, -16.47368694],
                            [0.85437409, 0.1224062, 2.01744075, -3.06407764]],
                  atol=1e-12, rtol=1e-5)
