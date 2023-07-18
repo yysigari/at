@@ -296,16 +296,13 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">from</span> <span class="nn">at.constants</span> <span class="kn">import</span> <span class="n">clight</span>
-<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">AtError</span><span class="p">,</span> <span class="n">AtWarning</span><span class="p">,</span> <span class="n">check_6d</span><span class="p">,</span> <span class="n">DConstant</span>
-<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">get_s_pos</span><span class="p">,</span> <span class="n">Refpts</span>
+<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">AtError</span><span class="p">,</span> <span class="n">AtWarning</span><span class="p">,</span> <span class="n">check_6d</span><span class="p">,</span> <span class="n">DConstant</span><span class="p">,</span> <span class="n">Orbit</span>
+<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">get_s_pos</span><span class="p">,</span> <span class="n">Refpts</span><span class="p">,</span> <span class="n">frequency_control</span>
 <span class="kn">from</span> <span class="nn">at.tracking</span> <span class="kn">import</span> <span class="n">lattice_pass</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">ELossMethod</span><span class="p">,</span> <span class="n">get_timelag_fromU0</span>
+<span class="kn">from</span> <span class="nn">.energy_loss</span> <span class="kn">import</span> <span class="n">ELossMethod</span><span class="p">,</span> <span class="n">get_timelag_fromU0</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 
-<span class="n">Orbit</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span>
-
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Orbit&#39;</span><span class="p">,</span> <span class="s1">&#39;find_orbit4&#39;</span><span class="p">,</span> <span class="s1">&#39;find_sync_orbit&#39;</span><span class="p">,</span> <span class="s1">&#39;find_orbit6&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;find_orbit&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;find_orbit4&#39;</span><span class="p">,</span> <span class="s1">&#39;find_sync_orbit&#39;</span><span class="p">,</span> <span class="s1">&#39;find_orbit6&#39;</span><span class="p">,</span> <span class="s1">&#39;find_orbit&#39;</span><span class="p">]</span>
 
 
 <span class="nd">@check_6d</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
@@ -662,8 +659,8 @@
 
 
 <span class="c1"># noinspection PyIncorrectDocstring</span>
-<div class="viewcode-block" id="find_orbit6"><a class="viewcode-back" href="../../../p/api/at.physics.orbit.html#at.physics.orbit.find_orbit6">[docs]</a><span class="k">def</span> <span class="nf">find_orbit6</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
-                <span class="n">dp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dct</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<div class="viewcode-block" id="find_orbit6"><a class="viewcode-back" href="../../../p/api/at.physics.orbit.html#at.physics.orbit.find_orbit6">[docs]</a><span class="nd">@frequency_control</span>
+<span class="k">def</span> <span class="nf">find_orbit6</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
                 <span class="n">orbit</span><span class="p">:</span> <span class="n">Orbit</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">keep_lattice</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Gets the closed orbit in the full 6-D phase space</span>
 
@@ -699,11 +696,14 @@
 <span class="sd">            :math:`c*Nb/f_{RF}`,  Nb = 0:h-1</span>
 <span class="sd">        5.  The value of the 6-th coordinate found at the cavity gives</span>
 <span class="sd">            the equilibrium RF phase. If there is no radiation it is 0.</span>
+<span class="sd">        6.  ``dp``, ``dct`` and ``df`` arguments are applied with respect</span>
+<span class="sd">            to the **NOMINAL** on-momentum frequency. They overwrite</span>
+<span class="sd">            exisiting frequency offsets</span>
+<span class="sd">            </span>
 
 <span class="sd">    Parameters:</span>
 <span class="sd">        ring:           Lattice description</span>
-<span class="sd">        refpts:         Observation points.</span>
-<span class="sd">          See &quot;:ref:`Selecting elements in a lattice &lt;refpts&gt;`&quot;</span>
+<span class="sd">        refpts:         Observation points</span>
 <span class="sd">        orbit:          Avoids looking for initial the closed orbit if it is</span>
 <span class="sd">          already known ((6,) array). :py:func:`find_sync_orbit` propagates it</span>
 <span class="sd">          to the specified *refpts*.</span>
@@ -736,8 +736,6 @@
 <span class="sd">    See also:</span>
 <span class="sd">        :py:func:`find_orbit4`, :py:func:`find_sync_orbit`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">dp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">dct</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">df</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">AtError</span><span class="p">(</span><span class="s2">&quot;orbit6: in 6d, dp, dct and df are not allowed&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">orbit</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">orbit</span> <span class="o">=</span> <span class="n">_orbit6</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">keep_lattice</span><span class="o">=</span><span class="n">keep_lattice</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">keep_lattice</span> <span class="o">=</span> <span class="kc">True</span>

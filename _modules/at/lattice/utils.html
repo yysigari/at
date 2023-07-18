@@ -325,6 +325,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">import</span> <span class="nn">functools</span>
+<span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Iterator</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Type</span>
 <span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
@@ -645,7 +646,7 @@
 
 <span class="c1"># noinspection PyIncorrectDocstring</span>
 <div class="viewcode-block" id="get_uint32_index"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.get_uint32_index">[docs]</a><span class="k">def</span> <span class="nf">get_uint32_index</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span>
-                     <span class="n">endpoint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Uint32Refpts</span><span class="p">:</span>
+                     <span class="n">endpoint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Uint32Refpts</span><span class="p">:</span>
     <span class="c1"># noinspection PyUnresolvedReferences, PyShadowingNames</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns an integer array of element indices, selecting ring elements.</span>
 
@@ -654,6 +655,8 @@
 <span class="sd">          See &quot;:ref:`Selecting elements in a lattice &lt;refpts&gt;`&quot;</span>
 <span class="sd">        endpoint:   if :py:obj:`True`, allow *len(ring)* as a</span>
 <span class="sd">          special index, referring to the end of the last element.</span>
+<span class="sd">        regex: Use regular expression for refpts string matching;</span>
+<span class="sd">            Default: False (Unix shell-style wildcards)</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        uint32_ref (Uint32Refpts): uint32 numpy array used for indexing</span>
@@ -679,12 +682,12 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
         <span class="n">checkfun</span> <span class="o">=</span> <span class="n">checktype</span><span class="p">(</span><span class="n">refpts</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">callable</span><span class="p">(</span><span class="n">refpts</span><span class="p">):</span>
+    <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="n">refpts</span><span class="p">):</span>
         <span class="n">checkfun</span> <span class="o">=</span> <span class="n">refpts</span>
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="n">Element</span><span class="p">):</span>
         <span class="n">checkfun</span> <span class="o">=</span> <span class="n">checktype</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">refpts</span><span class="p">))</span>
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="n">checkfun</span> <span class="o">=</span> <span class="n">checkname</span><span class="p">(</span><span class="n">refpts</span><span class="p">)</span>
+        <span class="n">checkfun</span> <span class="o">=</span> <span class="n">checkname</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">uint32_refpts</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ring</span><span class="p">),</span> <span class="n">endpoint</span><span class="o">=</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">types</span><span class="o">=</span><span class="n">_typ2</span><span class="p">)</span>
 
@@ -744,7 +747,7 @@
 
 <span class="c1"># noinspection PyIncorrectDocstring</span>
 <div class="viewcode-block" id="get_bool_index"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.get_bool_index">[docs]</a><span class="k">def</span> <span class="nf">get_bool_index</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span>
-                   <span class="n">endpoint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BoolRefpts</span><span class="p">:</span>
+                   <span class="n">endpoint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BoolRefpts</span><span class="p">:</span>
     <span class="c1"># noinspection PyUnresolvedReferences, PyShadowingNames</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns a bool array of element indices, selecting ring elements.</span>
 
@@ -753,6 +756,8 @@
 <span class="sd">          See &quot;:ref:`Selecting elements in a lattice &lt;refpts&gt;`&quot;</span>
 <span class="sd">        endpoint:   if :py:obj:`True`, allow *len(ring)* as a</span>
 <span class="sd">          special index, referring to the end of the last element.</span>
+<span class="sd">        regex: Use regular expression for refpts string matching;</span>
+<span class="sd">            Default: False (Unix shell-style wildcards)</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        bool_refs (BoolRefpts):  A bool numpy array used for indexing</span>
@@ -781,12 +786,12 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
         <span class="n">checkfun</span> <span class="o">=</span> <span class="n">checktype</span><span class="p">(</span><span class="n">refpts</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">callable</span><span class="p">(</span><span class="n">refpts</span><span class="p">):</span>
+    <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="n">refpts</span><span class="p">):</span>
         <span class="n">checkfun</span> <span class="o">=</span> <span class="n">refpts</span>
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="n">Element</span><span class="p">):</span>
         <span class="n">checkfun</span> <span class="o">=</span> <span class="n">checktype</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">refpts</span><span class="p">))</span>
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="n">checkfun</span> <span class="o">=</span> <span class="n">checkname</span><span class="p">(</span><span class="n">refpts</span><span class="p">)</span>
+        <span class="n">checkfun</span> <span class="o">=</span> <span class="n">checkname</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">bool_refpts</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ring</span><span class="p">),</span> <span class="n">endpoint</span><span class="o">=</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">types</span><span class="o">=</span><span class="n">_typ2</span><span class="p">)</span>
 
@@ -862,7 +867,7 @@
     <span class="k">return</span> <span class="k">lambda</span> <span class="n">el</span><span class="p">:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">eltype</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="checkname"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.checkname">[docs]</a><span class="k">def</span> <span class="nf">checkname</span><span class="p">(</span><span class="n">pattern</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ElementFilter</span><span class="p">:</span>
+<div class="viewcode-block" id="checkname"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.checkname">[docs]</a><span class="k">def</span> <span class="nf">checkname</span><span class="p">(</span><span class="n">pattern</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ElementFilter</span><span class="p">:</span>
     <span class="c1"># noinspection PyUnresolvedReferences</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Checks the name of an element</span>
 
@@ -874,6 +879,8 @@
 <span class="sd">    Parameters:</span>
 <span class="sd">        pattern: Desired :py:class:`.Element` name. Unix shell-style</span>
 <span class="sd">          wildcards are supported (see :py:func:`fnmatch.fnmatch`)</span>
+<span class="sd">        regex: Use regular expression for refpts string matching;</span>
+<span class="sd">            Default: False (Unix shell-style wildcards)</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        checkfun (ElementFilter):   Element filter function</span>
@@ -884,10 +891,14 @@
 
 <span class="sd">        Returns an iterator over all with name starting with ``QF``.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="k">lambda</span> <span class="n">el</span><span class="p">:</span> <span class="n">fnmatch</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">FamName</span><span class="p">,</span> <span class="n">pattern</span><span class="p">)</span></div>
+    <span class="k">if</span> <span class="n">regex</span><span class="p">:</span>
+        <span class="n">rgx</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">lambda</span> <span class="n">el</span><span class="p">:</span> <span class="n">rgx</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">FamName</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="k">lambda</span> <span class="n">el</span><span class="p">:</span> <span class="n">fnmatch</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">FamName</span><span class="p">,</span> <span class="n">pattern</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="refpts_iterator"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.refpts_iterator">[docs]</a><span class="k">def</span> <span class="nf">refpts_iterator</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">)</span> \
+<div class="viewcode-block" id="refpts_iterator"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.refpts_iterator">[docs]</a><span class="k">def</span> <span class="nf">refpts_iterator</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> \
         <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Element</span><span class="p">]:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return an iterator over selected elements in a lattice</span>
 
@@ -895,6 +906,8 @@
 <span class="sd">        ring:           Lattice description</span>
 <span class="sd">        refpts:         Element selection key.</span>
 <span class="sd">          See &quot;:ref:`Selecting elements in a lattice &lt;refpts&gt;`&quot;</span>
+<span class="sd">        regex: Use regular expression for refpts string matching;</span>
+<span class="sd">            Default: False (Unix shell-style wildcards)</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        elem_iter (Iterator[Element]):  Iterator over the elements in *ring*</span>
@@ -902,12 +915,12 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
         <span class="n">checkfun</span> <span class="o">=</span> <span class="n">checktype</span><span class="p">(</span><span class="n">refpts</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">callable</span><span class="p">(</span><span class="n">refpts</span><span class="p">):</span>
+    <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="n">refpts</span><span class="p">):</span>
         <span class="n">checkfun</span> <span class="o">=</span> <span class="n">refpts</span>
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="n">Element</span><span class="p">):</span>
         <span class="n">checkfun</span> <span class="o">=</span> <span class="n">checktype</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">refpts</span><span class="p">))</span>
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="n">checkfun</span> <span class="o">=</span> <span class="n">checkname</span><span class="p">(</span><span class="n">refpts</span><span class="p">)</span>
+        <span class="n">checkfun</span> <span class="o">=</span> <span class="n">checkname</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">refs</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">refpts</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">refpts</span> <span class="ow">is</span> <span class="n">RefptsCode</span><span class="o">.</span><span class="n">All</span><span class="p">:</span>
@@ -966,7 +979,7 @@
 
 
 <span class="k">def</span> <span class="nf">_refcount</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span>
-              <span class="n">endpoint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+              <span class="n">endpoint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="c1"># noinspection PyUnresolvedReferences, PyShadowingNames</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns the number of reference points</span>
 
@@ -975,6 +988,8 @@
 <span class="sd">          See &quot;:ref:`Selecting elements in a lattice &lt;refpts&gt;`&quot;</span>
 <span class="sd">        endpoint:   if :py:obj:`True`, allow *len(ring)* as a</span>
 <span class="sd">          special index, referring to the end of the last element.</span>
+<span class="sd">        regex: Use regular expression for refpts string matching;</span>
+<span class="sd">            Default: False (Unix shell-style wildcards)</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        nrefs (int):  The number of reference points</span>
@@ -998,12 +1013,12 @@
 <span class="sd">        &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
         <span class="n">checkfun</span> <span class="o">=</span> <span class="n">checktype</span><span class="p">(</span><span class="n">refpts</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">callable</span><span class="p">(</span><span class="n">refpts</span><span class="p">):</span>
+    <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="n">refpts</span><span class="p">):</span>
         <span class="n">checkfun</span> <span class="o">=</span> <span class="n">refpts</span>
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="n">Element</span><span class="p">):</span>
         <span class="n">checkfun</span> <span class="o">=</span> <span class="n">checktype</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">refpts</span><span class="p">))</span>
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="n">checkfun</span> <span class="o">=</span> <span class="n">checkname</span><span class="p">(</span><span class="n">refpts</span><span class="p">)</span>
+        <span class="n">checkfun</span> <span class="o">=</span> <span class="n">checkname</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">refpts_count</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ring</span><span class="p">),</span> <span class="n">endpoint</span><span class="o">=</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">types</span><span class="o">=</span><span class="n">_typ2</span><span class="p">)</span>
 
@@ -1011,7 +1026,7 @@
 
 
 <span class="c1"># noinspection PyUnusedLocal,PyIncorrectDocstring</span>
-<div class="viewcode-block" id="get_elements"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.get_elements">[docs]</a><span class="k">def</span> <span class="nf">get_elements</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> \
+<div class="viewcode-block" id="get_elements"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.get_elements">[docs]</a><span class="k">def</span> <span class="nf">get_elements</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> \
         <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns a list of elements selected by *key*.</span>
 
@@ -1021,16 +1036,19 @@
 <span class="sd">        ring:           Lattice description</span>
 <span class="sd">        refpts:         Element selection key.</span>
 <span class="sd">          See &quot;:ref:`Selecting elements in a lattice &lt;refpts&gt;`&quot;</span>
+<span class="sd">        regex: Use regular expression for refpts string matching;</span>
+<span class="sd">            Default: False (Unix shell-style wildcards)</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        elem_list (list):  list of :py:class:`.Element`\ s matching key</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">refpts_iterator</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">))</span></div>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">refpts_iterator</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="get_value_refpts"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.get_value_refpts">[docs]</a><span class="k">def</span> <span class="nf">get_value_refpts</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span>
-                     <span class="n">attrname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Extracts attribute values from selected lattice :py:class:`.Element`\ s.</span>
+                     <span class="n">attrname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Extracts attribute values from selected</span>
+<span class="sd">        lattice :py:class:`.Element`\ s.</span>
 
 <span class="sd">    Parameters:</span>
 <span class="sd">        ring:           Lattice description</span>
@@ -1039,6 +1057,8 @@
 <span class="sd">        attrname:   Attribute name</span>
 <span class="sd">        index:      index of the value to retrieve if *attrname* is</span>
 <span class="sd">          an array.</span>
+<span class="sd">        regex: Use regular expression for refpts string matching;</span>
+<span class="sd">            Default: False (Unix shell-style wildcards)</span>
 
 <span class="sd">          If :py:obj:`None` the full array is retrieved</span>
 
@@ -1052,13 +1072,14 @@
         <span class="k">def</span> <span class="nf">getf</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
             <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">attrname</span><span class="p">)[</span><span class="n">index</span><span class="p">]</span>
 
-    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">getf</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">refpts_iterator</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">)])</span></div>
+    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">getf</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">refpts_iterator</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span>
+                                                               <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">)])</span></div>
 
 
 <div class="viewcode-block" id="set_value_refpts"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.set_value_refpts">[docs]</a><span class="k">def</span> <span class="nf">set_value_refpts</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span>
                      <span class="n">attrname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">attrvalues</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                      <span class="n">increment</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-                     <span class="n">copy</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+                     <span class="n">copy</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Set the values of an attribute of an array of elements based on</span>
 <span class="sd">    their refpts</span>
 
@@ -1073,6 +1094,8 @@
 <span class="sd">          an array. if :py:obj:`None`, the full array is replaced by</span>
 <span class="sd">          *attrvalue*</span>
 <span class="sd">        increment:  Add values to the initial values.</span>
+<span class="sd">        regex: Use regular expression for refpts string matching;</span>
+<span class="sd">            Default: False (Unix shell-style wildcards)</span>
 
 <span class="sd">          If :py:obj:`False` the initial value is replaced (Default)</span>
 <span class="sd">        copy:       If :py:obj:`False`, the modification is done in-place,</span>
@@ -1095,21 +1118,21 @@
 
     <span class="k">if</span> <span class="n">increment</span><span class="p">:</span>
         <span class="n">attrvalues</span> <span class="o">+=</span> <span class="n">get_value_refpts</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span>
-                                       <span class="n">attrname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
+                                       <span class="n">attrname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">attrvalues</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">attrvalues</span><span class="p">,</span>
-                                        <span class="p">(</span><span class="n">_refcount</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">),))</span>
+                                        <span class="p">(</span><span class="n">_refcount</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">),))</span>
 
     <span class="c1"># noinspection PyShadowingNames</span>
     <span class="nd">@make_copy</span><span class="p">(</span><span class="n">copy</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">elm</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">refpts_iterator</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">),</span> <span class="n">values</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">regex</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">elm</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">refpts_iterator</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">),</span> <span class="n">values</span><span class="p">):</span>
             <span class="n">setf</span><span class="p">(</span><span class="n">elm</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">apply</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="n">attrvalues</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">apply</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="n">attrvalues</span><span class="p">,</span> <span class="n">regex</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="get_s_pos"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.get_s_pos">[docs]</a><span class="k">def</span> <span class="nf">get_s_pos</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span> <span class="o">=</span> <span class="n">All</span><span class="p">)</span> \
+<div class="viewcode-block" id="get_s_pos"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.get_s_pos">[docs]</a><span class="k">def</span> <span class="nf">get_s_pos</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span> <span class="o">=</span> <span class="n">All</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> \
         <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
     <span class="c1"># noinspection PyUnresolvedReferences</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns the locations of selected elements</span>
@@ -1118,6 +1141,8 @@
 <span class="sd">        ring:       Lattice description</span>
 <span class="sd">        refpts:     Element selection key.</span>
 <span class="sd">          See &quot;:ref:`Selecting elements in a lattice &lt;refpts&gt;`&quot;</span>
+<span class="sd">        regex: Use regular expression for refpts string matching;</span>
+<span class="sd">            Default: False (Unix shell-style wildcards)</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        s_pos:  Array of locations of the elements selected by *refpts*</span>
@@ -1133,7 +1158,7 @@
     <span class="n">s_pos</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">cumsum</span><span class="p">([</span><span class="nb">getattr</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="s1">&#39;Length&#39;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">ring</span><span class="p">])</span>
     <span class="c1"># Prepend position at the start of the first element.</span>
     <span class="n">s_pos</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(([</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">s_pos</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">s_pos</span><span class="p">[</span><span class="n">get_bool_index</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">)]</span></div>
+    <span class="k">return</span> <span class="n">s_pos</span><span class="p">[</span><span class="n">get_bool_index</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">)]</span></div>
 
 
 <div class="viewcode-block" id="rotate_elem"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.rotate_elem">[docs]</a><span class="k">def</span> <span class="nf">rotate_elem</span><span class="p">(</span><span class="n">elem</span><span class="p">:</span> <span class="n">Element</span><span class="p">,</span> <span class="n">tilt</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">pitch</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
@@ -1144,13 +1169,13 @@
 <span class="sd">    the *y*-axis.</span>
 <span class="sd">    A positive angle represent a clockwise rotation when looking in</span>
 <span class="sd">    the direction of the rotation axis.</span>
-<span class="sd">    </span>
+
 <span class="sd">    The transformations are not all commmutative, the tilt is always the</span>
 <span class="sd">    last transformation applied.</span>
-<span class="sd">    </span>
+
 <span class="sd">    If *relative* is :py:obj:`True`, the previous angle and shifts are</span>
 <span class="sd">    rebuilt form the *R* and *T* matrix and incremented by the input arguments.</span>
-<span class="sd">    </span>
+
 <span class="sd">    The shift is always conserved regardless of the value of *relative*.</span>
 
 <span class="sd">    Parameters:</span>
@@ -1333,13 +1358,13 @@
 <span class="sd">       &gt;&gt;&gt; geomdata, radius = get_geometry(ring)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">geom_dtype</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">)),</span>
-                  <span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">)),</span>
-                  <span class="p">(</span><span class="s1">&#39;angle&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">))]</span>
+    <span class="n">geom_dtype</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+                  <span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span>
+                  <span class="p">(</span><span class="s1">&#39;angle&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">)]</span>
     <span class="n">geomdata</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">recarray</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">geom_dtype</span><span class="p">)</span>
-    <span class="n">xx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-    <span class="n">yy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-    <span class="n">angle</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">xx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">yy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">angle</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">start_coordinates</span>
     <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">t0</span> <span class="o">=</span> <span class="n">start_coordinates</span>
 

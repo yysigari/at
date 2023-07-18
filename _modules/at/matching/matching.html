@@ -294,9 +294,11 @@
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Classes for matching variables and constraints</span>
 <span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Callable</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
 <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">least_squares</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">repeat</span>
 <span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">Refpts</span><span class="p">,</span> <span class="n">bool_refpts</span>
@@ -325,23 +327,23 @@
 <span class="sd">          :py:class:`Variable` initialisation</span>
 <span class="sd">        name:       Name of the Variable; Default: ``&#39;&#39;``</span>
 <span class="sd">        bounds:     Lower and upper bounds of the variable value</span>
-<span class="sd">        *args:      Positional arguments transmitted to ``setfun`` and</span>
+<span class="sd">        fun_args:       Positional arguments transmitted to ``setfun`` and</span>
 <span class="sd">          ``getfun`` functions</span>
 
 <span class="sd">    Keyword Args:</span>
-<span class="sd">        **kwargs:   Keyword arguments transmitted to ``setfun``and</span>
+<span class="sd">        **fun_kwargs:   Keyword arguments transmitted to ``setfun``and</span>
 <span class="sd">          ``getfun`` functions</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">setfun</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">getfun</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
                  <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-                 <span class="n">bounds</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">),</span>
-                 <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+                 <span class="n">bounds</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">),</span>
+                 <span class="n">fun_args</span><span class="p">:</span> <span class="nb">tuple</span> <span class="o">=</span> <span class="p">(),</span> <span class="o">**</span><span class="n">fun_kwargs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setfun</span> <span class="o">=</span> <span class="n">setfun</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">getfun</span> <span class="o">=</span> <span class="n">getfun</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="n">bounds</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">fun_args</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span> <span class="o">=</span> <span class="n">fun_kwargs</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Variable</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Variable.set"><a class="viewcode-back" href="../../../p/api/at.matching.matching.html#at.matching.matching.Variable.set">[docs]</a>    <span class="k">def</span> <span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
@@ -383,7 +385,7 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span> <span class="n">attname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
                  <span class="n">index</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                  <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-                 <span class="n">bounds</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)):</span>
+                 <span class="n">bounds</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)):</span>
         <span class="n">setf</span><span class="p">,</span> <span class="n">getf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_access</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
 
         <span class="k">def</span> <span class="nf">setfun</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
@@ -650,7 +652,8 @@
 <span class="sd">          transfer matrix. Can be :py:obj:`~.linear.linopt2`,</span>
 <span class="sd">          :py:obj:`~.linear.linopt4`, :py:obj:`~.linear.linopt6`</span>
 
-<span class="sd">          * :py:obj:`~.linear.linopt2`: No longitudinal motion, no H/V coupling,</span>
+<span class="sd">          * :py:obj:`~.linear.linopt2`: No longitudinal motion,</span>
+<span class="sd">                                        no H/V coupling,</span>
 <span class="sd">          * :py:obj:`~.linear.linopt4`: No longitudinal motion, Sagan/Rubin</span>
 <span class="sd">            4D-analysis of coupled motion,</span>
 <span class="sd">          * :py:obj:`~.linear.linopt6` (default): With or without longitudinal</span>
@@ -662,7 +665,8 @@
 
 <span class="sd">        Add a beta x (beta[0]) constraint at location ref_inj:</span>
 
-<span class="sd">        &gt;&gt;&gt; cnstrs.add(&#39;beta&#39;, 18.0, refpts=ref_inj, name=&#39;beta_x_inj&#39;, index=0)</span>
+<span class="sd">        &gt;&gt;&gt; cnstrs.add(&#39;beta&#39;, 18.0, refpts=ref_inj,</span>
+<span class="sd">                       name=&#39;beta_x_inj&#39;, index=0)</span>
 
 <span class="sd">        Add an horizontal tune (tunes[0]) constraint:</span>
 
@@ -728,16 +732,16 @@
         <span class="n">getf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_recordaccess</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
         <span class="n">getv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arrayaccess</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
         <span class="n">use_integer</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;UseInteger&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">norm_mu</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;mu&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;mun&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">}</span>
 
         <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>                <span class="c1"># Generate the constraint name</span>
-            <span class="n">name</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="vm">__name__</span> <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">param</span><span class="p">)</span> <span class="k">else</span> <span class="n">param</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="vm">__name__</span> <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">param</span><span class="p">)</span> <span class="k">else</span> <span class="n">param</span>
             <span class="k">if</span> <span class="n">index</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">param</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">param</span><span class="p">):</span>
             <span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">refdata</span><span class="p">,</span> <span class="n">tune</span><span class="p">,</span> <span class="n">chrom</span><span class="p">):</span>
                 <span class="k">return</span> <span class="n">getv</span><span class="p">(</span><span class="n">param</span><span class="p">(</span><span class="n">refdata</span><span class="p">,</span> <span class="n">tune</span><span class="p">,</span> <span class="n">chrom</span><span class="p">))</span>
-            <span class="c1"># self.refpts[:] = True     # necessary not to miss 2*pi jumps</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">get_chrom</span> <span class="o">=</span> <span class="kc">True</span>       <span class="c1"># fun may use dispersion or chroma</span>
         <span class="k">elif</span> <span class="n">param</span> <span class="o">==</span> <span class="s1">&#39;tunes&#39;</span><span class="p">:</span>
             <span class="c1"># noinspection PyUnusedLocal</span>
@@ -750,14 +754,20 @@
                 <span class="k">return</span> <span class="n">getv</span><span class="p">(</span><span class="n">chrom</span><span class="p">)</span>
             <span class="n">refpts</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">get_chrom</span> <span class="o">=</span> <span class="kc">True</span>       <span class="c1"># slower but necessary</span>
+        <span class="k">elif</span> <span class="n">param</span> <span class="o">==</span> <span class="s1">&#39;mu&#39;</span> <span class="ow">or</span> <span class="n">param</span> <span class="o">==</span> <span class="s1">&#39;mun&#39;</span><span class="p">:</span>
+            <span class="c1"># noinspection PyUnusedLocal</span>
+            <span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">refdata</span><span class="p">,</span> <span class="n">tune</span><span class="p">,</span> <span class="n">chrom</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">use_integer</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">getf</span><span class="p">(</span><span class="n">refdata</span><span class="p">,</span> <span class="s1">&#39;mu&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="n">norm_mu</span><span class="p">[</span><span class="n">param</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="p">(</span><span class="n">getf</span><span class="p">(</span><span class="n">refdata</span><span class="p">,</span> <span class="s1">&#39;mu&#39;</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">/</span> <span class="n">norm_mu</span><span class="p">[</span><span class="n">param</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">use_integer</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">refpts</span><span class="p">[:]</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># necessary not to miss 2*pi jumps</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">target</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">norm_mu</span><span class="p">[</span><span class="n">param</span><span class="p">])</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># noinspection PyUnusedLocal</span>
             <span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">refdata</span><span class="p">,</span> <span class="n">tune</span><span class="p">,</span> <span class="n">chrom</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">param</span> <span class="o">==</span> <span class="s1">&#39;mu&#39;</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="n">getf</span><span class="p">(</span><span class="n">refdata</span><span class="p">,</span> <span class="n">param</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
-                <span class="k">elif</span> <span class="n">param</span> <span class="o">==</span> <span class="s1">&#39;mu&#39;</span> <span class="ow">and</span> <span class="n">use_integer</span><span class="p">:</span>
-                    <span class="c1"># necessary not to miss 2*pi jumps</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">refpts</span><span class="p">[:]</span> <span class="o">=</span> <span class="kc">True</span>
                 <span class="k">return</span> <span class="n">getf</span><span class="p">(</span><span class="n">refdata</span><span class="p">,</span> <span class="n">param</span><span class="p">)</span>
 
         <span class="nb">super</span><span class="p">(</span><span class="n">LinoptConstraints</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
@@ -902,11 +912,11 @@
         <span class="n">getv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arrayaccess</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>                <span class="c1"># Generate the constraint name</span>
-            <span class="n">name</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="vm">__name__</span> <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">param</span><span class="p">)</span> <span class="k">else</span> <span class="n">param</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="vm">__name__</span> <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">param</span><span class="p">)</span> <span class="k">else</span> <span class="n">param</span>
             <span class="k">if</span> <span class="n">index</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">param</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">param</span><span class="p">):</span>
             <span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">refdata</span><span class="p">,</span> <span class="n">beam_data</span><span class="p">):</span>
                 <span class="k">return</span> <span class="n">getv</span><span class="p">(</span><span class="n">param</span><span class="p">(</span><span class="n">refdata</span><span class="p">,</span> <span class="n">beam_data</span><span class="p">))</span>
         <span class="k">elif</span> <span class="n">param</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;tunes&#39;</span><span class="p">,</span> <span class="s1">&#39;damping_rates&#39;</span><span class="p">,</span> <span class="s1">&#39;mode_matrices&#39;</span><span class="p">,</span>

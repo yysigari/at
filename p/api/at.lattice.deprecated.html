@@ -309,9 +309,11 @@
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="at.lattice.html">at.lattice</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.axisdef.html">at.lattice.axisdef</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.cavity_access.html">at.lattice.cavity_access</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">at.lattice.deprecated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.elements.html">at.lattice.elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.idtable_element.html">at.lattice.idtable_element</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.lattice_object.html">at.lattice.lattice_object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.options.html">at.lattice.options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.particle_object.html">at.lattice.particle_object</a></li>
@@ -338,6 +340,7 @@
 <li class="toctree-l2"><a class="reference internal" href="at.physics.diffmatrix.html">at.physics.diffmatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.energy_loss.html">at.physics.energy_loss</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.fastring.html">at.physics.fastring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.physics.frequency_maps.html">at.physics.frequency_maps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.harmonic_analysis.html">at.physics.harmonic_analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.linear.html">at.physics.linear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.matrix.html">at.physics.matrix</a></li>
@@ -400,8 +403,8 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.deprecated.get_cells" title="at.lattice.deprecated.get_cells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_cells</span></code></a>(...)</p></td>
 <td><p>Returns a bool array of element indices, selecting ring elements.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.deprecated.get_refpts" title="at.lattice.deprecated.get_refpts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_refpts</span></code></a>(ring, refpts[, quiet])</p></td>
-<td><p>Return a <a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.uint32" title="(in NumPy v1.24)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uint32</span></code></a> array of element indices selecting ring elements.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.deprecated.get_refpts" title="at.lattice.deprecated.get_refpts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_refpts</span></code></a>(ring, refpts[, regex])</p></td>
+<td><p>Return a <a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.uint32" title="(in NumPy v1.25)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uint32</span></code></a> array of element indices selecting ring elements.</p></td>
 </tr>
 </tbody>
 </table>
@@ -430,6 +433,8 @@
 <li><p><strong>attrvalue</strong> (<em>Any</em>) – Attribute value. If absent, select the
 presence of an <em>attrname</em> attribute. If present, select
 <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a>s with <code class="code highlight pycode python docutils literal highlight-python"><span class="n">attrname</span> <span class="o">==</span> <span class="n">attrvalue</span></code>.</p></li>
+<li><p><strong>regex</strong> – Use regular expression for refpts string matching;
+Default: False (Unix shell-style wildcards)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -456,8 +461,8 @@ len(ring)+1</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="at.lattice.deprecated.get_refpts">
-<span class="sig-name descname"><span class="pre">get_refpts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refpts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/deprecated.html#get_refpts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.deprecated.get_refpts" title="Permalink to this definition">#</a></dt>
-<dd><p>Return a <a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.uint32" title="(in NumPy v1.24)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uint32</span></code></a> array of element indices selecting
+<span class="sig-name descname"><span class="pre">get_refpts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refpts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/deprecated.html#get_refpts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.deprecated.get_refpts" title="Permalink to this definition">#</a></dt>
+<dd><p>Return a <a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.uint32" title="(in NumPy v1.25)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uint32</span></code></a> array of element indices selecting
 ring elements.</p>
 <p>Deprecated: <code class="code highlight pycode python docutils literal highlight-python"><span class="n">get_elements</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">)</span></code> is
 <code class="code highlight pycode python docutils literal highlight-python"><span class="n">ring</span><span class="o">.</span><span class="n">uint32_refpts</span><span class="p">(</span><span class="n">refpts</span><span class="p">)</span></code></p>
@@ -467,10 +472,12 @@ ring elements.</p>
 <li><p><strong>ring</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.11)"><em>Sequence</em></a><em>[</em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em>) – Lattice description</p></li>
 <li><p><strong>refpts</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><em>Union</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Type" title="(in Python v3.11)"><em>Type</em></a><em>[</em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em><em>, </em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.11)"><em>Callable</em></a><em>[</em><em>[</em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>None</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.11)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.11)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>]</em><em>, </em><em>RefptsCode</em><em>]</em>) – Element selection key.
 See “<a class="reference internal" href="at.lattice.utils.html#refpts"><span class="std std-ref">Selecting elements in a lattice</span></a>”</p></li>
+<li><p><strong>regex</strong> – Use regular expression for refpts string matching;
+Default: False (Unix shell-style wildcards)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>uint32_refs</strong> (<em>Uint32Refs</em>) – <a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.uint32" title="(in NumPy v1.24)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uint32</span></code></a> numpy array as
+<dd class="field-even"><p><strong>uint32_refs</strong> (<em>Uint32Refs</em>) – <a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.uint32" title="(in NumPy v1.25)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uint32</span></code></a> numpy array as
 long as the number of refpts</p>
 </dd>
 </dl>

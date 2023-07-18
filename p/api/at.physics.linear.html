@@ -311,9 +311,11 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="at.lattice.html">at.lattice</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.axisdef.html">at.lattice.axisdef</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.cavity_access.html">at.lattice.cavity_access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.deprecated.html">at.lattice.deprecated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.elements.html">at.lattice.elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.idtable_element.html">at.lattice.idtable_element</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.lattice_object.html">at.lattice.lattice_object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.options.html">at.lattice.options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.particle_object.html">at.lattice.particle_object</a></li>
@@ -340,6 +342,7 @@
 <li class="toctree-l2"><a class="reference internal" href="at.physics.diffmatrix.html">at.physics.diffmatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.energy_loss.html">at.physics.energy_loss</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.fastring.html">at.physics.fastring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.physics.frequency_maps.html">at.physics.frequency_maps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.harmonic_analysis.html">at.physics.harmonic_analysis</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">at.physics.linear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.matrix.html">at.physics.matrix</a></li>
@@ -456,7 +459,7 @@ where selected elements are <a class="reference external" href="https://docs.pyt
 <li><p><strong>dct</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Path lengthening. Defaults to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></li>
 <li><p><strong>df</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Deviation of RF frequency. Defaults to
 <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></li>
-<li><p><strong>orbit</strong> (<a class="reference internal" href="at.physics.orbit.html#at.physics.orbit.Orbit" title="at.physics.orbit.Orbit"><em>Orbit</em></a>) – Avoids looking for the closed orbit if it is
+<li><p><strong>orbit</strong> (<em>Orbit</em>) – Avoids looking for the closed orbit if it is
 already known ((6,) array)</p></li>
 <li><p><strong>get_chrom</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Compute chromaticities. Needs computing
 the tune at 2 different momentum deviations around the central one.</p></li>
@@ -519,9 +522,9 @@ modes of linear motion [1]</p></li>
 <li><p><strong>method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – <p><code class="docutils literal notranslate"><span class="pre">'linopt'</span></code> returns the tunes from the
 <a class="reference internal" href="#at.physics.linear.linopt6" title="at.physics.linear.linopt6"><code class="xref py py-func docutils literal notranslate"><span class="pre">linopt6()</span></code></a> function,</p>
 <p><code class="docutils literal notranslate"><span class="pre">'fft'</span></code> tracks a single particle and computes the tunes with
-<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.fftpack.fft.html#scipy.fftpack.fft" title="(in SciPy v1.10.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">fft()</span></code></a>,</p>
-<p><code class="docutils literal notranslate"><span class="pre">'laskar'</span></code> tracks a single particle and computes the tunes with
-NAFF.</p>
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.fftpack.fft.html#scipy.fftpack.fft" title="(in SciPy v1.11.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">fft()</span></code></a>,</p>
+<p><code class="docutils literal notranslate"><span class="pre">'interp_fft'</span></code> tracks a single particle and computes the tunes with
+interpolated FFT.</p>
 </p></li>
 <li><p><strong>dp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Momentum deviation.</p></li>
 <li><p><strong>dct</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Path lengthening.</p></li>
@@ -535,7 +538,7 @@ otherwise take all cavities.</p></li>
 Default: <a class="reference internal" href="at.lattice.options.html#at.lattice.options.DConstant" title="at.lattice.options.DConstant"><code class="xref py py-data docutils literal notranslate"><span class="pre">DConstant.DPStep</span></code></a></p>
 </dd>
 </dl>
-<p>for the <code class="docutils literal notranslate"><span class="pre">'fft'</span></code> and <code class="docutils literal notranslate"><span class="pre">'laskar'</span></code> methods only:</p>
+<p>for the <code class="docutils literal notranslate"><span class="pre">'fft'</span></code> and <code class="docutils literal notranslate"><span class="pre">'interp_fft'</span></code> methods only:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Keyword Arguments<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -549,7 +552,7 @@ compute (before mask applied, default: 20)</p></li>
 <li><p><strong>fmin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Lower tune bound. Default: 0</p></li>
 <li><p><strong>fmax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Upper tune bound. Default: 1</p></li>
 <li><p><strong>hann</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Turn on Hanning window.
-Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p></li>
+Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, Work only for <code class="docutils literal notranslate"><span class="pre">'fft'</span></code></p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -593,7 +596,7 @@ motion, normal mode analysis</p>
 <li><p><strong>dct</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Path lengthening. Defaults to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></li>
 <li><p><strong>df</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Deviation of RF frequency. Defaults to
 <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></li>
-<li><p><strong>orbit</strong> (<a class="reference internal" href="at.physics.orbit.html#at.physics.orbit.Orbit" title="at.physics.orbit.Orbit"><em>Orbit</em></a>) – Avoids looking for the closed orbit if it is
+<li><p><strong>orbit</strong> (<em>Orbit</em>) – Avoids looking for the closed orbit if it is
 already known ((6,) array)</p></li>
 <li><p><strong>get_chrom</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Compute chromaticities. Needs computing
 the tune at 2 different momentum deviations around the central one.</p></li>
@@ -649,8 +652,8 @@ See <a class="reference internal" href="#at.physics.linear.linopt2" title="at.ph
 <li><p><strong>method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – <p><code class="docutils literal notranslate"><span class="pre">'linopt'</span></code> returns the tunes from the
 <a class="reference internal" href="#at.physics.linear.linopt6" title="at.physics.linear.linopt6"><code class="xref py py-func docutils literal notranslate"><span class="pre">linopt6()</span></code></a> function,</p>
 <p><code class="docutils literal notranslate"><span class="pre">'fft'</span></code> tracks a single particle and computes the tunes with fft,</p>
-<p><code class="docutils literal notranslate"><span class="pre">'laskar'</span></code> tracks a single particle and computes the tunes with
-NAFF.</p>
+<p><code class="docutils literal notranslate"><span class="pre">'interp_fft'</span></code> tracks a single particle and computes the tunes with
+interpolated FFT.</p>
 </p></li>
 <li><p><strong>dp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Momentum deviation.</p></li>
 <li><p><strong>dct</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Path lengthening.</p></li>
@@ -660,7 +663,7 @@ already known ((6,) array)</p></li>
 </ul>
 </dd>
 </dl>
-<p>for the <code class="docutils literal notranslate"><span class="pre">'fft'</span></code> and <code class="docutils literal notranslate"><span class="pre">'laskar'</span></code> methods only:</p>
+<p>for the <code class="docutils literal notranslate"><span class="pre">'fft'</span></code> and <code class="docutils literal notranslate"><span class="pre">'interp_fft'</span></code> methods only:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Keyword Arguments<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -674,7 +677,7 @@ compute (before mask applied, default: 20)</p></li>
 <li><p><strong>fmin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Lower tune bound. Default: 0</p></li>
 <li><p><strong>fmax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Upper tune bound. Default: 1</p></li>
 <li><p><strong>hann</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Turn on Hanning window.
-Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p></li>
+Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>. Work only for <code class="docutils literal notranslate"><span class="pre">'fft'</span></code></p></li>
 <li><p><strong>get_integer</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Turn on integer tune (slower)</p></li>
 </ul>
 </dd>
@@ -710,7 +713,7 @@ where selected elements are <a class="reference external" href="https://docs.pyt
 <li><p><strong>dct</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Path lengthening. Defaults to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></li>
 <li><p><strong>df</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Deviation of RF frequency. Defaults to
 <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></li>
-<li><p><strong>orbit</strong> (<a class="reference internal" href="at.physics.orbit.html#at.physics.orbit.Orbit" title="at.physics.orbit.Orbit"><em>Orbit</em></a>) – Avoids looking for the closed orbit if it is
+<li><p><strong>orbit</strong> (<em>Orbit</em>) – Avoids looking for the closed orbit if it is
 already known ((6,) array)</p></li>
 <li><p><strong>get_chrom</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Compute chromaticities. Needs computing
 the tune at 2 different momentum deviations around the central one.</p></li>
@@ -841,7 +844,7 @@ where selected elements are <a class="reference external" href="https://docs.pyt
 <li><p><strong>dct</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Path lengthening. Defaults to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></li>
 <li><p><strong>df</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Deviation of RF frequency. Defaults to
 <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></li>
-<li><p><strong>orbit</strong> (<a class="reference internal" href="at.physics.orbit.html#at.physics.orbit.Orbit" title="at.physics.orbit.Orbit"><em>Orbit</em></a>) – Avoids looking for the closed orbit if it is
+<li><p><strong>orbit</strong> (<em>Orbit</em>) – Avoids looking for the closed orbit if it is
 already known ((6,) array)</p></li>
 <li><p><strong>get_chrom</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Compute chromaticities. Needs computing
 the tune at 2 different momentum deviations around the central one.</p></li>
@@ -986,7 +989,7 @@ where selected elements are <a class="reference external" href="https://docs.pyt
 <li><p><strong>dct</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Path lengthening. Defaults to <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></li>
 <li><p><strong>df</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Deviation of RF frequency. Defaults to
 <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></li>
-<li><p><strong>orbit</strong> (<a class="reference internal" href="at.physics.orbit.html#at.physics.orbit.Orbit" title="at.physics.orbit.Orbit"><em>Orbit</em></a>) – Avoids looking for the closed orbit if it is
+<li><p><strong>orbit</strong> (<em>Orbit</em>) – Avoids looking for the closed orbit if it is
 already known ((6,) array)</p></li>
 <li><p><strong>get_chrom</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Compute chromaticities. Needs computing
 the tune at 2 different momentum deviations around the central one.</p></li>

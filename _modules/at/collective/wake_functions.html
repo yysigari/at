@@ -299,33 +299,33 @@
 <span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">interp1d</span>
 
 
-<div class="viewcode-block" id="convolve_wakefun"><a class="viewcode-back" href="../../../p/api/at.collective.wake_functions.html#at.collective.wake_functions.convolve_wakefun">[docs]</a><span class="k">def</span> <span class="nf">convolve_wakefun</span><span class="p">(</span><span class="n">srange</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">sigs</span><span class="p">):</span>
+<div class="viewcode-block" id="convolve_wakefun"><a class="viewcode-back" href="../../../p/api/at.collective.wake_functions.html#at.collective.wake_functions.convolve_wakefun">[docs]</a><span class="k">def</span> <span class="nf">convolve_wakefun</span><span class="p">(</span><span class="n">srange</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">sigs</span><span class="p">,</span> <span class="n">gauss_sigma</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Convolution of a wake function with a pulse of rms</span>
 <span class="sd">    length sigs, this is use to generate a wake potential</span>
 <span class="sd">    that can be added to the output of EM code like GDFIDL&quot;&quot;&quot;</span>
-    <span class="n">sigt</span> <span class="o">=</span> <span class="n">sigs</span> <span class="o">/</span> <span class="n">clight</span>
-    <span class="n">min_step</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">srange</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">t_out</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">srange</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">srange</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">min_step</span><span class="p">)</span>
-    <span class="n">sdiff</span> <span class="o">=</span> <span class="n">t_out</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t_out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">npoints</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_out</span><span class="p">)</span>
-    <span class="n">nt</span> <span class="o">=</span> <span class="n">npoints</span> <span class="o">+</span> <span class="n">npoints</span><span class="o">-</span><span class="mi">1</span>
-    <span class="n">func</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">srange</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">bounds_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">wout</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">t_out</span><span class="p">)</span>
-    <span class="n">wout</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">wout</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nt</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">wout</span><span class="p">)))</span>
-    <span class="n">fftr</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">wout</span><span class="p">)</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">npoints</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">sdiff</span><span class="p">,</span>
-                           <span class="p">(</span><span class="n">npoints</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">sdiff</span><span class="p">,</span> <span class="n">nt</span><span class="p">))</span>
-    <span class="n">fftl</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">f</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">sigt</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">wout</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">fftr</span><span class="o">*</span><span class="n">fftl</span><span class="p">)</span>
-    <span class="n">wout</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">wout</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">npoints</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
-    <span class="n">t_out</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t_out</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t_out</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">nt</span><span class="p">)</span>
-    <span class="n">func</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">t_out</span><span class="p">,</span> <span class="n">wout</span><span class="p">,</span> <span class="n">bounds_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">wout</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">srange</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">wout</span></div>
+
+    <span class="k">def</span> <span class="nf">_gauss</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+        <span class="n">ampl</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigs</span><span class="p">)</span>
+        <span class="n">expon</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">s</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigs</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">ampl</span> <span class="o">*</span> <span class="n">expon</span>
+
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">srange</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">s_gauss</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">gauss_sigma</span><span class="o">*</span><span class="n">sigs</span><span class="p">,</span> <span class="n">gauss_sigma</span><span class="o">*</span><span class="n">sigs</span><span class="o">+</span><span class="mf">1e-15</span><span class="p">,</span> <span class="n">ds</span><span class="p">)</span>
+    <span class="n">gauss</span> <span class="o">=</span> <span class="n">_gauss</span><span class="p">(</span><span class="n">s_gauss</span><span class="p">)</span>
+
+    <span class="n">conv</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">gauss</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="n">ds</span>
+    <span class="n">s_offset</span> <span class="o">=</span> <span class="n">gauss_sigma</span> <span class="o">*</span> <span class="n">sigs</span> <span class="o">-</span> <span class="n">numpy</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">srange</span><span class="p">)</span>
+    <span class="n">s_conv</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">conv</span><span class="p">))</span> <span class="o">*</span> <span class="n">ds</span> <span class="o">-</span> <span class="n">s_offset</span>
+
+    <span class="n">ifun</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">s_conv</span><span class="p">,</span> <span class="n">conv</span><span class="p">,</span> <span class="n">bounds_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">conv_wf</span> <span class="o">=</span> <span class="n">ifun</span><span class="p">(</span><span class="n">srange</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">conv_wf</span></div>
 
 
 <div class="viewcode-block" id="long_resonator_wf"><a class="viewcode-back" href="../../../p/api/at.collective.wake_functions.html#at.collective.wake_functions.long_resonator_wf">[docs]</a><span class="k">def</span> <span class="nf">long_resonator_wf</span><span class="p">(</span><span class="n">srange</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">qfactor</span><span class="p">,</span> <span class="n">rshunt</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Define the wake function (longitudinal) of a resonator</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    </span>
+<span class="sd">    Define the wake function (longitudinal) of a resonator</span>
 <span class="sd">    with the given parameters according to Alex Chao&#39;s resonator</span>
 <span class="sd">    model (Eq. 2.82) and definitions of the resonator in HEADTAIL.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -350,7 +350,8 @@
 
 <div class="viewcode-block" id="transverse_resonator_wf"><a class="viewcode-back" href="../../../p/api/at.collective.wake_functions.html#at.collective.wake_functions.transverse_resonator_wf">[docs]</a><span class="k">def</span> <span class="nf">transverse_resonator_wf</span><span class="p">(</span><span class="n">srange</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">qfactor</span><span class="p">,</span> <span class="n">rshunt</span><span class="p">,</span>
                             <span class="n">yokoya_factor</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Define the wake function (transverse) of a resonator</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Define the wake function (transverse) of a resonator</span>
 <span class="sd">    with the given parameters according to Alex Chao&#39;s</span>
 <span class="sd">    resonator model (Eq. 2.82) and definitions of the resonator</span>
 <span class="sd">    in HEADTAIL.</span>
@@ -376,7 +377,8 @@
 
 
 <div class="viewcode-block" id="transverse_reswall_wf"><a class="viewcode-back" href="../../../p/api/at.collective.wake_functions.html#at.collective.wake_functions.transverse_reswall_wf">[docs]</a><span class="k">def</span> <span class="nf">transverse_reswall_wf</span><span class="p">(</span><span class="n">srange</span><span class="p">,</span> <span class="n">yokoya_factor</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">rvac</span><span class="p">,</span> <span class="n">conduct</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Define the wake function (transverse) of a resistive wall with the given</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Define the wake function (transverse) of a resistive wall with the given</span>
 <span class="sd">    parameters according to Alex Chao&#39;s RW model (2.53) and definitions used in</span>
 <span class="sd">    HEADTAIL</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -386,9 +388,9 @@
     <span class="n">wake</span> <span class="o">=</span> <span class="p">(</span><span class="n">yokoya_factor</span> <span class="o">*</span> <span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.</span> <span class="o">*</span>
             <span class="n">beta</span> <span class="o">*</span> <span class="n">length</span> <span class="o">/</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">rvac</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span>
             <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">z0</span> <span class="o">*</span> <span class="n">clight</span> <span class="o">/</span> <span class="n">conduct</span> <span class="o">/</span> <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">dt</span><span class="p">))</span>
-            
+
     <span class="n">wake</span><span class="p">[</span><span class="n">srange</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
-    
+
     <span class="k">return</span> <span class="n">wake</span></div>
 </pre></div>
 

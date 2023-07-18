@@ -297,10 +297,11 @@
 <span class="sd">A collection of functions to compute 4x4 and 6x6 transfer matrices</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
-<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">Element</span><span class="p">,</span> <span class="n">get_uint32_index</span><span class="p">,</span> <span class="n">DConstant</span><span class="p">,</span> <span class="n">Refpts</span>
+<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">Element</span><span class="p">,</span> <span class="n">DConstant</span><span class="p">,</span> <span class="n">Refpts</span><span class="p">,</span> <span class="n">Orbit</span>
+<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">frequency_control</span><span class="p">,</span> <span class="n">get_uint32_index</span>
 <span class="kn">from</span> <span class="nn">..lattice.elements</span> <span class="kn">import</span> <span class="n">Dipole</span><span class="p">,</span> <span class="n">M66</span>
 <span class="kn">from</span> <span class="nn">..tracking</span> <span class="kn">import</span> <span class="n">lattice_pass</span><span class="p">,</span> <span class="n">element_pass</span>
-<span class="kn">from</span> <span class="nn">.orbit</span> <span class="kn">import</span> <span class="n">Orbit</span><span class="p">,</span> <span class="n">find_orbit4</span><span class="p">,</span> <span class="n">find_orbit6</span>
+<span class="kn">from</span> <span class="nn">.orbit</span> <span class="kn">import</span> <span class="n">find_orbit4</span><span class="p">,</span> <span class="n">find_orbit6</span>
 <span class="kn">from</span> <span class="nn">.amat</span> <span class="kn">import</span> <span class="n">jmat</span><span class="p">,</span> <span class="n">symplectify</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;find_m44&#39;</span><span class="p">,</span> <span class="s1">&#39;find_m66&#39;</span><span class="p">,</span> <span class="s1">&#39;find_elem_m66&#39;</span><span class="p">,</span> <span class="s1">&#39;gen_m66_elem&#39;</span><span class="p">]</span>
@@ -393,7 +394,8 @@
     <span class="k">return</span> <span class="n">m44</span><span class="p">,</span> <span class="n">mstack</span></div>
 
 
-<div class="viewcode-block" id="find_m66"><a class="viewcode-back" href="../../../p/api/at.physics.matrix.html#at.physics.matrix.find_m66">[docs]</a><span class="k">def</span> <span class="nf">find_m66</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<div class="viewcode-block" id="find_m66"><a class="viewcode-back" href="../../../p/api/at.physics.matrix.html#at.physics.matrix.find_m66">[docs]</a><span class="nd">@frequency_control</span>
+<span class="k">def</span> <span class="nf">find_m66</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
              <span class="n">orbit</span><span class="p">:</span> <span class="n">Orbit</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">keep_lattice</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;One-turn 6x6 transfer matrix</span>
 

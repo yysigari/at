@@ -303,23 +303,30 @@
 <span class="kn">from</span> <span class="nn">.linear</span> <span class="kn">import</span> <span class="n">get_tune</span><span class="p">,</span> <span class="n">get_chrom</span><span class="p">,</span> <span class="n">linopt6</span>
 <span class="kn">from</span> <span class="nn">.harmonic_analysis</span> <span class="kn">import</span> <span class="n">get_tunes_harmonic</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;detuning&#39;</span><span class="p">,</span> <span class="s1">&#39;chromaticity&#39;</span><span class="p">,</span> <span class="s1">&#39;gen_detuning_elem&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;detuning&#39;</span><span class="p">,</span> <span class="s1">&#39;chromaticity&#39;</span><span class="p">,</span> <span class="s1">&#39;gen_detuning_elem&#39;</span><span class="p">,</span> <span class="s1">&#39;tunes_vs_amp&#39;</span><span class="p">]</span>
 
 
-<span class="k">def</span> <span class="nf">tunes_vs_amp</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">amp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-                 <span class="n">dim</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                 <span class="n">nturns</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">512</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<div class="viewcode-block" id="tunes_vs_amp"><a class="viewcode-back" href="../../../p/api/at.physics.nonlinear.html#at.physics.nonlinear.tunes_vs_amp">[docs]</a><span class="k">def</span> <span class="nf">tunes_vs_amp</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">amp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                 <span class="n">dim</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">nturns</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">512</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Generates a range of tunes for varying x, y, or z amplitudes</span>
 
 <span class="sd">    Parameters:</span>
 <span class="sd">        ring:               Lattice description</span>
-<span class="sd">        amp:                Oscillation amplitude. Default: tunes from</span>
-<span class="sd">          :py:func:`.linopt6`</span>
+<span class="sd">        amp:                Oscillation amplitude. If amp is None the</span>
+<span class="sd">                            tunes are calculated from :py:func:`.linopt6`</span>
+<span class="sd">                            else tracking is used</span>
 <span class="sd">        dim:                Coordinate index of the oscillation</span>
 <span class="sd">        nturns:             Number of turns</span>
+<span class="sd">        method:             ``&#39;laskar&#39;`` or ``&#39;fft&#39;``. Default: ``&#39;laskar&#39;``</span>
+<span class="sd">        num_harmonics:      Number of harmonic components to compute (before</span>
+<span class="sd">                            mask applied)</span>
+<span class="sd">        fmin:               Lower bound for tune</span>
+<span class="sd">        fmax:               Upper bound for tune</span>
+<span class="sd">        hann:               Turn on Hanning window. Default: :py:obj:`False`</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        tunes (ndarray):    Array of tunes</span>
+<span class="sd">        tunes (ndarray):    Array of tunes qx, qy with shape (len(amp), 2)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">_gen_part</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">amp</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">orbit</span><span class="p">,</span> <span class="n">ld</span><span class="p">,</span> <span class="n">nturns</span><span class="p">):</span>
@@ -350,38 +357,46 @@
 
     <span class="k">if</span> <span class="n">amp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">partx</span><span class="p">,</span> <span class="n">party</span> <span class="o">=</span> <span class="n">_gen_part</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">amp</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">orbit</span><span class="p">,</span> <span class="n">l0</span><span class="p">,</span> <span class="n">nturns</span><span class="p">)</span>
-        <span class="n">qx</span> <span class="o">=</span> <span class="n">get_tunes_harmonic</span><span class="p">(</span><span class="n">partx</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;laskar&#39;</span><span class="p">)</span>
-        <span class="n">qy</span> <span class="o">=</span> <span class="n">get_tunes_harmonic</span><span class="p">(</span><span class="n">party</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;laskar&#39;</span><span class="p">)</span>
+        <span class="n">qx</span> <span class="o">=</span> <span class="n">get_tunes_harmonic</span><span class="p">(</span><span class="n">partx</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">qy</span> <span class="o">=</span> <span class="n">get_tunes_harmonic</span><span class="p">(</span><span class="n">party</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">tunes</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">qx</span><span class="p">,</span> <span class="n">qy</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
 
-    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tunes</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tunes</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="detuning"><a class="viewcode-back" href="../../../p/api/at.physics.nonlinear.html#at.physics.nonlinear.detuning">[docs]</a><span class="k">def</span> <span class="nf">detuning</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span>
              <span class="n">xm</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.3e-4</span><span class="p">,</span> <span class="n">ym</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.3e-4</span><span class="p">,</span>
-             <span class="n">npoints</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">window</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-             <span class="n">nturns</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">512</span><span class="p">):</span>
+             <span class="n">npoints</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+             <span class="n">nturns</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">512</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes the tunes for a sequence of amplitudes</span>
 
 <span class="sd">    This function uses :py:func:`tunes_vs_amp` to compute the tunes for</span>
 <span class="sd">    the specified amplitudes. Then it fits this data and returns</span>
-<span class="sd">    result for dQx/dx, dQy/dx, dQx/dy, dQy/dy</span>
+<span class="sd">    the detuning coefficiant dQx/dx, dQy/dx, dQx/dy, dQy/dy and the</span>
+<span class="sd">    qx, qy arrays versus x, y arrays</span>
 
 <span class="sd">    Parameters:</span>
 <span class="sd">        ring:       Lattice description</span>
 <span class="sd">        xm:         Maximum x amplitude</span>
 <span class="sd">        ym:         Maximum y amplitude</span>
 <span class="sd">        npoints:    Number of points in each plane</span>
-<span class="sd">        window:</span>
 <span class="sd">        nturns:     Number of turns for tracking</span>
+<span class="sd">        method:     ``&#39;laskar&#39;`` or ``&#39;fft&#39;``. Default: ``&#39;laskar&#39;``</span>
+<span class="sd">        num_harmonics:  Number of harmonic components to compute</span>
+<span class="sd">                       (before mask applied)</span>
+<span class="sd">        fmin:       Lower bound for tune</span>
+<span class="sd">        fmax:       Upper bound for tune</span>
+<span class="sd">        hann:       Turn on Hanning window. Default: :py:obj:`False`</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        q0 (ndarray):</span>
-<span class="sd">        q1 (ndarray):</span>
-<span class="sd">        x (ndarray):          x amplitudes</span>
-<span class="sd">        q_dx (ndarray):</span>
-<span class="sd">        y (ndarray):          y amplitudes</span>
-<span class="sd">        q_dy (ndarray):</span>
+<span class="sd">        q0 (ndarray): qx, qy from horizontal and vertical amplitude scans.</span>
+<span class="sd">                      Fit results with shape (2, 2)</span>
+<span class="sd">        q1 (ndarray): Amplitude detuning coefficients with shape (2, 2)</span>
+<span class="sd">                      ``[[dQx/dx, dQy/dx], [dQx/dy, dQy/dy]]``</span>
+<span class="sd">        x (ndarray): x amplitudes (npoints, )</span>
+<span class="sd">        q_dx (ndarray): qx, qy tunes as a function of x amplitude (npoints, 2)</span>
+<span class="sd">        y (ndarray): y amplitudes (npoints, )</span>
+<span class="sd">        q_dy (ndarray): qx, qy tunes as a function of y amplitude (npoints, 2)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">lindata0</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">linopt6</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span>
     <span class="n">gamma</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">lindata0</span><span class="o">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">lindata0</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span> <span class="o">/</span> <span class="n">lindata0</span><span class="o">.</span><span class="n">beta</span>
@@ -391,11 +406,14 @@
     <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
     <span class="n">y2</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="n">y</span>
 
-    <span class="n">q_dx</span> <span class="o">=</span> <span class="n">tunes_vs_amp</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">,</span> <span class="n">nturns</span><span class="o">=</span><span class="n">nturns</span><span class="p">)</span>
-    <span class="n">q_dy</span> <span class="o">=</span> <span class="n">tunes_vs_amp</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">,</span> <span class="n">nturns</span><span class="o">=</span><span class="n">nturns</span><span class="p">)</span>
+    <span class="n">q_dx</span> <span class="o">=</span> <span class="n">tunes_vs_amp</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">nturns</span><span class="o">=</span><span class="n">nturns</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">q_dy</span> <span class="o">=</span> <span class="n">tunes_vs_amp</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nturns</span><span class="o">=</span><span class="n">nturns</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="n">fx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">q_dx</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">fy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">q_dy</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">q_dx</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">q_dx</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">idy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">q_dy</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> <span class="n">numpy</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">q_dy</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">fx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x2</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">q_dx</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">fy</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">y2</span><span class="p">[</span><span class="n">idy</span><span class="p">],</span> <span class="n">q_dy</span><span class="p">[</span><span class="n">idy</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
 
     <span class="n">q0</span> <span class="o">=</span> <span class="p">[[</span><span class="n">fx</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">fx</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>
           <span class="p">[</span><span class="n">fy</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">fy</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]]</span>
@@ -431,7 +449,10 @@
 <span class="sd">        dp:         Central momentum deviation</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        (fitx, fity), dpa, qz</span>
+<span class="sd">        fit (ndarray): Horizontal Vertical polynomial coefficients</span>
+<span class="sd">                       from ``numpy.polyfit`` of shape (2, order+1)</span>
+<span class="sd">        dpa: dp array of shape (npoints,)</span>
+<span class="sd">        qz: tune array of shape (npoints, 2)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">get_chrom</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="n">dp</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>

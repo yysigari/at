@@ -309,9 +309,11 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="api/at.lattice.html">at.lattice</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/at.lattice.axisdef.html">at.lattice.axisdef</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/at.lattice.cavity_access.html">at.lattice.cavity_access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/at.lattice.deprecated.html">at.lattice.deprecated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/at.lattice.elements.html">at.lattice.elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/at.lattice.idtable_element.html">at.lattice.idtable_element</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/at.lattice.lattice_object.html">at.lattice.lattice_object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/at.lattice.options.html">at.lattice.options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/at.lattice.particle_object.html">at.lattice.particle_object</a></li>
@@ -338,6 +340,7 @@
 <li class="toctree-l2"><a class="reference internal" href="api/at.physics.diffmatrix.html">at.physics.diffmatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/at.physics.energy_loss.html">at.physics.energy_loss</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/at.physics.fastring.html">at.physics.fastring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/at.physics.frequency_maps.html">at.physics.frequency_maps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/at.physics.harmonic_analysis.html">at.physics.harmonic_analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/at.physics.linear.html">at.physics.linear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/at.physics.matrix.html">at.physics.matrix</a></li>
@@ -549,6 +552,14 @@ must be compiled for different operating systems and Python versions.</p>
 <p>To do this, we use the continuous integration service Github Actions.
 When a tag of the form pyat-* is pushed to Github, wheels for each
 supported platform will be built and automatically uploaded as an ‘artifact’.</p>
+<p>We use <a class="reference external" href="https://semver.org/">Semantic Versioning</a> for this project. As documented
+by the full specification, we use a version number with three dot-separated
+numbers: <code class="docutils literal notranslate"><span class="pre">MAJOR.MINOR.PATCH</span></code>. Increment the:</p>
+<ul class="simple">
+<li><p>MAJOR version when you make incompatible API changes</p></li>
+<li><p>MINOR version when you add functionality in a backward compatible manner</p></li>
+<li><p>PATCH version when you make backward compatible bug fixes</p></li>
+</ul>
 </section>
 <section id="release-procedure">
 <h2>Release procedure<a class="headerlink" href="#release-procedure" title="Permalink to this heading">#</a></h2>
@@ -556,34 +567,71 @@ supported platform will be built and automatically uploaded as an ‘artifact’
 <a class="reference external" href="https://pypi.org/project/accelerator-toolbox/">Accelerator Toolbox on PyPI</a>.</p>
 <p>For testing any version that you have installed, the simple snippet in
 <code class="docutils literal notranslate"><span class="pre">README.rst</span></code> is sufficient.</p>
+<section id="decide-the-python-versions-that-should-be-supported-in-the-release">
+<h3>Decide the Python versions that should be supported in the release<a class="headerlink" href="#decide-the-python-versions-that-should-be-supported-in-the-release" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><dl class="simple">
-<dt>Decide the Python versions that should be supported in the release</dt><dd><ul>
-<li><p>Set these Python versions in <code class="docutils literal notranslate"><span class="pre">python_requires</span></code> in <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code></p></li>
+<li><p>Set these Python versions in <code class="docutils literal notranslate"><span class="pre">requires-python</span></code> in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code></p></li>
 <li><p>Set at least these Python versions as <code class="docutils literal notranslate"><span class="pre">python-version</span></code> in <code class="docutils literal notranslate"><span class="pre">.github/workflows/python-tests.yml</span></code></p></li>
 </ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Determine the minimum Numpy version that is required for those Python versions</dt><dd><ul>
-<li><p>Set this numpy version in <code class="docutils literal notranslate"><span class="pre">install_requires</span></code> in <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code></p></li>
+</section>
+<section id="determine-the-minimum-numpy-and-scipy-versions">
+<h3>Determine the minimum <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">scipy</span></code> versions:<a class="headerlink" href="#determine-the-minimum-numpy-and-scipy-versions" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>the version ensuring the requirements necessary to <strong>run</strong> PyAT is set in the
+<code class="docutils literal notranslate"><span class="pre">dependencies</span></code> item of the <code class="docutils literal notranslate"><span class="pre">[project]</span></code> section of <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code></p></li>
+<li><p>The version required to <strong>build</strong> PyAT is set in the <code class="docutils literal notranslate"><span class="pre">requires</span></code> item of the
+<code class="docutils literal notranslate"><span class="pre">[build-system]</span></code> section of <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>. It depends on the python version
+and must be higher or equal to the “run” version.</p></li>
+<li><p>To avoid ABI compatibility issues, the pre-compiled binaries are built with the
+earliest possible version of numpy for the given Python version. This ensures that
+the user’s libraries are more recent than the one AT has been compiled with. For
+that, a copy of <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> named <code class="docutils literal notranslate"><span class="pre">githubproject.toml</span></code> is used for
+compilation. In this copy, the numpy version specifications are set using <code class="docutils literal notranslate"><span class="pre">~=</span></code>
+instead of minimum (<code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>). Apart from these lines, the 2 files
+should be strictly identical.</p></li>
 </ul>
-</dd>
-</dl>
-</li>
-<li><p>Push a tag <code class="docutils literal notranslate"><span class="pre">pyat-x.y.z</span></code> to Github</p></li>
-</ul>
+</section>
+<section id="prepare-the-release-notes">
+<h3>Prepare the “Release notes”<a class="headerlink" href="#prepare-the-release-notes" title="Permalink to this heading">#</a></h3>
+<p>A draft can be obtained by creating a new tag on GitHub. Click “Draft a new release”
+in the releases page, choose a new tag in the form <code class="docutils literal notranslate"><span class="pre">pyat-x.y.z</span></code> with the correct
+incremented version number. The <code class="docutils literal notranslate"><span class="pre">pyat-</span></code> prefix is necessary to identify python releases.
+Select the master branch as target. In the description area, choose the current
+release in the “previous tag” pull-down, and press “Generate release notes”.</p>
+<p>The generated notes can now be copied and edited. You can then either cancel or
+save the release as a draft while editing the release notes.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">What's</span> <span class="pre">changed</span></code> section should be split into <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">Bug</span> <span class="pre">fixes</span></code> and
+<code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">New</span> <span class="pre">features</span></code>. It must be filtered to keep only the python changes, ignoring
+the Matlab ones. The tags on each pull request are there to help in this filtering.</p>
+<p>The release notes should start with a <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">Main</span> <span class="pre">modifications</span></code> section summarising
+the important points of the new release.</p>
+<p>They must end with a section pointing out <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">Incompatibilities</span></code> and mentioning the
+necessary actions before upgrading to this release.</p>
+</section>
+<section id="open-a-pull-request-for-the-new-release">
+<h3>Open a Pull Request for the new release<a class="headerlink" href="#open-a-pull-request-for-the-new-release" title="Permalink to this heading">#</a></h3>
+<p>The goal is to make all contributors aware of the new release, to check that no pending
+modifications are worth being included and to review the release notes.</p>
+<p>There should be no code modifications except updates of version informations in the
+documentation. Once the pull request is approved and merged, the release may be built.</p>
+</section>
+<section id="build-the-release">
+<h3>Build the release<a class="headerlink" href="#build-the-release" title="Permalink to this heading">#</a></h3>
+<p>Now either go back to the draft release saved above, or start again the procedure,
+but now finalising with the <code class="docutils literal notranslate"><span class="pre">Publish</span></code> button.</p>
 <p>If all goes well, there will be a build of “Build and upload wheels and sdist”
 associated with the tag <code class="docutils literal notranslate"><span class="pre">pyat-x.y.z</span></code>: on the <a class="reference external" href="https://github.com/atcollab/at/actions/workflows/build-python-wheels.yml">Github Actions page</a>. This build will have
 ‘tar.gz’ and ‘wheels’ downloads available.</p>
+</section>
+<section id="upload-the-release-to-pip">
+<h3>Upload the release to <code class="docutils literal notranslate"><span class="pre">pip</span></code><a class="headerlink" href="#upload-the-release-to-pip" title="Permalink to this heading">#</a></h3>
 <ul>
 <li><p>Download the tar.gz and wheels files and unzip them into a directory <code class="docutils literal notranslate"><span class="pre">&lt;dir&gt;</span></code></p></li>
 <li><p>Manually install at least one wheel to make sure that it has built correctly</p></li>
-<li><p>Install Twine for uploading the files to PyPI. One way to do this is to create a new virtualenv:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m venv venv
-$ source venv/bin/activate
-$ pip install twine
+<li><p>Install Twine for uploading the files to PyPI. One way is to use
+<a class="reference external" href="https://pypa.github.io/pipx/">pipx</a>. Once pipx installed, use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pipx install twine  # or:
+$ pipx upgrade twine
 </pre></div>
 </div>
 </li>
@@ -601,7 +649,8 @@ $ twine upload &lt;dir&gt;/*.tar.gz
 </ul>
 <p>Note that 46 different files were uploaded for pyat-0.0.4 covering different
 platforms and architectures.</p>
-<p>The configuration for this is in .github/workflows/build-python-wheels.yml.</p>
+<p>The configuration for this is in <code class="docutils literal notranslate"><span class="pre">.github/workflows/build-python-wheels.yml</span></code>.</p>
+</section>
 </section>
 </section>
 <section id="pyat-examples">
@@ -794,6 +843,55 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
     <a class="reference internal nav-link" href="#release-procedure">
      Release procedure
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#decide-the-python-versions-that-should-be-supported-in-the-release">
+       Decide the Python versions that should be supported in the release
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#determine-the-minimum-numpy-and-scipy-versions">
+       Determine the minimum
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         numpy
+        </span>
+       </code>
+       and
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         scipy
+        </span>
+       </code>
+       versions:
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#prepare-the-release-notes">
+       Prepare the “Release notes”
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#open-a-pull-request-for-the-new-release">
+       Open a Pull Request for the new release
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#build-the-release">
+       Build the release
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#upload-the-release-to-pip">
+       Upload the release to
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         pip
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>

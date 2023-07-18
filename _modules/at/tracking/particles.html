@@ -297,8 +297,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="kn">import</span> <span class="n">cholesky</span><span class="p">,</span> <span class="n">LinAlgError</span>
 <span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
-<span class="kn">from</span> <span class="nn">..physics</span> <span class="kn">import</span> <span class="n">Orbit</span><span class="p">,</span> <span class="n">ohmi_envelope</span>
-<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">AtError</span><span class="p">,</span> <span class="n">AtWarning</span><span class="p">,</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">random</span>
+<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">AtError</span><span class="p">,</span> <span class="n">AtWarning</span><span class="p">,</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">Orbit</span><span class="p">,</span> <span class="n">random</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;beam&#39;</span><span class="p">,</span> <span class="s1">&#39;sigma_matrix&#39;</span><span class="p">]</span>
 
@@ -436,7 +435,7 @@
         <span class="n">orbit</span> <span class="o">=</span> <span class="n">el0</span><span class="o">.</span><span class="n">closed_orbit</span>
         <span class="n">Rm</span> <span class="o">=</span> <span class="n">r_expand</span><span class="p">(</span><span class="n">el0</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">],</span> <span class="n">r56</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">ring</span><span class="o">.</span><span class="n">is_6d</span><span class="p">:</span>
-            <span class="n">_</span><span class="p">,</span> <span class="n">beam0</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ohmi_envelope</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">orbit</span><span class="o">=</span><span class="n">orbit</span><span class="p">)</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">beam0</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">ohmi_envelope</span><span class="p">(</span><span class="n">orbit</span><span class="o">=</span><span class="n">orbit</span><span class="p">)</span>
             <span class="n">sigmat</span> <span class="o">=</span> <span class="n">sigma_from_rmat</span><span class="p">(</span><span class="n">Rm</span><span class="p">,</span> <span class="n">beam0</span><span class="o">.</span><span class="n">mode_emittances</span><span class="p">,</span> <span class="n">em56</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">sigmat</span> <span class="o">=</span> <span class="n">sigma_from_rmat</span><span class="p">(</span><span class="n">Rm</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">em56</span><span class="p">)</span>

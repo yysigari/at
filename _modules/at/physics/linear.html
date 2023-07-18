@@ -294,16 +294,19 @@
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Coupled or non-coupled 4x4 linear motion</span>
 <span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">atan2</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span>
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Callable</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">solve</span>
 <span class="kn">from</span> <span class="nn">..constants</span> <span class="kn">import</span> <span class="n">clight</span>
 <span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">DConstant</span><span class="p">,</span> <span class="n">Refpts</span><span class="p">,</span> <span class="n">get_bool_index</span><span class="p">,</span> <span class="n">get_uint32_index</span>
-<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">AtWarning</span><span class="p">,</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">check_6d</span><span class="p">,</span> <span class="n">get_s_pos</span>
+<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">AtWarning</span><span class="p">,</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">Orbit</span><span class="p">,</span> <span class="n">check_6d</span><span class="p">,</span> <span class="n">get_s_pos</span>
+<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">AtError</span>
+<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">frequency_control</span>
 <span class="kn">from</span> <span class="nn">..tracking</span> <span class="kn">import</span> <span class="n">lattice_pass</span>
-<span class="kn">from</span> <span class="nn">.orbit</span> <span class="kn">import</span> <span class="n">Orbit</span><span class="p">,</span> <span class="n">find_orbit4</span><span class="p">,</span> <span class="n">find_orbit6</span>
+<span class="kn">from</span> <span class="nn">.orbit</span> <span class="kn">import</span> <span class="n">find_orbit4</span><span class="p">,</span> <span class="n">find_orbit6</span>
 <span class="kn">from</span> <span class="nn">.matrix</span> <span class="kn">import</span> <span class="n">find_m44</span><span class="p">,</span> <span class="n">find_m66</span>
 <span class="kn">from</span> <span class="nn">.amat</span> <span class="kn">import</span> <span class="n">a_matrix</span><span class="p">,</span> <span class="n">jmat</span><span class="p">,</span> <span class="n">jmatswap</span>
 <span class="kn">from</span> <span class="nn">.harmonic_analysis</span> <span class="kn">import</span> <span class="n">get_tunes_harmonic</span>
@@ -380,11 +383,18 @@
 <span class="k">def</span> <span class="nf">_tunes</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">ring</span><span class="o">.</span><span class="n">is_6d</span><span class="p">:</span>
+        <span class="n">nd</span> <span class="o">=</span> <span class="mi">3</span>
         <span class="n">mt</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">find_m66</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
+        <span class="n">nd</span> <span class="o">=</span> <span class="mi">2</span>
         <span class="n">mt</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">find_m44</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    <span class="n">_</span><span class="p">,</span> <span class="n">vps</span> <span class="o">=</span> <span class="n">a_matrix</span><span class="p">(</span><span class="n">mt</span><span class="p">)</span>
-    <span class="n">tunes</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">vps</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">pi</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">vps</span> <span class="o">=</span> <span class="n">a_matrix</span><span class="p">(</span><span class="n">mt</span><span class="p">)</span>
+        <span class="n">tunes</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">vps</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">pi</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">AtError</span><span class="p">:</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">AtWarning</span><span class="p">(</span><span class="s1">&#39;Unstable ring&#39;</span><span class="p">))</span>
+        <span class="n">tunes</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">nd</span><span class="p">)</span>
+        <span class="n">tunes</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">NaN</span>
     <span class="k">return</span> <span class="n">tunes</span>
 
 
@@ -925,7 +935,8 @@
     <span class="k">return</span> <span class="n">_linopt</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">_analyze4</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="linopt6"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.linopt6">[docs]</a><span class="k">def</span> <span class="nf">linopt6</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="linopt6"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.linopt6">[docs]</a><span class="nd">@frequency_control</span>
+<span class="k">def</span> <span class="nf">linopt6</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Linear analysis of a fully coupled lattice using normal modes</span>
 
 <span class="sd">    For circular machines, :py:func:`linopt6` analyses</span>
@@ -1357,7 +1368,8 @@
     <span class="k">return</span> <span class="n">lindata</span><span class="p">,</span> <span class="n">avebeta</span><span class="p">,</span> <span class="n">avemu</span><span class="p">,</span> <span class="n">avedisp</span><span class="p">,</span> <span class="n">aves</span><span class="p">,</span> <span class="n">bd</span><span class="o">.</span><span class="n">tune</span><span class="p">,</span> <span class="n">bd</span><span class="o">.</span><span class="n">chromaticity</span></div>
 
 
-<div class="viewcode-block" id="get_tune"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.get_tune">[docs]</a><span class="k">def</span> <span class="nf">get_tune</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;linopt&#39;</span><span class="p">,</span>
+<div class="viewcode-block" id="get_tune"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.get_tune">[docs]</a><span class="nd">@frequency_control</span>
+<span class="k">def</span> <span class="nf">get_tune</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;linopt&#39;</span><span class="p">,</span>
              <span class="n">dp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dct</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
              <span class="n">orbit</span><span class="p">:</span> <span class="n">Orbit</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes the tunes using several available methods</span>
@@ -1369,15 +1381,15 @@
 
 <span class="sd">          ``&#39;fft&#39;`` tracks a single particle and computes the tunes with fft,</span>
 
-<span class="sd">          ``&#39;laskar&#39;`` tracks a single particle and computes the tunes with</span>
-<span class="sd">          NAFF.</span>
+<span class="sd">          ``&#39;interp_fft&#39;`` tracks a single particle and computes the tunes with</span>
+<span class="sd">          interpolated FFT.</span>
 <span class="sd">        dp (float):             Momentum deviation.</span>
 <span class="sd">        dct (float):            Path lengthening.</span>
 <span class="sd">        df (float):             Deviation of RF frequency.</span>
 <span class="sd">        orbit (Orbit):          Avoids looking for the closed orbit if it is</span>
 <span class="sd">          already known ((6,) array)</span>
 
-<span class="sd">    for the ``&#39;fft&#39;`` and ``&#39;laskar&#39;`` methods only:</span>
+<span class="sd">    for the ``&#39;fft&#39;`` and ``&#39;interp_fft&#39;`` methods only:</span>
 
 <span class="sd">    Keyword Args:</span>
 <span class="sd">        nturns (int):           Number of turns. Default: 512</span>
@@ -1390,7 +1402,7 @@
 <span class="sd">        fmin (float):           Lower tune bound. Default: 0</span>
 <span class="sd">        fmax (float):           Upper tune bound. Default: 1</span>
 <span class="sd">        hann (bool):            Turn on Hanning window.</span>
-<span class="sd">          Default: :py:obj:`False`</span>
+<span class="sd">          Default: :py:obj:`False`. Work only for ``&#39;fft&#39;`` </span>
 <span class="sd">        get_integer(bool):   Turn on integer tune (slower)</span>
 
 <span class="sd">    Returns:</span>
@@ -1430,7 +1442,8 @@
     <span class="k">return</span> <span class="n">tunes</span></div>
 
 
-<div class="viewcode-block" id="get_chrom"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.get_chrom">[docs]</a><span class="k">def</span> <span class="nf">get_chrom</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;linopt&#39;</span><span class="p">,</span>
+<div class="viewcode-block" id="get_chrom"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.get_chrom">[docs]</a><span class="nd">@frequency_control</span>
+<span class="k">def</span> <span class="nf">get_chrom</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;linopt&#39;</span><span class="p">,</span>
               <span class="n">dp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dct</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
               <span class="n">cavpts</span><span class="p">:</span> <span class="n">Refpts</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes the chromaticities using several available methods</span>
@@ -1443,8 +1456,8 @@
 <span class="sd">          ``&#39;fft&#39;`` tracks a single particle and computes the tunes with</span>
 <span class="sd">          :py:func:`~scipy.fftpack.fft`,</span>
 
-<span class="sd">          ``&#39;laskar&#39;`` tracks a single particle and computes the tunes with</span>
-<span class="sd">          NAFF.</span>
+<span class="sd">          ``&#39;interp_fft&#39;`` tracks a single particle and computes the tunes with</span>
+<span class="sd">          interpolated FFT.</span>
 <span class="sd">        dp (float):         Momentum deviation.</span>
 <span class="sd">        dct (float):        Path lengthening.</span>
 <span class="sd">        df (float):         Deviation of RF frequency.</span>
@@ -1455,7 +1468,7 @@
 <span class="sd">        DPStep (float):     Momentum step for differentiation</span>
 <span class="sd">          Default: :py:data:`DConstant.DPStep &lt;.DConstant&gt;`</span>
 
-<span class="sd">    for the ``&#39;fft&#39;`` and ``&#39;laskar&#39;`` methods only:</span>
+<span class="sd">    for the ``&#39;fft&#39;`` and ``&#39;interp_fft&#39;`` methods only:</span>
 
 <span class="sd">    Keyword Args:</span>
 <span class="sd">        nturns (int):       Number of turns. Default: 512</span>
@@ -1468,7 +1481,7 @@
 <span class="sd">        fmin (float):       Lower tune bound. Default: 0</span>
 <span class="sd">        fmax (float):       Upper tune bound. Default: 1</span>
 <span class="sd">        hann (bool):        Turn on Hanning window.</span>
-<span class="sd">          Default: :py:obj:`False`</span>
+<span class="sd">          Default: :py:obj:`False`, Work only for ``&#39;fft&#39;``</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        chromaticities (ndarray):   array([:math:`\xi_x,\xi_y`])</span>

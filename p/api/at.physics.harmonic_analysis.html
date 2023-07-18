@@ -45,7 +45,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="at.physics.linear" href="at.physics.linear.html" />
-    <link rel="prev" title="at.physics.fastring" href="at.physics.fastring.html" />
+    <link rel="prev" title="at.physics.frequency_maps" href="at.physics.frequency_maps.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -309,9 +309,11 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="at.lattice.html">at.lattice</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.axisdef.html">at.lattice.axisdef</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.cavity_access.html">at.lattice.cavity_access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.deprecated.html">at.lattice.deprecated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.elements.html">at.lattice.elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.idtable_element.html">at.lattice.idtable_element</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.lattice_object.html">at.lattice.lattice_object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.options.html">at.lattice.options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.particle_object.html">at.lattice.particle_object</a></li>
@@ -338,6 +340,7 @@
 <li class="toctree-l2"><a class="reference internal" href="at.physics.diffmatrix.html">at.physics.diffmatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.energy_loss.html">at.physics.energy_loss</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.fastring.html">at.physics.fastring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.physics.frequency_maps.html">at.physics.frequency_maps</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">at.physics.harmonic_analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.linear.html">at.physics.linear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.matrix.html">at.physics.matrix</a></li>
@@ -394,69 +397,82 @@
               
   <section id="module-at.physics.harmonic_analysis">
 <span id="at-physics-harmonic-analysis"></span><h1>at.physics.harmonic_analysis<a class="headerlink" href="#module-at.physics.harmonic_analysis" title="Permalink to this heading">#</a></h1>
-<p>Original author of HarmonicAnalysis class
-Jaime Maria Coello De Portugal - Martinez Vazquez</p>
-<p>Written while at CERN circa 2016
-This is a reduced version keeping only the key components.
-Full code can be found at: <a class="github reference external" href="https://github.com/pylhc/harpy">pylhc/harpy</a></p>
+<p>Simplified version of harpy from
+Jaime Coello Maria de Portugal - Martinez Vazquez
+Github: <a class="github reference external" href="https://github.com/pylhc/harpy">pylhc/harpy</a></p>
 <p class="rubric">Functions</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#at.physics.harmonic_analysis.get_spectrum_harmonic" title="at.physics.harmonic_analysis.get_spectrum_harmonic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_spectrum_harmonic</span></code></a>(cent[, method, ...])</p></td>
 <td><p>Frequency analysis of beam motion</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.physics.harmonic_analysis.get_tunes_harmonic" title="at.physics.harmonic_analysis.get_tunes_harmonic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_tunes_harmonic</span></code></a>(cents[, method, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.physics.harmonic_analysis.get_main_harmonic" title="at.physics.harmonic_analysis.get_main_harmonic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_main_harmonic</span></code></a>(cents[, method, hann, ...])</p></td>
+<td><p>Computes tunes, amplitudes and pahses from harmonic analysis</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.physics.harmonic_analysis.get_tunes_harmonic" title="at.physics.harmonic_analysis.get_tunes_harmonic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_tunes_harmonic</span></code></a>(cents[, method, hann, ...])</p></td>
 <td><p>Computes tunes from harmonic analysis</p></td>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Classes</p>
-<table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.physics.harmonic_analysis.HarmonicAnalysis" title="at.physics.harmonic_analysis.HarmonicAnalysis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HarmonicAnalysis</span></code></a>(samples[, zero_pad, hann])</p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-<dl class="py class">
-<dt class="sig sig-object py" id="at.physics.harmonic_analysis.HarmonicAnalysis">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">HarmonicAnalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">samples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zero_pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hann</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/harmonic_analysis.html#HarmonicAnalysis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.harmonic_analysis.HarmonicAnalysis" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="at.physics.harmonic_analysis.HarmonicAnalysis.get_coefficient_for_freq">
-<span class="sig-name descname"><span class="pre">get_coefficient_for_freq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">freq</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/harmonic_analysis.html#HarmonicAnalysis.get_coefficient_for_freq"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.harmonic_analysis.HarmonicAnalysis.get_coefficient_for_freq" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="at.physics.harmonic_analysis.HarmonicAnalysis.get_signal">
-<span class="sig-name descname"><span class="pre">get_signal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/harmonic_analysis.html#HarmonicAnalysis.get_signal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.harmonic_analysis.HarmonicAnalysis.get_signal" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="at.physics.harmonic_analysis.HarmonicAnalysis.laskar_method">
-<span class="sig-name descname"><span class="pre">laskar_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_harmonics</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/harmonic_analysis.html#HarmonicAnalysis.laskar_method"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.harmonic_analysis.HarmonicAnalysis.laskar_method" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
+<dl class="py function">
+<dt class="sig sig-object py" id="at.physics.harmonic_analysis.get_main_harmonic">
+<span class="sig-name descname"><span class="pre">get_main_harmonic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'interp_fft'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hann</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/harmonic_analysis.html#get_main_harmonic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.harmonic_analysis.get_main_harmonic" title="Permalink to this definition">#</a></dt>
+<dd><p>Computes tunes, amplitudes and pahses from harmonic analysis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cents</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.25)"><em>ndarray</em></a>) – Centroid motions of the particle</p></li>
+<li><p><strong>method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – <code class="docutils literal notranslate"><span class="pre">'interp_fft'</span></code> or <code class="docutils literal notranslate"><span class="pre">'fft'</span></code>.
+Default: <code class="docutils literal notranslate"><span class="pre">'interp_fft'</span></code></p></li>
+<li><p><strong>fmin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Lower bound for tune search</p></li>
+<li><p><strong>fmax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Upper bound for tune search</p></li>
+<li><p><strong>maxiter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Maximum number of iterations for the search</p></li>
+<li><p><strong>hann</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Turn on Hanning window. Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>.
+Ignored for interpolated FFT</p></li>
+<li><p><strong>pad_length</strong> – Zero pad the input signal.
+Rounded to the higher power of 2
+Ignored for interpolated FFT</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>tunes</strong> (<em>ndarray</em>) – numpy array of length len(cents), max of the</p></li>
+<li><p><strong>spectrum within [fmin fmax]</strong></p></li>
+<li><p><strong>amplitude</strong> (<em>ndarray</em>) – (len(cents), ) array of amplitudes
+corresponding to the tune</p></li>
+<li><p><strong>phase</strong> (<em>ndarray</em>) – (len(cents), ) array of phases
+corresponding to the tune</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="at.physics.harmonic_analysis.get_spectrum_harmonic">
-<span class="sig-name descname"><span class="pre">get_spectrum_harmonic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'laskar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_harmonics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hann</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/harmonic_analysis.html#get_spectrum_harmonic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.harmonic_analysis.get_spectrum_harmonic" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_spectrum_harmonic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'interp_fft'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_harmonics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hann</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/harmonic_analysis.html#get_spectrum_harmonic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.harmonic_analysis.get_spectrum_harmonic" title="Permalink to this definition">#</a></dt>
 <dd><p>Frequency analysis of beam motion</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>cent</strong> – Centroid motions of the particle</p></li>
-<li><p><strong>method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – <code class="docutils literal notranslate"><span class="pre">'laskar'</span></code> or <code class="docutils literal notranslate"><span class="pre">'fft'</span></code>. Default: <code class="docutils literal notranslate"><span class="pre">'laskar'</span></code></p></li>
-<li><p><strong>num_harmonics</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of harmonic components to compute (before mask
-applied)</p></li>
-<li><p><strong>hann</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Turn on Hanning window. Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p></li>
+<li><p><strong>cent</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.25)"><em>ndarray</em></a>) – Centroid motions of the particle</p></li>
+<li><p><strong>method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – <code class="docutils literal notranslate"><span class="pre">'interp_fft'</span></code> or <code class="docutils literal notranslate"><span class="pre">'interp_fft'</span></code>.
+Default: <code class="docutils literal notranslate"><span class="pre">'interp_fft'</span></code></p></li>
+<li><p><strong>num_harmonics</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of harmonics to search for with interp_fft</p></li>
+<li><p><strong>fmin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Lower bound for spectrum search with interp_fft</p></li>
+<li><p><strong>fmax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Upper bound for spectrum search with interp_fft</p></li>
+<li><p><strong>maxiter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Multiplies <code class="docutils literal notranslate"><span class="pre">num_harmonics</span></code> to define the max.
+number of iteration for the search</p></li>
+<li><p><strong>hann</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Turn on Hanning window. Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>.
+Ignored for interpolated FFT</p></li>
+<li><p><strong>signal.</strong> (<em>pad_length      Zero pad the input</em>) – Rounded to the higher power of 2
+Ignored for interpolated FFT</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>frequency</strong> (<em>ndarray</em>) – (num_harmonics,) array of frequencies</p></li>
 <li><p><strong>amplitude</strong> (<em>ndarray</em>) – (num_harmonics,) array of amplitudes</p></li>
+<li><p><strong>phase</strong> (<em>ndarray</em>) – (num_harmonics,) array of phases</p></li>
 </ul>
 </dd>
 </dl>
@@ -464,23 +480,29 @@ applied)</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="at.physics.harmonic_analysis.get_tunes_harmonic">
-<span class="sig-name descname"><span class="pre">get_tunes_harmonic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'laskar'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_harmonics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hann</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/harmonic_analysis.html#get_tunes_harmonic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.harmonic_analysis.get_tunes_harmonic" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_tunes_harmonic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'interp_fft'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hann</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/harmonic_analysis.html#get_tunes_harmonic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.harmonic_analysis.get_tunes_harmonic" title="Permalink to this definition">#</a></dt>
 <dd><p>Computes tunes from harmonic analysis</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>cents</strong> – Centroid motions of the particle</p></li>
-<li><p><strong>method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – <code class="docutils literal notranslate"><span class="pre">'laskar'</span></code> or <code class="docutils literal notranslate"><span class="pre">'fft'</span></code>. Default: <code class="docutils literal notranslate"><span class="pre">'laskar'</span></code></p></li>
-<li><p><strong>num_harmonics</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of harmonic components to compute (before mask
-applied)</p></li>
-<li><p><strong>fmin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Lower bound for tune</p></li>
-<li><p><strong>fmax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Upper bound for tune</p></li>
-<li><p><strong>hann</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Turn on Hanning window. Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p></li>
+<li><p><strong>cents</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.25)"><em>ndarray</em></a>) – Centroid motions of the particle</p></li>
+<li><p><strong>method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – <code class="docutils literal notranslate"><span class="pre">'interp_fft'</span></code> or <code class="docutils literal notranslate"><span class="pre">'fft'</span></code>.
+Default: <code class="docutils literal notranslate"><span class="pre">'interp_fft'</span></code></p></li>
+<li><p><strong>fmin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Lower bound for tune search</p></li>
+<li><p><strong>fmax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Upper bound for tune search</p></li>
+<li><p><strong>maxiter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Maximum number of iterations for the search</p></li>
+<li><p><strong>hann</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Turn on Hanning window. Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>.
+Ignored for interpolated FFT</p></li>
+<li><p><strong>pad_length</strong> – Zero pad the input signal.
+Rounded to the higher power of 2
+Ignored for interpolated FFT</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>tunes</strong> (<em>ndarray</em>) – numpy array of length len(cents), max of the
-spectrum within [fmin fmax]</p>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>tunes</strong> (<em>ndarray</em>) – numpy array of length len(cents), max of the</p></li>
+<li><p><strong>spectrum within [fmin fmax]</strong></p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -495,11 +517,11 @@ spectrum within [fmin fmax]</p>
             <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="at.physics.fastring.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="at.physics.frequency_maps.html" title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">at.physics.fastring</p>
+          <p class="prev-next-title">at.physics.frequency_maps</p>
       </div>
   </a>
   <a class='right-next' id="next-link" href="at.physics.linear.html" title="next page">
@@ -526,42 +548,13 @@ spectrum within [fmin fmax]</p>
 <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#at.physics.harmonic_analysis.HarmonicAnalysis">
+  <a class="reference internal nav-link" href="#at.physics.harmonic_analysis.get_main_harmonic">
    <code class="docutils literal notranslate">
     <span class="pre">
-     HarmonicAnalysis
+     get_main_harmonic()
     </span>
    </code>
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#at.physics.harmonic_analysis.HarmonicAnalysis.get_coefficient_for_freq">
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       HarmonicAnalysis.get_coefficient_for_freq()
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#at.physics.harmonic_analysis.HarmonicAnalysis.get_signal">
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       HarmonicAnalysis.get_signal()
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#at.physics.harmonic_analysis.HarmonicAnalysis.laskar_method">
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       HarmonicAnalysis.laskar_method()
-      </span>
-     </code>
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#at.physics.harmonic_analysis.get_spectrum_harmonic">

@@ -44,7 +44,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'p/api/at.lattice.elements';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="at.lattice.lattice_object" href="at.lattice.lattice_object.html" />
+    <link rel="next" title="at.lattice.idtable_element" href="at.lattice.idtable_element.html" />
     <link rel="prev" title="at.lattice.deprecated" href="at.lattice.deprecated.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
@@ -309,9 +309,11 @@
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="at.lattice.html">at.lattice</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.axisdef.html">at.lattice.axisdef</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.cavity_access.html">at.lattice.cavity_access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.deprecated.html">at.lattice.deprecated</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">at.lattice.elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.idtable_element.html">at.lattice.idtable_element</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.lattice_object.html">at.lattice.lattice_object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.options.html">at.lattice.options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.particle_object.html">at.lattice.particle_object</a></li>
@@ -338,6 +340,7 @@
 <li class="toctree-l2"><a class="reference internal" href="at.physics.diffmatrix.html">at.physics.diffmatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.energy_loss.html">at.physics.energy_loss</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.fastring.html">at.physics.fastring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.physics.frequency_maps.html">at.physics.frequency_maps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.harmonic_analysis.html">at.physics.harmonic_analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.linear.html">at.physics.linear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.matrix.html">at.physics.matrix</a></li>
@@ -811,6 +814,12 @@ __eq__ method when comparing lattices.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="at.lattice.elements.Element.swap_faces">
+<span class="sig-name descname"><span class="pre">swap_faces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">copy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Element.swap_faces"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Element.swap_faces" title="Permalink to this definition">#</a></dt>
+<dd><p>Swap the faces of an element, alignment errors are ignored</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="at.lattice.elements.Element.update">
 <span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Element.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Element.update" title="Permalink to this definition">#</a></dt>
 <dt class="sig sig-object py">
@@ -1100,7 +1109,7 @@ non-zero polynomial coefficients</p></li>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p></li>
-<li><p><strong>lmatp</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><em>ndarray</em></a>) – Diffusion matrix for generation (see
+<li><p><strong>lmatp</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.25)"><em>ndarray</em></a>) – Diffusion matrix for generation (see
 <a class="reference internal" href="at.physics.radiation.html#at.physics.radiation.gen_quantdiff_elem" title="at.physics.radiation.gen_quantdiff_elem"><code class="xref py py-func docutils literal notranslate"><span class="pre">gen_quantdiff_elem()</span></code></a>)</p></li>
 </ul>
 </dd>
@@ -1226,14 +1235,6 @@ suffix.</p>
 </dd>
 </dl>
 <p>Default PassMethod: <code class="docutils literal notranslate"><span class="pre">StrMPoleSymplectic4Pass</span></code></p>
-<dl class="py method">
-<dt class="sig sig-object py" id="at.lattice.elements.Sextupole.items">
-<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Sextupole.items"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Sextupole.items" title="Permalink to this definition">#</a></dt>
-<dd><p>Iterates through the data members</p>
-<dl class="field-list simple">
-</dl>
-</dd></dl>
-
 <dl class="py attribute">
 <dt class="sig sig-object py" id="at.lattice.elements.Sextupole.DefaultOrder">
 <span class="sig-name descname"><span class="pre">DefaultOrder</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#at.lattice.elements.Sextupole.DefaultOrder" title="Permalink to this definition">#</a></dt>
@@ -1314,10 +1315,10 @@ array-like object</p></li>
           <p class="prev-next-title">at.lattice.deprecated</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="at.lattice.lattice_object.html" title="next page">
+  <a class='right-next' id="next-link" href="at.lattice.idtable_element.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">at.lattice.lattice_object</p>
+      <p class="prev-next-title">at.lattice.idtable_element</p>
   </div>
   <i class="fa-solid fa-angle-right"></i>
   </a>
@@ -1566,6 +1567,15 @@ array-like object</p></li>
      <code class="docutils literal notranslate">
       <span class="pre">
        Element.merge()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Element.swap_faces">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Element.swap_faces()
       </span>
      </code>
     </a>
@@ -1856,15 +1866,6 @@ array-like object</p></li>
    </code>
   </a>
   <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#at.lattice.elements.Sextupole.items">
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       Sextupole.items()
-      </span>
-     </code>
-    </a>
-   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#at.lattice.elements.Sextupole.DefaultOrder">
      <code class="docutils literal notranslate">

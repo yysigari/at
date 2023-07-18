@@ -311,9 +311,11 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="at.lattice.html">at.lattice</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.axisdef.html">at.lattice.axisdef</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.cavity_access.html">at.lattice.cavity_access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.deprecated.html">at.lattice.deprecated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.elements.html">at.lattice.elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.idtable_element.html">at.lattice.idtable_element</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.lattice_object.html">at.lattice.lattice_object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.options.html">at.lattice.options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.particle_object.html">at.lattice.particle_object</a></li>
@@ -340,6 +342,7 @@
 <li class="toctree-l2"><a class="reference internal" href="at.physics.diffmatrix.html">at.physics.diffmatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.energy_loss.html">at.physics.energy_loss</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.fastring.html">at.physics.fastring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.physics.frequency_maps.html">at.physics.frequency_maps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.harmonic_analysis.html">at.physics.harmonic_analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.linear.html">at.physics.linear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.matrix.html">at.physics.matrix</a></li>
@@ -402,7 +405,7 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#at.physics.ring_parameters.radiation_parameters" title="at.physics.ring_parameters.radiation_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">radiation_parameters</span></code></a>(ring[, dp, params])</p></td>
 <td><p>Compute ring parameters from the radiation integrals</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.physics.ring_parameters.envelope_parameters" title="at.physics.ring_parameters.envelope_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">envelope_parameters</span></code></a>(ring[, params])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.physics.ring_parameters.envelope_parameters" title="at.physics.ring_parameters.envelope_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">envelope_parameters</span></code></a>(ring[, params, orbit, ...])</p></td>
 <td><p>Compute ring parameters from ohmi_envelope</p></td>
 </tr>
 </tbody>
@@ -424,7 +427,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="at.physics.ring_parameters.envelope_parameters">
-<span class="sig-name descname"><span class="pre">envelope_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/ring_parameters.html#envelope_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.ring_parameters.envelope_parameters" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">envelope_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orbit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_lattice</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/ring_parameters.html#envelope_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.ring_parameters.envelope_parameters" title="Permalink to this definition">#</a></dt>
 <dd><p>Compute ring parameters from ohmi_envelope</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -432,6 +435,10 @@
 <li><p><strong>ring</strong> (<a class="reference internal" href="at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice" title="at.lattice.lattice_object.Lattice"><em>Lattice</em></a>) – Lattice description.</p></li>
 <li><p><strong>params</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference internal" href="#at.physics.ring_parameters.RingParameters" title="at.physics.ring_parameters.RingParameters"><em>RingParameters</em></a><em>]</em>) – <a class="reference internal" href="#at.physics.ring_parameters.RingParameters" title="at.physics.ring_parameters.RingParameters"><code class="xref py py-class docutils literal notranslate"><span class="pre">RingParameters</span></code></a> object to be updated.
 Default: create a new one</p></li>
+<li><p><strong>orbit</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.25)"><em>ndarray</em></a><em>]</em>) – Avoids looking for the closed orbit if it is
+already known ((6,) array)</p></li>
+<li><p><strong>keep_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Assume no lattice change since the
+previous tracking.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -496,7 +503,7 @@ ignored and the off-momentum is deduced from the path lengthening.</p></li>
 <p><a class="reference internal" href="at.physics.linear.html#at.physics.linear.linopt6" title="at.physics.linear.linopt6"><code class="xref py py-obj docutils literal notranslate"><span class="pre">linopt6</span></code></a> (default): with or without longitudinal
 motion, normal mode analysis</p>
 </p></li>
-<li><p><strong>orbit</strong> (<a class="reference internal" href="at.physics.orbit.html#at.physics.orbit.Orbit" title="at.physics.orbit.Orbit"><em>Orbit</em></a>) – Avoids looking for the closed orbit if is
+<li><p><strong>orbit</strong> (<em>Orbit</em>) – Avoids looking for the closed orbit if is
 already known ((6,) array)</p></li>
 <li><p><strong>XYStep</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Step size.
 Default: <a class="reference internal" href="at.lattice.options.html#at.lattice.options.DConstant" title="at.lattice.options.DConstant"><code class="xref py py-data docutils literal notranslate"><span class="pre">DConstant.XYStep</span></code></a></p></li>

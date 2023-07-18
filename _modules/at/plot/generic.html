@@ -292,6 +292,7 @@
               
   <h1>Source code for at.plot.generic</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;AT generic plotting function&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span><span class="p">,</span> <span class="n">repeat</span>
 <span class="c1"># noinspection PyPackageRequirements</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -342,8 +343,9 @@
 <span class="sd">    Keyword Args:</span>
 <span class="sd">        s_range:            Lattice range of interest, default: unchanged,</span>
 <span class="sd">          initially set to the full cell.</span>
-<span class="sd">        axes (Axes):        :py:class:`~matplotlib.axes.Axes` for plotting as</span>
-<span class="sd">          (primary_axes, secondary_axes). Default: create new axes</span>
+<span class="sd">        axes (tuple[Axes, Optional[Axes]): :py:class:`~matplotlib.axes.Axes`</span>
+<span class="sd">          for plotting as (primary_axes, secondary_axes).</span>
+<span class="sd">          Default: create new axes</span>
 <span class="sd">        slices (int):       Number of slices. Default: 400</span>
 <span class="sd">        legend (bool):      Show a legend on the plot</span>
 <span class="sd">        block (bool):       If :py:obj:`True`, block until the figure is closed.</span>

@@ -309,9 +309,11 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="at.lattice.html">at.lattice</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.axisdef.html">at.lattice.axisdef</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.cavity_access.html">at.lattice.cavity_access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.deprecated.html">at.lattice.deprecated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.elements.html">at.lattice.elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.idtable_element.html">at.lattice.idtable_element</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.lattice_object.html">at.lattice.lattice_object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.options.html">at.lattice.options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.particle_object.html">at.lattice.particle_object</a></li>
@@ -338,6 +340,7 @@
 <li class="toctree-l2"><a class="reference internal" href="at.physics.diffmatrix.html">at.physics.diffmatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.energy_loss.html">at.physics.energy_loss</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.fastring.html">at.physics.fastring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.physics.frequency_maps.html">at.physics.frequency_maps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.harmonic_analysis.html">at.physics.harmonic_analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.linear.html">at.physics.linear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.matrix.html">at.physics.matrix</a></li>
@@ -424,7 +427,7 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#at.matching.matching.OrbitConstraints" title="at.matching.matching.OrbitConstraints"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OrbitConstraints</span></code></a>(ring, *args, **kwargs)</p></td>
 <td><p>Container for orbit constraints: The closed orbit can be handled with :py:class`LinoptConstraints`, but for problems which do not involve parameters other than orbit, like steering or orbit bumps, <a class="reference internal" href="#at.matching.matching.OrbitConstraints" title="at.matching.matching.OrbitConstraints"><code class="xref py py-class docutils literal notranslate"><span class="pre">OrbitConstraints</span></code></a> is much faster.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.matching.matching.Variable" title="at.matching.matching.Variable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Variable</span></code></a>(setfun, getfun[, name, bounds])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.matching.matching.Variable" title="at.matching.matching.Variable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Variable</span></code></a>(setfun, getfun[, name, bounds, ...])</p></td>
 <td><p>A <a class="reference internal" href="#at.matching.matching.Variable" title="at.matching.matching.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Variable</span></code></a> is a scalar value acting on a lattice through the user-defined functions setfun and getfun</p></td>
 </tr>
 </tbody>
@@ -475,7 +478,7 @@ of all the embedded constraints</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>fun</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.11)"><em>Callable</em></a>) – <p>Evaluation function. Called as:</p>
+<li><p><strong>fun</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable" title="(in Python v3.11)"><em>Callable</em></a>) – <p>Evaluation function. Called as:</p>
 <p><code class="code docutils literal notranslate"><span class="pre">value</span> <span class="pre">=</span> <span class="pre">fun(ring,</span> <span class="pre">*args,</span> <span class="pre">**kwargs)</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">value</span></code> is the constrained parameter value,</p>
 <p><code class="docutils literal notranslate"><span class="pre">value</span></code> may be a scalar or an array.</p>
@@ -543,7 +546,7 @@ of each target</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>fun</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.11)"><em>Callable</em></a>) – <p>Evaluation function. Called as:</p>
+<li><p><strong>fun</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable" title="(in Python v3.11)"><em>Callable</em></a>) – <p>Evaluation function. Called as:</p>
 <p><code class="code docutils literal notranslate"><span class="pre">value</span> <span class="pre">=</span> <span class="pre">fun(ring,</span> <span class="pre">*args,</span> <span class="pre">**kwargs)</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">value</span></code> is the constrained parameter value</p>
 <p><code class="docutils literal notranslate"><span class="pre">value</span></code> may be a scalar or an array.</p>
@@ -602,12 +605,12 @@ shape of “value”.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>refpts</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><em>Union</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Type" title="(in Python v3.11)"><em>Type</em></a><em>[</em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em><em>, </em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.11)"><em>Callable</em></a><em>[</em><em>[</em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><em>None</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.11)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.11)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>]</em><em>, </em><em>RefptsCode</em><em>]</em>) – Location of variable <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a> (s)</p></li>
+<li><p><strong>refpts</strong> (<em>Refpts</em>) – Location of variable <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a> (s)</p></li>
 <li><p><strong>attname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Attribute name</p></li>
-<li><p><strong>index</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em>) – Index in the attribute array. Use <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> for
+<li><p><strong>index</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em>) – Index in the attribute array. Use <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> for
 scalar attributes</p></li>
 <li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the Variable; Default: <code class="docutils literal notranslate"><span class="pre">''</span></code></p></li>
-<li><p><strong>bounds</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – Lower and upper bounds of the variable value</p></li>
+<li><p><strong>bounds</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – Lower and upper bounds of the variable value</p></li>
 </ul>
 </dd>
 </dl>
@@ -704,7 +707,7 @@ constraints</p>
 <li><p><strong>dp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Momentum deviation.</p></li>
 <li><p><strong>dct</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Path lengthening. If specified, <code class="docutils literal notranslate"><span class="pre">dp</span></code> is
 ignored and the off-momentum is deduced from the path lengthening.</p></li>
-<li><p><strong>orbit</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="at.physics.orbit.html#at.physics.orbit.Orbit" title="at.physics.orbit.Orbit"><em>Orbit</em></a><em>]</em>) – Avoids looking for the closed orbit if is
+<li><p><strong>orbit</strong> (<em>Optional</em><em>[</em><em>Orbit</em><em>]</em>) – Avoids looking for the closed orbit if is
 already known ((6,) array)</p></li>
 <li><p><strong>twiss_in</strong> – Initial twiss parameters for transfer line optics.
 See <a class="reference internal" href="at.physics.linear.html#at.physics.linear.linopt6" title="at.physics.linear.linopt6"><code class="xref py py-func docutils literal notranslate"><span class="pre">linopt6()</span></code></a></p></li>
@@ -712,7 +715,11 @@ See <a class="reference internal" href="at.physics.linear.html#at.physics.linear
 transfer matrix. Can be <a class="reference internal" href="at.physics.linear.html#at.physics.linear.linopt2" title="at.physics.linear.linopt2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">linopt2</span></code></a>,
 <a class="reference internal" href="at.physics.linear.html#at.physics.linear.linopt4" title="at.physics.linear.linopt4"><code class="xref py py-obj docutils literal notranslate"><span class="pre">linopt4</span></code></a>, <a class="reference internal" href="at.physics.linear.html#at.physics.linear.linopt6" title="at.physics.linear.linopt6"><code class="xref py py-obj docutils literal notranslate"><span class="pre">linopt6</span></code></a></p>
 <ul>
-<li><p><a class="reference internal" href="at.physics.linear.html#at.physics.linear.linopt2" title="at.physics.linear.linopt2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">linopt2</span></code></a>: No longitudinal motion, no H/V coupling,</p></li>
+<li><dl class="simple">
+<dt><a class="reference internal" href="at.physics.linear.html#at.physics.linear.linopt2" title="at.physics.linear.linopt2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">linopt2</span></code></a>: No longitudinal motion,</dt><dd><p>no H/V coupling,</p>
+</dd>
+</dl>
+</li>
 <li><p><a class="reference internal" href="at.physics.linear.html#at.physics.linear.linopt4" title="at.physics.linear.linopt4"><code class="xref py py-obj docutils literal notranslate"><span class="pre">linopt4</span></code></a>: No longitudinal motion, Sagan/Rubin
 4D-analysis of coupled motion,</p></li>
 <li><p><a class="reference internal" href="at.physics.linear.html#at.physics.linear.linopt6" title="at.physics.linear.linopt6"><code class="xref py py-obj docutils literal notranslate"><span class="pre">linopt6</span></code></a> (default): With or without longitudinal
@@ -727,7 +734,8 @@ motion, normal mode analysis</p></li>
 </pre></div>
 </div>
 <p>Add a beta x (beta[0]) constraint at location ref_inj:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cnstrs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;beta&#39;</span><span class="p">,</span> <span class="mf">18.0</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="n">ref_inj</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;beta_x_inj&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cnstrs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;beta&#39;</span><span class="p">,</span> <span class="mf">18.0</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="n">ref_inj</span><span class="p">,</span>
+<span class="go">               name=&#39;beta_x_inj&#39;, index=0)</span>
 </pre></div>
 </div>
 <p>Add an horizontal tune (tunes[0]) constraint:</p>
@@ -823,7 +831,7 @@ constraints</p>
 <li><p><strong>dp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Momentum deviation.</p></li>
 <li><p><strong>dct</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Path lengthening. If specified, <code class="docutils literal notranslate"><span class="pre">dp</span></code> is
 ignored and the off-momentum is deduced from the path lengthening.</p></li>
-<li><p><strong>orbit</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="at.physics.orbit.html#at.physics.orbit.Orbit" title="at.physics.orbit.Orbit"><em>Orbit</em></a><em>]</em>) – Avoids looking for the closed orbit if is
+<li><p><strong>orbit</strong> (<em>Optional</em><em>[</em><em>Orbit</em><em>]</em>) – Avoids looking for the closed orbit if is
 already known ((6,) array)</p></li>
 </ul>
 </dd>
@@ -876,33 +884,33 @@ of value.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="at.matching.matching.Variable">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Variable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">setfun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">getfun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-inf,</span> <span class="pre">inf)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/matching/matching.html#Variable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.matching.matching.Variable" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Variable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">setfun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">getfun</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-inf,</span> <span class="pre">inf)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fun_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">fun_kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/matching/matching.html#Variable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.matching.matching.Variable" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A <a class="reference internal" href="#at.matching.matching.Variable" title="at.matching.matching.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Variable</span></code></a> is a scalar value acting on a lattice through the
 user-defined functions setfun and getfun</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>setfun</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.11)"><em>Callable</em></a>) – <p>User-defined function for setting the Variable. Called as:</p>
+<li><p><strong>setfun</strong> (<em>Callable</em>) – <p>User-defined function for setting the Variable. Called as:</p>
 <p><code class="code docutils literal notranslate"><span class="pre">setfun(ring,</span> <span class="pre">value,</span> <span class="pre">*args,</span> <span class="pre">**kwargs)</span></code></p>
 <p>where <code class="code docutils literal notranslate"><span class="pre">value</span></code> is the scalar value to apply</p>
 <p>The positional and keyword parameters come from the
 <a class="reference internal" href="#at.matching.matching.Variable" title="at.matching.matching.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Variable</span></code></a> initialisation</p>
 </p></li>
-<li><p><strong>getfun</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.11)"><em>Callable</em></a>) – <p>User-defined function for retrieving the actual value of
+<li><p><strong>getfun</strong> (<em>Callable</em>) – <p>User-defined function for retrieving the actual value of
 the variable: Called as:</p>
 <p><code class="code docutils literal notranslate"><span class="pre">value</span> <span class="pre">=</span> <span class="pre">getfun(ring,</span> <span class="pre">*args,</span> <span class="pre">**kwargs)</span></code></p>
 <p>The positional and keyword parameters come from the
 <a class="reference internal" href="#at.matching.matching.Variable" title="at.matching.matching.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Variable</span></code></a> initialisation</p>
 </p></li>
 <li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the Variable; Default: <code class="docutils literal notranslate"><span class="pre">''</span></code></p></li>
-<li><p><strong>bounds</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – Lower and upper bounds of the variable value</p></li>
-<li><p><strong>*args</strong> – Positional arguments transmitted to <code class="docutils literal notranslate"><span class="pre">setfun</span></code> and
+<li><p><strong>bounds</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – Lower and upper bounds of the variable value</p></li>
+<li><p><strong>fun_args</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a>) – Positional arguments transmitted to <code class="docutils literal notranslate"><span class="pre">setfun</span></code> and
 <code class="docutils literal notranslate"><span class="pre">getfun</span></code> functions</p></li>
 </ul>
 </dd>
 <dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>**kwargs</strong> – Keyword arguments transmitted to <code class="docutils literal notranslate"><span class="pre">setfun``and</span>
+<dd class="field-even"><p><strong>**fun_kwargs</strong> – Keyword arguments transmitted to <code class="docutils literal notranslate"><span class="pre">setfun``and</span>
 <span class="pre">``getfun</span></code> functions</p>
 </dd>
 </dl>
@@ -944,8 +952,8 @@ the variable: Called as:</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ring</strong> (<a class="reference internal" href="at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice" title="at.lattice.lattice_object.Lattice"><em>Lattice</em></a>) – Lattice description</p></li>
-<li><p><strong>variables</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.11)"><em>Sequence</em></a><em>[</em><a class="reference internal" href="#at.matching.matching.Variable" title="at.matching.matching.Variable"><em>Variable</em></a><em>]</em>) – sequence of Variable objects</p></li>
-<li><p><strong>constraints</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.11)"><em>Sequence</em></a><em>[</em><a class="reference internal" href="#at.matching.matching.Constraints" title="at.matching.matching.Constraints"><em>Constraints</em></a><em>]</em>) – sequence of Constraints objects</p></li>
+<li><p><strong>variables</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.11)"><em>Sequence</em></a><em>[</em><a class="reference internal" href="#at.matching.matching.Variable" title="at.matching.matching.Variable"><em>Variable</em></a><em>]</em>) – sequence of Variable objects</p></li>
+<li><p><strong>constraints</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.11)"><em>Sequence</em></a><em>[</em><a class="reference internal" href="#at.matching.matching.Constraints" title="at.matching.matching.Constraints"><em>Constraints</em></a><em>]</em>) – sequence of Constraints objects</p></li>
 <li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Print additional information</p></li>
 <li><p><strong>max_nfev</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Maximum number of evaluations</p></li>
 <li><p><strong>diff_step</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Convergence threshold</p></li>

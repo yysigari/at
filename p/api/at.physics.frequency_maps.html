@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>at.load.tracy &#8212; Accelerator Toolbox 0.0.4 documentation</title>
+    <title>at.physics.frequency_maps &#8212; Accelerator Toolbox 0.0.4 documentation</title>
   <script>
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
@@ -41,11 +41,11 @@
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'p/api/at.load.tracy';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'p/api/at.physics.frequency_maps';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="at.load.utils" href="at.load.utils.html" />
-    <link rel="prev" title="at.load.reprfile" href="at.load.reprfile.html" />
+    <link rel="next" title="at.physics.harmonic_analysis" href="at.physics.harmonic_analysis.html" />
+    <link rel="prev" title="at.physics.fastring" href="at.physics.fastring.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -321,12 +321,12 @@
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.variable_elements.html">at.lattice.variable_elements</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="at.load.html">at.load</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="at.load.html">at.load</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.load.allfiles.html">at.load.allfiles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.elegant.html">at.load.elegant</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.matfile.html">at.load.matfile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.reprfile.html">at.load.reprfile</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">at.load.tracy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.load.tracy.html">at.load.tracy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.utils.html">at.load.utils</a></li>
 </ul>
 </li>
@@ -335,12 +335,12 @@
 <li class="toctree-l2"><a class="reference internal" href="at.matching.matching.html">at.matching.matching</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="at.physics.html">at.physics</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="at.physics.html">at.physics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="at.physics.amat.html">at.physics.amat</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.diffmatrix.html">at.physics.diffmatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.energy_loss.html">at.physics.energy_loss</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.fastring.html">at.physics.fastring</a></li>
-<li class="toctree-l2"><a class="reference internal" href="at.physics.frequency_maps.html">at.physics.frequency_maps</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">at.physics.frequency_maps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.harmonic_analysis.html">at.physics.harmonic_analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.linear.html">at.physics.linear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.matrix.html">at.physics.matrix</a></li>
@@ -395,45 +395,85 @@
             
             <article class="bd-article" role="main">
               
-  <section id="module-at.load.tracy">
-<span id="at-load-tracy"></span><h1>at.load.tracy<a class="headerlink" href="#module-at.load.tracy" title="Permalink to this heading">#</a></h1>
-<p>Load a lattice from a Tracy file (.lat).</p>
-<p>This is not complete but can parse the example files that I have.
-This parser is quite similar to the Elegant parser in elegant.py.</p>
+  <section id="module-at.physics.frequency_maps">
+<span id="at-physics-frequency-maps"></span><h1>at.physics.frequency_maps<a class="headerlink" href="#module-at.physics.frequency_maps" title="Permalink to this heading">#</a></h1>
+<p>Frequency analysis (FMAP) using .harmonic_analysis lib
+and pyat parallel tracking (patpass)</p>
 <p class="rubric">Functions</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.load.tracy.load_tracy" title="at.load.tracy.load_tracy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_tracy</span></code></a>(filename, **kwargs)</p></td>
-<td><p>Create a <a class="reference internal" href="at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice" title="at.lattice.lattice_object.Lattice"><code class="xref py py-class docutils literal notranslate"><span class="pre">Lattice</span></code></a>  from a Tracy file</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.physics.frequency_maps.fmap_parallel_track" title="at.physics.frequency_maps.fmap_parallel_track"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fmap_parallel_track</span></code></a>(ring[, coords, steps, ...])</p></td>
+<td><p>Computes frequency maps</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py function">
-<dt class="sig sig-object py" id="at.load.tracy.load_tracy">
-<span class="sig-name descname"><span class="pre">load_tracy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/tracy.html#load_tracy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.tracy.load_tracy" title="Permalink to this definition">#</a></dt>
-<dd><p>Create a <a class="reference internal" href="at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice" title="at.lattice.lattice_object.Lattice"><code class="xref py py-class docutils literal notranslate"><span class="pre">Lattice</span></code></a>  from a Tracy file</p>
+<dt class="sig sig-object py" id="at.physics.frequency_maps.fmap_parallel_track">
+<span class="sig-name descname"><span class="pre">fmap_parallel_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[-10,</span> <span class="pre">10,</span> <span class="pre">-10,</span> <span class="pre">10]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[100,</span> <span class="pre">100]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">turns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">512</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orbit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_offset6D</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([0.,</span> <span class="pre">0.,</span> <span class="pre">0.,</span> <span class="pre">0.,</span> <span class="pre">0.,</span> <span class="pre">0.])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lossmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/frequency_maps.html#fmap_parallel_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.frequency_maps.fmap_parallel_track" title="Permalink to this definition">#</a></dt>
+<dd><p>Computes frequency maps</p>
+<p>This function calculates the norm of the transverse tune variation per turn
+for a particle tracked along a ring with a set of offsets in the initial
+coordinates.</p>
+<p>It returns a numpy array containing 7 columns:</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">[xoffset,</span> <span class="pre">yoffset,</span> <span class="pre">nux,</span> <span class="pre">nuy,</span> <span class="pre">dnux,</span> <span class="pre">dnuy,</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">log10(sqrt(dnux*dnux</span> <span class="pre">+</span> <span class="pre">dnuy*dnuy)/tns</span> <span class="pre">)]</span></code></div>
+</div>
+<p>for every tracked particle that survives 2*turns.
+Particles lost before 2*turns are ignored.
+The log10 tune variation is limited to the interval from -10 to -2;
+values above or below are set to the closer limit.</p>
+<p>The transverse offsets are given inside a rectangular coordinate window</p>
+<p><code class="docutils literal notranslate"><span class="pre">coords=[xmin,</span> <span class="pre">xmax,</span> <span class="pre">ymin,</span> <span class="pre">*ymax]</span></code></p>
+<p>in millimeters, where the window is divided in n steps=[xsteps,ysteps].
+For each yoffset, particle tracking over the whole set of xoffsets is done
+in parallel, therefore, a number of cpus (<em>ncpu</em>) above the number of
+<em>xsteps</em> will not reduce the calculation time.</p>
+<p>The frequency analysis uses a library that is not parallelized.</p>
+<p>The closed orbit is calculated and added to the
+initial particle offset of every particle. Otherwise, one could set
+<code class="docutils literal notranslate"><span class="pre">orbit</span> <span class="pre">=</span> <span class="pre">numpy.zeros(6)</span></code> to avoid it.
+Additionally, a numpy array (<em>add_offset6D</em>) with 6 values could be used to
+arbitrarily offset the initial coordinates of every particle.</p>
+<p>A dictionary with particle losses is saved for every vertical offset.
+See the <a class="reference internal" href="at.tracking.patpass.html#at.tracking.patpass.patpass" title="at.tracking.patpass.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a> documentation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of a Tracy file</p>
-</dd>
-<dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the lattice. Default: taken from
-the file.</p></li>
-<li><p><strong>energy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Energy of the lattice [eV]</p></li>
-<li><p><strong>periodicity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of periods. Default: taken from the
-elements, or 1</p></li>
-<li><p><strong>*</strong> – All other keywords will be set as Lattice
-attributes</p></li>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ring</strong> – a valid pyat ring</p></li>
+<li><p><strong>coords</strong> – default [-10,10,-10,10] in mm</p></li>
+<li><p><strong>steps</strong> – (xsteps, ysteps): number of steps in each plane</p></li>
+<li><p><strong>scale</strong> – default ‘linear’; or ‘non-linear’</p></li>
+<li><p><strong>turns</strong> – default 512</p></li>
+<li><p><strong>ncpu</strong> – default 30; max. number of processors
+in parallel tracking <a class="reference internal" href="at.tracking.patpass.html#at.tracking.patpass.patpass" title="at.tracking.patpass.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a></p></li>
+<li><p><strong>orbit</strong> – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, the closed orbit is computed and added to
+the coordinates</p></li>
+<li><p><strong>add_offset6D</strong> – default numpy.zeros((6,1))</p></li>
+<li><p><strong>verbose</strong> – prints additional info</p></li>
+<li><p><strong>lossmap</strong> – default false</p></li>
 </ul>
 </dd>
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>lattice</strong> (<em>Lattice</em>) – New <a class="reference internal" href="at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice" title="at.lattice.lattice_object.Lattice"><code class="xref py py-class docutils literal notranslate"><span class="pre">Lattice</span></code></a> object</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>xy_nuxy_lognudiff_array</strong> – numpy array with columns
+<cite>[xcoor, ycoor, nux, ny, dnux, dnuy,
+log10(sqrt(sum(dnu**2)/turns)) ]</cite></p></li>
+<li><p><strong>loss_map_array</strong> – experimental format.
+if <em>loss_map</em> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, it returns the losses dictionary
+provided by <a class="reference internal" href="at.tracking.patpass.html#at.tracking.patpass.patpass" title="at.tracking.patpass.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a> per every vertical offset.
+if <em>loss_map</em> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, it returns a one-element list.</p></li>
+</ul>
 </dd>
 </dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="at.load.allfiles.html#at.load.allfiles.load_lattice" title="at.load.allfiles.load_lattice"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_lattice()</span></code></a> for a generic lattice-loading function.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>points with NaN tracking results or non-defined frequency in x,y
+are ignored.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>loss map format is experimental</p>
 </div>
 </dd></dl>
 
@@ -447,17 +487,17 @@ attributes</p></li>
             <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="at.load.reprfile.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="at.physics.fastring.html" title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">at.load.reprfile</p>
+          <p class="prev-next-title">at.physics.fastring</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="at.load.utils.html" title="next page">
+  <a class='right-next' id="next-link" href="at.physics.harmonic_analysis.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">at.load.utils</p>
+      <p class="prev-next-title">at.physics.harmonic_analysis</p>
   </div>
   <i class="fa-solid fa-angle-right"></i>
   </a>
@@ -478,10 +518,10 @@ attributes</p></li>
 <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#at.load.tracy.load_tracy">
+  <a class="reference internal nav-link" href="#at.physics.frequency_maps.fmap_parallel_track">
    <code class="docutils literal notranslate">
     <span class="pre">
-     load_tracy()
+     fmap_parallel_track()
     </span>
    </code>
   </a>

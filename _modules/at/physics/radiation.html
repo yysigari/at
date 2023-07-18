@@ -294,13 +294,15 @@
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Radiation and equilibrium emittances</span>
 <span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">tan</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">sinh</span><span class="p">,</span> <span class="n">cosh</span><span class="p">,</span> <span class="n">pi</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
 <span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">inv</span><span class="p">,</span> <span class="n">det</span><span class="p">,</span> <span class="n">solve_sylvester</span>
 <span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">check_radiation</span><span class="p">,</span> <span class="n">Refpts</span>
-<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">Dipole</span><span class="p">,</span> <span class="n">Wiggler</span><span class="p">,</span> <span class="n">DConstant</span><span class="p">,</span> <span class="n">Multipole</span><span class="p">,</span> <span class="n">QuantumDiffusion</span>
-<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">get_refpts</span><span class="p">,</span> <span class="n">get_value_refpts</span>
+<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">Dipole</span><span class="p">,</span> <span class="n">Wiggler</span><span class="p">,</span> <span class="n">DConstant</span>
+<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">Quadrupole</span><span class="p">,</span> <span class="n">Multipole</span><span class="p">,</span> <span class="n">QuantumDiffusion</span>
+<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">get_refpts</span><span class="p">,</span> <span class="n">get_value_refpts</span><span class="p">,</span> <span class="n">frequency_control</span>
 <span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">uint32_refpts</span><span class="p">,</span> <span class="n">set_value_refpts</span>
 <span class="kn">from</span> <span class="nn">at.tracking</span> <span class="kn">import</span> <span class="n">lattice_pass</span>
 <span class="kn">from</span> <span class="nn">at.physics</span> <span class="kn">import</span> <span class="n">find_orbit6</span><span class="p">,</span> <span class="n">find_m66</span><span class="p">,</span> <span class="n">find_elem_m66</span><span class="p">,</span> <span class="n">Orbit</span>
@@ -490,19 +492,20 @@
     <span class="k">return</span> <span class="n">data0</span><span class="p">,</span> <span class="n">r66data</span><span class="p">,</span> <span class="n">data</span></div>
 
 
-<div class="viewcode-block" id="get_radiation_integrals"><a class="viewcode-back" href="../../../p/api/at.physics.radiation.html#at.physics.radiation.get_radiation_integrals">[docs]</a><span class="k">def</span> <span class="nf">get_radiation_integrals</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">dp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">twiss</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>\
-        <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<div class="viewcode-block" id="get_radiation_integrals"><a class="viewcode-back" href="../../../p/api/at.physics.radiation.html#at.physics.radiation.get_radiation_integrals">[docs]</a><span class="nd">@frequency_control</span>
+<span class="k">def</span> <span class="nf">get_radiation_integrals</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">dp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">twiss</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>\
+        <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes the 5 radiation integrals for uncoupled lattices.</span>
 
 <span class="sd">    Parameters:</span>
 <span class="sd">        ring:   Lattice description</span>
-<span class="sd">        dp:     Momentum deviation. Ignored if radiation is ON</span>
 <span class="sd">        twiss:  Linear optics at all points (from :py:func:`.linopt6`).</span>
 <span class="sd">          If ``None``, it will be computed.</span>
 
 <span class="sd">    Keyword Args:</span>
-<span class="sd">        dct (float):  Path lengthening. If specified, ``dp`` is</span>
-<span class="sd">          ignored and the off-momentum is deduced from the path lengthening.</span>
+<span class="sd">        dp (float):             Momentum deviation. Defaults to :py:obj:`None`</span>
+<span class="sd">        dct (float):            Path lengthening. Defaults to :py:obj:`None`</span>
+<span class="sd">        df (float):             Deviation of RF frequency. Defaults to       </span>
 <span class="sd">        method (Callable):  Method for linear optics:</span>
 
 <span class="sd">          :py:obj:`~.linear.linopt2`: no longitudinal motion, no H/V coupling,</span>
@@ -518,21 +521,28 @@
 <span class="sd">        i5 (float): :math:`I_5 \quad [m^{-1}]`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">dipole_radiation</span><span class="p">(</span><span class="n">elem</span><span class="p">:</span> <span class="n">Dipole</span><span class="p">,</span> <span class="n">vini</span><span class="p">,</span> <span class="n">vend</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">element_radiation</span><span class="p">(</span><span class="n">elem</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dipole</span><span class="p">,</span> <span class="n">Quadrupole</span><span class="p">],</span> <span class="n">vini</span><span class="p">,</span> <span class="n">vend</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Analytically compute the radiation integrals in dipoles&quot;&quot;&quot;</span>
         <span class="n">beta0</span> <span class="o">=</span> <span class="n">vini</span><span class="o">.</span><span class="n">beta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">alpha0</span> <span class="o">=</span> <span class="n">vini</span><span class="o">.</span><span class="n">alpha</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">eta0</span> <span class="o">=</span> <span class="n">vini</span><span class="o">.</span><span class="n">dispersion</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">etap0</span> <span class="o">=</span> <span class="n">vini</span><span class="o">.</span><span class="n">dispersion</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">theta</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="s1">&#39;BendingAngle&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">theta</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">xpi</span> <span class="o">=</span> <span class="n">vini</span><span class="o">.</span><span class="n">closed_orbit</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">vini</span><span class="o">.</span><span class="n">closed_orbit</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+            <span class="n">xpo</span> <span class="o">=</span> <span class="n">vend</span><span class="o">.</span><span class="n">closed_orbit</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">vend</span><span class="o">.</span><span class="n">closed_orbit</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+            <span class="n">theta</span> <span class="o">=</span> <span class="n">xpi</span><span class="o">-</span><span class="n">xpo</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">&lt;</span><span class="mf">1.0e-7</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">angin</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="s1">&#39;EntranceAngle&#39;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+        <span class="n">angout</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="s1">&#39;ExitAngle&#39;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
 
         <span class="n">ll</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">Length</span>
-        <span class="n">theta</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">BendingAngle</span>
         <span class="n">rho</span> <span class="o">=</span> <span class="n">ll</span> <span class="o">/</span> <span class="n">theta</span>
         <span class="n">rho2</span> <span class="o">=</span> <span class="n">rho</span> <span class="o">*</span> <span class="n">rho</span>
         <span class="n">k2</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">K</span> <span class="o">+</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">rho2</span>
-        <span class="n">eps1</span> <span class="o">=</span> <span class="n">tan</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">EntranceAngle</span><span class="p">)</span> <span class="o">/</span> <span class="n">rho</span>
-        <span class="n">eps2</span> <span class="o">=</span> <span class="n">tan</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">ExitAngle</span><span class="p">)</span> <span class="o">/</span> <span class="n">rho</span>
-
+        <span class="n">eps1</span> <span class="o">=</span> <span class="n">tan</span><span class="p">(</span><span class="n">angin</span><span class="p">)</span> <span class="o">/</span> <span class="n">rho</span>
+        <span class="n">eps2</span> <span class="o">=</span> <span class="n">tan</span><span class="p">(</span><span class="n">angout</span><span class="p">)</span> <span class="o">/</span> <span class="n">rho</span>
         <span class="n">eta3</span> <span class="o">=</span> <span class="n">vend</span><span class="o">.</span><span class="n">dispersion</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">alpha1</span> <span class="o">=</span> <span class="n">alpha0</span> <span class="o">-</span> <span class="n">beta0</span> <span class="o">*</span> <span class="n">eps1</span>
         <span class="n">gamma1</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">alpha1</span> <span class="o">*</span> <span class="n">alpha1</span><span class="p">)</span> <span class="o">/</span> <span class="n">beta0</span>
@@ -642,8 +652,8 @@
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;length of Twiss data should be </span><span class="si">{0}</span><span class="s1">&#39;</span>
                          <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">vini</span><span class="p">,</span> <span class="n">vend</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">twiss</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">twiss</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">Dipole</span><span class="p">)</span> <span class="ow">and</span> <span class="n">el</span><span class="o">.</span><span class="n">BendingAngle</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
-            <span class="n">integrals</span> <span class="o">+=</span> <span class="n">dipole_radiation</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">vini</span><span class="p">,</span> <span class="n">vend</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="p">(</span><span class="n">Dipole</span><span class="p">,</span> <span class="n">Quadrupole</span><span class="p">)):</span>
+            <span class="n">integrals</span> <span class="o">+=</span> <span class="n">element_radiation</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">vini</span><span class="p">,</span> <span class="n">vend</span><span class="p">)</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">Wiggler</span><span class="p">)</span> <span class="ow">and</span> <span class="n">el</span><span class="o">.</span><span class="n">PassMethod</span> <span class="o">!=</span> <span class="s1">&#39;DriftPass&#39;</span><span class="p">:</span>
             <span class="n">integrals</span> <span class="o">+=</span> <span class="n">wiggler_radiation</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">vini</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">integrals</span><span class="p">)</span></div>

@@ -295,12 +295,52 @@
 <span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">import</span> <span class="nn">functools</span>
 <span class="kn">from</span> <span class="nn">.elements</span> <span class="kn">import</span> <span class="n">RFCavity</span>
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">AtError</span><span class="p">,</span> <span class="n">make_copy</span><span class="p">,</span> <span class="n">Refpts</span><span class="p">,</span> <span class="n">get_bool_index</span>
 <span class="kn">from</span> <span class="nn">.lattice_object</span> <span class="kn">import</span> <span class="n">Lattice</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;get_rf_frequency&#39;</span><span class="p">,</span> <span class="s1">&#39;get_rf_voltage&#39;</span><span class="p">,</span> <span class="s1">&#39;set_rf_voltage&#39;</span><span class="p">,</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;frequency_control&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;get_rf_frequency&#39;</span><span class="p">,</span> <span class="s1">&#39;get_rf_voltage&#39;</span><span class="p">,</span> <span class="s1">&#39;set_rf_voltage&#39;</span><span class="p">,</span>
            <span class="s1">&#39;get_rf_timelag&#39;</span><span class="p">,</span> <span class="s1">&#39;set_rf_timelag&#39;</span><span class="p">,</span> <span class="s1">&#39;set_cavity&#39;</span><span class="p">,</span> <span class="s1">&#39;Frf&#39;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="frequency_control"><a class="viewcode-back" href="../../../p/api/at.lattice.cavity_access.html#at.lattice.cavity_access.frequency_control">[docs]</a><span class="k">def</span> <span class="nf">frequency_control</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot; Function to be used as decorator for</span>
+<span class="sd">    :pycode:`func(ring, *args, **kwargs)`</span>
+
+<span class="sd">    If :pycode:`ring.is_6d` is :py:obj:`True` **and** *dp*, *dct* or *df*</span>
+<span class="sd">    is specified in *kwargs*, make a copy of *ring* with a modified</span>
+<span class="sd">    RF frequency, remove *dp*, *dct* or *df* from *kwargs* and call</span>
+<span class="sd">    *func* with the modified *ring*.</span>
+
+<span class="sd">    If :pycode:`ring.is_6d` is :py:obj:`False` **or** no *dp*, *dct* or</span>
+<span class="sd">    *df* is specified in *kwargs*, *func* is called unchanged.</span>
+
+<span class="sd">    Examples:</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            @frequency_control</span>
+<span class="sd">            def func(ring, *args, dp=None, dct=None, **kwargs):</span>
+<span class="sd">                pass</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">ring</span><span class="o">.</span><span class="n">is_6d</span><span class="p">:</span>
+            <span class="n">momargs</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;dp&#39;</span><span class="p">,</span> <span class="s1">&#39;dct&#39;</span><span class="p">,</span> <span class="s1">&#39;df&#39;</span><span class="p">]:</span>
+                <span class="n">v</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">momargs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">momargs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">frequency</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">get_revolution_frequency</span><span class="p">(</span><span class="o">**</span><span class="n">momargs</span><span class="p">)</span> \
+                            <span class="o">*</span> <span class="n">ring</span><span class="o">.</span><span class="n">harmonic_number</span>
+                <span class="n">ring</span> <span class="o">=</span> <span class="n">set_cavity</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">Frequency</span><span class="o">=</span><span class="n">frequency</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">wrapper</span></div>
 
 
 <div class="viewcode-block" id="Frf"><a class="viewcode-back" href="../../../p/api/at.lattice.cavity_access.html#at.lattice.cavity_access.Frf">[docs]</a><span class="k">class</span> <span class="nc">Frf</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>

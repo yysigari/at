@@ -301,7 +301,8 @@
 
 
 <span class="c1"># noinspection PyIncorrectDocstring</span>
-<div class="viewcode-block" id="get_cells"><a class="viewcode-back" href="../../../p/api/at.lattice.deprecated.html#at.lattice.deprecated.get_cells">[docs]</a><span class="k">def</span> <span class="nf">get_cells</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BoolRefpts</span><span class="p">:</span>
+<div class="viewcode-block" id="get_cells"><a class="viewcode-back" href="../../../p/api/at.lattice.deprecated.html#at.lattice.deprecated.get_cells">[docs]</a><span class="k">def</span> <span class="nf">get_cells</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+              <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BoolRefpts</span><span class="p">:</span>
     <span class="c1"># noinspection PyShadowingNames</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    get_cells(ring, filtfunc) -&gt; BoolRefpts</span>
@@ -324,6 +325,8 @@
 <span class="sd">        attrvalue (Any):                Attribute value. If absent, select the</span>
 <span class="sd">          presence of an *attrname* attribute. If present, select</span>
 <span class="sd">          :py:class:`.Element`\ s with :pycode:`attrname == attrvalue`.</span>
+<span class="sd">        regex: Use regular expression for refpts string matching;</span>
+<span class="sd">            Default: False (Unix shell-style wildcards)</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        bool_refs (BoolRefpts):  numpy Array of :py:obj:`bool` with length</span>
@@ -346,12 +349,12 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
         <span class="n">refpts</span> <span class="o">=</span> <span class="n">checkattr</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">get_bool_index</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">get_bool_index</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">)</span></div>
 
 
 <span class="c1"># noinspection PyUnusedLocal,PyIncorrectDocstring</span>
 <div class="viewcode-block" id="get_refpts"><a class="viewcode-back" href="../../../p/api/at.lattice.deprecated.html#at.lattice.deprecated.get_refpts">[docs]</a><span class="k">def</span> <span class="nf">get_refpts</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span>
-               <span class="n">quiet</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Uint32Refpts</span><span class="p">:</span>
+               <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Uint32Refpts</span><span class="p">:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return a :py:obj:`~numpy.uint32` array of element indices selecting</span>
 <span class="sd">    ring elements.</span>
 
@@ -362,6 +365,8 @@
 <span class="sd">        ring:           Lattice description</span>
 <span class="sd">        refpts:         Element selection key.</span>
 <span class="sd">          See &quot;:ref:`Selecting elements in a lattice &lt;refpts&gt;`&quot;</span>
+<span class="sd">        regex: Use regular expression for refpts string matching;</span>
+<span class="sd">            Default: False (Unix shell-style wildcards)</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        uint32_refs (Uint32Refs):    :py:obj:`~numpy.uint32` numpy array as</span>
@@ -370,7 +375,7 @@
 <span class="sd">    See also:</span>
 <span class="sd">        :py:meth:`.Lattice.uint32_refpts`, :py:meth:`.Lattice.bool_refpts`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">get_uint32_index</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">get_uint32_index</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">)</span></div>
 
 
 <span class="n">Lattice</span><span class="o">.</span><span class="n">uint32_refpts</span> <span class="o">=</span> <span class="n">get_uint32_index</span>

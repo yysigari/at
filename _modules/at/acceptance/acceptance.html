@@ -298,8 +298,7 @@
 <span class="kn">from</span> <span class="nn">.boundary</span> <span class="kn">import</span> <span class="n">boundary_search</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Sequence</span>
 <span class="kn">import</span> <span class="nn">multiprocessing</span>
-<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">Refpts</span>
-<span class="kn">from</span> <span class="nn">..physics</span> <span class="kn">import</span> <span class="n">frequency_control</span>
+<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">Refpts</span><span class="p">,</span> <span class="n">frequency_control</span>
 
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;get_acceptance&#39;</span><span class="p">,</span> <span class="s1">&#39;get_1d_acceptance&#39;</span><span class="p">,</span> <span class="s1">&#39;get_horizontal_acceptance&#39;</span><span class="p">,</span>
@@ -317,7 +316,7 @@
         <span class="n">use_mp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">verbose</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">divider</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="n">shift_zero</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0e-9</span><span class="p">,</span>
+        <span class="n">shift_zero</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0e-6</span><span class="p">,</span>
         <span class="n">start_method</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
     <span class="c1"># noinspection PyUnresolvedReferences</span>
@@ -355,7 +354,7 @@
 <span class="sd">        verbose:        Print out some information</span>
 <span class="sd">        divider:        Value of the divider used in</span>
 <span class="sd">          :py:attr:`.GridMode.RECURSIVE` boundary search</span>
-<span class="sd">        shift_zero:</span>
+<span class="sd">        shift_zero: Epsilon offset applied on all 6 coordinates</span>
 <span class="sd">        start_method:   Python multiprocessing start method. The default</span>
 <span class="sd">          ``None`` uses the python default that is considered safe.</span>
 <span class="sd">          Available parameters: ``&#39;fork&#39;``, ``&#39;spawn&#39;``, ``&#39;forkserver&#39;``.</span>
@@ -457,7 +456,7 @@
         <span class="n">use_mp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">verbose</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
         <span class="n">divider</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="n">shift_zero</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0e-9</span><span class="p">,</span>
+        <span class="n">shift_zero</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0e-6</span><span class="p">,</span>
         <span class="n">start_method</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 
 <span class="p">):</span>
@@ -491,7 +490,7 @@
 <span class="sd">        verbose:        Print out some information</span>
 <span class="sd">        divider:        Value of the divider used in</span>
 <span class="sd">          :py:attr:`.GridMode.RECURSIVE` boundary search</span>
-<span class="sd">        shift_zero:</span>
+<span class="sd">        shift_zero: Epsilon offset applied on all 6 coordinates</span>
 <span class="sd">        start_method:   Python multiprocessing start method. The default</span>
 <span class="sd">          ``None`` uses the python default that is considered safe.</span>
 <span class="sd">          Available parameters: ``&#39;fork&#39;``, ``&#39;spawn&#39;``, ``&#39;forkserver&#39;``.</span>
@@ -564,7 +563,7 @@
 <span class="sd">        verbose:        Print out some information</span>
 <span class="sd">        divider:        Value of the divider used in</span>
 <span class="sd">          :py:attr:`.GridMode.RECURSIVE` boundary search</span>
-<span class="sd">        shift_zero:</span>
+<span class="sd">        shift_zero: Epsilon offset applied on all 6 coordinates</span>
 <span class="sd">        start_method:   Python multiprocessing start method. The default</span>
 <span class="sd">          ``None`` uses the python default that is considered safe.</span>
 <span class="sd">          Available parameters: ``&#39;fork&#39;``, ``&#39;spawn&#39;``, ``&#39;forkserver&#39;``.</span>
@@ -622,7 +621,7 @@
 <span class="sd">        verbose:        Print out some information</span>
 <span class="sd">        divider:        Value of the divider used in</span>
 <span class="sd">          :py:attr:`.GridMode.RECURSIVE` boundary search</span>
-<span class="sd">        shift_zero:</span>
+<span class="sd">        shift_zero: Epsilon offset applied on all 6 coordinates</span>
 <span class="sd">        start_method:   Python multiprocessing start method. The default</span>
 <span class="sd">          ``None`` uses the python default that is considered safe.</span>
 <span class="sd">          Available parameters: ``&#39;fork&#39;``, ``&#39;spawn&#39;``, ``&#39;forkserver&#39;``.</span>
@@ -680,7 +679,7 @@
 <span class="sd">        verbose:        Print out some information</span>
 <span class="sd">        divider:        Value of the divider used in</span>
 <span class="sd">          :py:attr:`.GridMode.RECURSIVE` boundary search</span>
-<span class="sd">        shift_zero:</span>
+<span class="sd">        shift_zero: Epsilon offset applied on all 6 coordinates</span>
 <span class="sd">        start_method:   Python multiprocessing start method. The default</span>
 <span class="sd">          ``None`` uses the python default that is considered safe.</span>
 <span class="sd">          Available parameters: ``&#39;fork&#39;``, ``&#39;spawn&#39;``, ``&#39;forkserver&#39;``.</span>

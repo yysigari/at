@@ -357,6 +357,22 @@
 <span class="sd">        twiss_in:           Initial conditions for transfer line optics. Record</span>
 <span class="sd">          array as output by :py:func:`.linopt2`, :py:func:`.linopt6`, or</span>
 <span class="sd">          dictionary.</span>
+<span class="sd">        s_range:            Lattice range of interest, default: unchanged,</span>
+<span class="sd">          initially set to the full cell.</span>
+<span class="sd">        axes (tuple[Axes, Optional[Axes]): :py:class:`~matplotlib.axes.Axes`</span>
+<span class="sd">          for plotting as (primary_axes, secondary_axes).</span>
+<span class="sd">          Default: create new axes</span>
+<span class="sd">        slices (int):       Number of slices. Default: 400</span>
+<span class="sd">        legend (bool):      Show a legend on the plot</span>
+<span class="sd">        block (bool):       If :py:obj:`True`, block until the figure is closed.</span>
+<span class="sd">          Default: :py:obj:`False`</span>
+<span class="sd">        dipole (dict):      Dictionary of properties overloading the default</span>
+<span class="sd">          properties of dipole representation. See :py:func:`.plot_synopt`</span>
+<span class="sd">          for details</span>
+<span class="sd">        quadrupole (dict):  Same definition as for dipole</span>
+<span class="sd">        sextupole (dict):   Same definition as for dipole</span>
+<span class="sd">        multipole (dict):   Same definition as for dipole</span>
+<span class="sd">        monitor (dict):     Same definition as for dipole</span>
 <span class="sd">   &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">baseplot</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">pldata_beta_disp</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
@@ -421,7 +437,7 @@
 <span class="sd">          The number of indices is the number of curves to plot.</span>
 <span class="sd">          All sequences must have the same length.</span>
 
-<span class="sd">          Examples:</span>
+<span class="sd">        Examples:</span>
 
 <span class="sd">          :code:`(&#39;beta&#39;, [0, 1])`:         beta_x, beta_z</span>
 
@@ -461,8 +477,24 @@
 <span class="sd">        DPStep (float):     Momentum step size.</span>
 <span class="sd">          Default: :py:data:`DConstant.DPStep &lt;.DConstant&gt;`</span>
 <span class="sd">        twiss_in:           Initial conditions for transfer line optics. Record</span>
-<span class="sd">          array as output by :py:func:`linopt2`, :py:func:`linopt6`, or</span>
-<span class="sd">          dictionary. Keys:</span>
+<span class="sd">          array as output by :py:func:`~.linear.linopt2`,</span>
+<span class="sd">          :py:func:`~.linear.linopt6`, or dictionary.</span>
+<span class="sd">        s_range:            Lattice range of interest, default: unchanged,</span>
+<span class="sd">          initially set to the full cell.</span>
+<span class="sd">        axes (tuple[Axes, Optional[Axes]): :py:class:`~matplotlib.axes.Axes`</span>
+<span class="sd">          for plotting as (primary_axes, secondary_axes).</span>
+<span class="sd">          Default: create new axes</span>
+<span class="sd">        slices (int):       Number of slices. Default: 400</span>
+<span class="sd">        legend (bool):      Show a legend on the plot</span>
+<span class="sd">        block (bool):       If :py:obj:`True`, block until the figure is closed.</span>
+<span class="sd">          Default: :py:obj:`False`</span>
+<span class="sd">        dipole (dict):      Dictionary of properties overloading the default</span>
+<span class="sd">          properties of dipole representation. See :py:func:`.plot_synopt`</span>
+<span class="sd">          for details</span>
+<span class="sd">        quadrupole (dict):  Same definition as for dipole</span>
+<span class="sd">        sextupole (dict):   Same definition as for dipole</span>
+<span class="sd">        multipole (dict):   Same definition as for dipole</span>
+<span class="sd">        monitor (dict):     Same definition as for dipole</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">baseplot</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">pldata_linear</span><span class="p">,</span> <span class="o">*</span><span class="n">keys</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
@@ -481,6 +513,22 @@
 <span class="sd">    Keyword Args:</span>
 <span class="sd">        keep_lattice (bool):   Assume no lattice change since the</span>
 <span class="sd">          previous tracking. Defaults to :py:obj:`False`</span>
+<span class="sd">        s_range:            Lattice range of interest, default: unchanged,</span>
+<span class="sd">          initially set to the full cell.</span>
+<span class="sd">        axes (tuple[Axes, Optional[Axes]): :py:class:`~matplotlib.axes.Axes`</span>
+<span class="sd">          for plotting as (primary_axes, secondary_axes).</span>
+<span class="sd">          Default: create new axes</span>
+<span class="sd">        slices (int):       Number of slices. Default: 400</span>
+<span class="sd">        legend (bool):      Show a legend on the plot</span>
+<span class="sd">        block (bool):       If :py:obj:`True`, block until the figure is closed.</span>
+<span class="sd">          Default: :py:obj:`False`</span>
+<span class="sd">        dipole (dict):      Dictionary of properties overloading the default</span>
+<span class="sd">          properties of dipole representation. See :py:func:`.plot_synopt`</span>
+<span class="sd">          for details</span>
+<span class="sd">        quadrupole (dict):  Same definition as for dipole</span>
+<span class="sd">        sextupole (dict):   Same definition as for dipole</span>
+<span class="sd">        multipole (dict):   Same definition as for dipole</span>
+<span class="sd">        monitor (dict):     Same definition as for dipole</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># noinspection PyShadowingNames</span>
     <span class="k">def</span> <span class="nf">pldata_trajectory</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="n">r_in</span><span class="p">,</span> <span class="n">nturns</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>

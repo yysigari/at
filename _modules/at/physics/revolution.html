@@ -297,44 +297,10 @@
 <span class="kn">from</span> <span class="nn">..tracking</span> <span class="kn">import</span> <span class="n">lattice_pass</span>
 <span class="kn">from</span> <span class="nn">.orbit</span> <span class="kn">import</span> <span class="n">find_orbit4</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
-<span class="kn">import</span> <span class="nn">functools</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;frequency_control&#39;</span><span class="p">,</span> <span class="s1">&#39;get_mcf&#39;</span><span class="p">,</span> <span class="s1">&#39;get_slip_factor&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;get_revolution_frequency&#39;</span><span class="p">,</span> <span class="s1">&#39;set_rf_frequency&#39;</span><span class="p">]</span>
-
-
-<div class="viewcode-block" id="frequency_control"><a class="viewcode-back" href="../../../p/api/at.physics.revolution.html#at.physics.revolution.frequency_control">[docs]</a><span class="k">def</span> <span class="nf">frequency_control</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot; Function to be used as decorator for :pycode:`func(ring, *args, **kwargs)`</span>
-
-<span class="sd">    If :pycode:`ring.is_6d` is :py:obj:`True` **and** *dp*, *dct* or *df*</span>
-<span class="sd">    is specified in *kwargs*, make a copy of *ring* with a modified</span>
-<span class="sd">    RF frequency, remove *dp*, *dct* or *df* from *kwargs* and call</span>
-<span class="sd">    *func* with the modified *ring*.</span>
-
-<span class="sd">    If :pycode:`ring.is_6d` is :py:obj:`False` **or** no *dp*, *dct* or</span>
-<span class="sd">    *df* is specified in *kwargs*, *func* is called unchanged.</span>
-
-<span class="sd">    Examples:</span>
-
-<span class="sd">        .. code-block:: python</span>
-
-<span class="sd">            @frequency_control</span>
-<span class="sd">            def func(ring, *args, dp=None, dct=None, **kwargs):</span>
-<span class="sd">                pass</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">ring</span><span class="o">.</span><span class="n">is_6d</span><span class="p">:</span>
-            <span class="n">momargs</span> <span class="o">=</span> <span class="p">{}</span>
-            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;dp&#39;</span><span class="p">,</span> <span class="s1">&#39;dct&#39;</span><span class="p">,</span> <span class="s1">&#39;df&#39;</span><span class="p">]:</span>
-                <span class="n">v</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="n">momargs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">momargs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">ring</span> <span class="o">=</span> <span class="n">set_rf_frequency</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="o">**</span><span class="n">momargs</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">wrapper</span></div>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;get_mcf&#39;</span><span class="p">,</span> <span class="s1">&#39;get_slip_factor&#39;</span><span class="p">,</span> <span class="s1">&#39;get_revolution_frequency&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;set_rf_frequency&#39;</span><span class="p">]</span>
 
 
 <div class="viewcode-block" id="get_mcf"><a class="viewcode-back" href="../../../p/api/at.physics.revolution.html#at.physics.revolution.get_mcf">[docs]</a><span class="nd">@check_6d</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
@@ -444,16 +410,16 @@
 <span class="sd">          *ring* in-place</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">frequency</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">frequency</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">get_revolution_frequency</span><span class="p">(</span><span class="n">dp</span><span class="o">=</span><span class="n">dp</span><span class="p">,</span> <span class="n">dct</span><span class="o">=</span><span class="n">dct</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">)</span> \
+        <span class="n">frequency</span> <span class="o">=</span> <span class="n">get_revolution_frequency</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="n">dp</span><span class="p">,</span> <span class="n">dct</span><span class="o">=</span><span class="n">dct</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">)</span> \
                     <span class="o">*</span> <span class="n">ring</span><span class="o">.</span><span class="n">harmonic_number</span>
     <span class="k">return</span> <span class="n">ring</span><span class="o">.</span><span class="n">set_cavity</span><span class="p">(</span><span class="n">Frequency</span><span class="o">=</span><span class="n">frequency</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
 <span class="n">Lattice</span><span class="o">.</span><span class="n">mcf</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">get_mcf</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Momentum compaction factor&quot;</span><span class="p">)</span>
 <span class="n">Lattice</span><span class="o">.</span><span class="n">slip_factor</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">get_slip_factor</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Slip factor&quot;</span><span class="p">)</span>
-<span class="n">Lattice</span><span class="o">.</span><span class="n">get_revolution_frequency</span> <span class="o">=</span> <span class="n">get_revolution_frequency</span>
 <span class="n">Lattice</span><span class="o">.</span><span class="n">get_mcf</span> <span class="o">=</span> <span class="n">get_mcf</span>
 <span class="n">Lattice</span><span class="o">.</span><span class="n">get_slip_factor</span> <span class="o">=</span> <span class="n">get_slip_factor</span>
+<span class="n">Lattice</span><span class="o">.</span><span class="n">get_revolution_frequency</span> <span class="o">=</span> <span class="n">get_revolution_frequency</span>
 <span class="n">Lattice</span><span class="o">.</span><span class="n">set_rf_frequency</span> <span class="o">=</span> <span class="n">set_rf_frequency</span>
 <span class="n">Lattice</span><span class="o">.</span><span class="n">rf_frequency</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">get_rf_frequency</span><span class="p">,</span> <span class="n">set_rf_frequency</span><span class="p">,</span>
     <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Fundamental RF frequency [Hz]. The special value &quot;</span>

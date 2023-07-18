@@ -311,9 +311,11 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="at.lattice.html">at.lattice</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.axisdef.html">at.lattice.axisdef</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.cavity_access.html">at.lattice.cavity_access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.deprecated.html">at.lattice.deprecated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.elements.html">at.lattice.elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.idtable_element.html">at.lattice.idtable_element</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.lattice_object.html">at.lattice.lattice_object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.options.html">at.lattice.options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.particle_object.html">at.lattice.particle_object</a></li>
@@ -340,6 +342,7 @@
 <li class="toctree-l2"><a class="reference internal" href="at.physics.diffmatrix.html">at.physics.diffmatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.energy_loss.html">at.physics.energy_loss</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.fastring.html">at.physics.fastring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.physics.frequency_maps.html">at.physics.frequency_maps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.harmonic_analysis.html">at.physics.harmonic_analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.linear.html">at.physics.linear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.matrix.html">at.physics.matrix</a></li>
@@ -405,6 +408,9 @@
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#at.acceptance.touschek.get_lifetime" title="at.acceptance.touschek.get_lifetime"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_lifetime</span></code></a>(ring, emity, bunch_curr[, ...])</p></td>
 <td><p>Touschek lifetime calculation</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.acceptance.touschek.get_scattering_rate" title="at.acceptance.touschek.get_scattering_rate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scattering_rate</span></code></a>(ring, emity, bunch_curr)</p></td>
+<td><p>Touschek scattering rate calculation</p></td>
 </tr>
 </tbody>
 </table>
@@ -477,7 +483,60 @@ enabled <code class="docutils literal notranslate"><span class="pre">GridMode</s
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>tl</strong> – touschek lifetime, double expressed in seconds</p></li>
 <li><p><strong>ma</strong> – momentum aperture (len(refpts), 2) array</p></li>
-<li><p><strong>refpts</strong> – refpts used for ma calcualtion (len(refpts), ) array</p></li>
+<li><p><strong>refpts</strong> – refpts used for momentum aperture calculation
+(len(refpts), ) array</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="at.acceptance.touschek.get_scattering_rate">
+<span class="sig-name descname"><span class="pre">get_scattering_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bunch_curr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emitx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refpts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/acceptance/touschek.html#get_scattering_rate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.acceptance.touschek.get_scattering_rate" title="Permalink to this definition">#</a></dt>
+<dd><p>Touschek scattering rate calculation</p>
+<p>Computes the touschek scattering using the Piwinski formula</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ring</strong> – ring use for tracking</p></li>
+<li><p><strong>emity</strong> – verticla emittance</p></li>
+<li><p><strong>bunch_curr</strong> – bunch current</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>emitx=None</strong> – horizontal emittance</p></li>
+<li><p><strong>sigs=None</strong> – rms bunch length</p></li>
+<li><p><strong>sigp=None</strong> – energy spread</p></li>
+<li><p><strong>zn=None</strong> – full ring <span class="math notranslate nohighlight">\(Z/n\)</span></p></li>
+<li><p><strong>momap=None</strong> – momentum aperture, has to be consistent with <code class="docutils literal notranslate"><span class="pre">refpts</span></code>
+if provided the momentum aperture is not calculated</p></li>
+<li><p><strong>refpts=None</strong> – <code class="docutils literal notranslate"><span class="pre">refpts</span></code> where the momentum aperture is calculated,
+the default is to compute it for all elements in the
+ring, <code class="docutils literal notranslate"><span class="pre">len(refpts)&gt;2</span></code> is required</p></li>
+<li><p><strong>resolution</strong> – minimum distance between 2 grid points, default=1.0e-3</p></li>
+<li><p><strong>amplitude</strong> – max. amplitude for <code class="docutils literal notranslate"><span class="pre">RADIAL</span></code> and <code class="docutils literal notranslate"><span class="pre">CARTESIAN</span></code> or
+initial step in <code class="docutils literal notranslate"><span class="pre">RECURSIVE</span></code>
+default = 0.1</p></li>
+<li><p><strong>nturns=1024</strong> – Number of turns for the tracking</p></li>
+<li><p><strong>dp=None</strong> – static momentum offset</p></li>
+<li><p><strong>grid_mode</strong> – <code class="docutils literal notranslate"><span class="pre">at.GridMode.CARTESIAN/RADIAL</span></code> track full vector
+(default). <code class="docutils literal notranslate"><span class="pre">at.GridMode.RECURSIVE</span></code>: recursive search</p></li>
+<li><p><strong>use_mp=False</strong> – Use python multiprocessing (<code class="docutils literal notranslate"><span class="pre">patpass</span></code>, default use
+<code class="docutils literal notranslate"><span class="pre">lattice_pass</span></code>). In case multi-processing is not
+enabled <code class="docutils literal notranslate"><span class="pre">GridMode</span></code> is forced to
+<code class="docutils literal notranslate"><span class="pre">RECURSIVE</span></code> (most efficient in single core)</p></li>
+<li><p><strong>verbose=False</strong> – Print out some inform</p></li>
+<li><p><strong>epsrel</strong> (<em>epsabs</em><em>,</em>) – integral absolute and relative tolerances</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scattering_rate</strong> – scattering rate double array (len(refpts), )
+expressed in event/seconds</p></li>
+<li><p><strong>ma</strong> – momentum aperture (len(refpts), 2) array</p></li>
+<li><p><strong>refpts</strong> – refpts used for momentum aperture calculation
+(len(refpts), ) array</p></li>
 </ul>
 </dd>
 </dl>
@@ -537,6 +596,15 @@ enabled <code class="docutils literal notranslate"><span class="pre">GridMode</s
    <code class="docutils literal notranslate">
     <span class="pre">
      get_lifetime()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.acceptance.touschek.get_scattering_rate">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     get_scattering_rate()
     </span>
    </code>
   </a>

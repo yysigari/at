@@ -309,9 +309,11 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="at.lattice.html">at.lattice</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.axisdef.html">at.lattice.axisdef</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.cavity_access.html">at.lattice.cavity_access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.deprecated.html">at.lattice.deprecated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.elements.html">at.lattice.elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.lattice.idtable_element.html">at.lattice.idtable_element</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.lattice_object.html">at.lattice.lattice_object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.options.html">at.lattice.options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.particle_object.html">at.lattice.particle_object</a></li>
@@ -338,6 +340,7 @@
 <li class="toctree-l2"><a class="reference internal" href="at.physics.diffmatrix.html">at.physics.diffmatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.energy_loss.html">at.physics.energy_loss</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.fastring.html">at.physics.fastring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.physics.frequency_maps.html">at.physics.frequency_maps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.harmonic_analysis.html">at.physics.harmonic_analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.linear.html">at.physics.linear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.matrix.html">at.physics.matrix</a></li>
@@ -398,7 +401,7 @@
 <p class="rubric">Functions</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.physics.nonlinear.detuning" title="at.physics.nonlinear.detuning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">detuning</span></code></a>(ring[, xm, ym, npoints, window, nturns])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.physics.nonlinear.detuning" title="at.physics.nonlinear.detuning"><code class="xref py py-obj docutils literal notranslate"><span class="pre">detuning</span></code></a>(ring[, xm, ym, npoints, nturns])</p></td>
 <td><p>Computes the tunes for a sequence of amplitudes</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#at.physics.nonlinear.chromaticity" title="at.physics.nonlinear.chromaticity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">chromaticity</span></code></a>(ring[, method, dpm, npoints, ...])</p></td>
@@ -406,6 +409,9 @@
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#at.physics.nonlinear.gen_detuning_elem" title="at.physics.nonlinear.gen_detuning_elem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_detuning_elem</span></code></a>(ring[, orbit])</p></td>
 <td><p>Generates a detuning element</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.physics.nonlinear.tunes_vs_amp" title="at.physics.nonlinear.tunes_vs_amp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">tunes_vs_amp</span></code></a>(ring[, amp, dim, nturns])</p></td>
+<td><p>Generates a range of tunes for varying x, y, or z amplitudes</p></td>
 </tr>
 </tbody>
 </table>
@@ -433,18 +439,24 @@ NAFF.</p>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>(fitx, fity), dpa, qz</strong></p>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>fit</strong> (<em>ndarray</em>) – Horizontal Vertical polynomial coefficients
+from <code class="docutils literal notranslate"><span class="pre">numpy.polyfit</span></code> of shape (2, order+1)</p></li>
+<li><p><strong>dpa</strong> – dp array of shape (npoints,)</p></li>
+<li><p><strong>qz</strong> – tune array of shape (npoints, 2)</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="at.physics.nonlinear.detuning">
-<span class="sig-name descname"><span class="pre">detuning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ym</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nturns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">512</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/nonlinear.html#detuning"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.nonlinear.detuning" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">detuning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ym</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">npoints</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nturns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">512</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/nonlinear.html#detuning"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.nonlinear.detuning" title="Permalink to this definition">#</a></dt>
 <dd><p>Computes the tunes for a sequence of amplitudes</p>
-<p>This function uses <code class="xref py py-func docutils literal notranslate"><span class="pre">tunes_vs_amp()</span></code> to compute the tunes for
+<p>This function uses <a class="reference internal" href="#at.physics.nonlinear.tunes_vs_amp" title="at.physics.nonlinear.tunes_vs_amp"><code class="xref py py-func docutils literal notranslate"><span class="pre">tunes_vs_amp()</span></code></a> to compute the tunes for
 the specified amplitudes. Then it fits this data and returns
-result for dQx/dx, dQy/dx, dQx/dy, dQy/dy</p>
+the detuning coefficiant dQx/dx, dQy/dx, dQx/dy, dQy/dy and the
+qx, qy arrays versus x, y arrays</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -452,18 +464,25 @@ result for dQx/dx, dQy/dx, dQx/dy, dQy/dy</p>
 <li><p><strong>xm</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – Maximum x amplitude</p></li>
 <li><p><strong>ym</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – Maximum y amplitude</p></li>
 <li><p><strong>npoints</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em>) – Number of points in each plane</p></li>
-<li><p><strong>window</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em>) – </p></li>
 <li><p><strong>nturns</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em>) – Number of turns for tracking</p></li>
+<li><p><strong>method</strong> – <code class="docutils literal notranslate"><span class="pre">'laskar'</span></code> or <code class="docutils literal notranslate"><span class="pre">'fft'</span></code>. Default: <code class="docutils literal notranslate"><span class="pre">'laskar'</span></code></p></li>
+<li><p><strong>num_harmonics</strong> – Number of harmonic components to compute
+(before mask applied)</p></li>
+<li><p><strong>fmin</strong> – Lower bound for tune</p></li>
+<li><p><strong>fmax</strong> – Upper bound for tune</p></li>
+<li><p><strong>hann</strong> – Turn on Hanning window. Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>q0</strong> (<em>ndarray</em>)</p></li>
-<li><p><strong>q1</strong> (<em>ndarray</em>)</p></li>
-<li><p><strong>x</strong> (<em>ndarray</em>) – x amplitudes</p></li>
-<li><p><strong>q_dx</strong> (<em>ndarray</em>)</p></li>
-<li><p><strong>y</strong> (<em>ndarray</em>) – y amplitudes</p></li>
-<li><p><strong>q_dy</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>q0</strong> (<em>ndarray</em>) – qx, qy from horizontal and vertical amplitude scans.
+Fit results with shape (2, 2)</p></li>
+<li><p><strong>q1</strong> (<em>ndarray</em>) – Amplitude detuning coefficients with shape (2, 2)
+<code class="docutils literal notranslate"><span class="pre">[[dQx/dx,</span> <span class="pre">dQy/dx],</span> <span class="pre">[dQx/dy,</span> <span class="pre">dQy/dy]]</span></code></p></li>
+<li><p><strong>x</strong> (<em>ndarray</em>) – x amplitudes (npoints, )</p></li>
+<li><p><strong>q_dx</strong> (<em>ndarray</em>) – qx, qy tunes as a function of x amplitude (npoints, 2)</p></li>
+<li><p><strong>y</strong> (<em>ndarray</em>) – y amplitudes (npoints, )</p></li>
+<li><p><strong>q_dy</strong> (<em>ndarray</em>) – qx, qy tunes as a function of y amplitude (npoints, 2)</p></li>
 </ul>
 </dd>
 </dl>
@@ -477,13 +496,40 @@ result for dQx/dx, dQy/dx, dQx/dy, dQy/dy</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ring</strong> (<a class="reference internal" href="at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice" title="at.lattice.lattice_object.Lattice"><em>Lattice</em></a>) – Lattice description</p></li>
-<li><p><strong>orbit</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.24)"><em>ndarray</em></a><em>]</em>) – Avoids looking for initial the closed orbit if it is
+<li><p><strong>orbit</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.25)"><em>ndarray</em></a><em>]</em>) – Avoids looking for initial the closed orbit if it is
 already known ((6,) array).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>detuneElem</strong> – Element reproducing the detuning of the ring with
 amplitude and momentum</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="at.physics.nonlinear.tunes_vs_amp">
+<span class="sig-name descname"><span class="pre">tunes_vs_amp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nturns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">512</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/nonlinear.html#tunes_vs_amp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.nonlinear.tunes_vs_amp" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates a range of tunes for varying x, y, or z amplitudes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ring</strong> (<a class="reference internal" href="at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice" title="at.lattice.lattice_object.Lattice"><em>Lattice</em></a>) – Lattice description</p></li>
+<li><p><strong>amp</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.11)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em><em>]</em>) – Oscillation amplitude. If amp is None the
+tunes are calculated from <a class="reference internal" href="at.physics.linear.html#at.physics.linear.linopt6" title="at.physics.linear.linopt6"><code class="xref py py-func docutils literal notranslate"><span class="pre">linopt6()</span></code></a>
+else tracking is used</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em>) – Coordinate index of the oscillation</p></li>
+<li><p><strong>nturns</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em>) – Number of turns</p></li>
+<li><p><strong>method</strong> – <code class="docutils literal notranslate"><span class="pre">'laskar'</span></code> or <code class="docutils literal notranslate"><span class="pre">'fft'</span></code>. Default: <code class="docutils literal notranslate"><span class="pre">'laskar'</span></code></p></li>
+<li><p><strong>num_harmonics</strong> – Number of harmonic components to compute (before
+mask applied)</p></li>
+<li><p><strong>fmin</strong> – Lower bound for tune</p></li>
+<li><p><strong>fmax</strong> – Upper bound for tune</p></li>
+<li><p><strong>hann</strong> – Turn on Hanning window. Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>tunes</strong> (<em>ndarray</em>) – Array of tunes qx, qy with shape (len(amp), 2)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -551,6 +597,15 @@ amplitude and momentum</p>
    <code class="docutils literal notranslate">
     <span class="pre">
      gen_detuning_elem()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.physics.nonlinear.tunes_vs_amp">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     tunes_vs_amp()
     </span>
    </code>
   </a>

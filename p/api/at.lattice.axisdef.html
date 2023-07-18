@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>at.load.tracy &#8212; Accelerator Toolbox 0.0.4 documentation</title>
+    <title>at.lattice.axisdef &#8212; Accelerator Toolbox 0.0.4 documentation</title>
   <script>
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
@@ -41,11 +41,11 @@
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'p/api/at.load.tracy';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'p/api/at.lattice.axisdef';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="at.load.utils" href="at.load.utils.html" />
-    <link rel="prev" title="at.load.reprfile" href="at.load.reprfile.html" />
+    <link rel="next" title="at.lattice.cavity_access" href="at.lattice.cavity_access.html" />
+    <link rel="prev" title="at.lattice" href="at.lattice.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -308,8 +308,8 @@
 <li class="toctree-l2"><a class="reference internal" href="at.collective.wake_object.html">at.collective.wake_object</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="at.lattice.html">at.lattice</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="at.lattice.axisdef.html">at.lattice.axisdef</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="at.lattice.html">at.lattice</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">at.lattice.axisdef</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.cavity_access.html">at.lattice.cavity_access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.deprecated.html">at.lattice.deprecated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.elements.html">at.lattice.elements</a></li>
@@ -321,12 +321,12 @@
 <li class="toctree-l2"><a class="reference internal" href="at.lattice.variable_elements.html">at.lattice.variable_elements</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="at.load.html">at.load</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="at.load.html">at.load</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.load.allfiles.html">at.load.allfiles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.elegant.html">at.load.elegant</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.matfile.html">at.load.matfile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.reprfile.html">at.load.reprfile</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">at.load.tracy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.load.tracy.html">at.load.tracy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.utils.html">at.load.utils</a></li>
 </ul>
 </li>
@@ -395,46 +395,125 @@
             
             <article class="bd-article" role="main">
               
-  <section id="module-at.load.tracy">
-<span id="at-load-tracy"></span><h1>at.load.tracy<a class="headerlink" href="#module-at.load.tracy" title="Permalink to this heading">#</a></h1>
-<p>Load a lattice from a Tracy file (.lat).</p>
-<p>This is not complete but can parse the example files that I have.
-This parser is quite similar to the Elegant parser in elegant.py.</p>
+  <section id="module-at.lattice.axisdef">
+<span id="at-lattice-axisdef"></span><h1>at.lattice.axisdef<a class="headerlink" href="#module-at.lattice.axisdef" title="Permalink to this heading">#</a></h1>
+<p>Helper functions for axis and plane descriptions</p>
 <p class="rubric">Functions</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.load.tracy.load_tracy" title="at.load.tracy.load_tracy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_tracy</span></code></a>(filename, **kwargs)</p></td>
-<td><p>Create a <a class="reference internal" href="at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice" title="at.lattice.lattice_object.Lattice"><code class="xref py py-class docutils literal notranslate"><span class="pre">Lattice</span></code></a>  from a Tracy file</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.axisdef.axis_" title="at.lattice.axisdef.axis_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">axis_</span></code></a>(axis[, key])</p></td>
+<td><p>Return axis descriptions</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.axisdef.plane_" title="at.lattice.axisdef.plane_"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plane_</span></code></a>(plane[, key])</p></td>
+<td><p>Return plane descriptions</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py function">
-<dt class="sig sig-object py" id="at.load.tracy.load_tracy">
-<span class="sig-name descname"><span class="pre">load_tracy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/tracy.html#load_tracy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.tracy.load_tracy" title="Permalink to this definition">#</a></dt>
-<dd><p>Create a <a class="reference internal" href="at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice" title="at.lattice.lattice_object.Lattice"><code class="xref py py-class docutils literal notranslate"><span class="pre">Lattice</span></code></a>  from a Tracy file</p>
+<dt class="sig sig-object py" id="at.lattice.axisdef.axis_">
+<span class="sig-name descname"><span class="pre">axis_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/axisdef.html#axis_"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.axisdef.axis_" title="Permalink to this definition">#</a></dt>
+<dd><p>Return axis descriptions</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of a Tracy file</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>axis</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><em>Union</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#slice" title="(in Python v3.11)"><em>slice</em></a><em>, </em><em>None</em><em>, </em><em>ellipsis</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><em>Union</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#slice" title="(in Python v3.11)"><em>slice</em></a><em>, </em><em>None</em><em>, </em><em>ellipsis</em><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><em>Union</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#slice" title="(in Python v3.11)"><em>slice</em></a><em>, </em><em>None</em><em>, </em><em>ellipsis</em><em>]</em><em>]</em><em>]</em>) – <p>axis code or tuple of axis codes selecting axes in the
+standard AT coordinate system. codes for the 6 axes are:</p>
+<p>0, ‘x’, ‘X’</p>
+<p>1, ‘px’, PX’</p>
+<p>2, ‘y’, ‘Y’</p>
+<p>3, ‘py’, ‘PY’</p>
+<p>4, ‘dp’, ‘DP’, ‘delta’</p>
+<p>5, ‘ct’, ‘CT’, ‘s’, ‘S’</p>
+<p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, slice(None) and <a class="reference external" href="https://docs.python.org/3/library/constants.html#Ellipsis" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Ellipsis</span></code></a> selects all axes</p>
+</p></li>
+<li><p><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>]</em>) – <p>key in the coordinate descriptor dictionary,
+selecting the desired information. One of :</p>
+<dl class="simple">
+<dt>’index’</dt><dd><p>index in the standard AT coordinate vector</p>
 </dd>
-<dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the lattice. Default: taken from
-the file.</p></li>
-<li><p><strong>energy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Energy of the lattice [eV]</p></li>
-<li><p><strong>periodicity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of periods. Default: taken from the
-elements, or 1</p></li>
-<li><p><strong>*</strong> – All other keywords will be set as Lattice
-attributes</p></li>
-</ul>
+<dt>’code’</dt><dd><p>string representation</p>
 </dd>
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>lattice</strong> (<em>Lattice</em>) – New <a class="reference internal" href="at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice" title="at.lattice.lattice_object.Lattice"><code class="xref py py-class docutils literal notranslate"><span class="pre">Lattice</span></code></a> object</p>
+<dt>’label’</dt><dd><p>label for plot annotation</p>
+</dd>
+<dt>’unit’</dt><dd><p>coordinate unit</p>
+</dd>
+<dt><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></dt><dd><p>entire description dictionary</p>
 </dd>
 </dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference internal" href="at.load.allfiles.html#at.load.allfiles.load_lattice" title="at.load.allfiles.load_lattice"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_lattice()</span></code></a> for a generic lattice-loading function.</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>descr</strong> – value of tuple[values]</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">axis_</span><span class="p">((</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;dp&#39;</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+<span class="go">(0, 4)</span>
+</pre></div>
 </div>
+<p>returns the indices in the standard coordinate vector</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dplabel</span> <span class="o">=</span> <span class="n">axis_</span><span class="p">(</span><span class="s1">&#39;dp&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">dplabel</span><span class="p">)</span>
+<span class="go">$\delta$</span>
+</pre></div>
+</div>
+<p>returns the coordinate label for plot annotation</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">axis_</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;dp&#39;</span><span class="p">))</span>
+<span class="go">({&#39;plane&#39;: 0, &#39;label&#39;: &#39;x&#39;, &#39;unit&#39;: &#39; [m]&#39;, &#39;code&#39;: &#39;x&#39;},</span>
+<span class="go"> {&#39;plane&#39;: 4, &#39;label&#39;: &#39;$\\delta$&#39;, &#39;unit&#39;: &#39;&#39;, &#39;code&#39;: &#39;dp&#39;})</span>
+</pre></div>
+</div>
+<p>returns the entire description directories</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="at.lattice.axisdef.plane_">
+<span class="sig-name descname"><span class="pre">plane_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plane</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/axisdef.html#plane_"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.axisdef.plane_" title="Permalink to this definition">#</a></dt>
+<dd><p>Return plane descriptions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plane</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><em>Union</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#slice" title="(in Python v3.11)"><em>slice</em></a><em>, </em><em>None</em><em>, </em><em>ellipsis</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><em>Union</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#slice" title="(in Python v3.11)"><em>slice</em></a><em>, </em><em>None</em><em>, </em><em>ellipsis</em><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><em>Union</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#slice" title="(in Python v3.11)"><em>slice</em></a><em>, </em><em>None</em><em>, </em><em>ellipsis</em><em>]</em><em>]</em><em>]</em>) – <p>plane code or tuple of plane codes selecting planes.
+codes for the 3 planes are:</p>
+<p>0, ‘x’, ‘X’, ‘h’, ‘H’ for horizontal plane,</p>
+<p>1, ‘y’, ‘Y’, ‘v’, ‘V’ for vertical plane,</p>
+<p>2, ‘z’, ‘Z’   for the longitudinal plane</p>
+<p><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, slice(None) and <a class="reference external" href="https://docs.python.org/3/library/constants.html#Ellipsis" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Ellipsis</span></code></a> selects all planes</p>
+</p></li>
+<li><p><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>]</em>) – <p>key in the plane descriptor dictionary,
+selecting the desired information. One of :</p>
+<dl class="simple">
+<dt>’plane’</dt><dd><p>plane in the optics data</p>
+</dd>
+<dt>’code’</dt><dd><p>string representation</p>
+</dd>
+<dt>’label’</dt><dd><p>label for plot annotation</p>
+</dd>
+<dt>’unit’</dt><dd><p>coordinate unit</p>
+</dd>
+<dt><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></dt><dd><p>entire description dictionary</p>
+</dd>
+</dl>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>descr</strong> – value or tuple[values]</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plane_</span><span class="p">(</span><span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<p>returns the indices in the standard coordinate vector</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plane_</span><span class="p">((</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">))</span>
+<span class="go">({&#39;plane&#39;: 0, &#39;label&#39;: &#39;h&#39;, &#39;unit&#39;: &#39; [m]&#39;, &#39;code&#39;: &#39;h&#39;},</span>
+<span class="go"> {&#39;plane&#39;: 1, &#39;label&#39;: &#39;v&#39;, &#39;unit&#39;: &#39; [m]&#39;, &#39;code&#39;: &#39;v&#39;})</span>
+</pre></div>
+</div>
+<p>returns the entire description directories</p>
 </dd></dl>
 
 </section>
@@ -447,17 +526,17 @@ attributes</p></li>
             <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="at.load.reprfile.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="at.lattice.html" title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">at.load.reprfile</p>
+          <p class="prev-next-title">at.lattice</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="at.load.utils.html" title="next page">
+  <a class='right-next' id="next-link" href="at.lattice.cavity_access.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">at.load.utils</p>
+      <p class="prev-next-title">at.lattice.cavity_access</p>
   </div>
   <i class="fa-solid fa-angle-right"></i>
   </a>
@@ -478,10 +557,19 @@ attributes</p></li>
 <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#at.load.tracy.load_tracy">
+  <a class="reference internal nav-link" href="#at.lattice.axisdef.axis_">
    <code class="docutils literal notranslate">
     <span class="pre">
-     load_tracy()
+     axis_()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.axisdef.plane_">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     plane_()
     </span>
    </code>
   </a>

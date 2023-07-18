@@ -41,6 +41,8 @@
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'p/howto/Collective';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -309,9 +311,11 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../api/at.lattice.html">at.lattice</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/at.lattice.axisdef.html">at.lattice.axisdef</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/at.lattice.cavity_access.html">at.lattice.cavity_access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/at.lattice.deprecated.html">at.lattice.deprecated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/at.lattice.elements.html">at.lattice.elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/at.lattice.idtable_element.html">at.lattice.idtable_element</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/at.lattice.lattice_object.html">at.lattice.lattice_object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/at.lattice.options.html">at.lattice.options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/at.lattice.particle_object.html">at.lattice.particle_object</a></li>
@@ -338,6 +342,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../api/at.physics.diffmatrix.html">at.physics.diffmatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/at.physics.energy_loss.html">at.physics.energy_loss</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/at.physics.fastring.html">at.physics.fastring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/at.physics.frequency_maps.html">at.physics.frequency_maps</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/at.physics.harmonic_analysis.html">at.physics.harmonic_analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/at.physics.linear.html">at.physics.linear</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/at.physics.matrix.html">at.physics.matrix</a></li>
@@ -394,8 +399,291 @@
               
   <section id="collective">
 <h1>Collective<a class="headerlink" href="#collective" title="Permalink to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
 <p>A collective effects element can be added to any lattice to model
-impedance driven collective effects and perform multi-particle tracking</p>
+impedance driven collective effects and perform multi-particle tracking.
+This element can be constructed with either a user defined table, or by
+using the built in functions to construct specific elements (for example
+a longitudinal resonator or a transverse resistive wall). The element will
+then call the <strong>WakeFieldPass</strong> PassMethod.</p>
+<p>The wake field is applied by first uniformly slicing the full region occupied by the
+particles in the ct co-ordinate. Each particle is attributed to a
+given slice, which is represented by a weight. The mean position in x,y,ct
+is computed for each slice. The kick from one slice to the next (and the self kick for some cases)
+can then be computed by taking into account the differences in offsets of each slice.
+This total kick is computed and the appropriate modification to x’, y’ or dp is applied
+to each particle.</p>
+<p>To take into account multi-turn wakes, the wake element has a <strong>TurnHistory</strong> buffer.
+Each turn, the mean x,y,ct and weight of each slice is recorded. At each turn, the
+array of ct values is increased by one circumference (to take into account the decay
+between turns). When the kick is computed, the full history of turns to ensure the
+total kick from all previous turns is considered.</p>
+<p>The package is organised as follows:</p>
+<p><strong>at.collective.wake_functions</strong> contains the analytic wake functions that can be called
+by the other classes</p>
+<p>The longitudinal resonator wake function is given by <a class="footnote-reference brackets" href="#id6" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}W_{z}(\tau) = \left\{ \begin{array}{lr} \alpha R_{s} \;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;\;   \text{for } \tau=0 \\ 2\alpha R_{s}e^{-\alpha \tau} [\text{cos}(\bar{\omega}\tau) - \frac{\alpha}{\bar{\omega}}\text{sin}(\bar{\omega}\tau)]\;\;\;\; \text{for}\ \tau &gt; 0 \\ \end{array} \right.\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(R_{s}\)</span> is the resonator shunt impedance in Ohms, <span class="math notranslate nohighlight">\(\alpha=\omega_{R}/2Q\)</span>, <span class="math notranslate nohighlight">\(\omega_{R}\)</span> is the resonator angular frequency in Hz.rad, <span class="math notranslate nohighlight">\(Q\)</span> is the resonator quality factor and <span class="math notranslate nohighlight">\(\bar{\omega}=\sqrt{\omega_{R}^{2} - \alpha^{2}}\)</span>  . The units of the longitudinal wake function are V/C.</p>
+<p>The transverse resonator wake function is given by <a class="footnote-reference brackets" href="#id7" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
+<div class="math notranslate nohighlight">
+\[W_{x,y}(z) = -\frac{c R_{s}\omega_{R}}{Q\bar{\omega}}e^{-\alpha z / c} \text{sin}(\bar{\omega} z / c).\]</div>
+<p>Here we use the slightly modified transverse resonator function in the correct AT units that is given by.</p>
+<div class="math notranslate nohighlight">
+\[W_{x,y}(\tau) = -\frac{ R_{s} \omega_{R}^{2}}{Q\bar{\omega}}e^{-\alpha \tau} \text{sin}(\bar{\omega}\tau).\]</div>
+<p>The definitions are the same as for the longitudinal resonator.</p>
+<p>The units of the transverse resonator wake function are V/C/m</p>
+<p>The transverse resistive wall wake function is defined as <a class="footnote-reference brackets" href="#id8" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p>
+<div class="math notranslate nohighlight">
+\[W_{x,y}(z) = -\frac{2}{\pi b^{3}}\sqrt{\frac{c}{\sigma_{c}}}\frac{1}{|z|^{1/2}}L.\]</div>
+<p>Here we use the modified version in the correct AT units given by</p>
+<div class="math notranslate nohighlight">
+\[W_{x,y}(\tau) = -\frac{\beta_{x,y}L}{\pi b^{3}}\sqrt{\frac{Z_{0} c}{\pi \sigma_{c} \tau}}.\]</div>
+<p>where <span class="math notranslate nohighlight">\(b\)</span> is the vacuum chamber half gap in m, <span class="math notranslate nohighlight">\(Z_{0}=\pi * 119.9169832\)</span> is the impedance of free space in Ohms, c is the velocity of light in m/s, <span class="math notranslate nohighlight">\(L\)</span> is the length of resistive wall component and <span class="math notranslate nohighlight">\(\sigma_{c}\)</span> is the conductivity in Siemens.</p>
+<p>The transverse resistive wall function is an approximation, as it clearly diverges for <span class="math notranslate nohighlight">\(\tau\)</span> close to 0, but when considering multi bunch models the approximation works well.</p>
+<p>Also included is a function to convolve a wake field with a gaussian bunch to compute the wake potential (convolve_wake_fun)
+This function can be useful to combine multiple wake potentials (for example to include an analytical
+wake function with the wake potential output from GDfidL).</p>
+<p>These above functions can be directly called</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">at.collective.wake_functions</span> <span class="kn">import</span> <span class="n">long_resonator_wf</span>
+<span class="kn">from</span> <span class="nn">at.collective.wake_functions</span> <span class="kn">import</span> <span class="n">transverse_resonator_wf</span>
+<span class="kn">from</span> <span class="nn">at.collective.wake_functions</span> <span class="kn">import</span> <span class="n">transverse_reswall_wf</span>
+</pre></div>
+</div>
+<p><strong>at.collective.wake_objects</strong> is used to construct a python object which represents a wake field or wake potential. The functions in wake_objects can be called directly to construct and test (and use for purposes outside of tracking in PyAT). The wake object can contain wake fields in multiple planes simultaneously, and may combine wake fields from a table of data with analytical wake functions. All of this is handled by the functions found in this module.</p>
+<p><strong>at.collective.wake_elements</strong> uses the functions found in <strong>at.collective.wake_objects</strong> to generate a wake field element that can be appended to the AT lattice to be used for tracking.</p>
+<p><strong>at.collective.haissinski</strong> contains functions and methods to solve the Haissinski equation in the presence of a longitudinal wake potential in order to obtain the analytical bunch distribution.</p>
+</section>
+<section id="generating-a-wake-element">
+<h2>Generating a Wake Element<a class="headerlink" href="#generating-a-wake-element" title="Permalink to this heading">#</a></h2>
+<p>We can start with a simple ring.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">at</span>
+<span class="n">ring</span> <span class="o">=</span> <span class="n">at</span><span class="o">.</span><span class="n">load_m</span><span class="p">(</span><span class="s1">&#39;at/machine_data/esrf.m&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>First we can call the fast_ring function to reduce significantly the number of elements we will need to track</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fring</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">at</span><span class="o">.</span><span class="n">fast_ring</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We must define an srange for the wake function. The wake_function will be computed at the values of the srange array, and an interpolation will be made during the tracking if the required dz of the 2 slices falls in between 2 data points. As a way of saving memory, the wake_object contains a function for computing the srange such that is is finely sampled only around where the bunches are expected to be. We must also specify how many turns we would like the wake memory to be</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">at.constants</span> <span class="kn">import</span> <span class="n">clight</span>
+<span class="kn">from</span> <span class="nn">at.collective</span> <span class="kn">import</span> <span class="n">Wake</span>
+
+<span class="n">wturns</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">srange_start</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">srange_short_end</span> <span class="o">=</span> <span class="n">clight</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">ring</span><span class="o">.</span><span class="n">get_rf_frequency</span><span class="p">())</span> <span class="c1"># One half of the bucket width</span>
+<span class="n">sample_fine</span> <span class="o">=</span> <span class="mf">1e-5</span>
+<span class="n">sample_between_bunches</span> <span class="o">=</span> <span class="mf">1e-2</span>
+<span class="n">bunch_spacing</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">circumference</span>
+<span class="n">srange_end</span> <span class="o">=</span> <span class="n">wturns</span> <span class="o">*</span> <span class="n">ring</span><span class="o">.</span><span class="n">circumference</span>
+
+<span class="n">srange</span> <span class="o">=</span> <span class="n">Wake</span><span class="o">.</span><span class="n">build_srange</span><span class="p">(</span><span class="n">srange_start</span><span class="p">,</span> <span class="n">srange_short_end</span><span class="p">,</span> <span class="n">sample_fine</span><span class="p">,</span> <span class="n">sample_between_bunches</span><span class="p">,</span> <span class="n">bunch_spacing</span><span class="p">,</span> <span class="n">srange_end</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we can define a longitudinal resonator by calling the LongResonatorElement function from wake_elements. First we need to define some resonator parameters</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">at.collective.wake_elements</span> <span class="kn">import</span> <span class="n">LongResonatorElement</span>
+
+<span class="n">current</span> <span class="o">=</span> <span class="mf">0.1</span>   <span class="c1"># A</span>
+<span class="n">ring</span><span class="o">.</span><span class="n">beam_current</span> <span class="o">=</span> <span class="n">current</span>
+
+<span class="n">f_resonator</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">get_rf_frequency</span><span class="p">()</span> <span class="o">-</span> <span class="mf">5e4</span>
+<span class="n">qfactor</span> <span class="o">=</span> <span class="mi">4500</span>
+<span class="n">rshunt</span> <span class="o">=</span> <span class="mf">6e6</span>
+
+<span class="n">Nslice</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">welem</span> <span class="o">=</span> <span class="n">LongResonatorElement</span><span class="p">(</span><span class="s1">&#39;LongitudinalResonator&#39;</span><span class="p">,</span> <span class="n">ring</span><span class="p">,</span> <span class="n">srange</span><span class="p">,</span> <span class="n">f_resonator</span><span class="p">,</span> <span class="n">qfactor</span><span class="p">,</span> <span class="n">rshunt</span><span class="p">,</span> <span class="n">Nturns</span><span class="o">=</span><span class="n">wturns</span><span class="p">,</span> <span class="n">Nslice</span><span class="o">=</span><span class="n">Nslice</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally we can append this to the fast ring</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fring</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">welem</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="using-a-wake-table">
+<h2>Using a Wake Table<a class="headerlink" href="#using-a-wake-table" title="Permalink to this heading">#</a></h2>
+<p>A wake function or wake potential can also be provided from a user defined data or a file. Here we can generate a fake data table using the long_resonator_wf function from at.collective.wake_functions, then we can use it to create a wake element</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">at.collective</span> <span class="kn">import</span> <span class="n">long_resonator_wf</span>
+<span class="kn">from</span> <span class="nn">at.collective.wake_object</span> <span class="kn">import</span> <span class="n">WakeType</span>
+<span class="kn">from</span> <span class="nn">at.collective.wake_object</span> <span class="kn">import</span> <span class="n">WakeComponent</span>
+<span class="kn">from</span> <span class="nn">at.collective.wake_elements</span> <span class="kn">import</span> <span class="n">WakeElement</span>
+
+<span class="n">wf_data</span> <span class="o">=</span> <span class="n">long_resonator_wf</span><span class="p">(</span><span class="n">srange</span><span class="p">,</span> <span class="n">f_resonator</span><span class="p">,</span> <span class="n">qfactor</span><span class="p">,</span> <span class="n">rshunt</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">wa</span> <span class="o">=</span> <span class="n">Wake</span><span class="p">(</span><span class="n">srange</span><span class="p">)</span>
+<span class="n">wa</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">WakeType</span><span class="o">.</span><span class="n">TABLE</span><span class="p">,</span> <span class="n">WakeComponent</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="n">srange</span><span class="p">,</span> <span class="n">wf_data</span><span class="p">)</span>
+
+<span class="n">welem</span> <span class="o">=</span> <span class="n">WakeElement</span><span class="p">(</span><span class="s1">&#39;wake&#39;</span><span class="p">,</span> <span class="n">ring</span><span class="p">,</span> <span class="n">wa</span><span class="p">,</span> <span class="n">Nslice</span><span class="o">=</span><span class="n">Nslice</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The WakeComponent is used to clearly specify which wake component is being considered. Possible values are Z, DX, DY, QX or QY.
+The WakeType is used to to clearly specify what type of input the add function can expect. Possible values are FILE, RESONATOR, RESWALL or TABLE.</p>
+</section>
+<section id="using-a-wake-file">
+<h2>Using a Wake File<a class="headerlink" href="#using-a-wake-file" title="Permalink to this heading">#</a></h2>
+<p>A wake element can also be generated from file. Arguments can be parsed to the add function to describe clearly which columns of the file refer to which parameter. The columns can also be scaled in order to easily sum multiple files or wake contributions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wa</span> <span class="o">=</span> <span class="n">Wake</span><span class="p">(</span><span class="n">srange</span><span class="p">)</span>
+<span class="n">wake_filename</span> <span class="o">=</span> <span class="s1">&#39;filename.txt&#39;</span>
+
+<span class="n">wa</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">WakeType</span><span class="o">.</span><span class="n">FILE</span><span class="p">,</span> <span class="n">WakeComponent</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="n">wake_filename</span><span class="p">,</span> <span class="n">scol</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">wcol</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">wfact</span><span class="o">=-</span><span class="mf">1e12</span><span class="p">)</span>
+<span class="n">welem</span> <span class="o">=</span> <span class="n">WakeElement</span><span class="p">(</span><span class="s1">&#39;wake&#39;</span><span class="p">,</span> <span class="n">ring</span><span class="p">,</span> <span class="n">wa</span><span class="p">,</span> <span class="n">Nslice</span><span class="o">=</span><span class="n">Nslice</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Multiple combinations can all be added to one wake element to bring all wake contributions into one wake element</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wa</span> <span class="o">=</span> <span class="n">Wake</span><span class="p">(</span><span class="n">srange</span><span class="p">)</span>
+<span class="n">wake_filename_z1</span> <span class="o">=</span> <span class="s1">&#39;filename_z1.txt&#39;</span>
+<span class="n">wf_data_z2</span> <span class="o">=</span> <span class="n">long_resonator_wf</span><span class="p">(</span><span class="n">srange</span><span class="p">,</span> <span class="n">f_resonator</span><span class="p">,</span> <span class="n">qfactor</span><span class="p">,</span> <span class="n">rshunt</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">wake_filename_dx</span> <span class="o">=</span> <span class="s1">&#39;filename_dx.txt&#39;</span>
+<span class="n">wake_filename_dy</span> <span class="o">=</span> <span class="s1">&#39;filename_dy.txt&#39;</span>
+
+<span class="n">wa</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">WakeType</span><span class="o">.</span><span class="n">FILE</span><span class="p">,</span> <span class="n">WakeComponent</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="n">wake_filename_z1</span><span class="p">,</span> <span class="n">scol</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">wcol</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">wfact</span><span class="o">=-</span><span class="mf">1e12</span><span class="p">)</span>
+<span class="n">wa</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">WakeType</span><span class="o">.</span><span class="n">TABLE</span><span class="p">,</span> <span class="n">WakeComponent</span><span class="o">.</span><span class="n">Z</span><span class="p">,</span> <span class="n">srange</span><span class="p">,</span> <span class="n">wf_data_z2</span><span class="p">)</span>
+<span class="n">wa</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">WakeType</span><span class="o">.</span><span class="n">FILE</span><span class="p">,</span> <span class="n">WakeComponent</span><span class="o">.</span><span class="n">DX</span><span class="p">,</span> <span class="n">wake_filename_dx</span><span class="p">,</span> <span class="n">scol</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">wcol</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">wfact</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">wa</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">WakeType</span><span class="o">.</span><span class="n">FILE</span><span class="p">,</span> <span class="n">WakeComponent</span><span class="o">.</span><span class="n">DY</span><span class="p">,</span> <span class="n">wake_filename_dy</span><span class="p">,</span> <span class="n">scol</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">wcol</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">wfact</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">welem</span> <span class="o">=</span> <span class="n">WakeElement</span><span class="p">(</span><span class="s1">&#39;wake&#39;</span><span class="p">,</span> <span class="n">ring</span><span class="p">,</span> <span class="n">wa</span><span class="p">,</span> <span class="n">Nslice</span><span class="o">=</span><span class="n">Nslice</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="using-the-haissinski-class">
+<h2>Using the Haissinski Class<a class="headerlink" href="#using-the-haissinski-class" title="Permalink to this heading">#</a></h2>
+<p>NOTE: This module is due for a re-write and a clean up. But the fundamental process will remain the same.</p>
+<p>The Haissinski solver is used to compute the equilibrium beam distribution in the presence of a longitudinal impedance. This class is based entirely on the very nice paper by K. Bane and R. Warnock <a class="footnote-reference brackets" href="#id9" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>. In this small overview, we will only talk about how to use it. The details can be seen in the paper of exactly how it is implemented. All the functions within the class are cross referenced with the equations found in the paper. An example file which compares the results of tracking and the results of the Haissinski solver can be found in at/pyat/examples/CollectiveEffects/LongDistribution.py.</p>
+<p>First we initialise a broadband longitudinal resonator wake function in a wake object.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">at.collective.wake_object</span> <span class="kn">import</span> <span class="n">Wake</span>
+
+<span class="n">circ</span> <span class="o">=</span> <span class="mf">843.977</span>
+<span class="n">freq</span> <span class="o">=</span> <span class="mf">10e9</span>
+<span class="n">qfactor</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">Rs</span> <span class="o">=</span> <span class="mf">1e4</span>
+<span class="n">current</span> <span class="o">=</span> <span class="mf">5e-4</span>
+
+<span class="n">srange</span> <span class="o">=</span> <span class="n">Wake</span><span class="o">.</span><span class="n">build_srange</span><span class="p">(</span><span class="o">-</span><span class="mf">0.36</span><span class="p">,</span> <span class="mf">0.36</span><span class="p">,</span> <span class="mf">1.0e-5</span><span class="p">,</span> <span class="mf">1.0e-2</span><span class="p">,</span> <span class="n">circ</span><span class="p">,</span> <span class="n">circ</span><span class="p">)</span>
+
+<span class="n">wobj</span> <span class="o">=</span> <span class="n">Wake</span><span class="o">.</span><span class="n">long_resonator</span><span class="p">(</span><span class="n">srange</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">qfactor</span><span class="p">,</span> <span class="n">rshunt</span><span class="p">,</span> <span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we need to load and run the Haissinski module. The main parameters here are <span class="math notranslate nohighlight">\(m\)</span> which defines the number of steps in the distribution, and <span class="math notranslate nohighlight">\(k_{max}\)</span> which defines the maximum and minimum of the distribution in units of <span class="math notranslate nohighlight">\(\sigma_{z}\)</span>. numIters is for the number of iterations for the solver to converge to within a convergence criteria of eps.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">at.collective.haissinski</span> <span class="kn">import</span> <span class="n">Haissinski</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="mi">50</span> <span class="c1"># 30 is quite coarse, 70 or 80 is very fine. 50 is middle</span>
+<span class="n">kmax</span> <span class="o">=</span> <span class="mi">8</span>
+
+<span class="n">ha</span> <span class="o">=</span> <span class="n">Haissinski</span><span class="p">(</span><span class="n">wobj</span><span class="p">,</span> <span class="n">ring</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="n">m</span><span class="p">,</span> <span class="n">kmax</span><span class="o">=</span><span class="n">kmax</span><span class="p">,</span> <span class="n">current</span><span class="o">=</span><span class="n">current</span><span class="p">,</span> <span class="n">numIters</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-13</span><span class="p">)</span>
+<span class="n">ha</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The code will now iteratively solve the haissinski equation to determine the beam equilibrium distribution, and will stop running when the distribution no longer changes. Now we can unpack the results and recover some sensible units.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The x units in the paper are normalised to sigma. So we remove this normalisation.</span>
+<span class="n">ha_x_tmp</span> <span class="o">=</span> <span class="n">ha</span><span class="o">.</span><span class="n">q_array</span><span class="o">*</span><span class="n">ha</span><span class="o">.</span><span class="n">sigma_l</span>
+
+<span class="c1"># we remove the factor of normalised current</span>
+<span class="n">ha_prof</span> <span class="o">=</span> <span class="n">ha</span><span class="o">.</span><span class="n">res</span><span class="o">/</span><span class="n">ha</span><span class="o">.</span><span class="n">Ic</span>
+
+<span class="c1"># and now we normalise the profile so the integral is equal to 1</span>
+<span class="n">ha_prof</span> <span class="o">/=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">ha_prof</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">ha_x_tmp</span><span class="p">)</span>
+
+<span class="c1"># now we determine the charge center</span>
+<span class="n">ha_cc</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">ha_x_tmp</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">ha_prof</span><span class="p">)</span>
+
+<span class="c1"># and shift the x position so the bunch is centered around 0</span>
+<span class="n">ha_x</span> <span class="o">=</span> <span class="p">(</span><span class="n">ha_x_tmp</span> <span class="o">-</span> <span class="n">ha_cc</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../../_images/haissinski_dist.png" src="../../_images/haissinski_dist.png" />
+</section>
+<section id="multi-bunch-collective-effects">
+<h2>Multi Bunch Collective Effects<a class="headerlink" href="#multi-bunch-collective-effects" title="Permalink to this heading">#</a></h2>
+<p>All pass methods are set to work for multi bunch collective effects with very few modifications.
+First, the filling pattern must be set</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Nbunches</span> <span class="o">=</span> <span class="mi">992</span>
+<span class="n">ring</span><span class="o">.</span><span class="n">beam_current</span> <span class="o">=</span> <span class="mf">200e-3</span> <span class="c1">#Set total beam current to 200mA</span>
+<span class="n">ring</span><span class="o">.</span><span class="n">set_fillpattern</span><span class="p">(</span><span class="n">Nbunches</span><span class="p">)</span> <span class="c1">#Set uniform filling. Here the harmonic number is equal to 992.</span>
+</pre></div>
+</div>
+<p>The number of particles in the beam, must be an integer harmonic of the number of bunches. This is because
+in the pass method, the coordinates are accessed according to <span class="math notranslate nohighlight">\(parts[bunch_id::Nbunches]\)</span>. This means all particles for all bunches are in series, and to access the particles for the nth bunch, you simply start at particle n, and take the particle at every Nbunches step. In PyAT we are able to do single slice per bunch, and 1 particle per bunch. Particles can be generated using the standard at.beam functionality.</p>
+<p>Two examples of multi bunch collective effects can be found, one for the Longitudinal Coupled Bunch Instability: at/pyat/examples/CollectiveEffects/LCBI_run.py and at/pyat/examples/CollectiveEffects/LCBI_analyse.py, and another for the Transverse Resistive Wall Instability: at/pyat/examples/CollectiveEffects/TRW_run.py and at/pyat/examples/CollectiveEffects/TRW_analyse.py.</p>
+</section>
+<section id="parallelisation-with-collective-effects">
+<h2>Parallelisation with Collective Effects<a class="headerlink" href="#parallelisation-with-collective-effects" title="Permalink to this heading">#</a></h2>
+<p>PyAT can be run across multiple cores. When using MPI, the user must remember that each thread will be running exactly the same file. This must be taken into account when writing the script. At the beginning of the script, it must have</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpi4py</span> <span class="kn">import</span> <span class="n">MPI</span>
+
+<span class="n">comm</span> <span class="o">=</span> <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span>
+<span class="n">size</span> <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">Get_size</span><span class="p">()</span>
+<span class="n">rank</span> <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">Get_rank</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>size is an integer that says how many threads have been created, and rank says which thread you are on. Typically, there are many operations (saving of files, collating of particle data, etc) that you only want to happen on one thread, not on all. So therefore a common trick is to use</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rank0</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>then all of these types of operation can be hidden within an if statement.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">rank0</span><span class="p">:</span>
+    <span class="c1"># Retrieve some beam data from all threads</span>
+    <span class="c1"># Compute some values to be saved</span>
+</pre></div>
+</div>
+<p>As mentioned above, the number of particles must be an integer multiple of the number of bunches. When parallelising, this is true of each thread. So if you have 40 threads and 992 bunches, each thread must have an integer multiple of 992 as the number of particles. Otherwise, some particles will be missing and the results will be incorrect. This means that it is not possible to parallelise a computation with 1 particle per bunch. In order to access turn by turn and bunch by bunch data, the beam monitor can be used</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bm_elem</span> <span class="o">=</span> <span class="n">at</span><span class="o">.</span><span class="n">BeamMoments</span><span class="p">(</span><span class="s1">&#39;monitor&#39;</span><span class="p">)</span>
+<span class="n">ring</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bm_elem</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This monitor works in parallel computations, and the data can be accessed by <span class="math notranslate nohighlight">\(bm_elem.means\)</span> and <span class="math notranslate nohighlight">\(bm_elem.stds\)</span>. If the user wishes to write their own data collation, in order to perform some more advanced analysis, functionalities within the MPI4PY package can be used. For example, to compute yourself the centroid position of each bunch in one turn</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_centroid_per_bunch</span><span class="p">(</span><span class="n">parts</span><span class="p">,</span> <span class="n">comm</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">Nparts</span><span class="p">,</span> <span class="n">Nbunches</span><span class="p">):</span>
+    <span class="n">all_centroid</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="n">Nbunches</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">Nbunches</span><span class="p">):</span>
+        <span class="n">all_centroid</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">parts</span><span class="p">[:,</span><span class="n">i</span><span class="p">::</span><span class="n">Nbunches</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">centroid</span> <span class="o">=</span> <span class="n">comm</span><span class="o">.</span><span class="n">allreduce</span><span class="p">(</span><span class="n">all_centroid</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">SUM</span><span class="p">)</span><span class="o">/</span><span class="n">Nparts</span><span class="o">/</span><span class="n">size</span>
+    <span class="n">comm</span><span class="o">.</span><span class="n">Barrier</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">centroid</span>
+</pre></div>
+</div>
+<p>Each thread passes the particles it has to this function. Through the <span class="math notranslate nohighlight">\(comm\)</span> object, the threads can communicate. The sum of each plane is computed, and this sum information is transmitted. Then by dividing with size and Nparts, the mean is computed. The comm.Barrier() functions blocks all threads until they have all reached this point.</p>
+<p>A final note of importants, when parallelising, Nslice refers to the number of slices per bunch. The total number of slices used in the computation will there be Nslice*Nbunches</p>
+</section>
+<section id="beam-loading">
+<h2>Beam Loading<a class="headerlink" href="#beam-loading" title="Permalink to this heading">#</a></h2>
+<p>An IPAC paper that covers the theory used for the beam loading module can be found in <a class="footnote-reference brackets" href="#id10" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>. Only the main functionalities will be mentioned here.</p>
+<p>To consider beam loading in an rf cavity, a loaded shunt impedance <span class="math notranslate nohighlight">\(R_{s}\)</span> and a loaded quality factor <span class="math notranslate nohighlight">\(Q_{L}\)</span> must be defined. There are two different wake methods available, either the phasor model or the wake model (<strong>BLMode.PHASOR</strong> or <strong>BLMode.WAKE</strong>). The phasor model considers only the present turn, and keeps track of a running voltage and phase. The wake model saves a turn history of length <strong>Nturns</strong> and recomputes the full kick in the same way as the <strong>LongResonator</strong> element. A total and bunch by bunch beam induced voltage and phase is also computed and made available. The phasor model is more appropriate for high-Q resonators, as the wake model would require many turns to be accurate and increases computation time.</p>
+<p>To intialise the beam loading element, the function <strong>add_beamloading</strong> must be applied to a lattice object. This will convert the specified Cavity Element to a <strong>BeamLoadingElement</strong>. This can be done as follows</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">at.collective</span> <span class="kn">import</span> <span class="n">BeamLoadingElement</span><span class="p">,</span> <span class="n">add_beamloading</span><span class="p">,</span> <span class="n">BLMode</span>
+
+<span class="n">mode</span> <span class="o">=</span> <span class="n">BLMode</span><span class="o">.</span><span class="n">PHASOR</span>
+<span class="n">add_beamloading</span><span class="p">(</span><span class="n">fring</span><span class="p">,</span> <span class="n">qfactor</span><span class="p">,</span> <span class="n">rshunt</span><span class="p">,</span>
+                <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">Nslice</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">VoltGain</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">PhaseGain</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>An additional keyword argument <strong>cavpts</strong> can be given to specifically transfer one cavity element to a beam loading element. The <strong>VoltGain</strong> and <strong>PhaseGain</strong> are parameters to be tuned for the feedback. In summary, there is a cavity phase and amplitude set point, and a computed beam voltage and phase. The generator voltage and phase is calculated in order to ensure that the cavity set points are reached. The gain values specified here dictate what percentage of the difference is applied. If this number is too large, stability issues may arise.</p>
+</section>
+<section id="bibliography">
+<h2>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this heading">#</a></h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id6" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://www.slac.stanford.edu/~achao/WileyBook/WileyChapter2.pdf">A. Chao, ‘Physics of Collective Beam Instabilities in High Energy Accelerators’, p. 73, Eqn. 2.84</a>.</p>
+</aside>
+<aside class="footnote brackets" id="id7" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://www.slac.stanford.edu/~achao/WileyBook/WileyChapter2.pdf">A. Chao, ‘Physics of Collective Beam Instabilities in High Energy Accelerators’, p. 75, Eqn. 2.88</a>.</p>
+</aside>
+<aside class="footnote brackets" id="id8" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://www.slac.stanford.edu/~achao/WileyBook/WileyChapter2.pdf">A. Chao, ‘Physics of Collective Beam Instabilities in High Energy Accelerators’, p. 59, Eqn. 2.53</a>.</p>
+</aside>
+<aside class="footnote brackets" id="id9" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://journals.aps.org/prab/abstract/10.1103/PhysRevAccelBeams.21.124401">R. Warnock, K. Bane, ‘Numerical solution of the Haïssinski equation for the equilibrium state of  a stored electron beam’, Phys. Rev. Acc. and Beams 21, 124401 (2018)</a></p>
+</aside>
+<aside class="footnote brackets" id="id10" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
+<p>L.R. Carver et al, ‘Beam Loading Simulations in PyAT for the ESRF’, Proceedings of IPAC23, Venice Italy (2023)</p>
+</aside>
+</aside>
+</section>
 </section>
 
 
@@ -429,6 +717,63 @@ impedance driven collective effects and perform multi-particle tracking</p>
           
             <div class="bd-sidebar-secondary bd-toc">
               
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generating-a-wake-element">
+   Generating a Wake Element
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-a-wake-table">
+   Using a Wake Table
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-a-wake-file">
+   Using a Wake File
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-the-haissinski-class">
+   Using the Haissinski Class
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multi-bunch-collective-effects">
+   Multi Bunch Collective Effects
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parallelisation-with-collective-effects">
+   Parallelisation with Collective Effects
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#beam-loading">
+   Beam Loading
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bibliography">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
 <div class="toc-item">
   
 <div id="searchbox"></div>
