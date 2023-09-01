@@ -442,12 +442,21 @@
     <span class="k">return</span> <span class="n">val</span>
 
 
-<span class="k">def</span> <span class="nf">_init_ma_rp</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">momap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                <span class="n">check_zero</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_init_ma_rp</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">momap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="n">interpolate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">check_zero</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">refpts</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">refpts</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">get_uint32_index</span><span class="p">(</span><span class="n">at</span><span class="o">.</span><span class="n">All</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">refpts</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">get_uint32_index</span><span class="p">(</span><span class="n">refpts</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">offset</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">offset</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">offset</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">refpts</span><span class="p">),</span> <span class="mi">6</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;offset and refpts have incoherent &#39;</span>
+                   <span class="s1">&#39;shapes: </span><span class="si">{0}</span><span class="s1">, </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">offset</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">refpts</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="n">AtError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
     <span class="k">if</span> <span class="n">momap</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">momap</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">refpts</span><span class="p">),</span> \
             <span class="s1">&#39;Input momap and refpts have different lengths&#39;</span>
@@ -461,12 +470,16 @@
         <span class="n">zerolength_warning</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;zero-length elements removed &#39;</span>
                               <span class="s1">&#39;from lifetime calculation&#39;</span><span class="p">)</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">AtWarning</span><span class="p">(</span><span class="n">zerolength_warning</span><span class="p">))</span>
+
     <span class="n">refpts</span> <span class="o">=</span> <span class="n">refpts</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">offset</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="n">offset</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
 
     <span class="k">if</span> <span class="n">momap</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">resolution</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;resolution&#39;</span><span class="p">,</span> <span class="mf">1.0e-3</span><span class="p">)</span>
         <span class="n">amplitude</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;amplitude&#39;</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
         <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;refpts&#39;</span><span class="p">:</span> <span class="n">refpts</span><span class="p">})</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;offset&#39;</span><span class="p">:</span> <span class="n">offset</span><span class="p">})</span>
         <span class="n">momap</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">get_momentum_acceptance</span><span class="p">(</span><span class="n">resolution</span><span class="p">,</span>
                                                    <span class="n">amplitude</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
@@ -488,7 +501,7 @@
 
 
 <div class="viewcode-block" id="get_lifetime"><a class="viewcode-back" href="../../../p/api/at.acceptance.touschek.html#at.acceptance.touschek.get_lifetime">[docs]</a><span class="k">def</span> <span class="nf">get_lifetime</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">emity</span><span class="p">,</span> <span class="n">bunch_curr</span><span class="p">,</span> <span class="n">emitx</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sigs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sigp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">zn</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">momap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+                 <span class="n">zn</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">momap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Touschek lifetime calculation</span>
 <span class="sd">    </span>
 <span class="sd">    Computes the touschek lifetime using the Piwinski formula</span>
@@ -514,6 +527,7 @@
 <span class="sd">                         default = 0.1</span>
 <span class="sd">        nturns=1024:     Number of turns for the tracking</span>
 <span class="sd">        dp=None:         static momentum offset</span>
+<span class="sd">        offset:         initial orbit. Default: closed orbit</span>
 <span class="sd">        grid_mode:       ``at.GridMode.CARTESIAN/RADIAL`` track full vector</span>
 <span class="sd">                         (default). ``at.GridMode.RECURSIVE``: recursive search</span>
 <span class="sd">        use_mp=False:    Use python multiprocessing (``patpass``, default use</span>
@@ -532,8 +546,9 @@
     <span class="n">interpolate</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;interpolate&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
     <span class="n">epsabs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;epsabs&#39;</span><span class="p">,</span> <span class="mf">1.0e-16</span><span class="p">)</span>
     <span class="n">epsrel</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;epsrel&#39;</span><span class="p">,</span> <span class="mf">1.0e-12</span><span class="p">)</span>
-    <span class="n">ma</span><span class="p">,</span> <span class="n">rp</span> <span class="o">=</span> <span class="n">_init_ma_rp</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="n">refpts</span><span class="p">,</span> <span class="n">momap</span><span class="o">=</span><span class="n">momap</span><span class="p">,</span>
-                         <span class="n">interpolate</span><span class="o">=</span><span class="n">interpolate</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">ma</span><span class="p">,</span> <span class="n">rp</span> <span class="o">=</span> <span class="n">_init_ma_rp</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="n">refpts</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">,</span>
+                         <span class="n">momap</span><span class="o">=</span><span class="n">momap</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="n">interpolate</span><span class="p">,</span>
+                         <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="n">length_all</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">e</span><span class="o">.</span><span class="n">Length</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">ring</span><span class="p">[</span><span class="n">rp</span><span class="p">]])</span>
     <span class="n">vals</span> <span class="o">=</span> <span class="n">_get_vals</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">rp</span><span class="p">,</span> <span class="n">ma</span><span class="p">,</span> <span class="n">emity</span><span class="p">,</span> <span class="n">bunch_curr</span><span class="p">,</span> <span class="n">emitx</span><span class="o">=</span><span class="n">emitx</span><span class="p">,</span>
                      <span class="n">sigs</span><span class="o">=</span><span class="n">sigs</span><span class="p">,</span> <span class="n">sigp</span><span class="o">=</span><span class="n">sigp</span><span class="p">,</span> <span class="n">zn</span><span class="o">=</span><span class="n">zn</span><span class="p">,</span> <span class="n">epsabs</span><span class="o">=</span><span class="n">epsabs</span><span class="p">,</span>
@@ -544,7 +559,7 @@
 
 <div class="viewcode-block" id="get_scattering_rate"><a class="viewcode-back" href="../../../p/api/at.acceptance.touschek.html#at.acceptance.touschek.get_scattering_rate">[docs]</a><span class="k">def</span> <span class="nf">get_scattering_rate</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">emity</span><span class="p">,</span> <span class="n">bunch_curr</span><span class="p">,</span> <span class="n">emitx</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sigs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                         <span class="n">sigp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">zn</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">momap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                        <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+                        <span class="n">offset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Touschek scattering rate calculation</span>
 
 <span class="sd">    Computes the touschek scattering using the Piwinski formula</span>
@@ -591,7 +606,7 @@
     <span class="n">epsrel</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;epsrel&#39;</span><span class="p">,</span> <span class="mf">1.0e-12</span><span class="p">)</span>
     <span class="n">ma</span><span class="p">,</span> <span class="n">rp</span> <span class="o">=</span> <span class="n">_init_ma_rp</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="n">refpts</span><span class="p">,</span> <span class="n">momap</span><span class="o">=</span><span class="n">momap</span><span class="p">,</span>
                          <span class="n">interpolate</span><span class="o">=</span><span class="n">interpolate</span><span class="p">,</span> <span class="n">check_zero</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                         <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                         <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="n">vals</span> <span class="o">=</span> <span class="n">_get_vals</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">rp</span><span class="p">,</span> <span class="n">ma</span><span class="p">,</span> <span class="n">emity</span><span class="p">,</span> <span class="n">bunch_curr</span><span class="p">,</span> <span class="n">emitx</span><span class="o">=</span><span class="n">emitx</span><span class="p">,</span>
                      <span class="n">sigs</span><span class="o">=</span><span class="n">sigs</span><span class="p">,</span> <span class="n">sigp</span><span class="o">=</span><span class="n">sigp</span><span class="p">,</span> <span class="n">zn</span><span class="o">=</span><span class="n">zn</span><span class="p">,</span> <span class="n">epsabs</span><span class="o">=</span><span class="n">epsabs</span><span class="p">,</span>
                      <span class="n">epsrel</span><span class="o">=</span><span class="n">epsrel</span><span class="p">)</span>

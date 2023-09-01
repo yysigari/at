@@ -362,8 +362,8 @@
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="at.tracking.html">at.tracking</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.atpass.html">at.tracking.atpass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.tracking.deprecated.html">at.tracking.deprecated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.particles.html">at.tracking.particles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="at.tracking.patpass.html">at.tracking.patpass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.track.html">at.tracking.track</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.utils.html">at.tracking.utils</a></li>
 </ul>
@@ -1187,7 +1187,7 @@ specified in <em>refpts</em></p></li>
 <dd><p>Gets the 4D closed orbit for a given dp</p>
 <p>Finds the closed orbit in the 4-d transverse phase space by numerically
 solving for a fixed point of the one turn map M calculated with
-<a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>.</p>
+<a class="reference internal" href="at.tracking.track.html#at.tracking.track.internal_lpass" title="at.tracking.track.internal_lpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">internal_lpass()</span></code></a>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{pmatrix}x \\ p_x \\ y \\ p_y \\ dp \\ c\tau_2\end{pmatrix}
 =\mathbf{M} \cdot
@@ -1262,7 +1262,7 @@ specified in <em>refpts</em></p></li>
 <dd><p>Gets the closed orbit in the full 6-D phase space</p>
 <p>Finds the closed orbit in the full 6-D phase space
 by numerically solving  for a fixed point of the one turn
-map M calculated with <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a></p>
+map M calculated with <a class="reference internal" href="at.tracking.track.html#at.tracking.track.internal_lpass" title="at.tracking.track.internal_lpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">internal_lpass()</span></code></a></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{pmatrix}x \\ p_x \\ y \\ p_y \\ dp \\ c\tau_2\end{pmatrix}
 =\mathbf{M} \cdot
@@ -1347,7 +1347,7 @@ specified in <em>refpts</em></p></li>
 <dd><p>Gets the 4D closed orbit for a given dct</p>
 <p>Finds the closed orbit, synchronous with the RF cavity (first 5
 components of the phase space vector) by numerically solving for a fixed
-point of the one turn map M calculated with <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a></p>
+point of the one turn map M calculated with <a class="reference internal" href="at.tracking.track.html#at.tracking.track.internal_lpass" title="at.tracking.track.internal_lpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">internal_lpass()</span></code></a></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{pmatrix}x \\ p_x \\ y \\ p_y \\ dp \\ c\tau_1+
 dc\tau\end{pmatrix} =\mathbf{M} \cdot
@@ -1455,8 +1455,8 @@ It can be use to select quadrants. For example, default values are:</p>
 <li><p><a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a>: radial recursive search</p></li>
 </ul>
 </p></li>
-<li><p><strong>use_mp</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>]</em>) – Use python multiprocessing (<a class="reference internal" href="at.tracking.patpass.html#at.tracking.patpass.patpass" title="at.tracking.patpass.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a>,
-default use <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>).</p></li>
+<li><p><strong>use_mp</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>]</em>) – Use python multiprocessing (<a class="reference internal" href="at.tracking.deprecated.html#at.tracking.deprecated.patpass" title="at.tracking.deprecated.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a>,
+default use <a class="reference internal" href="at.tracking.deprecated.html#at.tracking.deprecated.lattice_pass" title="at.tracking.deprecated.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>).</p></li>
 <li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a><em>]</em>) – Print out some information</p></li>
 <li><p><strong>divider</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em>) – Value of the divider used in
 <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a> boundary search</p></li>
@@ -1632,7 +1632,7 @@ len(ring)+1</p>
 <li><p><strong>method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – <p><code class="docutils literal notranslate"><span class="pre">'linopt'</span></code> returns the tunes from the
 <a class="reference internal" href="#at.lattice.lattice_object.Lattice.linopt6" title="at.lattice.lattice_object.Lattice.linopt6"><code class="xref py py-func docutils literal notranslate"><span class="pre">linopt6()</span></code></a> function,</p>
 <p><code class="docutils literal notranslate"><span class="pre">'fft'</span></code> tracks a single particle and computes the tunes with
-<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.fftpack.fft.html#scipy.fftpack.fft" title="(in SciPy v1.11.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">fft()</span></code></a>,</p>
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.fftpack.fft.html#scipy.fftpack.fft" title="(in SciPy v1.11.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">fft()</span></code></a>,</p>
 <p><code class="docutils literal notranslate"><span class="pre">'interp_fft'</span></code> tracks a single particle and computes the tunes with
 interpolated FFT.</p>
 </p></li>
@@ -1760,6 +1760,7 @@ max. amplitude</p></li>
 <li><p><strong>nturns</strong> – Number of turns for the tracking</p></li>
 <li><p><strong>refpts</strong> – Observation points. Default: start of the machine</p></li>
 <li><p><strong>dp</strong> – static momentum offset</p></li>
+<li><p><strong>offset</strong> – initial orbit. Default: closed orbit</p></li>
 <li><p><strong>grid_mode</strong> – <p>defines the evaluation grid:</p>
 <ul>
 <li><p><a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.CARTESIAN" title="at.acceptance.boundary.GridMode.CARTESIAN"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.CARTESIAN</span></code></a>: full [<span class="math notranslate nohighlight">\(\:x, y\:\)</span>] grid</p></li>
@@ -1767,8 +1768,8 @@ max. amplitude</p></li>
 <li><p><a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a>: radial recursive search</p></li>
 </ul>
 </p></li>
-<li><p><strong>use_mp</strong> – Use python multiprocessing (<a class="reference internal" href="at.tracking.patpass.html#at.tracking.patpass.patpass" title="at.tracking.patpass.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a>,
-default use <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multi-processing
+<li><p><strong>use_mp</strong> – Use python multiprocessing (<a class="reference internal" href="at.tracking.deprecated.html#at.tracking.deprecated.patpass" title="at.tracking.deprecated.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a>,
+default use <a class="reference internal" href="at.tracking.deprecated.html#at.tracking.deprecated.lattice_pass" title="at.tracking.deprecated.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multi-processing
 is not enabled, <code class="docutils literal notranslate"><span class="pre">grid_mode</span></code> is forced to
 <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a> (most efficient in single core)</p></li>
 <li><p><strong>verbose</strong> – Print out some information</p></li>
@@ -1806,7 +1807,7 @@ This behavior can be changed by setting
 
 <dl class="py method">
 <dt class="sig sig-object py" id="at.lattice.lattice_object.Lattice.get_lifetime">
-<span class="sig-name descname"><span class="pre">get_lifetime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">emity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bunch_curr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emitx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refpts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#at.lattice.lattice_object.Lattice.get_lifetime" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_lifetime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">emity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bunch_curr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emitx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refpts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#at.lattice.lattice_object.Lattice.get_lifetime" title="Permalink to this definition">#</a></dt>
 <dd><p>Touschek lifetime calculation</p>
 <p>Computes the touschek lifetime using the Piwinski formula</p>
 <dl class="field-list simple">
@@ -1834,6 +1835,7 @@ initial step in <code class="docutils literal notranslate"><span class="pre">REC
 default = 0.1</p></li>
 <li><p><strong>nturns=1024</strong> – Number of turns for the tracking</p></li>
 <li><p><strong>dp=None</strong> – static momentum offset</p></li>
+<li><p><strong>offset</strong> – initial orbit. Default: closed orbit</p></li>
 <li><p><strong>grid_mode</strong> – <code class="docutils literal notranslate"><span class="pre">at.GridMode.CARTESIAN/RADIAL</span></code> track full vector
 (default). <code class="docutils literal notranslate"><span class="pre">at.GridMode.RECURSIVE</span></code>: recursive search</p></li>
 <li><p><strong>use_mp=False</strong> – Use python multiprocessing (<code class="docutils literal notranslate"><span class="pre">patpass</span></code>, default use
@@ -1903,6 +1905,7 @@ max. amplitude</p></li>
 <li><p><strong>nturns</strong> – Number of turns for the tracking</p></li>
 <li><p><strong>refpts</strong> – Observation points. Default: start of the machine</p></li>
 <li><p><strong>dp</strong> – static momentum offset</p></li>
+<li><p><strong>offset</strong> – initial orbit. Default: closed orbit</p></li>
 <li><p><strong>grid_mode</strong> – <p>defines the evaluation grid:</p>
 <ul>
 <li><p><a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.CARTESIAN" title="at.acceptance.boundary.GridMode.CARTESIAN"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.CARTESIAN</span></code></a>: full [<span class="math notranslate nohighlight">\(\:x, y\:\)</span>] grid</p></li>
@@ -1910,8 +1913,8 @@ max. amplitude</p></li>
 <li><p><a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a>: radial recursive search</p></li>
 </ul>
 </p></li>
-<li><p><strong>use_mp</strong> – Use python multiprocessing (<a class="reference internal" href="at.tracking.patpass.html#at.tracking.patpass.patpass" title="at.tracking.patpass.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a>,
-default use <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multi-processing is
+<li><p><strong>use_mp</strong> – Use python multiprocessing (<a class="reference internal" href="at.tracking.deprecated.html#at.tracking.deprecated.patpass" title="at.tracking.deprecated.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a>,
+default use <a class="reference internal" href="at.tracking.deprecated.html#at.tracking.deprecated.lattice_pass" title="at.tracking.deprecated.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multi-processing is
 not enabled, <code class="docutils literal notranslate"><span class="pre">grid_mode</span></code> is forced to
 <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a> (most efficient in single core)</p></li>
 <li><p><strong>verbose</strong> – Print out some information</p></li>
@@ -2210,7 +2213,7 @@ Default: False (Unix shell-style wildcards)</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="at.lattice.lattice_object.Lattice.get_scattering_rate">
-<span class="sig-name descname"><span class="pre">get_scattering_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">emity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bunch_curr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emitx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refpts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#at.lattice.lattice_object.Lattice.get_scattering_rate" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_scattering_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">emity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bunch_curr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emitx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refpts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#at.lattice.lattice_object.Lattice.get_scattering_rate" title="Permalink to this definition">#</a></dt>
 <dd><p>Touschek scattering rate calculation</p>
 <p>Computes the touschek scattering using the Piwinski formula</p>
 <dl class="field-list simple">
@@ -2421,6 +2424,7 @@ max. amplitude</p></li>
 <li><p><strong>nturns</strong> – Number of turns for the tracking</p></li>
 <li><p><strong>refpts</strong> – Observation points. Default: start of the machine</p></li>
 <li><p><strong>dp</strong> – static momentum offset</p></li>
+<li><p><strong>offset</strong> – initial orbit. Default: closed orbit</p></li>
 <li><p><strong>grid_mode</strong> – <p>defines the evaluation grid:</p>
 <ul>
 <li><p><a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.CARTESIAN" title="at.acceptance.boundary.GridMode.CARTESIAN"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.CARTESIAN</span></code></a>: full [<span class="math notranslate nohighlight">\(\:x, y\:\)</span>] grid</p></li>
@@ -2428,8 +2432,8 @@ max. amplitude</p></li>
 <li><p><a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a>: radial recursive search</p></li>
 </ul>
 </p></li>
-<li><p><strong>use_mp</strong> – Use python multiprocessing (<a class="reference internal" href="at.tracking.patpass.html#at.tracking.patpass.patpass" title="at.tracking.patpass.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a>,
-default use <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multi-processing
+<li><p><strong>use_mp</strong> – Use python multiprocessing (<a class="reference internal" href="at.tracking.deprecated.html#at.tracking.deprecated.patpass" title="at.tracking.deprecated.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a>,
+default use <a class="reference internal" href="at.tracking.deprecated.html#at.tracking.deprecated.lattice_pass" title="at.tracking.deprecated.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multi-processing
 is not enabled, <code class="docutils literal notranslate"><span class="pre">grid_mode</span></code> is forced to
 <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a> (most efficient in single core)</p></li>
 <li><p><strong>verbose</strong> – Print out some information</p></li>
@@ -2621,7 +2625,8 @@ already known ((6,) array)</p></li>
 <li><p><strong>get_chrom</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Compute chromaticities. Needs computing
 the tune at 2 different momentum deviations around the central one.</p></li>
 <li><p><strong>get_w</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Computes chromatic amplitude functions
-(W) <a class="footnote-reference brackets" href="#id6" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>. Needs to compute the optics at 2 different momentum
+(W, WP) <a class="footnote-reference brackets" href="#id6" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>, and derivatives of the dispersion and twiss parameters
+versus dp. Needs to compute the optics at 2 different momentum
 deviations around the central one.</p></li>
 <li><p><strong>keep_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Assume no lattice change since the
 previous tracking. Defaults to <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p></li>
@@ -2683,6 +2688,29 @@ to the entrance of the element <a class="footnote-reference brackets" href="#id5
 <tr class="row-even"><td><p><strong>W</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(\left[ W_x,W_y \right]\)</span> only if <em>get_w</em>
 is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>: chromatic amplitude function</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Wp</strong></p></td>
+<td><blockquote>
+<div><p><span class="math notranslate nohighlight">\(\left[ Wp_x,Wp_y \right]\)</span> only if <em>get_w</em></p>
+</div></blockquote>
+<p>is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>: chromatic phase function</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>dalpha</strong></p></td>
+<td><p>(2,) alpha derivative vector
+(<span class="math notranslate nohighlight">\(\Delta \alpha/ \delta_p\)</span>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>dbeta</strong></p></td>
+<td><p>(2,) beta derivative vector
+(<span class="math notranslate nohighlight">\(\Delta \beta/ \delta_p\)</span>)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>dmu</strong></p></td>
+<td><p>(2,) mu derivative vector
+(<span class="math notranslate nohighlight">\(\Delta \mu/ \delta_p\)</span>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ddispersion</strong></p></td>
+<td><p>(4,) dispersion derivative vector
+(<span class="math notranslate nohighlight">\(\Delta D/ \delta_p\)</span>)</p></td>
 </tr>
 </tbody>
 </table>
@@ -2818,6 +2846,29 @@ eigenmodes <a class="footnote-reference brackets" href="#id11" id="id9" role="do
 <tr class="row-odd"><td><p><strong>W</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(\left[ W_x,W_y \right]\)</span> only if <em>get_w</em>
 is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>: chromatic amplitude function</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Wp</strong></p></td>
+<td><blockquote>
+<div><p><span class="math notranslate nohighlight">\(\left[ Wp_x,Wp_y \right]\)</span> only if <em>get_w</em></p>
+</div></blockquote>
+<p>is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>: chromatic phase function</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>dalpha</strong></p></td>
+<td><p>(2,) alpha derivative vector
+(<span class="math notranslate nohighlight">\(\Delta \alpha/ \delta_p\)</span>)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>dbeta</strong></p></td>
+<td><p>(2,) beta derivative vector
+(<span class="math notranslate nohighlight">\(\Delta \beta/ \delta_p\)</span>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>dmu</strong></p></td>
+<td><p>(2,) mu derivative vector
+(<span class="math notranslate nohighlight">\(\Delta \mu/ \delta_p\)</span>)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ddispersion</strong></p></td>
+<td><p>(4,) dispersion derivative vector
+(<span class="math notranslate nohighlight">\(\Delta D/ \delta_p\)</span>)</p></td>
 </tr>
 </tbody>
 </table>
@@ -2966,6 +3017,33 @@ to the entrance of the element</p></td>
 <tr class="row-even"><td><p><strong>W</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(\left[ W_x,W_y \right]\)</span> only if <em>get_w</em>
 is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>: chromatic amplitude function</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Wp</strong></p></td>
+<td><blockquote>
+<div><p><span class="math notranslate nohighlight">\(\left[ Wp_x,Wp_y \right]\)</span> only if <em>get_w</em></p>
+</div></blockquote>
+<p>is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>: chromatic phase function</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>dalpha</strong></p></td>
+<td><p>(2,) alpha derivative vector
+(<span class="math notranslate nohighlight">\(\Delta \alpha/ \delta_p\)</span>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>dbeta</strong></p></td>
+<td><p>(2,) beta derivative vector
+(<span class="math notranslate nohighlight">\(\Delta \beta/ \delta_p\)</span>)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>dmu</strong></p></td>
+<td><p>(2,) mu derivative vector
+(<span class="math notranslate nohighlight">\(\Delta \mu/ \delta_p\)</span>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ddispersion</strong></p></td>
+<td><p>(4,) dispersion derivative vector
+(<span class="math notranslate nohighlight">\(\Delta D/ \delta_p\)</span>)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>dR</strong></p></td>
+<td><p>(3, 6, 6) R derivative vector
+(<span class="math notranslate nohighlight">\(\Delta R/ \delta_p\)</span>)</p></td>
 </tr>
 </tbody>
 </table>
@@ -3182,7 +3260,7 @@ Allowed values are: <em>‘x’</em>, <em>‘xp’</em>, <em>‘y’</em>,
 </dd>
 <dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>acceptance</strong> (<em>Tuple</em><em>[</em><em>ndarray</em><em>, </em><em>ndarray</em><em>, </em><em>ndarray</em><em>]</em>) – Tuple containing
+<li><p><strong>acceptance</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a><em>[</em><em>ndarray</em><em>, </em><em>ndarray</em><em>, </em><em>ndarray</em><em>]</em>) – tuple containing
 pre-computed acceptance <em>(boundary, survived, grid)</em></p></li>
 <li><p><strong>npoints</strong> – (len(planes),) array: number of points in each
 dimension</p></li>
@@ -3212,8 +3290,8 @@ It can be used to select quadrants. For example, default values are:</p>
 <li><p><a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a>: radial recursive search</p></li>
 </ul>
 </p></li>
-<li><p><strong>use_mp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Use python multiprocessing (<a class="reference internal" href="at.tracking.patpass.html#at.tracking.patpass.patpass" title="at.tracking.patpass.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a>,
-default use <a class="reference internal" href="at.tracking.track.html#at.tracking.track.lattice_pass" title="at.tracking.track.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multiprocessing is not
+<li><p><strong>use_mp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Use python multiprocessing (<a class="reference internal" href="at.tracking.deprecated.html#at.tracking.deprecated.patpass" title="at.tracking.deprecated.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a>,
+default use <a class="reference internal" href="at.tracking.deprecated.html#at.tracking.deprecated.lattice_pass" title="at.tracking.deprecated.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multiprocessing is not
 enabled, <em>grid_mode</em> is forced to <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a>
 (most efficient in single core)</p></li>
 <li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Print out some information</p></li>
@@ -3224,7 +3302,7 @@ enabled, <em>grid_mode</em> is forced to <a class="reference internal" href="at.
 <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> uses the python default that is considered safe.
 Available parameters: <em>‘fork’</em>, <em>‘spawn’</em>, <em>‘forkserver’</em>.
 The default for linux is <em>‘fork’</em>, the default for macOS and
-Windows is <em>‘spawn’</em>. <em>‘fork’</em> may used for macOS to speed up
+Windows is <em>‘spawn’</em>. <em>‘fork’</em> may be used for macOS to speed up
 the calculation or to solve runtime errors, however  it is
 considered unsafe.</p></li>
 </ul>
@@ -3283,6 +3361,8 @@ for plotting as (primary_axes, secondary_axes).
 Default: create new axes</p></li>
 <li><p><strong>slices</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of slices. Default: 400</p></li>
 <li><p><strong>legend</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Show a legend on the plot</p></li>
+<li><p><strong>labels</strong> (<em>Refpts</em>) – display the name of selected elements.
+Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></li>
 <li><p><strong>block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, block until the figure is closed.
 Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p></li>
 <li><p><strong>dipole</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – Dictionary of properties overloading the default
@@ -3305,7 +3385,7 @@ for details</p></li>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ring</strong> (<a class="reference internal" href="#at.lattice.lattice_object.Lattice" title="at.lattice.lattice_object.Lattice"><em>Lattice</em></a>) – Lattice description</p></li>
-<li><p><strong>start_coordinates</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – x,y,angle at starting point</p></li>
+<li><p><strong>start_coordinates</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – x,y,angle at starting point</p></li>
 <li><p><strong>centered</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – it True the coordinates origin is the center of the ring</p></li>
 <li><p><strong>ax</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.7.2)"><em>Axes</em></a><em>]</em>) – axes for the plot. If not given, new axes are created</p></li>
 </ul>
@@ -3988,8 +4068,8 @@ size is specified. Default: no slicing</p></li>
 <span class="sig-name descname"><span class="pre">tapering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">multipoles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">niter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#at.lattice.lattice_object.Lattice.tapering" title="Permalink to this definition">#</a></dt>
 <dd><p>Scales magnet strengths</p>
 <p>Scales magnet strengths with local energy to cancel the closed orbit
-and optics errors due to synchrotron radiations. PolynomB is used for
-dipoles such that the machine geometry is maintained. This is the ideal
+and optics errors due to synchrotron radiations. The dipole bending angle
+is changed by changing the reference momentum. This is the ideal
 tapering scheme where magnets and multipoles components (PolynomB and
 PolynomA) are scaled individually.</p>
 <div class="admonition warning">
@@ -4017,6 +4097,121 @@ Default: <a class="reference internal" href="at.lattice.options.html#at.lattice.
 </ul>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="at.lattice.lattice_object.Lattice.track">
+<span class="sig-name descname"><span class="pre">track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nturns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refpts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">RefptsCode.End</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_place</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#at.lattice.lattice_object.Lattice.track" title="Permalink to this definition">#</a></dt>
+<dd><p><code class="xref py py-func docutils literal notranslate"><span class="pre">track_function()</span></code> tracks particles through each element of a
+lattice or throught a single Element calling the element-specific
+tracking function specified in the Element’s <em>PassMethod</em> field.</p>
+<dl>
+<dt>Usage:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lattice_track</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">r_in</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lattice</span><span class="o">.</span><span class="n">track</span><span class="p">(</span><span class="n">r_in</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable" title="(in Python v3.11)"><em>Iterable</em></a><em>[</em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em>) – list of elements</p></li>
+<li><p><strong>r_in</strong> – (6, N) array: input coordinates of N particles.
+<em>r_in</em> is modified in-place only if <em>in_place</em> is
+<a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> and reports the coordinates at
+the end of the element. For the best efficiency, <em>r_in</em>
+should be given as F_CONTIGUOUS numpy array.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>nturns</strong> – number of turns to be tracked</p></li>
+<li><p><strong>refpts</strong> – Selects the location of coordinates output.
+See “<a class="reference internal" href="at.lattice.utils.html#refpts"><span class="std std-ref">Selecting elements in a lattice</span></a>”</p></li>
+<li><p><strong>in_place</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – If True <em>r_in</em> is modified in-place and
+reports the coordinates at the end of the element.
+(default: False)</p></li>
+<li><p><strong>keep_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Use elements persisted from a previous
+call. If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, assume that the lattice has not changed
+since the previous call.</p></li>
+<li><p><strong>keep_counter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Keep the turn number from the previous
+call.</p></li>
+<li><p><strong>turn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Starting turn number. Ignored if
+<em>keep_counter</em> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>. The turn number is necessary to
+compute the absolute path length used in RFCavityPass.</p></li>
+<li><p><strong>losses</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Boolean to activate loss maps output</p></li>
+<li><p><strong>omp_num_threads</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of OpenMP threads
+(default: automatic)</p></li>
+</ul>
+</dd>
+</dl>
+<p>The following keyword arguments overload the lattice values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Keyword Arguments<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particle</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="at.lattice.particle_object.html#at.lattice.particle_object.Particle" title="at.lattice.particle_object.Particle"><em>Particle</em></a><em>]</em>) – circulating particle.
+Default: <code class="code docutils literal notranslate"><span class="pre">lattice.particle</span></code> if existing,
+otherwise <code class="code docutils literal notranslate"><span class="pre">Particle('relativistic')</span></code></p></li>
+<li><p><strong>energy</strong> (<em>Optiona</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – lattice energy. Default 0.</p></li>
+<li><p><strong>unfold_beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Internal beam folding activate, this
+assumes the input particles are in bucket 0, works only
+if all bucket see the same RF Voltage.
+Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a></p></li>
+</ul>
+</dd>
+</dl>
+<p>If <em>energy</em> is not available, relativistic tracking if forced,
+<em>rest_energy</em> is ignored.</p>
+<dl class="field-list">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><ul>
+<li><p><strong>r_out</strong> – (6, N, R, T) array containing output coordinates of N particles
+at R reference points for T turns</p></li>
+<li><p><strong>trackparam</strong> – A dictionary containing tracking input parameters with the
+following keys:</p></li>
+<li><p><strong>trackdata</strong> – A dictionary containinf tracking data with the following
+keys:</p></li>
+<li><p><strong>The **loss_map</strong> is filled only if <em>losses</em> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>,** – it contains the following keys:
+==============    ===================================================
+<strong>islost</strong>        (npart,) bool array indicating lost particles
+<strong>turn</strong>          (npart,) int array indicating the turn at</p>
+<blockquote>
+<div><p>which the particle is lost</p>
+</div></blockquote>
+<dl class="simple">
+<dt><strong>element</strong>       ((npart,) int array indicating the element at</dt><dd><p>which the particle is lost</p>
+</dd>
+<dt><strong>coord</strong>         (npart, 6) float array giving the coordinates at</dt><dd><p>which the particle is lost (zero for surviving
+particles)</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p><code class="code highlight pycode python docutils literal highlight-python"><span class="n">track_function</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">r_in</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">))</span></code> is the same
+as <code class="code highlight pycode python docutils literal highlight-python"><span class="n">track_function</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">r_in</span><span class="p">)</span></code> since the reference point
+len(line) is the exit of the last element.</p></li>
+<li><p><code class="code highlight pycode python docutils literal highlight-python"><span class="n">track_function</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">r_in</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code> is a copy of <em>r_in</em>
+since the reference point 0 is the entrance of the first element.</p></li>
+<li><p>To resume an interrupted tracking (for instance to get intermediate
+results), one must use one of the <em>turn</em> or <em>keep_counter</em>
+keywords to ensure the continuity of the turn number.</p></li>
+<li><p>For multiparticle tracking with large number of turn the size of
+<em>r_out</em> may increase excessively. To avoid memory issues
+<code class="code highlight pycode python docutils literal highlight-python"><span class="n">track_function</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">r_in</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">in_place</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+can be used. An empty list is returned and the tracking results of
+the last turn are stored in <em>r_in</em>.</p></li>
+<li><p>To model buckets with different RF voltage <code class="code highlight pycode python docutils literal highlight-python"><span class="n">unfold_beam</span><span class="o">=</span><span class="kc">False</span></code>
+has to be used. The beam can be unfolded using the function
+<a class="reference internal" href="at.tracking.utils.html#at.tracking.utils.unfold_beam" title="at.tracking.utils.unfold_beam"><code class="xref py py-func docutils literal notranslate"><span class="pre">unfold_beam()</span></code></a>. This function takes into account
+the true voltage in each bucket and distributes the particles in the
+bunches defined by <code class="code docutils literal notranslate"><span class="pre">ring.fillpattern</span></code> using a 6D orbit search.</p></li>
+</ul>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -5194,6 +5389,15 @@ Analyse elements for radiation state</p>
      <code class="docutils literal notranslate">
       <span class="pre">
        Lattice.tapering()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.lattice_object.Lattice.track">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Lattice.track()
       </span>
      </code>
     </a>

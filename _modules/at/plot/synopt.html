@@ -292,6 +292,7 @@
               
   <h1>Source code for at.plot.synopt</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;Lattice synoptics&quot;&quot;&quot;</span>
+<span class="c1"># noinspection PyPackageRequirements</span>
 <span class="kn">import</span> <span class="nn">matplotlib.axes</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
 <span class="c1"># noinspection PyPackageRequirements</span>
@@ -300,7 +301,7 @@
 <span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Polygon</span>
 <span class="c1"># noinspection PyPackageRequirements</span>
 <span class="kn">from</span> <span class="nn">matplotlib.collections</span> <span class="kn">import</span> <span class="n">PatchCollection</span>
-<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">elements</span> <span class="k">as</span> <span class="n">elts</span>
+<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">Refpts</span><span class="p">,</span> <span class="n">elements</span> <span class="k">as</span> <span class="n">elts</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;plot_synopt&#39;</span><span class="p">]</span>
 
@@ -315,7 +316,8 @@
 <span class="c1"># noinspection PyDefaultArgument</span>
 <div class="viewcode-block" id="plot_synopt"><a class="viewcode-back" href="../../../p/api/at.plot.synopt.html#at.plot.synopt.plot_synopt">[docs]</a><span class="k">def</span> <span class="nf">plot_synopt</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">axes</span><span class="p">:</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">Axes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                 <span class="n">dipole</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">quadrupole</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">sextupole</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{},</span>
-                <span class="n">multipole</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">monitor</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}):</span>
+                <span class="n">multipole</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{},</span> <span class="n">monitor</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{},</span>
+                <span class="n">labels</span><span class="p">:</span> <span class="n">Refpts</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots a synoptic of a lattice</span>
 
 <span class="sd">    Parameters:</span>
@@ -323,6 +325,7 @@
 <span class="sd">        axes:           :py:class:`~matplotlib.axes.Axes` for plotting the</span>
 <span class="sd">          synoptic. If :py:obj:`None`, a new figure will be created. Otherwise,</span>
 <span class="sd">          a new axes object sharing the same x-axis as the given one is created.</span>
+<span class="sd">        labels:         display the name of selected elements.</span>
 <span class="sd">        dipole:         Dictionary of properties overloading the default</span>
 <span class="sd">          properties. If :py:obj:`None`, dipoles will not be shown.</span>
 <span class="sd">        quadrupole:     Same definition as for dipole</span>
@@ -432,6 +435,13 @@
         <span class="n">y</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
         <span class="c1"># noinspection PyUnusedLocal</span>
         <span class="n">monitors</span> <span class="o">=</span> <span class="n">axsyn</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">props</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">ring</span><span class="o">.</span><span class="n">get_uint32_index</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
+        <span class="n">el</span> <span class="o">=</span> <span class="n">ring</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">s_pos</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+        <span class="n">axsyn</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">el</span><span class="o">.</span><span class="n">Length</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="n">el</span><span class="o">.</span><span class="n">FamName</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span>
+                   <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                   <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;small&#39;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">axsyn</span></div>
 </pre></div>

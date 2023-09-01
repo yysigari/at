@@ -362,8 +362,8 @@
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="at.tracking.html">at.tracking</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.atpass.html">at.tracking.atpass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.tracking.deprecated.html">at.tracking.deprecated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.particles.html">at.tracking.particles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="at.tracking.patpass.html">at.tracking.patpass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.track.html">at.tracking.track</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.utils.html">at.tracking.utils</a></li>
 </ul>
@@ -576,8 +576,8 @@ already known ((6,) array).</p></li>
 <span class="sig-name descname"><span class="pre">tapering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multipoles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">niter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/radiation.html#tapering"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.radiation.tapering" title="Permalink to this definition">#</a></dt>
 <dd><p>Scales magnet strengths</p>
 <p>Scales magnet strengths with local energy to cancel the closed orbit
-and optics errors due to synchrotron radiations. PolynomB is used for
-dipoles such that the machine geometry is maintained. This is the ideal
+and optics errors due to synchrotron radiations. The dipole bending angle
+is changed by changing the reference momentum. This is the ideal
 tapering scheme where magnets and multipoles components (PolynomB and
 PolynomA) are scaled individually.</p>
 <div class="admonition warning">

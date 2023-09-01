@@ -304,6 +304,9 @@
 <span class="kn">from</span> <span class="nn">at.tracking</span> <span class="kn">import</span> <span class="n">patpass</span>
 <span class="kn">from</span> <span class="nn">at.physics</span> <span class="kn">import</span> <span class="n">find_orbit</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
+<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">AtWarning</span>
+
 
 <span class="c1"># Jaime Coello de Portugal (JCdP) frequency analysis implementation</span>
 <span class="kn">from</span> <span class="nn">.harmonic_analysis</span> <span class="kn">import</span> <span class="n">get_tunes_harmonic</span>
@@ -316,11 +319,11 @@
                         <span class="n">steps</span><span class="o">=</span><span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
                         <span class="n">scale</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span>
                         <span class="n">turns</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
-                        <span class="n">ncpu</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
                         <span class="n">orbit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                         <span class="n">add_offset6D</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>
                         <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">lossmap</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="o">**</span><span class="n">kwargs</span>
                         <span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes frequency maps</span>
 
@@ -344,8 +347,7 @@
 
 <span class="sd">    in millimeters, where the window is divided in n steps=[xsteps,ysteps].</span>
 <span class="sd">    For each yoffset, particle tracking over the whole set of xoffsets is done</span>
-<span class="sd">    in parallel, therefore, a number of cpus (*ncpu*) above the number of</span>
-<span class="sd">    *xsteps* will not reduce the calculation time.</span>
+<span class="sd">    in parallel.</span>
 
 <span class="sd">    The frequency analysis uses a library that is not parallelized.</span>
 
@@ -364,13 +366,13 @@
 <span class="sd">        steps:    (xsteps, ysteps): number of steps in each plane</span>
 <span class="sd">        scale:    default &#39;linear&#39;; or &#39;non-linear&#39;</span>
 <span class="sd">        turns:    default 512</span>
-<span class="sd">        ncpu:     default 30; max. number of processors</span>
-<span class="sd">          in parallel tracking :py:func:`.patpass`</span>
 <span class="sd">        orbit:    If :py:obj:`None`, the closed orbit is computed and added to</span>
 <span class="sd">          the coordinates</span>
 <span class="sd">        add_offset6D: default numpy.zeros((6,1))</span>
 <span class="sd">        verbose:  prints additional info</span>
 <span class="sd">        lossmap:  default false</span>
+<span class="sd">    Optional:</span>
+<span class="sd">        pool_size:number of processes. See :py:func:`.patpass`</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        xy_nuxy_lognudiff_array: numpy array with columns</span>
@@ -388,6 +390,14 @@
 
 <span class="sd">    .. warning:: loss map format is experimental</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># https://github.com/atcollab/at/pull/608</span>
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;pool_size&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="c1"># https://github.com/atcollab/at/pull/608</span>
+    <span class="k">if</span> <span class="s1">&#39;ncpu&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="n">warn</span><span class="p">(</span><span class="n">AtWarning</span><span class="p">(</span><span class="s1">&#39;ncpu argument is deprecated; use pool_size instead&#39;</span><span class="p">))</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;pool_size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;ncpu&#39;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">orbit</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># closed orbit values are not returned. It seems not necessary here</span>
@@ -452,16 +462,9 @@
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Start tracking and frequency analysis&quot;</span><span class="p">)</span>
 
-    <span class="c1"># Forcing a maximum value of cpus</span>
-    <span class="c1"># I have no idea how to confirm the actual used value from patpass</span>
-    <span class="c1"># at.DConstant.patpass_poolsize = ncpu;</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; Requested POOL size : </span><span class="si">{</span><span class="n">ncpu</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-
     <span class="c1"># tracking in parallel multiple x coordinates with the same y coordinate</span>
     <span class="k">for</span> <span class="n">iy</span><span class="p">,</span> <span class="n">iy_index</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">iyarray</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="n">leniyarray</span><span class="p">)):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tracked particles </span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="o">-</span><span class="mf">100.0</span><span class="o">*</span><span class="n">iy_index</span><span class="o">/</span><span class="n">leniyarray</span><span class="p">)</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> %&#39;</span><span class="p">,</span>
-              <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;, with a max. cpu POOL size of </span><span class="si">{</span><span class="n">ncpu</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tracked particles </span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="o">-</span><span class="mf">100.0</span><span class="o">*</span><span class="n">iy_index</span><span class="o">/</span><span class="n">leniyarray</span><span class="p">)</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> %&#39;</span><span class="p">)</span>
         <span class="n">verboseprint</span><span class="p">(</span><span class="s2">&quot;y =&quot;</span><span class="p">,</span> <span class="n">iy</span><span class="p">)</span>
         <span class="n">z0</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">lenixarray</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1"># transposed, and C-aligned</span>
         <span class="n">z0</span> <span class="o">=</span> <span class="n">z0</span> <span class="o">+</span> <span class="n">add_offset6D</span> <span class="o">+</span> <span class="n">orbit</span>
@@ -474,10 +477,10 @@
         <span class="k">if</span> <span class="n">lossmap</span><span class="p">:</span>
             <span class="c1"># patpass output changes when losses flag is true</span>
             <span class="n">zOUT</span><span class="p">,</span> <span class="n">dictloss</span> <span class="o">=</span> \
-                <span class="n">patpass</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">z0</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">nturns</span><span class="p">,</span> <span class="n">pool_size</span><span class="o">=</span><span class="n">ncpu</span><span class="p">,</span> <span class="n">losses</span><span class="o">=</span><span class="n">lossmap</span><span class="p">)</span>
+                <span class="n">patpass</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">z0</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">nturns</span><span class="p">,</span> <span class="n">losses</span><span class="o">=</span><span class="n">lossmap</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
             <span class="n">loss_map_array</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss_map_array</span><span class="p">,</span> <span class="n">dictloss</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">zOUT</span> <span class="o">=</span> <span class="n">patpass</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">z0</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">nturns</span><span class="p">,</span> <span class="n">pool_size</span><span class="o">=</span><span class="n">ncpu</span><span class="p">)</span>
+            <span class="n">zOUT</span> <span class="o">=</span> <span class="n">patpass</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">z0</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">nturns</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="c1"># start of serial frequency analysis</span>
         <span class="k">for</span> <span class="n">ix_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lenixarray</span><span class="p">):</span>  <span class="c1"># cycle over the track results</span>

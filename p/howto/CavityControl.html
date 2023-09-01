@@ -362,8 +362,8 @@
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../api/at.tracking.html">at.tracking</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../api/at.tracking.atpass.html">at.tracking.atpass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/at.tracking.deprecated.html">at.tracking.deprecated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/at.tracking.particles.html">at.tracking.particles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api/at.tracking.patpass.html">at.tracking.patpass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/at.tracking.track.html">at.tracking.track</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/at.tracking.utils.html">at.tracking.utils</a></li>
 </ul>
@@ -425,7 +425,8 @@ it is used to select the cavities.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cavpts</span> <span class="pre">is</span> <span class="pre">None</span></code> (default value), and the <code class="docutils literal notranslate"><span class="pre">Lattice</span></code> object has a
 <code class="docutils literal notranslate"><span class="pre">cavpts</span></code> attribute: the lattice attribute is used to select the cavities.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cavpts</span> <span class="pre">is</span> <span class="pre">None</span></code>, and the lattice has no <code class="docutils literal notranslate"><span class="pre">cavpts</span></code> attribute (or it is
-<code class="docutils literal notranslate"><span class="pre">None</span></code>): all cavities are taken into account.</p></li>
+<code class="docutils literal notranslate"><span class="pre">None</span></code>): if <code class="docutils literal notranslate"><span class="pre">array</span> <span class="pre">is</span> <span class="pre">True</span></code>, all cavities are taken into account.
+Otherwise, the cavities with the lowest frequency are selected.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -500,7 +501,7 @@ for individual methods.</p>
 are restricted to the default behaviour of the equivalent Lattice
 method:</p>
 <ul class="simple">
-<li><p>cavities are selected by the <code class="docutils literal notranslate"><span class="pre">Lattice.cavpts</span></code> attribute (all
+<li><p>cavities are selected by the <code class="docutils literal notranslate"><span class="pre">Lattice.cavpts</span></code> attribute if present (lowest frequency
 cavities by default),</p></li>
 <li><p>Setting a property modifies the ring in-place (no copy).</p></li>
 </ul>

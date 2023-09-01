@@ -292,8 +292,8 @@
               
   <h1>Source code for at.plot.standalone</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;AT plotting functions&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
-<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">axis_descr</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">axis_</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">matplotlib.axes</span> <span class="kn">import</span> <span class="n">Axes</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
@@ -317,7 +317,7 @@
 <span class="sd">          *&#39;yp&#39;*, *&#39;dp&#39;*, *&#39;ct&#39;*</span>
 
 <span class="sd">    Keyword Args:</span>
-<span class="sd">        acceptance (Tuple[ndarray, ndarray, ndarray]): Tuple containing</span>
+<span class="sd">        acceptance (tuple[ndarray, ndarray, ndarray]): tuple containing</span>
 <span class="sd">          pre-computed acceptance *(boundary, survived, grid)*</span>
 <span class="sd">        npoints:        (len(planes),) array: number of points in each</span>
 <span class="sd">          dimension</span>
@@ -353,7 +353,7 @@
 <span class="sd">          :py:obj:`None` uses the python default that is considered safe.</span>
 <span class="sd">          Available parameters: *&#39;fork&#39;*, *&#39;spawn&#39;*, *&#39;forkserver&#39;*.</span>
 <span class="sd">          The default for linux is *&#39;fork&#39;*, the default for macOS and</span>
-<span class="sd">          Windows is *&#39;spawn&#39;*. *&#39;fork&#39;* may used for macOS to speed up</span>
+<span class="sd">          Windows is *&#39;spawn&#39;*. *&#39;fork&#39;* may be used for macOS to speed up</span>
 <span class="sd">          the calculation or to solve runtime errors, however  it is</span>
 <span class="sd">          considered unsafe.</span>
 
@@ -380,12 +380,12 @@
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">grid</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tracked particles&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">survived</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Survived particles&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">planes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">pl0</span><span class="p">,</span> <span class="o">=</span> <span class="n">axis_descr</span><span class="p">(</span><span class="n">planes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">pl0</span> <span class="o">=</span> <span class="n">axis_</span><span class="p">(</span><span class="n">planes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">boundary</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Acceptance&#39;</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;1D </span><span class="si">{0}</span><span class="s1"> acceptance&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pl0</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]))</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pl0</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">],</span> <span class="n">pl0</span><span class="p">[</span><span class="s1">&#39;unit&#39;</span><span class="p">]))</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">pl0</span><span class="p">,</span> <span class="n">pl1</span> <span class="o">=</span> <span class="n">axis_descr</span><span class="p">(</span><span class="o">*</span><span class="n">planes</span><span class="p">)</span>
+        <span class="n">pl0</span><span class="p">,</span> <span class="n">pl1</span> <span class="o">=</span> <span class="n">axis_</span><span class="p">(</span><span class="n">planes</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">boundary</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Acceptance&#39;</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;2D </span><span class="si">{0}</span><span class="s1">-</span><span class="si">{1}</span><span class="s1"> acceptance&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pl0</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">],</span> <span class="n">pl1</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]))</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pl0</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">],</span> <span class="n">pl0</span><span class="p">[</span><span class="s1">&#39;unit&#39;</span><span class="p">]))</span>
@@ -396,7 +396,7 @@
 
 
 <div class="viewcode-block" id="plot_geometry"><a class="viewcode-back" href="../../../p/api/at.plot.standalone.html#at.plot.standalone.plot_geometry">[docs]</a><span class="k">def</span> <span class="nf">plot_geometry</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span>
-                  <span class="n">start_coordinates</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                  <span class="n">start_coordinates</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
                   <span class="n">centered</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="p">:</span> <span class="n">Axes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute and plot the 2D ring geometry in cartesian coordinates.</span>
 
@@ -431,7 +431,7 @@
     <span class="k">return</span> <span class="n">geom</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">ax</span></div>
 
 
-<div class="viewcode-block" id="plot_sigma"><a class="viewcode-back" href="../../../p/api/at.plot.standalone.html#at.plot.standalone.plot_sigma">[docs]</a><span class="k">def</span> <span class="nf">plot_sigma</span><span class="p">(</span><span class="n">sigma</span><span class="p">,</span> <span class="n">axis</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;xp&#39;</span><span class="p">),</span> <span class="n">scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+<div class="viewcode-block" id="plot_sigma"><a class="viewcode-back" href="../../../p/api/at.plot.standalone.html#at.plot.standalone.plot_sigma">[docs]</a><span class="k">def</span> <span class="nf">plot_sigma</span><span class="p">(</span><span class="n">sigma</span><span class="p">,</span> <span class="n">axis</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;xp&#39;</span><span class="p">),</span> <span class="n">scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
                <span class="n">ax</span><span class="p">:</span> <span class="n">Axes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Plot the projection of the phase space defined by a</span>
 <span class="sd">    :math:`\Sigma`-matrix on the selected plane.</span>
@@ -449,8 +449,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">ax</span><span class="p">:</span>
         <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-    <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">axis_descr</span><span class="p">(</span><span class="o">*</span><span class="n">axis</span><span class="p">)</span>
-    <span class="n">axid</span> <span class="o">=</span> <span class="n">axis_descr</span><span class="p">(</span><span class="o">*</span><span class="n">axis</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">axis_</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
+    <span class="n">axid</span> <span class="o">=</span> <span class="n">axis_</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
     <span class="n">sig22</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">axid</span><span class="p">,</span> <span class="n">axid</span><span class="p">)]</span>
     <span class="n">eps</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">sig22</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">sig22</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">sig22</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">sig22</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
     <span class="n">sigx</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">sig22</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>

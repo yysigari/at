@@ -360,8 +360,8 @@
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="at.tracking.html">at.tracking</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.atpass.html">at.tracking.atpass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.tracking.deprecated.html">at.tracking.deprecated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.particles.html">at.tracking.particles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="at.tracking.patpass.html">at.tracking.patpass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.track.html">at.tracking.track</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">at.tracking.utils</a></li>
 </ul>
@@ -401,8 +401,14 @@
 <p class="rubric">Functions</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.tracking.utils.get_bunches" title="at.tracking.utils.get_bunches"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_bunches</span></code></a>(r_in, nbunch[, selected_bunches])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.tracking.utils.fortran_align" title="at.tracking.utils.fortran_align"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fortran_align</span></code></a>(func)</p></td>
+<td><p>decorator to ensure that <em>r_in</em> is Fortran-aligned</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.tracking.utils.get_bunches" title="at.tracking.utils.get_bunches"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_bunches</span></code></a>(r_in, nbunch[, selected_bunches])</p></td>
 <td><p>Function to get the bunches particles 6D coordinates</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.tracking.utils.format_results" title="at.tracking.utils.format_results"><code class="xref py py-obj docutils literal notranslate"><span class="pre">format_results</span></code></a>(results, r_in, losses)</p></td>
+<td><p>Function to format the ouput of parallelized tracking</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#at.tracking.utils.get_bunches_std_mean" title="at.tracking.utils.get_bunches_std_mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_bunches_std_mean</span></code></a>(r_in, nbunch[, ...])</p></td>
 <td><p>Function to get the bunches standard deviation and center of mass</p></td>
@@ -410,8 +416,35 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#at.tracking.utils.unfold_beam" title="at.tracking.utils.unfold_beam"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unfold_beam</span></code></a>(ring, beam, **kwargs)</p></td>
 <td><p>Function to unfold the beam based on the ring fill pattern.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.tracking.utils.has_collective" title="at.tracking.utils.has_collective"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_collective</span></code></a>(ring)</p></td>
+<td><p>True if any element involves collective effects</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.tracking.utils.initialize_lpass" title="at.tracking.utils.initialize_lpass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initialize_lpass</span></code></a>(lattice, kwargs)</p></td>
+<td><p>Function to initialize keyword arguments for lattice tracking</p></td>
+</tr>
 </tbody>
 </table>
+<dl class="py function">
+<dt class="sig sig-object py" id="at.tracking.utils.format_results">
+<span class="sig-name descname"><span class="pre">format_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">losses</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/tracking/utils.html#format_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.tracking.utils.format_results" title="Permalink to this definition">#</a></dt>
+<dd><p>Function to format the ouput of parallelized tracking</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="at.tracking.utils.fortran_align">
+<span class="sig-name descname"><span class="pre">fortran_align</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/tracking/utils.html#fortran_align"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.tracking.utils.fortran_align" title="Permalink to this definition">#</a></dt>
+<dd><p>decorator to ensure that <em>r_in</em> is Fortran-aligned</p>
+<p><a class="reference internal" href="#at.tracking.utils.fortran_align" title="at.tracking.utils.fortran_align"><code class="xref py py-func docutils literal notranslate"><span class="pre">fortran_align()</span></code></a> ensures that the 2nd argument (usually <em>r_in</em>) of
+the decorated function is Fortran-aligned before calling the function</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nd">@fortran_align</span>
+<span class="gp">... </span><span class="k">def</span> <span class="nf">element_pass</span><span class="p">(</span><span class="n">element</span><span class="p">:</span> <span class="n">Element</span><span class="p">,</span> <span class="n">r_in</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="gp">... </span><span class="o">...</span>
+</pre></div>
+</div>
+<p>Ensure that <em>r_in</em> is Fortran-aligned</p>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="at.tracking.utils.get_bunches">
 <span class="sig-name descname"><span class="pre">get_bunches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbunch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selected_bunches</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/tracking/utils.html#get_bunches"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.tracking.utils.get_bunches" title="Permalink to this definition">#</a></dt>
@@ -454,6 +487,22 @@ of mass</p>
 <li><p><strong>and center of mass</strong> (<em>std, mean</em>)</p></li>
 </ul>
 </dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="at.tracking.utils.has_collective">
+<span class="sig-name descname"><span class="pre">has_collective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ring</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/tracking/utils.html#has_collective"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.tracking.utils.has_collective" title="Permalink to this definition">#</a></dt>
+<dd><p>True if any element involves collective effects</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="at.tracking.utils.initialize_lpass">
+<span class="sig-name descname"><span class="pre">initialize_lpass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lattice</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/tracking/utils.html#initialize_lpass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.tracking.utils.initialize_lpass" title="Permalink to this definition">#</a></dt>
+<dd><p>Function to initialize keyword arguments for lattice tracking</p>
+<dl class="field-list simple">
 </dl>
 </dd></dl>
 
@@ -533,6 +582,24 @@ Default: <a class="reference internal" href="at.lattice.options.html#at.lattice.
 <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.tracking.utils.format_results">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     format_results()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.tracking.utils.fortran_align">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     fortran_align()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#at.tracking.utils.get_bunches">
    <code class="docutils literal notranslate">
     <span class="pre">
@@ -546,6 +613,24 @@ Default: <a class="reference internal" href="at.lattice.options.html#at.lattice.
    <code class="docutils literal notranslate">
     <span class="pre">
      get_bunches_std_mean()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.tracking.utils.has_collective">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     has_collective()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.tracking.utils.initialize_lpass">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     initialize_lpass()
     </span>
    </code>
   </a>

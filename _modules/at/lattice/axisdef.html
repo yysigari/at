@@ -313,6 +313,8 @@
     <span class="n">_axis_def</span><span class="p">[</span><span class="n">xv</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">xv</span>
     <span class="n">_axis_def</span><span class="p">[</span><span class="n">xk</span><span class="o">.</span><span class="n">upper</span><span class="p">()]</span> <span class="o">=</span> <span class="n">xv</span>
 <span class="n">_axis_def</span><span class="p">[</span><span class="s1">&#39;delta&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_axis_def</span><span class="p">[</span><span class="s1">&#39;dp&#39;</span><span class="p">]</span>
+<span class="n">_axis_def</span><span class="p">[</span><span class="s1">&#39;xp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_axis_def</span><span class="p">[</span><span class="s1">&#39;px&#39;</span><span class="p">]</span>   <span class="c1"># For backward compatibility</span>
+<span class="n">_axis_def</span><span class="p">[</span><span class="s1">&#39;yp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_axis_def</span><span class="p">[</span><span class="s1">&#39;py&#39;</span><span class="p">]</span>   <span class="c1"># For backward compatibility</span>
 <span class="n">_axis_def</span><span class="p">[</span><span class="s1">&#39;s&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_axis_def</span><span class="p">[</span><span class="s1">&#39;ct&#39;</span><span class="p">]</span>
 <span class="n">_axis_def</span><span class="p">[</span><span class="s1">&#39;S&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_axis_def</span><span class="p">[</span><span class="s1">&#39;ct&#39;</span><span class="p">]</span>
 <span class="n">_axis_def</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">code</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
@@ -368,7 +370,7 @@
 
 <span class="sd">          5, &#39;ct&#39;, &#39;CT&#39;, &#39;s&#39;, &#39;S&#39;</span>
 
-<span class="sd">          :py:obj:`None`, slice(None) and :py:obj:`Ellipsis` selects all axes</span>
+<span class="sd">          :py:obj:`None` and :py:obj:`Ellipsis` select all axes</span>
 
 <span class="sd">        key:            key in the coordinate descriptor dictionary,</span>
 <span class="sd">          selecting the desired information. One of :</span>
@@ -385,7 +387,7 @@
 <span class="sd">            entire description dictionary</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        descr : value of tuple[values]</span>
+<span class="sd">        descr : value or tuple[values]</span>
 
 <span class="sd">    Examples:</span>
 

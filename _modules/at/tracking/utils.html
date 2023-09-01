@@ -294,12 +294,110 @@
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Utility functions for tracking simulations</span>
 <span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 <span class="kn">import</span> <span class="nn">numpy</span>
-<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">DConstant</span>
+<span class="kn">import</span> <span class="nn">functools</span>
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Iterable</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">Element</span>
+<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">elements</span><span class="p">,</span> <span class="n">refpts_iterator</span>
+<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">DConstant</span>
 
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;get_bunches&#39;</span><span class="p">,</span> <span class="s1">&#39;get_bunches_std_mean&#39;</span><span class="p">,</span> <span class="s1">&#39;unfold_beam&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;fortran_align&#39;</span><span class="p">,</span> <span class="s1">&#39;get_bunches&#39;</span><span class="p">,</span> <span class="s1">&#39;format_results&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;get_bunches_std_mean&#39;</span><span class="p">,</span> <span class="s1">&#39;unfold_beam&#39;</span><span class="p">,</span> <span class="s1">&#39;has_collective&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;initialize_lpass&#39;</span><span class="p">]</span>
+
+
+<span class="n">DIMENSION_ERROR</span> <span class="o">=</span> <span class="s1">&#39;Input to lattice_pass() must be a 6xN array.&#39;</span>
+
+
+<span class="k">def</span> <span class="nf">_set_beam_monitors</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">nbunch</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">nturns</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to initialize the beam monitors&quot;&quot;&quot;</span>
+    <span class="n">monitors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">refpts_iterator</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">elements</span><span class="o">.</span><span class="n">BeamMoments</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">monitors</span><span class="p">:</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">set_buffers</span><span class="p">(</span><span class="n">nturns</span><span class="p">,</span> <span class="n">nbunch</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">monitors</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+
+
+<span class="k">def</span> <span class="nf">_get_bunch_config</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">unfoldbeam</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to get the bunch configuration&quot;&quot;&quot;</span>
+    <span class="n">nbunch</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="s1">&#39;nbunch&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">bunch_currents</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="s1">&#39;bunch_currents&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">unfoldbeam</span><span class="p">:</span>
+        <span class="n">bunch_spos</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="s1">&#39;bunch_spos&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">bunch_spos</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bunch_currents</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">nbunch</span><span class="p">,</span> <span class="n">bunch_spos</span><span class="p">,</span> <span class="n">bunch_currents</span>
+
+
+<div class="viewcode-block" id="initialize_lpass"><a class="viewcode-back" href="../../../p/api/at.tracking.utils.html#at.tracking.utils.initialize_lpass">[docs]</a><span class="k">def</span> <span class="nf">initialize_lpass</span><span class="p">(</span><span class="n">lattice</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Element</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to initialize keyword arguments for lattice tracking&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">lattice</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">lattice</span><span class="p">)</span>
+    <span class="n">unfoldbeam</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;unfold_beam&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">nturns</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nturns&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">nbunch</span><span class="p">,</span> <span class="n">bspos</span><span class="p">,</span> <span class="n">bcurrents</span> <span class="o">=</span> <span class="n">_get_bunch_config</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">unfoldbeam</span><span class="p">)</span>
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">bunch_currents</span><span class="o">=</span><span class="n">bcurrents</span><span class="p">,</span> <span class="n">bunch_spos</span><span class="o">=</span><span class="n">bspos</span><span class="p">)</span>
+    <span class="n">no_bm</span> <span class="o">=</span> <span class="n">_set_beam_monitors</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">nbunch</span><span class="p">,</span> <span class="n">nturns</span><span class="p">)</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;keep_lattice&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;keep_lattice&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="ow">and</span> <span class="n">no_bm</span>
+    <span class="n">pool_size</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;pool_size&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">start_method</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;start_method&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;use_mp&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;pool_size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pool_size</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;start_method&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">start_method</span>
+    <span class="k">return</span> <span class="n">lattice</span></div>
+
+
+<div class="viewcode-block" id="has_collective"><a class="viewcode-back" href="../../../p/api/at.tracking.utils.html#at.tracking.utils.has_collective">[docs]</a><span class="k">def</span> <span class="nf">has_collective</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;True if any element involves collective effects&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">ring</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">elem</span><span class="o">.</span><span class="n">is_collective</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="fortran_align"><a class="viewcode-back" href="../../../p/api/at.tracking.utils.html#at.tracking.utils.fortran_align">[docs]</a><span class="k">def</span> <span class="nf">fortran_align</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="c1"># noinspection PyShadowingNames</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;decorator to ensure that *r_in* is Fortran-aligned</span>
+
+<span class="sd">    :py:func:`fortran_align` ensures that the 2nd argument (usually *r_in*) of</span>
+<span class="sd">    the decorated function is Fortran-aligned before calling the function</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">        &gt;&gt;&gt; @fortran_align</span>
+<span class="sd">        ... def element_pass(element: Element, r_in, **kwargs):</span>
+<span class="sd">        ... ...</span>
+
+<span class="sd">        Ensure that *r_in* is Fortran-aligned</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">r_in</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">r_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">6</span> <span class="ow">and</span> <span class="n">r_in</span><span class="o">.</span><span class="n">ndim</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">DIMENSION_ERROR</span>
+        <span class="k">if</span> <span class="n">r_in</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">f_contiguous</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">r_in</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">r_fin</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">asfortranarray</span><span class="p">(</span><span class="n">r_in</span><span class="p">)</span>
+            <span class="n">r_out</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">r_fin</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">r_in</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">r_fin</span><span class="p">[:]</span>
+            <span class="k">return</span> <span class="n">r_out</span>
+    <span class="k">return</span> <span class="n">wrapper</span></div>
+
+
+<div class="viewcode-block" id="format_results"><a class="viewcode-back" href="../../../p/api/at.tracking.utils.html#at.tracking.utils.format_results">[docs]</a><span class="k">def</span> <span class="nf">format_results</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">r_in</span><span class="p">,</span> <span class="n">losses</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to format the ouput of parallelized tracking&quot;&quot;&quot;</span>
+    <span class="n">lin</span><span class="p">,</span> <span class="n">lout</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">results</span><span class="p">)</span>
+    <span class="c1"># Update r_in with values at the end of tracking</span>
+    <span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">lin</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">r_in</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">losses</span><span class="p">:</span>
+        <span class="n">lout</span><span class="p">,</span> <span class="n">ldic</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">lout</span><span class="p">)</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="n">ldic</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="n">dicout</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(((</span><span class="n">k</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">li</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">li</span> <span class="ow">in</span> <span class="n">ldic</span><span class="p">]))</span>
+                      <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">lout</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">dicout</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">lout</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="get_bunches"><a class="viewcode-back" href="../../../p/api/at.tracking.utils.html#at.tracking.utils.get_bunches">[docs]</a><span class="k">def</span> <span class="nf">get_bunches</span><span class="p">(</span><span class="n">r_in</span><span class="p">:</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">nbunch</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>

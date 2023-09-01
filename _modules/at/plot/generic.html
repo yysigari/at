@@ -347,7 +347,9 @@
 <span class="sd">          for plotting as (primary_axes, secondary_axes).</span>
 <span class="sd">          Default: create new axes</span>
 <span class="sd">        slices (int):       Number of slices. Default: 400</span>
-<span class="sd">        legend (bool):      Show a legend on the plot</span>
+<span class="sd">        legend (bool):      Show a legend on the plot. Default: :py:obj:`True`</span>
+<span class="sd">        labels (Refpts):    display the name of selected elements.</span>
+<span class="sd">          Default: :py:obj:`None`</span>
 <span class="sd">        block (bool):       If :py:obj:`True`, block until the figure is closed.</span>
 <span class="sd">          Default: :py:obj:`False`</span>
 <span class="sd">        dipole (dict):      Dictionary of properties overloading the default</span>
@@ -387,7 +389,8 @@
         <span class="n">ring</span><span class="o">.</span><span class="n">s_range</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;s_range&#39;</span><span class="p">)</span>
 
     <span class="c1"># extract synopt arguments</span>
-    <span class="n">synkeys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dipole&#39;</span><span class="p">,</span> <span class="s1">&#39;quadrupole&#39;</span><span class="p">,</span> <span class="s1">&#39;sextupole&#39;</span><span class="p">,</span> <span class="s1">&#39;multipole&#39;</span><span class="p">,</span> <span class="s1">&#39;monitor&#39;</span><span class="p">]</span>
+    <span class="n">synkeys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dipole&#39;</span><span class="p">,</span> <span class="s1">&#39;quadrupole&#39;</span><span class="p">,</span> <span class="s1">&#39;sextupole&#39;</span><span class="p">,</span> <span class="s1">&#39;multipole&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;monitor&#39;</span><span class="p">,</span> <span class="s1">&#39;labels&#39;</span><span class="p">]</span>
     <span class="n">kwkeys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
     <span class="n">synargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">kwkeys</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">synkeys</span><span class="p">)</span>
 

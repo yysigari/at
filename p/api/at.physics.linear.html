@@ -362,8 +362,8 @@
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="at.tracking.html">at.tracking</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.atpass.html">at.tracking.atpass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.tracking.deprecated.html">at.tracking.deprecated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.particles.html">at.tracking.particles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="at.tracking.patpass.html">at.tracking.patpass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.track.html">at.tracking.track</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.utils.html">at.tracking.utils</a></li>
 </ul>
@@ -522,7 +522,7 @@ modes of linear motion [1]</p></li>
 <li><p><strong>method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – <p><code class="docutils literal notranslate"><span class="pre">'linopt'</span></code> returns the tunes from the
 <a class="reference internal" href="#at.physics.linear.linopt6" title="at.physics.linear.linopt6"><code class="xref py py-func docutils literal notranslate"><span class="pre">linopt6()</span></code></a> function,</p>
 <p><code class="docutils literal notranslate"><span class="pre">'fft'</span></code> tracks a single particle and computes the tunes with
-<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.fftpack.fft.html#scipy.fftpack.fft" title="(in SciPy v1.11.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">fft()</span></code></a>,</p>
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.fftpack.fft.html#scipy.fftpack.fft" title="(in SciPy v1.11.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">fft()</span></code></a>,</p>
 <p><code class="docutils literal notranslate"><span class="pre">'interp_fft'</span></code> tracks a single particle and computes the tunes with
 interpolated FFT.</p>
 </p></li>
@@ -718,7 +718,8 @@ already known ((6,) array)</p></li>
 <li><p><strong>get_chrom</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Compute chromaticities. Needs computing
 the tune at 2 different momentum deviations around the central one.</p></li>
 <li><p><strong>get_w</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Computes chromatic amplitude functions
-(W) <a class="footnote-reference brackets" href="#id6" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>. Needs to compute the optics at 2 different momentum
+(W, WP) <a class="footnote-reference brackets" href="#id6" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>, and derivatives of the dispersion and twiss parameters
+versus dp. Needs to compute the optics at 2 different momentum
 deviations around the central one.</p></li>
 <li><p><strong>keep_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Assume no lattice change since the
 previous tracking. Defaults to <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p></li>
@@ -780,6 +781,29 @@ to the entrance of the element <a class="footnote-reference brackets" href="#id5
 <tr class="row-even"><td><p><strong>W</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(\left[ W_x,W_y \right]\)</span> only if <em>get_w</em>
 is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>: chromatic amplitude function</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Wp</strong></p></td>
+<td><blockquote>
+<div><p><span class="math notranslate nohighlight">\(\left[ Wp_x,Wp_y \right]\)</span> only if <em>get_w</em></p>
+</div></blockquote>
+<p>is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>: chromatic phase function</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>dalpha</strong></p></td>
+<td><p>(2,) alpha derivative vector
+(<span class="math notranslate nohighlight">\(\Delta \alpha/ \delta_p\)</span>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>dbeta</strong></p></td>
+<td><p>(2,) beta derivative vector
+(<span class="math notranslate nohighlight">\(\Delta \beta/ \delta_p\)</span>)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>dmu</strong></p></td>
+<td><p>(2,) mu derivative vector
+(<span class="math notranslate nohighlight">\(\Delta \mu/ \delta_p\)</span>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ddispersion</strong></p></td>
+<td><p>(4,) dispersion derivative vector
+(<span class="math notranslate nohighlight">\(\Delta D/ \delta_p\)</span>)</p></td>
 </tr>
 </tbody>
 </table>
@@ -915,6 +939,29 @@ eigenmodes <a class="footnote-reference brackets" href="#id11" id="id9" role="do
 <tr class="row-odd"><td><p><strong>W</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(\left[ W_x,W_y \right]\)</span> only if <em>get_w</em>
 is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>: chromatic amplitude function</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Wp</strong></p></td>
+<td><blockquote>
+<div><p><span class="math notranslate nohighlight">\(\left[ Wp_x,Wp_y \right]\)</span> only if <em>get_w</em></p>
+</div></blockquote>
+<p>is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>: chromatic phase function</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>dalpha</strong></p></td>
+<td><p>(2,) alpha derivative vector
+(<span class="math notranslate nohighlight">\(\Delta \alpha/ \delta_p\)</span>)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>dbeta</strong></p></td>
+<td><p>(2,) beta derivative vector
+(<span class="math notranslate nohighlight">\(\Delta \beta/ \delta_p\)</span>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>dmu</strong></p></td>
+<td><p>(2,) mu derivative vector
+(<span class="math notranslate nohighlight">\(\Delta \mu/ \delta_p\)</span>)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ddispersion</strong></p></td>
+<td><p>(4,) dispersion derivative vector
+(<span class="math notranslate nohighlight">\(\Delta D/ \delta_p\)</span>)</p></td>
 </tr>
 </tbody>
 </table>
@@ -1063,6 +1110,33 @@ to the entrance of the element</p></td>
 <tr class="row-even"><td><p><strong>W</strong></p></td>
 <td><p><span class="math notranslate nohighlight">\(\left[ W_x,W_y \right]\)</span> only if <em>get_w</em>
 is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>: chromatic amplitude function</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Wp</strong></p></td>
+<td><blockquote>
+<div><p><span class="math notranslate nohighlight">\(\left[ Wp_x,Wp_y \right]\)</span> only if <em>get_w</em></p>
+</div></blockquote>
+<p>is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>: chromatic phase function</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>dalpha</strong></p></td>
+<td><p>(2,) alpha derivative vector
+(<span class="math notranslate nohighlight">\(\Delta \alpha/ \delta_p\)</span>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>dbeta</strong></p></td>
+<td><p>(2,) beta derivative vector
+(<span class="math notranslate nohighlight">\(\Delta \beta/ \delta_p\)</span>)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>dmu</strong></p></td>
+<td><p>(2,) mu derivative vector
+(<span class="math notranslate nohighlight">\(\Delta \mu/ \delta_p\)</span>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ddispersion</strong></p></td>
+<td><p>(4,) dispersion derivative vector
+(<span class="math notranslate nohighlight">\(\Delta D/ \delta_p\)</span>)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>dR</strong></p></td>
+<td><p>(3, 6, 6) R derivative vector
+(<span class="math notranslate nohighlight">\(\Delta R/ \delta_p\)</span>)</p></td>
 </tr>
 </tbody>
 </table>

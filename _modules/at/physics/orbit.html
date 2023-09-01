@@ -298,7 +298,7 @@
 <span class="kn">from</span> <span class="nn">at.constants</span> <span class="kn">import</span> <span class="n">clight</span>
 <span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">AtError</span><span class="p">,</span> <span class="n">AtWarning</span><span class="p">,</span> <span class="n">check_6d</span><span class="p">,</span> <span class="n">DConstant</span><span class="p">,</span> <span class="n">Orbit</span>
 <span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">get_s_pos</span><span class="p">,</span> <span class="n">Refpts</span><span class="p">,</span> <span class="n">frequency_control</span>
-<span class="kn">from</span> <span class="nn">at.tracking</span> <span class="kn">import</span> <span class="n">lattice_pass</span>
+<span class="kn">from</span> <span class="nn">at.tracking</span> <span class="kn">import</span> <span class="n">internal_lpass</span>
 <span class="kn">from</span> <span class="nn">.energy_loss</span> <span class="kn">import</span> <span class="n">ELossMethod</span><span class="p">,</span> <span class="n">get_timelag_fromU0</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 
@@ -340,7 +340,7 @@
     <span class="n">itercount</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="p">(</span><span class="n">change</span> <span class="o">&gt;</span> <span class="n">convergence</span><span class="p">)</span> <span class="ow">and</span> <span class="n">itercount</span> <span class="o">&lt;</span> <span class="n">max_iterations</span><span class="p">:</span>
         <span class="n">in_mat</span> <span class="o">=</span> <span class="n">ref_in</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="n">delta_matrix</span>
-        <span class="n">_</span> <span class="o">=</span> <span class="n">lattice_pass</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">in_mat</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="p">[],</span> <span class="n">keep_lattice</span><span class="o">=</span><span class="n">keep_lattice</span><span class="p">)</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="n">internal_lpass</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">in_mat</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="p">[],</span> <span class="n">keep_lattice</span><span class="o">=</span><span class="n">keep_lattice</span><span class="p">)</span>
         <span class="c1"># the reference particle after one turn</span>
         <span class="n">ref_out</span> <span class="o">=</span> <span class="n">in_mat</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">]</span>
         <span class="c1"># 4x4 jacobian matrix from numerical differentiation:</span>
@@ -389,7 +389,7 @@
     <span class="n">itercount</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="p">(</span><span class="n">change</span> <span class="o">&gt;</span> <span class="n">convergence</span><span class="p">)</span> <span class="ow">and</span> <span class="n">itercount</span> <span class="o">&lt;</span> <span class="n">max_iterations</span><span class="p">:</span>
         <span class="n">in_mat</span> <span class="o">=</span> <span class="n">ref_in</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="n">delta_matrix</span>
-        <span class="n">_</span> <span class="o">=</span> <span class="n">lattice_pass</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">in_mat</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="p">[],</span> <span class="n">keep_lattice</span><span class="o">=</span><span class="n">keep_lattice</span><span class="p">)</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="n">internal_lpass</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">in_mat</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="p">[],</span> <span class="n">keep_lattice</span><span class="o">=</span><span class="n">keep_lattice</span><span class="p">)</span>
         <span class="c1"># the reference particle after one turn</span>
         <span class="n">ref_out</span> <span class="o">=</span> <span class="n">in_mat</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="c1"># 5x5 jacobian matrix from numerical differentiation:</span>
@@ -420,7 +420,7 @@
 
 <span class="sd">    Finds the closed orbit in the 4-d transverse phase space by numerically</span>
 <span class="sd">    solving for a fixed point of the one turn map M calculated with</span>
-<span class="sd">    :py:func:`.lattice_pass`.</span>
+<span class="sd">    :py:func:`.internal_lpass`.</span>
 
 <span class="sd">    .. math:: \begin{pmatrix}x \\ p_x \\ y \\ p_y \\ dp \\ c\tau_2\end{pmatrix}</span>
 <span class="sd">       =\mathbf{M} \cdot</span>
@@ -497,8 +497,8 @@
     <span class="k">if</span> <span class="n">ring</span><span class="o">.</span><span class="n">refcount</span><span class="p">(</span><span class="n">refpts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">all_points</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">all_points</span> <span class="o">=</span> <span class="n">lattice_pass</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">orbit</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;K&#39;</span><span class="p">),</span> <span class="n">refpts</span><span class="o">=</span><span class="n">refpts</span><span class="p">,</span>
-                                  <span class="n">keep_lattice</span><span class="o">=</span><span class="n">keep_lattice</span><span class="p">)</span>
+        <span class="n">all_points</span> <span class="o">=</span> <span class="n">internal_lpass</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">orbit</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;K&#39;</span><span class="p">),</span> <span class="n">refpts</span><span class="o">=</span><span class="n">refpts</span><span class="p">,</span>
+                                    <span class="n">keep_lattice</span><span class="o">=</span><span class="n">keep_lattice</span><span class="p">)</span>
         <span class="n">all_points</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">all_points</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
     <span class="k">return</span> <span class="n">orbit</span><span class="p">,</span> <span class="n">all_points</span></div>
 
@@ -512,7 +512,7 @@
 
 <span class="sd">    Finds the closed orbit, synchronous with the RF cavity (first 5</span>
 <span class="sd">    components of the phase space vector) by numerically solving for a fixed</span>
-<span class="sd">    point of the one turn map M calculated with :py:func:`.lattice_pass`</span>
+<span class="sd">    point of the one turn map M calculated with :py:func:`.internal_lpass`</span>
 
 <span class="sd">    .. math:: \begin{pmatrix}x \\ p_x \\ y \\ p_y \\ dp \\ c\tau_1+</span>
 <span class="sd">       dc\tau\end{pmatrix} =\mathbf{M} \cdot</span>
@@ -589,8 +589,8 @@
     <span class="k">if</span> <span class="n">ring</span><span class="o">.</span><span class="n">refcount</span><span class="p">(</span><span class="n">refpts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">all_points</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">all_points</span> <span class="o">=</span> <span class="n">lattice_pass</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">orbit</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;K&#39;</span><span class="p">),</span> <span class="n">refpts</span><span class="o">=</span><span class="n">refpts</span><span class="p">,</span>
-                                  <span class="n">keep_lattice</span><span class="o">=</span><span class="n">keep_lattice</span><span class="p">)</span>
+        <span class="n">all_points</span> <span class="o">=</span> <span class="n">internal_lpass</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">orbit</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;K&#39;</span><span class="p">),</span> <span class="n">refpts</span><span class="o">=</span><span class="n">refpts</span><span class="p">,</span>
+                                    <span class="n">keep_lattice</span><span class="o">=</span><span class="n">keep_lattice</span><span class="p">)</span>
         <span class="n">all_points</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">all_points</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
     <span class="k">return</span> <span class="n">orbit</span><span class="p">,</span> <span class="n">all_points</span></div>
 
@@ -635,7 +635,7 @@
     <span class="n">itercount</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="p">(</span><span class="n">change</span> <span class="o">&gt;</span> <span class="n">convergence</span><span class="p">)</span> <span class="ow">and</span> <span class="n">itercount</span> <span class="o">&lt;</span> <span class="n">max_iterations</span><span class="p">:</span>
         <span class="n">in_mat</span> <span class="o">=</span> <span class="n">ref_in</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="n">delta_matrix</span>
-        <span class="n">_</span> <span class="o">=</span> <span class="n">lattice_pass</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">in_mat</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="p">[],</span> <span class="n">keep_lattice</span><span class="o">=</span><span class="n">keep_lattice</span><span class="p">)</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="n">internal_lpass</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">in_mat</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="p">[],</span> <span class="n">keep_lattice</span><span class="o">=</span><span class="n">keep_lattice</span><span class="p">)</span>
         <span class="c1"># the reference particle after one turn</span>
         <span class="n">ref_out</span> <span class="o">=</span> <span class="n">in_mat</span><span class="p">[:,</span> <span class="mi">6</span><span class="p">]</span>
         <span class="c1"># 6x6 jacobian matrix from numerical differentiation:</span>
@@ -666,7 +666,7 @@
 
 <span class="sd">    Finds the closed orbit in the full 6-D phase space</span>
 <span class="sd">    by numerically solving  for a fixed point of the one turn</span>
-<span class="sd">    map M calculated with :py:func:`.lattice_pass`</span>
+<span class="sd">    map M calculated with :py:func:`.internal_lpass`</span>
 
 <span class="sd">    .. math:: \begin{pmatrix}x \\ p_x \\ y \\ p_y \\ dp \\ c\tau_2\end{pmatrix}</span>
 <span class="sd">       =\mathbf{M} \cdot</span>
@@ -744,8 +744,8 @@
     <span class="k">if</span> <span class="n">ring</span><span class="o">.</span><span class="n">refcount</span><span class="p">(</span><span class="n">refpts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">all_points</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">all_points</span> <span class="o">=</span> <span class="n">lattice_pass</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">orbit</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;K&#39;</span><span class="p">),</span> <span class="n">refpts</span><span class="o">=</span><span class="n">refpts</span><span class="p">,</span>
-                                  <span class="n">keep_lattice</span><span class="o">=</span><span class="n">keep_lattice</span><span class="p">)</span>
+        <span class="n">all_points</span> <span class="o">=</span> <span class="n">internal_lpass</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">orbit</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;K&#39;</span><span class="p">),</span> <span class="n">refpts</span><span class="o">=</span><span class="n">refpts</span><span class="p">,</span>
+                                    <span class="n">keep_lattice</span><span class="o">=</span><span class="n">keep_lattice</span><span class="p">)</span>
         <span class="n">all_points</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">all_points</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
     <span class="k">return</span> <span class="n">orbit</span><span class="p">,</span> <span class="n">all_points</span></div>
 

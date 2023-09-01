@@ -360,8 +360,8 @@
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="at.tracking.html">at.tracking</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.atpass.html">at.tracking.atpass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.tracking.deprecated.html">at.tracking.deprecated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.particles.html">at.tracking.particles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="at.tracking.patpass.html">at.tracking.patpass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.track.html">at.tracking.track</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.utils.html">at.tracking.utils</a></li>
 </ul>
@@ -409,7 +409,7 @@ and pyat parallel tracking (patpass)</p>
 </table>
 <dl class="py function">
 <dt class="sig sig-object py" id="at.physics.frequency_maps.fmap_parallel_track">
-<span class="sig-name descname"><span class="pre">fmap_parallel_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[-10,</span> <span class="pre">10,</span> <span class="pre">-10,</span> <span class="pre">10]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[100,</span> <span class="pre">100]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">turns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">512</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncpu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orbit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_offset6D</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([0.,</span> <span class="pre">0.,</span> <span class="pre">0.,</span> <span class="pre">0.,</span> <span class="pre">0.,</span> <span class="pre">0.])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lossmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/frequency_maps.html#fmap_parallel_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.frequency_maps.fmap_parallel_track" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">fmap_parallel_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ring</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[-10,</span> <span class="pre">10,</span> <span class="pre">-10,</span> <span class="pre">10]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[100,</span> <span class="pre">100]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">turns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">512</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orbit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_offset6D</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([0.,</span> <span class="pre">0.,</span> <span class="pre">0.,</span> <span class="pre">0.,</span> <span class="pre">0.,</span> <span class="pre">0.])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lossmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/physics/frequency_maps.html#fmap_parallel_track"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.physics.frequency_maps.fmap_parallel_track" title="Permalink to this definition">#</a></dt>
 <dd><p>Computes frequency maps</p>
 <p>This function calculates the norm of the transverse tune variation per turn
 for a particle tracked along a ring with a set of offsets in the initial
@@ -427,8 +427,7 @@ values above or below are set to the closer limit.</p>
 <p><code class="docutils literal notranslate"><span class="pre">coords=[xmin,</span> <span class="pre">xmax,</span> <span class="pre">ymin,</span> <span class="pre">*ymax]</span></code></p>
 <p>in millimeters, where the window is divided in n steps=[xsteps,ysteps].
 For each yoffset, particle tracking over the whole set of xoffsets is done
-in parallel, therefore, a number of cpus (<em>ncpu</em>) above the number of
-<em>xsteps</em> will not reduce the calculation time.</p>
+in parallel.</p>
 <p>The frequency analysis uses a library that is not parallelized.</p>
 <p>The closed orbit is calculated and added to the
 initial particle offset of every particle. Otherwise, one could set
@@ -436,7 +435,7 @@ initial particle offset of every particle. Otherwise, one could set
 Additionally, a numpy array (<em>add_offset6D</em>) with 6 values could be used to
 arbitrarily offset the initial coordinates of every particle.</p>
 <p>A dictionary with particle losses is saved for every vertical offset.
-See the <a class="reference internal" href="at.tracking.patpass.html#at.tracking.patpass.patpass" title="at.tracking.patpass.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a> documentation.</p>
+See the <a class="reference internal" href="at.tracking.deprecated.html#at.tracking.deprecated.patpass" title="at.tracking.deprecated.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a> documentation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -445,8 +444,6 @@ See the <a class="reference internal" href="at.tracking.patpass.html#at.tracking
 <li><p><strong>steps</strong> – (xsteps, ysteps): number of steps in each plane</p></li>
 <li><p><strong>scale</strong> – default ‘linear’; or ‘non-linear’</p></li>
 <li><p><strong>turns</strong> – default 512</p></li>
-<li><p><strong>ncpu</strong> – default 30; max. number of processors
-in parallel tracking <a class="reference internal" href="at.tracking.patpass.html#at.tracking.patpass.patpass" title="at.tracking.patpass.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a></p></li>
 <li><p><strong>orbit</strong> – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a>, the closed orbit is computed and added to
 the coordinates</p></li>
 <li><p><strong>add_offset6D</strong> – default numpy.zeros((6,1))</p></li>
@@ -454,14 +451,20 @@ the coordinates</p></li>
 <li><p><strong>lossmap</strong> – default false</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
+</dl>
+<dl class="simple">
+<dt>Optional:</dt><dd><p>pool_size:number of processes. See <a class="reference internal" href="at.tracking.deprecated.html#at.tracking.deprecated.patpass" title="at.tracking.deprecated.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a></p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
 <li><p><strong>xy_nuxy_lognudiff_array</strong> – numpy array with columns
 <cite>[xcoor, ycoor, nux, ny, dnux, dnuy,
 log10(sqrt(sum(dnu**2)/turns)) ]</cite></p></li>
 <li><p><strong>loss_map_array</strong> – experimental format.
 if <em>loss_map</em> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, it returns the losses dictionary
-provided by <a class="reference internal" href="at.tracking.patpass.html#at.tracking.patpass.patpass" title="at.tracking.patpass.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a> per every vertical offset.
+provided by <a class="reference internal" href="at.tracking.deprecated.html#at.tracking.deprecated.patpass" title="at.tracking.deprecated.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a> per every vertical offset.
 if <em>loss_map</em> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, it returns a one-element list.</p></li>
 </ul>
 </dd>

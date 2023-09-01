@@ -304,6 +304,7 @@
 <span class="kn">from</span> <span class="nn">at</span> <span class="kn">import</span> <span class="n">integrators</span>
 <span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">AtWarning</span>
 <span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">CLASS_MAP</span><span class="p">,</span> <span class="n">elements</span> <span class="k">as</span> <span class="n">elt</span>
+<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">idtable_element</span>
 <span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">Particle</span><span class="p">,</span> <span class="n">Element</span>
 <span class="c1"># imports necessary in&#39; globals()&#39; for &#39;eval&#39;</span>
 <span class="c1"># noinspection PyUnresolvedReferences</span>
@@ -348,7 +349,9 @@
               <span class="s1">&#39;bpm&#39;</span><span class="p">:</span> <span class="n">elt</span><span class="o">.</span><span class="n">Monitor</span><span class="p">,</span>
               <span class="s1">&#39;ap&#39;</span><span class="p">:</span> <span class="n">elt</span><span class="o">.</span><span class="n">Aperture</span><span class="p">,</span>
               <span class="s1">&#39;ringparam&#39;</span><span class="p">:</span> <span class="n">RingParam</span><span class="p">,</span>
-              <span class="s1">&#39;wig&#39;</span><span class="p">:</span> <span class="n">elt</span><span class="o">.</span><span class="n">Wiggler</span><span class="p">}</span>
+              <span class="s1">&#39;wig&#39;</span><span class="p">:</span> <span class="n">elt</span><span class="o">.</span><span class="n">Wiggler</span><span class="p">,</span>
+              <span class="s1">&#39;insertiondevicekickmap&#39;</span><span class="p">:</span> <span class="n">idtable_element</span><span class="o">.</span><span class="n">InsertionDeviceKickMap</span>
+              <span class="p">}</span>
 
 
 <span class="c1"># Matlab to Python class translation</span>
@@ -366,6 +369,7 @@
              <span class="s1">&#39;ThinMPolePass&#39;</span><span class="p">:</span> <span class="n">elt</span><span class="o">.</span><span class="n">ThinMultipole</span><span class="p">,</span>
              <span class="s1">&#39;Matrix66Pass&#39;</span><span class="p">:</span> <span class="n">elt</span><span class="o">.</span><span class="n">M66</span><span class="p">,</span>
              <span class="s1">&#39;AperturePass&#39;</span><span class="p">:</span> <span class="n">elt</span><span class="o">.</span><span class="n">Aperture</span><span class="p">,</span>
+             <span class="s1">&#39;IdTablePass&#39;</span><span class="p">:</span> <span class="n">idtable_element</span><span class="o">.</span><span class="n">InsertionDeviceKickMap</span><span class="p">,</span>
              <span class="s1">&#39;GWigSymplecticPass&#39;</span><span class="p">:</span> <span class="n">elt</span><span class="o">.</span><span class="n">Wiggler</span><span class="p">}</span>
 
 <span class="c1"># Matlab to Python attribute translation</span>
@@ -373,7 +377,10 @@
                      <span class="s1">&#39;FamName&#39;</span><span class="p">:</span> <span class="s1">&#39;name&#39;</span><span class="p">}</span>
 
 <span class="c1"># Python to Matlab class translation</span>
-<span class="n">_matclass_map</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Dipole&#39;</span><span class="p">:</span> <span class="s1">&#39;Bend&#39;</span><span class="p">}</span>
+<span class="n">_matclass_map</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;Dipole&#39;</span><span class="p">:</span> <span class="s1">&#39;Bend&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;InsertionDeviceKickMap&#39;</span><span class="p">:</span> <span class="s1">&#39;InsertionDeviceKickMap&#39;</span>
+        <span class="p">}</span>
 
 <span class="c1"># Python to Matlab type translation</span>
 <span class="n">_mattype_map</span> <span class="o">=</span> <span class="p">{</span><span class="nb">int</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
@@ -383,7 +390,9 @@
 <span class="n">_class_to_matfunc</span> <span class="o">=</span> <span class="p">{</span>
     <span class="n">elt</span><span class="o">.</span><span class="n">Dipole</span><span class="p">:</span> <span class="s1">&#39;atsbend&#39;</span><span class="p">,</span>
     <span class="n">elt</span><span class="o">.</span><span class="n">Bend</span><span class="p">:</span> <span class="s1">&#39;atsbend&#39;</span><span class="p">,</span>
-    <span class="n">elt</span><span class="o">.</span><span class="n">M66</span><span class="p">:</span> <span class="s1">&#39;atM66&#39;</span><span class="p">}</span>
+    <span class="n">elt</span><span class="o">.</span><span class="n">M66</span><span class="p">:</span> <span class="s1">&#39;atM66&#39;</span><span class="p">,</span>
+    <span class="n">idtable_element</span><span class="o">.</span><span class="n">InsertionDeviceKickMap</span><span class="p">:</span> <span class="s1">&#39;atinsertiondevicekickmap&#39;</span>
+    <span class="p">}</span>
 
 
 <div class="viewcode-block" id="hasattrs"><a class="viewcode-back" href="../../../p/api/at.load.utils.html#at.load.utils.hasattrs">[docs]</a><span class="k">def</span> <span class="nf">hasattrs</span><span class="p">(</span><span class="n">kwargs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="o">*</span><span class="n">attributes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
@@ -431,8 +440,9 @@
         <span class="k">return</span> <span class="n">_CLASS_MAP</span><span class="p">[</span><span class="n">class_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
     <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">quiet</span> <span class="ow">and</span> <span class="n">class_name</span><span class="p">:</span>
-            <span class="n">warn</span><span class="p">(</span><span class="n">AtWarning</span><span class="p">(</span><span class="s2">&quot;Class &#39;</span><span class="si">{0}</span><span class="s2">&#39; does not exist.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                           <span class="s2">&quot;</span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">class_name</span><span class="p">,</span> <span class="n">elem_dict</span><span class="p">)))</span>
+            <span class="n">class_doesnotexist_warning</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;Class &#39;</span><span class="si">{0}</span><span class="s2">&#39; does not exist.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                                          <span class="s2">&quot;</span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">class_name</span><span class="p">,</span> <span class="n">elem_dict</span><span class="p">))</span>
+            <span class="n">warn</span><span class="p">(</span><span class="n">AtWarning</span><span class="p">(</span><span class="n">class_doesnotexist_warning</span><span class="p">))</span>
         <span class="n">fam_name</span> <span class="o">=</span> <span class="n">elem_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;FamName&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">_CLASS_MAP</span><span class="p">[</span><span class="n">fam_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>

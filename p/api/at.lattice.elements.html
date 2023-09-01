@@ -360,8 +360,8 @@
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="at.tracking.html">at.tracking</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.atpass.html">at.tracking.atpass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.tracking.deprecated.html">at.tracking.deprecated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.particles.html">at.tracking.particles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="at.tracking.patpass.html">at.tracking.patpass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.track.html">at.tracking.track</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.utils.html">at.tracking.utils</a></li>
 </ul>
@@ -442,41 +442,47 @@ responsibility to ensure that the appropriate attributes are present.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Element</span></code></a>(family_name, **kwargs)</p></td>
 <td><p>Base class for AT elements</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.LongElement" title="at.lattice.elements.LongElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LongElement</span></code></a>(family_name, length, *args, **kwargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.EnergyLoss" title="at.lattice.elements.EnergyLoss"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EnergyLoss</span></code></a>(family_name, energy_loss, **kwargs)</p></td>
+<td><p>Energy loss element</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.LongElement" title="at.lattice.elements.LongElement"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LongElement</span></code></a>(family_name, length, *args, **kwargs)</p></td>
 <td><p>Base class for long elements</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.LongtMotion" title="at.lattice.elements.LongtMotion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LongtMotion</span></code></a>()</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.LongtMotion" title="at.lattice.elements.LongtMotion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LongtMotion</span></code></a>()</p></td>
 <td><p>Abstract Base class for all Element classes whose instances may modify the particle momentum</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.M66" title="at.lattice.elements.M66"><code class="xref py py-obj docutils literal notranslate"><span class="pre">M66</span></code></a>(family_name[, m66])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.M66" title="at.lattice.elements.M66"><code class="xref py py-obj docutils literal notranslate"><span class="pre">M66</span></code></a>(family_name[, m66])</p></td>
 <td><p>Linear (6, 6) transfer matrix</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.Marker" title="at.lattice.elements.Marker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Marker</span></code></a>(family_name, **kwargs)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.Marker" title="at.lattice.elements.Marker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Marker</span></code></a>(family_name, **kwargs)</p></td>
 <td><p>Marker element</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.Monitor" title="at.lattice.elements.Monitor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Monitor</span></code></a>(family_name, **kwargs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.Monitor" title="at.lattice.elements.Monitor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Monitor</span></code></a>(family_name, **kwargs)</p></td>
 <td><p>Monitor element</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.Multipole" title="at.lattice.elements.Multipole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Multipole</span></code></a>(family_name, length, poly_a, ...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.Multipole" title="at.lattice.elements.Multipole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Multipole</span></code></a>(family_name, length, poly_a, ...)</p></td>
 <td><p>Multipole element</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.Octupole" title="at.lattice.elements.Octupole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Octupole</span></code></a>(family_name, length, poly_a, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.Octupole" title="at.lattice.elements.Octupole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Octupole</span></code></a>(family_name, length, poly_a, ...)</p></td>
 <td><p>Octupole element, with no changes from multipole at present</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.Quadrupole" title="at.lattice.elements.Quadrupole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Quadrupole</span></code></a>(FamName, Length[, Strength])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.Quadrupole" title="at.lattice.elements.Quadrupole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Quadrupole</span></code></a>(FamName, Length[, Strength])</p></td>
 <td><p>Quadrupole element</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.QuantumDiffusion" title="at.lattice.elements.QuantumDiffusion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QuantumDiffusion</span></code></a>(family_name, lmatp, **kwargs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.QuantumDiffusion" title="at.lattice.elements.QuantumDiffusion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">QuantumDiffusion</span></code></a>(family_name, lmatp, **kwargs)</p></td>
 <td><p>Quantum diffusion element</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.RFCavity" title="at.lattice.elements.RFCavity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RFCavity</span></code></a>(family_name, length, voltage, ...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.RFCavity" title="at.lattice.elements.RFCavity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RFCavity</span></code></a>(family_name, length, voltage, ...)</p></td>
 <td><p>RF cavity element</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.Radiative" title="at.lattice.elements.Radiative"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Radiative</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.Radiative" title="at.lattice.elements.Radiative"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Radiative</span></code></a>()</p></td>
 <td><p>Mixin class for default radiating elements (<a class="reference internal" href="#at.lattice.elements.Dipole" title="at.lattice.elements.Dipole"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dipole</span></code></a>, <a class="reference internal" href="#at.lattice.elements.Quadrupole" title="at.lattice.elements.Quadrupole"><code class="xref py py-class docutils literal notranslate"><span class="pre">Quadrupole</span></code></a>, <a class="reference internal" href="#at.lattice.elements.Wiggler" title="at.lattice.elements.Wiggler"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wiggler</span></code></a>)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.Sextupole" title="at.lattice.elements.Sextupole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sextupole</span></code></a>(family_name, length[, h])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.Sextupole" title="at.lattice.elements.Sextupole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sextupole</span></code></a>(family_name, length[, h])</p></td>
 <td><p>Sextupole element</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.SimpleQuantDiff" title="at.lattice.elements.SimpleQuantDiff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SimpleQuantDiff</span></code></a>(family_name[, beta_x, ...])</p></td>
+<td><p>Linear tracking element for a simplified quantum diffusion, radiation damping and energy loss</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.ThinMultipole" title="at.lattice.elements.ThinMultipole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ThinMultipole</span></code></a>(family_name, poly_a, poly_b, ...)</p></td>
 <td><p>Thin multipole element</p></td>
@@ -542,8 +548,8 @@ responsibility to ensure that the appropriate attributes are present.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Collective</span></span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Collective"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Collective" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_DictLongtMotion</span></code></p>
 <p>Mixin class for elements representing collective effects</p>
-<p>Derived classes will automatically set the <a class="reference internal" href="#at.lattice.elements.Element.is_collective" title="at.lattice.elements.Element.is_collective"><code class="xref py py-attr docutils literal notranslate"><span class="pre">is_collective</span></code></a>
-property when the element is active.</p>
+<p>Derived classes will automatically set the
+<a class="reference internal" href="#at.lattice.elements.Element.is_collective" title="at.lattice.elements.Element.is_collective"><code class="xref py py-attr docutils literal notranslate"><span class="pre">is_collective</span></code></a> property when the element is active.</p>
 <p>The class must have a <code class="docutils literal notranslate"><span class="pre">default_pass</span></code> class attribute, a dictionary such
 that:</p>
 <ul class="simple">
@@ -599,6 +605,10 @@ handled</p>
 <li><p><strong>KickAngle</strong> – Correction deviation angles (H, V)</p></li>
 </ul>
 </dd>
+<dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>FieldScaling</strong> – Scaling factor applied to the magnetic field
+(<em>KickAngle</em>)</p>
+</dd>
 </dl>
 <p>Default PassMethod: <code class="docutils literal notranslate"><span class="pre">CorrectorPass</span></code></p>
 </dd></dl>
@@ -613,7 +623,7 @@ handled</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p></li>
 <li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Element length [m]</p></li>
-<li><p><strong>bending_angle</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – Bending angle [rd]</p></li>
+<li><p><strong>bending_angle</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – Bending angle [rd]</p></li>
 <li><p><strong>poly_a</strong> – Array of normal multipole components</p></li>
 <li><p><strong>poly_b</strong> – Array of skew multipole components</p></li>
 <li><p><strong>k=0</strong> – Field index</p></li>
@@ -628,21 +638,22 @@ handled</p>
 <li><p><strong>MaxOrder</strong> – Number of desired multipoles</p></li>
 <li><p><strong>NumIntSt=10</strong> – Number of integration steps</p></li>
 <li><p><strong>FullGap</strong> – Magnet full gap</p></li>
-<li><p><strong>FringeInt1</strong> – Fringe field extension</p></li>
-<li><p><strong>FringeInt2</strong> – </p></li>
+<li><p><strong>FringeInt1</strong> – Extension of the entrance fringe field</p></li>
+<li><p><strong>FringeInt2</strong> – Extension of the exit fringe field</p></li>
 <li><p><strong>FringeBendEntrance</strong> – <p>1: legacy version Brown First Order (default)</p>
 <p>2: SOLEIL close to second order of Brown</p>
 <p>3: THOMX</p>
 </p></li>
-<li><p><strong>FringeBendExit</strong> – See <code class="docutils literal notranslate"><span class="pre">FringeBendEntrance</span></code></p></li>
+<li><p><strong>FringeBendExit</strong> – See <em>FringeBendEntrance</em></p></li>
 <li><p><strong>FringeQuadEntrance</strong> – <p>0: no fringe field effect (default)</p>
 <p>1: Lee-Whiting’s thin lens limit formula</p>
 <p>2: elegant-like</p>
 </p></li>
-<li><p><strong>FringeQuadExit</strong> – See <code class="docutils literal notranslate"><span class="pre">FringeQuadEntrance</span></code></p></li>
+<li><p><strong>FringeQuadExit</strong> – See <em>FringeQuadEntrance</em></p></li>
 <li><p><strong>fringeIntM0</strong> – Integrals for FringeQuad method 2</p></li>
 <li><p><strong>fringeIntP0</strong> – </p></li>
 <li><p><strong>KickAngle</strong> – Correction deviation angles (H, V)</p></li>
+<li><p><strong>FieldScaling</strong> – Scaling factor applied to the magnetic field</p></li>
 </ul>
 </dd>
 </dl>
@@ -698,7 +709,7 @@ handled</p>
 <dd><p>insert elements inside a drift</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>insert_list</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Iterable" title="(in Python v3.11)"><em>Iterable</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.11)"><em>Tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em><em>]</em><em>]</em>) – <p>iterable, each item of insert_list is itself an
+<dd class="field-odd"><p><strong>insert_list</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable" title="(in Python v3.11)"><em>Iterable</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.11)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>at.lattice.elements.Element</em></a><em>]</em><em>]</em><em>]</em>) – <p>iterable, each item of insert_list is itself an
 iterable with 2 objects:</p>
 <ol class="arabic simple">
 <li><p>the location where the center of the element
@@ -820,6 +831,48 @@ __eq__ method when comparing lattices.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="at.lattice.elements.Element.track">
+<span class="sig-name descname"><span class="pre">track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_place</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#at.lattice.elements.Element.track" title="Permalink to this definition">#</a></dt>
+<dd><p><code class="xref py py-func docutils literal notranslate"><span class="pre">element_track()</span></code> tracks particles through one element of a
+calling the element-specific tracking function specified in the
+Element’s <em>PassMethod</em> field</p>
+<dl>
+<dt>Usage:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">element_track</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">r_in</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">element</span><span class="o">.</span><span class="n">track</span><span class="p">(</span><span class="n">r_in</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>element</strong> (<a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a>) – element to track through</p></li>
+<li><p><strong>r_in</strong> – (6, N) array: input coordinates of N particles.
+For the best efficiency, <em>r_in</em>
+should be given as F_CONTIGUOUS numpy array.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>in_place</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – If True <em>r_in</em> is modified in-place and
+reports the coordinates at the end of the element.
+(default: False)</p></li>
+<li><p><strong>omp_num_threads</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of OpenMP threads
+(default: automatic)</p></li>
+<li><p><strong>particle</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="at.lattice.particle_object.html#at.lattice.particle_object.Particle" title="at.lattice.particle_object.Particle"><em>Particle</em></a><em>]</em>) – circulating particle.
+Default: <code class="code docutils literal notranslate"><span class="pre">lattice.particle</span></code> if existing,
+otherwise <code class="code docutils literal notranslate"><span class="pre">Particle('relativistic')</span></code></p></li>
+<li><p><strong>energy</strong> (<em>Optiona</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – lattice energy. Default 0.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>r_out</strong> – (6, N, R, T) array containing output coordinates of N particles
+at R reference points for T turns</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="at.lattice.elements.Element.update">
 <span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#Element.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.Element.update" title="Permalink to this definition">#</a></dt>
 <dt class="sig sig-object py">
@@ -840,6 +893,26 @@ __eq__ method when comparing lattices.</p>
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">longt_motion</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><span class="pre">bool</span></a></em><a class="headerlink" href="#at.lattice.elements.Element.longt_motion" title="Permalink to this definition">#</a></dt>
 <dd><p><a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> if longitudinal motion is affected by the element</p>
 </dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="at.lattice.elements.EnergyLoss">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">EnergyLoss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">energy_loss</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#EnergyLoss"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.EnergyLoss" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_DictLongtMotion</span></code>, <a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
+<p>Energy loss element</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p></li>
+<li><p><strong>energy_loss</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Energy loss [eV]</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="at.lattice.elements.EnergyLoss.default_pass">
+<span class="sig-name descname"><span class="pre">default_pass</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{False:</span> <span class="pre">'IdentityPass',</span> <span class="pre">True:</span> <span class="pre">'EnergyLossRadPass'}</span></em><a class="headerlink" href="#at.lattice.elements.EnergyLoss.default_pass" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -993,10 +1066,12 @@ otherwise modifies the element in-place</p></li>
 </dd>
 <dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>MaxOrder</strong> – Number of desired multipoles. Default: highest index of
-non-zero polynomial coefficients</p></li>
+<li><p><strong>MaxOrder</strong> – Number of desired multipoles. Default: highest
+index of non-zero polynomial coefficients</p></li>
 <li><p><strong>NumIntSteps</strong> – Number of integration steps (default: 10)</p></li>
 <li><p><strong>KickAngle</strong> – Correction deviation angles (H, V)</p></li>
+<li><p><strong>FieldScaling</strong> – Scaling factor applied to the magnetic field
+(<em>PolynomA</em> and <em>PolynomB</em>)</p></li>
 </ul>
 </dd>
 </dl>
@@ -1012,7 +1087,7 @@ non-zero polynomial coefficients</p></li>
 <dl class="py property">
 <dt class="sig sig-object py" id="at.lattice.elements.Multipole.H">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">H</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><span class="pre">float</span></a></em><a class="headerlink" href="#at.lattice.elements.Multipole.H" title="Permalink to this definition">#</a></dt>
-<dd><p>Sextupolar strength</p>
+<dd><p>Sextupolar strength [mˆ-3]</p>
 </dd></dl>
 
 <dl class="py property">
@@ -1039,10 +1114,12 @@ non-zero polynomial coefficients</p></li>
 </dd>
 <dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>MaxOrder</strong> – Number of desired multipoles. Default: highest index of
-non-zero polynomial coefficients</p></li>
+<li><p><strong>MaxOrder</strong> – Number of desired multipoles. Default: highest
+index of non-zero polynomial coefficients</p></li>
 <li><p><strong>NumIntSteps</strong> – Number of integration steps (default: 10)</p></li>
 <li><p><strong>KickAngle</strong> – Correction deviation angles (H, V)</p></li>
+<li><p><strong>FieldScaling</strong> – Scaling factor applied to the magnetic field
+(<em>PolynomA</em> and <em>PolynomB</em>)</p></li>
 </ul>
 </dd>
 </dl>
@@ -1064,7 +1141,7 @@ non-zero polynomial coefficients</p></li>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p></li>
 <li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Element length [m]</p></li>
-<li><p><strong>k</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – strength [mˆ-2]</p></li>
+<li><p><strong>k</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – strength [mˆ-2]</p></li>
 </ul>
 </dd>
 <dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
@@ -1081,6 +1158,8 @@ non-zero polynomial coefficients</p></li>
 <li><p><strong>fringeIntM0</strong> – Integrals for FringeQuad method 2</p></li>
 <li><p><strong>fringeIntP0</strong> – </p></li>
 <li><p><strong>KickAngle</strong> – Correction deviation angles (H, V)</p></li>
+<li><p><strong>FieldScaling</strong> – Scaling factor applied to the magnetic field
+(<em>PolynomA</em> and <em>PolynomB</em>)</p></li>
 </ul>
 </dd>
 </dl>
@@ -1109,7 +1188,7 @@ non-zero polynomial coefficients</p></li>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p></li>
-<li><p><strong>lmatp</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.25)"><em>ndarray</em></a>) – Diffusion matrix for generation (see
+<li><p><strong>lmatp</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.25)"><em>numpy.ndarray</em></a>) – Diffusion matrix for generation (see
 <a class="reference internal" href="at.physics.radiation.html#at.physics.radiation.gen_quantdiff_elem" title="at.physics.radiation.gen_quantdiff_elem"><code class="xref py py-func docutils literal notranslate"><span class="pre">gen_quantdiff_elem()</span></code></a>)</p></li>
 </ul>
 </dd>
@@ -1221,7 +1300,7 @@ suffix.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p></li>
 <li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Element length [m]</p></li>
-<li><p><strong>h</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – strength [mˆ-3]</p></li>
+<li><p><strong>h</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – strength [mˆ-3]</p></li>
 </ul>
 </dd>
 <dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
@@ -1231,6 +1310,8 @@ suffix.</p>
 <li><p><strong>MaxOrder</strong> – Number of desired multipoles</p></li>
 <li><p><strong>NumIntSteps=10</strong> – Number of integration steps</p></li>
 <li><p><strong>KickAngle</strong> – Correction deviation angles (H, V)</p></li>
+<li><p><strong>FieldScaling</strong> – Scaling factor applied to the magnetic field
+(<em>PolynomA</em> and <em>PolynomB</em>)</p></li>
 </ul>
 </dd>
 </dl>
@@ -1238,6 +1319,37 @@ suffix.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="at.lattice.elements.Sextupole.DefaultOrder">
 <span class="sig-name descname"><span class="pre">DefaultOrder</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#at.lattice.elements.Sextupole.DefaultOrder" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="at.lattice.elements.SimpleQuantDiff">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SimpleQuantDiff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emit_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emit_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_dp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">U0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#SimpleQuantDiff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.SimpleQuantDiff" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_DictLongtMotion</span></code>, <a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
+<p>Linear tracking element for a simplified quantum diffusion,
+radiation damping and energy loss</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Optional Args:</dt><dd><p>beta_x:         Horizontal beta function at element [m]
+beta_y:         Vertical beta function at element [m]
+emit_x:         Horizontal equilibrium emittance [m.rad]
+emit_y:         Vertical equilibrium emittance [m.rad]
+sigma_dp:       Equilibrium energy spread
+tau_x:          Horizontal damping time [turns]
+tau_y:          Vertical damping time [turns]
+tau_z:          Longitudinal damping time [turns]
+U0:             Energy Loss [eV]</p>
+</dd>
+</dl>
+<p>Default PassMethod: <code class="docutils literal notranslate"><span class="pre">SimpleQuantDiffPass</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="at.lattice.elements.SimpleQuantDiff.default_pass">
+<span class="sig-name descname"><span class="pre">default_pass</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{False:</span> <span class="pre">'IdentityPass',</span> <span class="pre">True:</span> <span class="pre">'SimpleQuantDiffPass'}</span></em><a class="headerlink" href="#at.lattice.elements.SimpleQuantDiff.default_pass" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1256,8 +1368,12 @@ suffix.</p>
 </ul>
 </dd>
 <dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>MaxOrder</strong> – Number of desired multipoles. Default: highest index of
-non-zero polynomial coefficients</p>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>MaxOrder</strong> – Number of desired multipoles. Default: highest
+index of non-zero polynomial coefficients</p></li>
+<li><p><strong>FieldScaling</strong> – Scaling factor applied to the magnetic field
+(<em>PolynomA</em> and <em>PolynomB</em>)</p></li>
+</ul>
 </dd>
 </dl>
 <p>Default PassMethod: <code class="docutils literal notranslate"><span class="pre">ThinMPolePass</span></code></p>
@@ -1276,8 +1392,8 @@ non-zero polynomial coefficients</p>
 <li><p><strong>wiggle_period</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – length must be a multiple of this</p></li>
 <li><p><strong>b_max</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – peak wiggler field [Tesla]</p></li>
 <li><p><strong>energy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – beam energy [eV]</p></li>
-<li><p><strong>Nstep</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em>) – number of integration steps.</p></li>
-<li><p><strong>Nmeth</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em>) – symplectic integration order: 2 or 4</p></li>
+<li><p><strong>Nstep</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em>) – number of integration steps.</p></li>
+<li><p><strong>Nmeth</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a><em>]</em>) – symplectic integration order: 2 or 4</p></li>
 <li><p><strong>Bx</strong> – harmonics for horizontal wiggler: (6, nHharm)
 array-like object</p></li>
 <li><p><strong>By</strong> – harmonics for vertical wiggler (6, nHharm)
@@ -1581,6 +1697,15 @@ array-like object</p></li>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.Element.track">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Element.track()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#at.lattice.elements.Element.update">
      <code class="docutils literal notranslate">
       <span class="pre">
@@ -1603,6 +1728,26 @@ array-like object</p></li>
      <code class="docutils literal notranslate">
       <span class="pre">
        Element.longt_motion
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.EnergyLoss">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     EnergyLoss
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.EnergyLoss.default_pass">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       EnergyLoss.default_pass
       </span>
      </code>
     </a>
@@ -1871,6 +2016,26 @@ array-like object</p></li>
      <code class="docutils literal notranslate">
       <span class="pre">
        Sextupole.DefaultOrder
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.lattice.elements.SimpleQuantDiff">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     SimpleQuantDiff
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#at.lattice.elements.SimpleQuantDiff.default_pass">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       SimpleQuantDiff.default_pass
       </span>
      </code>
     </a>

@@ -360,8 +360,8 @@
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="at.tracking.html">at.tracking</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.atpass.html">at.tracking.atpass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.tracking.deprecated.html">at.tracking.deprecated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.particles.html">at.tracking.particles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="at.tracking.patpass.html">at.tracking.patpass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.track.html">at.tracking.track</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.utils.html">at.tracking.utils</a></li>
 </ul>
@@ -400,14 +400,14 @@
 <p class="rubric">Classes</p>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.idtable_element.InsertionDeviceKickMap" title="at.lattice.idtable_element.InsertionDeviceKickMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InsertionDeviceKickMap</span></code></a>(family_name, Nslice, ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.idtable_element.InsertionDeviceKickMap" title="at.lattice.idtable_element.InsertionDeviceKickMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InsertionDeviceKickMap</span></code></a>(family_name, *args, ...)</p></td>
 <td><p>Insertion Device Element.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="at.lattice.idtable_element.InsertionDeviceKickMap">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">InsertionDeviceKickMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nslice</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Filename_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Energy</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/idtable_element.html#InsertionDeviceKickMap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.idtable_element.InsertionDeviceKickMap" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">InsertionDeviceKickMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/idtable_element.html#InsertionDeviceKickMap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.idtable_element.InsertionDeviceKickMap" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
 <p>Insertion Device Element. Valid for a parallel electron beam.</p>
 <blockquote>
@@ -420,25 +420,47 @@ BP 220, F-38043 Grenoble, France</p>
 </div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p>
+</dd>
+</dl>
+<p>All keywords will be set as attributes of the element</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="at.lattice.idtable_element.InsertionDeviceKickMap.from_text_file">
+<span class="sig-name descname"><span class="pre">from_text_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Nslice</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Filename_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Energy</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/idtable_element.html#InsertionDeviceKickMap.from_text_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.idtable_element.InsertionDeviceKickMap.from_text_file" title="Permalink to this definition">#</a></dt>
+<dd><blockquote>
+<div><dl class="simple">
+<dt>from_text_file(</dt><dd><p>family_name: str,
+Nslice: int,
+Filename_in: str,
+Energy: float,
+)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>This function creates an Insertion Device Kick Map
+from a Radia field map file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – family name</p></li>
-<li><p><strong>Nslice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – number of slices in … tracking??? integrator ???</p></li>
-<li><p><strong>Filename_in</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – input filename</p></li>
-<li><p><strong>Energy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – particle energy in GeV</p></li>
+<li><p><strong>family_name</strong> – family name</p></li>
+<li><p><strong>Nslice</strong> – number of slices in integrator</p></li>
+<li><p><strong>Filename_in</strong> – input filename</p></li>
+<li><p><strong>Energy</strong> – particle energy in GeV</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>KickMap element</strong></p></li>
+<li><p><strong>Default PassMethod</strong> – <code class="docutils literal notranslate"><span class="pre">IdTablePass</span></code></p></li>
 </ul>
 </dd>
 </dl>
-<p>Default PassMethod: <code class="docutils literal notranslate"><span class="pre">IdTablePass</span></code></p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="at.lattice.idtable_element.InsertionDeviceKickMap.get_PassMethod">
 <span class="sig-name descname"><span class="pre">get_PassMethod</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/idtable_element.html#InsertionDeviceKickMap.get_PassMethod"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.idtable_element.InsertionDeviceKickMap.get_PassMethod" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="at.lattice.idtable_element.InsertionDeviceKickMap.readRadiaFieldMap">
-<span class="sig-name descname"><span class="pre">readRadiaFieldMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_in_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/idtable_element.html#InsertionDeviceKickMap.readRadiaFieldMap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.idtable_element.InsertionDeviceKickMap.readRadiaFieldMap" title="Permalink to this definition">#</a></dt>
-<dd><p>Read a RadiaField map and return</p>
-</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="at.lattice.idtable_element.InsertionDeviceKickMap.set_DriftPass">
@@ -448,11 +470,6 @@ BP 220, F-38043 Grenoble, France</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="at.lattice.idtable_element.InsertionDeviceKickMap.set_IdTablePass">
 <span class="sig-name descname"><span class="pre">set_IdTablePass</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/idtable_element.html#InsertionDeviceKickMap.set_IdTablePass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.idtable_element.InsertionDeviceKickMap.set_IdTablePass" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="at.lattice.idtable_element.InsertionDeviceKickMap.sorted_table">
-<span class="sig-name descname"><span class="pre">sorted_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sorted_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order_axis</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/idtable_element.html#InsertionDeviceKickMap.sorted_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.idtable_element.InsertionDeviceKickMap.sorted_table" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -507,19 +524,19 @@ BP 220, F-38043 Grenoble, France</p>
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#at.lattice.idtable_element.InsertionDeviceKickMap.get_PassMethod">
+    <a class="reference internal nav-link" href="#at.lattice.idtable_element.InsertionDeviceKickMap.from_text_file">
      <code class="docutils literal notranslate">
       <span class="pre">
-       InsertionDeviceKickMap.get_PassMethod()
+       InsertionDeviceKickMap.from_text_file()
       </span>
      </code>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#at.lattice.idtable_element.InsertionDeviceKickMap.readRadiaFieldMap">
+    <a class="reference internal nav-link" href="#at.lattice.idtable_element.InsertionDeviceKickMap.get_PassMethod">
      <code class="docutils literal notranslate">
       <span class="pre">
-       InsertionDeviceKickMap.readRadiaFieldMap()
+       InsertionDeviceKickMap.get_PassMethod()
       </span>
      </code>
     </a>
@@ -538,15 +555,6 @@ BP 220, F-38043 Grenoble, France</p>
      <code class="docutils literal notranslate">
       <span class="pre">
        InsertionDeviceKickMap.set_IdTablePass()
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#at.lattice.idtable_element.InsertionDeviceKickMap.sorted_table">
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       InsertionDeviceKickMap.sorted_table()
       </span>
      </code>
     </a>

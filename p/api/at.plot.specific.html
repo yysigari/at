@@ -360,8 +360,8 @@
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="at.tracking.html">at.tracking</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.atpass.html">at.tracking.atpass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.tracking.deprecated.html">at.tracking.deprecated</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.particles.html">at.tracking.particles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="at.tracking.patpass.html">at.tracking.patpass</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.track.html">at.tracking.track</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.tracking.utils.html">at.tracking.utils</a></li>
 </ul>
@@ -473,6 +473,8 @@ for plotting as (primary_axes, secondary_axes).
 Default: create new axes</p></li>
 <li><p><strong>slices</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of slices. Default: 400</p></li>
 <li><p><strong>legend</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Show a legend on the plot</p></li>
+<li><p><strong>labels</strong> (<em>Refpts</em>) – display the name of selected elements.
+Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></li>
 <li><p><strong>block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, block until the figure is closed.
 Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p></li>
 <li><p><strong>dipole</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – Dictionary of properties overloading the default
@@ -507,7 +509,7 @@ All sequences must have the same length.</p>
 </p></li>
 <li><p><strong>Examples</strong> – <p><code class="code docutils literal notranslate"><span class="pre">('beta',</span> <span class="pre">[0,</span> <span class="pre">1])</span></code>:         beta_x, beta_z</p>
 <p><code class="code docutils literal notranslate"><span class="pre">('dispersion',</span> <span class="pre">0)</span></code>:        eta_x</p>
-<p><code class="code docutils literal notranslate"><span class="pre">('closed_orbit'),</span> <span class="pre">[1,</span> <span class="pre">3])</span></code>:    x’, z’</p>
+<p><code class="code docutils literal notranslate"><span class="pre">('closed_orbit',</span> <span class="pre">[1,</span> <span class="pre">3])</span></code>:    x’, z’</p>
 <p><code class="code docutils literal notranslate"><span class="pre">('m44',</span> <span class="pre">2,</span> <span class="pre">2)</span></code>:            T33</p>
 <p><code class="code docutils literal notranslate"><span class="pre">('m44',</span> <span class="pre">[0,</span> <span class="pre">0],</span> <span class="pre">[0,</span> <span class="pre">1])</span></code>:  T11, T12</p>
 <p><code class="code docutils literal notranslate"><span class="pre">('m44',</span> <span class="pre">2,</span> <span class="pre">slice(4))</span></code>:     T31, T32, T33, T34 as a single block</p>
@@ -544,6 +546,8 @@ for plotting as (primary_axes, secondary_axes).
 Default: create new axes</p></li>
 <li><p><strong>slices</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of slices. Default: 400</p></li>
 <li><p><strong>legend</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Show a legend on the plot</p></li>
+<li><p><strong>labels</strong> (<em>Refpts</em>) – display the name of selected elements.
+Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a></p></li>
 <li><p><strong>block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, block until the figure is closed.
 Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a></p></li>
 <li><p><strong>dipole</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.11)"><em>dict</em></a>) – Dictionary of properties overloading the default
