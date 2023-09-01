@@ -4,12 +4,12 @@ from math import pi
 from typing import Optional, Tuple
 import numpy
 from scipy.optimize import least_squares
-from at.lattice import Lattice, Dipole, Wiggler, RFCavity, Refpts
+from at.lattice import Lattice, Dipole, Wiggler, RFCavity, Refpts, EnergyLoss
 from at.lattice import check_radiation, AtError, AtWarning
 from at.lattice import QuantumDiffusion, Collective
 from at.lattice import get_bool_index, set_value_refpts
 from at.constants import clight, Cgamma
-from at.tracking import lattice_pass
+from at.tracking import internal_lpass
 
 __all__ = ['get_energy_loss', 'set_cavity_phase', 'ELossMethod',
            'get_timelag_fromU0']
@@ -55,13 +55,19 @@ def get_energy_loss(ring: Lattice,
         def dipole_i2(dipole: Dipole):
             return dipole.BendingAngle ** 2 / dipole.Length
 
+        def eloss_i2(eloss: EnergyLoss):
+            return eloss.EnergyLoss / coef
+
         i2 = 0.0
+        coef = Cgamma / 2.0 / pi * ring.energy ** 4
         for el in ring:
             if isinstance(el, Dipole):
                 i2 += dipole_i2(el)
             elif isinstance(el, Wiggler) and el.PassMethod != 'DriftPass':
                 i2 += wiggler_i2(el)
-        e_loss = Cgamma / 2.0 / pi * ring.energy ** 4 * i2
+            elif isinstance(el, EnergyLoss) and el.PassMethod != 'IdentityPass':
+                i2 += eloss_i2(el)
+        e_loss = coef * i2
         return e_loss
 
     # noinspection PyShadowingNames
@@ -71,12 +77,12 @@ def get_energy_loss(ring: Lattice,
         """
         ringtmp = ring.disable_6d(RFCavity, QuantumDiffusion, Collective,
                                   copy=True)
-        o6 = numpy.squeeze(lattice_pass(ringtmp, numpy.zeros(6),
-                           refpts=len(ringtmp)))
+        o6 = numpy.squeeze(internal_lpass(ringtmp, numpy.zeros(6),
+                                          refpts=len(ringtmp)))
         if numpy.isnan(o6[0]):
             dp = 0
             for e in ringtmp:
-                ot = numpy.squeeze(lattice_pass([e], numpy.zeros(6)))
+                ot = numpy.squeeze(internal_lpass([e], numpy.zeros(6)))
                 dp += -ot[4] * ring.energy
             return dp
         else:

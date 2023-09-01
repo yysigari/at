@@ -1,8 +1,11 @@
 import at
 import numpy
 from numpy.testing import assert_allclose as assert_close
+from numpy.testing import assert_equal
 import pytest
-from at import AtWarning, physics, lattice_pass
+from at import AtWarning, physics
+from at import lattice_track
+from at import lattice_pass, internal_lpass
 
 
 DP = 1e-5
@@ -46,11 +49,12 @@ def test_find_orbit4_finds_zeros_if_dp_zero(dba_lattice):
     assert_close(orbit4, expected, atol=1e-7)
 
 
-def test_find_orbit4_result_unchanged_by_atpass(dba_lattice):
+@pytest.mark.parametrize('func', (lattice_track, lattice_pass, internal_lpass))
+def test_find_orbit4_result_unchanged_by_atpass(dba_lattice, func):
     orbit, _ = physics.find_orbit4(dba_lattice, DP)
     orbit_copy = numpy.copy(orbit)
     orbit[4] = DP
-    lattice_pass(dba_lattice, orbit, 1)
+    func(dba_lattice, orbit, 1)
     assert_close(orbit[:4], orbit_copy[:4], atol=1e-12)
 
 
@@ -316,7 +320,14 @@ def test_quantdiff(hmba_lattice):
                    0.00000000e+00, 3.71123417e-14, 5.61789810e-17]],
                  rtol=1e-5, atol=1e-20)
 
-
+def test_simple_ring():
+    ring = physics.simple_ring(6e9, 844, 992, 0.1, 0.2, 6e6, 8.5e-5)
+    assert_equal(len(ring), 4)
+    assert_equal(ring[-1].PassMethod, 'SimpleQuantDiffPass')
+    ring.disable_6d()
+    assert_equal(ring[-1].PassMethod, 'IdentityPass')
+    assert_close(ring.get_tune(), [0.1,0.2], atol=1e-10)
+    
 @pytest.mark.parametrize('refpts', ([121], [0, 40, 121]))
 def test_ohmi_envelope(hmba_lattice, refpts):
     hmba_lattice = hmba_lattice.radiation_on(quadrupole_pass=None, copy=True)
