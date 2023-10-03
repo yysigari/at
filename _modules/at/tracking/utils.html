@@ -300,16 +300,21 @@
 <span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Iterable</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
 <span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">Element</span>
-<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">elements</span><span class="p">,</span> <span class="n">refpts_iterator</span>
-<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">DConstant</span>
+<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">BeamMoments</span><span class="p">,</span> <span class="n">Collective</span><span class="p">,</span> <span class="n">QuantumDiffusion</span>
+<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">SimpleQuantDiff</span><span class="p">,</span> <span class="n">VariableMultipole</span>
+<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">elements</span><span class="p">,</span> <span class="n">refpts_iterator</span><span class="p">,</span> <span class="n">set_value_refpts</span>
+<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">DConstant</span><span class="p">,</span> <span class="n">checktype</span><span class="p">,</span> <span class="n">get_bool_index</span>
 
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;fortran_align&#39;</span><span class="p">,</span> <span class="s1">&#39;get_bunches&#39;</span><span class="p">,</span> <span class="s1">&#39;format_results&#39;</span><span class="p">,</span>
            <span class="s1">&#39;get_bunches_std_mean&#39;</span><span class="p">,</span> <span class="s1">&#39;unfold_beam&#39;</span><span class="p">,</span> <span class="s1">&#39;has_collective&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;initialize_lpass&#39;</span><span class="p">]</span>
+           <span class="s1">&#39;initialize_lpass&#39;</span><span class="p">,</span> <span class="s1">&#39;disable_varelem&#39;</span><span class="p">,</span> <span class="s1">&#39;variable_refs&#39;</span><span class="p">]</span>
 
 
 <span class="n">DIMENSION_ERROR</span> <span class="o">=</span> <span class="s1">&#39;Input to lattice_pass() must be a 6xN array.&#39;</span>
+<span class="n">_COLLECTIVE_ELEMS</span> <span class="o">=</span> <span class="p">(</span><span class="n">BeamMoments</span><span class="p">,</span> <span class="n">Collective</span><span class="p">)</span>
+<span class="n">_VAR_ELEMS</span> <span class="o">=</span> <span class="p">(</span><span class="n">QuantumDiffusion</span><span class="p">,</span> <span class="n">SimpleQuantDiff</span><span class="p">,</span> <span class="n">VariableMultipole</span><span class="p">)</span>
+<span class="n">_DISABLE_ELEMS</span> <span class="o">=</span> <span class="n">_COLLECTIVE_ELEMS</span> <span class="o">+</span> <span class="n">_VAR_ELEMS</span>
 
 
 <span class="k">def</span> <span class="nf">_set_beam_monitors</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">nbunch</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">nturns</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
@@ -318,6 +323,25 @@
     <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">monitors</span><span class="p">:</span>
         <span class="n">m</span><span class="o">.</span><span class="n">set_buffers</span><span class="p">(</span><span class="n">nturns</span><span class="p">,</span> <span class="n">nbunch</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">monitors</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+
+
+<div class="viewcode-block" id="variable_refs"><a class="viewcode-back" href="../../../p/api/at.tracking.utils.html#at.tracking.utils.variable_refs">[docs]</a><span class="k">def</span> <span class="nf">variable_refs</span><span class="p">(</span><span class="n">ring</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">get_bool_index</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">checktype</span><span class="p">(</span><span class="n">_DISABLE_ELEMS</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="has_collective"><a class="viewcode-back" href="../../../p/api/at.tracking.utils.html#at.tracking.utils.has_collective">[docs]</a><span class="k">def</span> <span class="nf">has_collective</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;True if any element involves collective effects&quot;&quot;&quot;</span>
+    <span class="n">refs</span> <span class="o">=</span> <span class="n">get_bool_index</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">checktype</span><span class="p">(</span><span class="n">_COLLECTIVE_ELEMS</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">refs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span></div>
+
+
+<div class="viewcode-block" id="disable_varelem"><a class="viewcode-back" href="../../../p/api/at.tracking.utils.html#at.tracking.utils.disable_varelem">[docs]</a><span class="k">def</span> <span class="nf">disable_varelem</span><span class="p">(</span><span class="n">ring</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to disable collective effects elements&quot;&quot;&quot;</span>
+    <span class="n">refs</span> <span class="o">=</span> <span class="n">variable_refs</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">refs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">ring</span> <span class="o">=</span> <span class="n">set_value_refpts</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refs</span><span class="p">,</span> <span class="s1">&#39;PassMethod&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;IdentityPass&#39;</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ring</span>  </div>
 
 
 <span class="k">def</span> <span class="nf">_get_bunch_config</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">unfoldbeam</span><span class="p">):</span>
@@ -331,12 +355,12 @@
     <span class="k">return</span> <span class="n">nbunch</span><span class="p">,</span> <span class="n">bunch_spos</span><span class="p">,</span> <span class="n">bunch_currents</span>
 
 
-<div class="viewcode-block" id="initialize_lpass"><a class="viewcode-back" href="../../../p/api/at.tracking.utils.html#at.tracking.utils.initialize_lpass">[docs]</a><span class="k">def</span> <span class="nf">initialize_lpass</span><span class="p">(</span><span class="n">lattice</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Element</span><span class="p">]:</span>
+<div class="viewcode-block" id="initialize_lpass"><a class="viewcode-back" href="../../../p/api/at.tracking.utils.html#at.tracking.utils.initialize_lpass">[docs]</a><span class="k">def</span> <span class="nf">initialize_lpass</span><span class="p">(</span><span class="n">lattice</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">nturns</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                     <span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Element</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to initialize keyword arguments for lattice tracking&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
         <span class="n">lattice</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">lattice</span><span class="p">)</span>
-    <span class="n">unfoldbeam</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;unfold_beam&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-    <span class="n">nturns</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;nturns&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">unfoldbeam</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;unfold_beam&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
     <span class="n">nbunch</span><span class="p">,</span> <span class="n">bspos</span><span class="p">,</span> <span class="n">bcurrents</span> <span class="o">=</span> <span class="n">_get_bunch_config</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">unfoldbeam</span><span class="p">)</span>
     <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">bunch_currents</span><span class="o">=</span><span class="n">bcurrents</span><span class="p">,</span> <span class="n">bunch_spos</span><span class="o">=</span><span class="n">bspos</span><span class="p">)</span>
     <span class="n">no_bm</span> <span class="o">=</span> <span class="n">_set_beam_monitors</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">nbunch</span><span class="p">,</span> <span class="n">nturns</span><span class="p">)</span>
@@ -347,14 +371,6 @@
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;pool_size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pool_size</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;start_method&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">start_method</span>
     <span class="k">return</span> <span class="n">lattice</span></div>
-
-
-<div class="viewcode-block" id="has_collective"><a class="viewcode-back" href="../../../p/api/at.tracking.utils.html#at.tracking.utils.has_collective">[docs]</a><span class="k">def</span> <span class="nf">has_collective</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;True if any element involves collective effects&quot;&quot;&quot;</span>
-    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">ring</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">elem</span><span class="o">.</span><span class="n">is_collective</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">True</span>
-    <span class="k">return</span> <span class="kc">False</span></div>
 
 
 <div class="viewcode-block" id="fortran_align"><a class="viewcode-back" href="../../../p/api/at.tracking.utils.html#at.tracking.utils.fortran_align">[docs]</a><span class="k">def</span> <span class="nf">fortran_align</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>

@@ -768,8 +768,8 @@
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">family_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;PassMethod&#39;</span><span class="p">,</span> <span class="s1">&#39;BeamMomentsPass&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_stds</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_means</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stds</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_means</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">BeamMoments</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">family_name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <div class="viewcode-block" id="BeamMoments.set_buffers"><a class="viewcode-back" href="../../../p/api/at.lattice.elements.html#at.lattice.elements.BeamMoments.set_buffers">[docs]</a>    <span class="k">def</span> <span class="nf">set_buffers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nturns</span><span class="p">,</span> <span class="n">nbunch</span><span class="p">):</span>
@@ -1284,58 +1284,58 @@
     <span class="n">_BUILD_ATTRIBUTES</span> <span class="o">=</span> <span class="n">Element</span><span class="o">.</span><span class="n">_BUILD_ATTRIBUTES</span>
     <span class="n">default_pass</span> <span class="o">=</span> <span class="p">{</span><span class="kc">False</span><span class="p">:</span> <span class="s1">&#39;IdentityPass&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">:</span> <span class="s1">&#39;SimpleQuantDiffPass&#39;</span><span class="p">}</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">family_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">beta_x</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-                 <span class="n">beta_y</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">emit_x</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-                 <span class="n">emit_y</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">sigma_dp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-                 <span class="n">tau_x</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">tau_y</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-                 <span class="n">tau_z</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">U0</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">family_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">betax</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+                 <span class="n">betay</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">emitx</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+                 <span class="n">emity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">espread</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+                 <span class="n">taux</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">tauy</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+                 <span class="n">tauz</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">U0</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            family_name:    Name of the element</span>
 <span class="sd">            </span>
 <span class="sd">        Optional Args:</span>
-<span class="sd">            beta_x:         Horizontal beta function at element [m]</span>
-<span class="sd">            beta_y:         Vertical beta function at element [m]</span>
-<span class="sd">            emit_x:         Horizontal equilibrium emittance [m.rad]</span>
-<span class="sd">            emit_y:         Vertical equilibrium emittance [m.rad]</span>
-<span class="sd">            sigma_dp:       Equilibrium energy spread</span>
-<span class="sd">            tau_x:          Horizontal damping time [turns]</span>
-<span class="sd">            tau_y:          Vertical damping time [turns]</span>
-<span class="sd">            tau_z:          Longitudinal damping time [turns]</span>
+<span class="sd">            betax:         Horizontal beta function at element [m]</span>
+<span class="sd">            betay:         Vertical beta function at element [m]</span>
+<span class="sd">            emitx:         Horizontal equilibrium emittance [m.rad]</span>
+<span class="sd">            emity:         Vertical equilibrium emittance [m.rad]</span>
+<span class="sd">            espread:       Equilibrium energy spread</span>
+<span class="sd">            taux:          Horizontal damping time [turns]</span>
+<span class="sd">            tauy:          Vertical damping time [turns]</span>
+<span class="sd">            tauz:          Longitudinal damping time [turns]</span>
 <span class="sd">            U0:             Energy Loss [eV]</span>
 <span class="sd">            </span>
 <span class="sd">        Default PassMethod: ``SimpleQuantDiffPass``</span>
 <span class="sd">       &quot;&quot;&quot;</span>
         <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;PassMethod&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_pass</span><span class="p">[</span><span class="kc">True</span><span class="p">])</span>
        
-        <span class="k">assert</span> <span class="n">tau_x</span><span class="o">&gt;=</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;tau_x must be greater than or equal to 0&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tau_x</span> <span class="o">=</span> <span class="n">tau_x</span>
+        <span class="k">assert</span> <span class="n">taux</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;taux must be greater than or equal to 0&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">taux</span> <span class="o">=</span> <span class="n">taux</span>
             
-        <span class="k">assert</span> <span class="n">tau_y</span><span class="o">&gt;=</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;tau_y must be greater than or equal to 0&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tau_y</span> <span class="o">=</span> <span class="n">tau_y</span>
+        <span class="k">assert</span> <span class="n">tauy</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;tauy must be greater than or equal to 0&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tauy</span> <span class="o">=</span> <span class="n">tauy</span>
 
-        <span class="k">assert</span> <span class="n">tau_z</span><span class="o">&gt;=</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;tau_z must be greater than or equal to 0&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tau_z</span> <span class="o">=</span> <span class="n">tau_z</span>
+        <span class="k">assert</span> <span class="n">tauz</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;tauz must be greater than or equal to 0&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tauz</span> <span class="o">=</span> <span class="n">tauz</span>
 
-        <span class="k">assert</span> <span class="n">emit_x</span><span class="o">&gt;=</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;emit_x must be greater than or equal to 0&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">emit_x</span> <span class="o">=</span> <span class="n">emit_x</span>
-        <span class="k">if</span> <span class="n">emit_x</span><span class="o">&gt;</span><span class="mf">0.0</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="n">tau_x</span><span class="o">&gt;</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;if emit_x is given, tau_x must be non zero&#39;</span>
+        <span class="k">assert</span> <span class="n">emitx</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;emitx must be greater than or equal to 0&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">emitx</span> <span class="o">=</span> <span class="n">emitx</span>
+        <span class="k">if</span> <span class="n">emitx</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">taux</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;if emitx is given, taux must be non zero&#39;</span>
             
-        <span class="k">assert</span> <span class="n">emit_y</span><span class="o">&gt;=</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;emit_x must be greater than or equal to 0&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">emit_y</span> <span class="o">=</span> <span class="n">emit_y</span>
-        <span class="k">if</span> <span class="n">emit_y</span><span class="o">&gt;</span><span class="mf">0.0</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="n">tau_y</span><span class="o">&gt;</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;if emit_y is given, tau_y must be non zero&#39;</span>
+        <span class="k">assert</span> <span class="n">emity</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;emity must be greater than or equal to 0&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">emity</span> <span class="o">=</span> <span class="n">emity</span>
+        <span class="k">if</span> <span class="n">emity</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">tauy</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;if emity is given, tauy must be non zero&#39;</span>
             
-        <span class="k">assert</span> <span class="n">sigma_dp</span><span class="o">&gt;=</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;sigma_dp must be greater than or equal to 0&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sigma_dp</span> <span class="o">=</span> <span class="n">sigma_dp</span>
-        <span class="k">if</span> <span class="n">sigma_dp</span><span class="o">&gt;</span><span class="mf">0.0</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="n">tau_z</span><span class="o">&gt;</span><span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;if sigma_dp is given, tau_z must be non zero&#39;</span>
+        <span class="k">assert</span> <span class="n">espread</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;espread must be greater than or equal to 0&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">espread</span> <span class="o">=</span> <span class="n">espread</span>
+        <span class="k">if</span> <span class="n">espread</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">tauz</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;if espread is given, tauz must be non zero&#39;</span>
             
         <span class="bp">self</span><span class="o">.</span><span class="n">U0</span> <span class="o">=</span> <span class="n">U0</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">beta_x</span> <span class="o">=</span> <span class="n">beta_x</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">beta_y</span> <span class="o">=</span> <span class="n">beta_y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">betax</span> <span class="o">=</span> <span class="n">betax</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">betay</span> <span class="o">=</span> <span class="n">betay</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">SimpleQuantDiff</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">family_name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 

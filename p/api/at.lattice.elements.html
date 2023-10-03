@@ -481,7 +481,7 @@ responsibility to ensure that the appropriate attributes are present.</p>
 <tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.Sextupole" title="at.lattice.elements.Sextupole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Sextupole</span></code></a>(family_name, length[, h])</p></td>
 <td><p>Sextupole element</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.SimpleQuantDiff" title="at.lattice.elements.SimpleQuantDiff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SimpleQuantDiff</span></code></a>(family_name[, beta_x, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.lattice.elements.SimpleQuantDiff" title="at.lattice.elements.SimpleQuantDiff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SimpleQuantDiff</span></code></a>(family_name[, betax, betay, ...])</p></td>
 <td><p>Linear tracking element for a simplified quantum diffusion, radiation damping and energy loss</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#at.lattice.elements.ThinMultipole" title="at.lattice.elements.ThinMultipole"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ThinMultipole</span></code></a>(family_name, poly_a, poly_b, ...)</p></td>
@@ -1188,7 +1188,7 @@ index of non-zero polynomial coefficients</p></li>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>family_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – Name of the element</p></li>
-<li><p><strong>lmatp</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.25)"><em>numpy.ndarray</em></a>) – Diffusion matrix for generation (see
+<li><p><strong>lmatp</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.26)"><em>numpy.ndarray</em></a>) – Diffusion matrix for generation (see
 <a class="reference internal" href="at.physics.radiation.html#at.physics.radiation.gen_quantdiff_elem" title="at.physics.radiation.gen_quantdiff_elem"><code class="xref py py-func docutils literal notranslate"><span class="pre">gen_quantdiff_elem()</span></code></a>)</p></li>
 </ul>
 </dd>
@@ -1325,7 +1325,7 @@ suffix.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="at.lattice.elements.SimpleQuantDiff">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SimpleQuantDiff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emit_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emit_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_dp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau_z</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">U0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#SimpleQuantDiff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.SimpleQuantDiff" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SimpleQuantDiff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">family_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">betax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">betay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emitx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">espread</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">taux</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tauy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tauz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">U0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/lattice/elements.html#SimpleQuantDiff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.lattice.elements.SimpleQuantDiff" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_DictLongtMotion</span></code>, <a class="reference internal" href="#at.lattice.elements.Element" title="at.lattice.elements.Element"><code class="xref py py-class docutils literal notranslate"><span class="pre">Element</span></code></a></p>
 <p>Linear tracking element for a simplified quantum diffusion,
 radiation damping and energy loss</p>
@@ -1335,14 +1335,14 @@ radiation damping and energy loss</p>
 </dd>
 </dl>
 <dl class="simple">
-<dt>Optional Args:</dt><dd><p>beta_x:         Horizontal beta function at element [m]
-beta_y:         Vertical beta function at element [m]
-emit_x:         Horizontal equilibrium emittance [m.rad]
-emit_y:         Vertical equilibrium emittance [m.rad]
-sigma_dp:       Equilibrium energy spread
-tau_x:          Horizontal damping time [turns]
-tau_y:          Vertical damping time [turns]
-tau_z:          Longitudinal damping time [turns]
+<dt>Optional Args:</dt><dd><p>betax:         Horizontal beta function at element [m]
+betay:         Vertical beta function at element [m]
+emitx:         Horizontal equilibrium emittance [m.rad]
+emity:         Vertical equilibrium emittance [m.rad]
+espread:       Equilibrium energy spread
+taux:          Horizontal damping time [turns]
+tauy:          Vertical damping time [turns]
+tauz:          Longitudinal damping time [turns]
 U0:             Energy Loss [eV]</p>
 </dd>
 </dl>

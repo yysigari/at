@@ -448,9 +448,9 @@
 <span class="sd">         the true voltage in each bucket and distributes the particles in the</span>
 <span class="sd">         bunches defined by :code:`ring.fillpattern` using a 6D orbit search.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">lattice</span> <span class="o">=</span> <span class="n">initialize_lpass</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">lattice</span> <span class="o">=</span> <span class="n">initialize_lpass</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">nturns</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">internal_lpass</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">r_in</span><span class="p">,</span> <span class="n">nturns</span><span class="o">=</span><span class="n">nturns</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="n">refpts</span><span class="p">,</span>
-                          <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+                          <span class="n">no_varelem</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="element_pass"><a class="viewcode-back" href="../../../p/api/at.tracking.deprecated.html#at.tracking.deprecated.element_pass">[docs]</a><span class="nd">@fortran_align</span>
@@ -569,7 +569,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;pool_size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pool_size</span>
     <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;start_method&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">start_method</span>
-    <span class="n">lattice</span> <span class="o">=</span> <span class="n">initialize_lpass</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">lattice</span> <span class="o">=</span> <span class="n">initialize_lpass</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">nturns</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">internal_plpass</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">r_in</span><span class="p">,</span> <span class="n">nturns</span><span class="o">=</span><span class="n">nturns</span><span class="p">,</span>
                            <span class="n">refpts</span><span class="o">=</span><span class="n">refpts</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 

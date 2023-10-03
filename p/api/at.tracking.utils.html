@@ -419,11 +419,23 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#at.tracking.utils.has_collective" title="at.tracking.utils.has_collective"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_collective</span></code></a>(ring)</p></td>
 <td><p>True if any element involves collective effects</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.tracking.utils.initialize_lpass" title="at.tracking.utils.initialize_lpass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initialize_lpass</span></code></a>(lattice, kwargs)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.tracking.utils.initialize_lpass" title="at.tracking.utils.initialize_lpass"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initialize_lpass</span></code></a>(lattice, nturns, kwargs)</p></td>
 <td><p>Function to initialize keyword arguments for lattice tracking</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.tracking.utils.disable_varelem" title="at.tracking.utils.disable_varelem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disable_varelem</span></code></a>(ring)</p></td>
+<td><p>Function to disable collective effects elements</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.tracking.utils.variable_refs" title="at.tracking.utils.variable_refs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variable_refs</span></code></a>(ring)</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
+<dl class="py function">
+<dt class="sig sig-object py" id="at.tracking.utils.disable_varelem">
+<span class="sig-name descname"><span class="pre">disable_varelem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ring</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/tracking/utils.html#disable_varelem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.tracking.utils.disable_varelem" title="Permalink to this definition">#</a></dt>
+<dd><p>Function to disable collective effects elements</p>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="at.tracking.utils.format_results">
 <span class="sig-name descname"><span class="pre">format_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">losses</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/tracking/utils.html#format_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.tracking.utils.format_results" title="Permalink to this definition">#</a></dt>
@@ -452,9 +464,9 @@ the decorated function is Fortran-aligned before calling the function</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>r_in</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.25)"><em>ndarray</em></a>) – 6 x n_particles Fortran-ordered numpy array.</p></li>
+<li><p><strong>r_in</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.26)"><em>ndarray</em></a>) – 6 x n_particles Fortran-ordered numpy array.</p></li>
 <li><p><strong>nbunch</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – integer, total number of bunches</p></li>
-<li><p><strong>selected_bunches</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.25)"><em>ndarray</em></a><em>]</em>) – integer or array of integers, index</p></li>
+<li><p><strong>selected_bunches</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.26)"><em>ndarray</em></a><em>]</em>) – integer or array of integers, index</p></li>
 <li><p><strong>bunches</strong> (<em>of the selected</em>) – </p></li>
 </ul>
 </dd>
@@ -475,9 +487,9 @@ of mass</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>r_in</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.25)"><em>ndarray</em></a>) – 6 x n_particles Fortran-ordered numpy array.</p></li>
+<li><p><strong>r_in</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.26)"><em>ndarray</em></a>) – 6 x n_particles Fortran-ordered numpy array.</p></li>
 <li><p><strong>nbunch</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – integer, total number of bunches</p></li>
-<li><p><strong>selected_bunches</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.25)"><em>ndarray</em></a><em>]</em>) – integer or array of integers, index</p></li>
+<li><p><strong>selected_bunches</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.11)"><em>Optional</em></a><em>[</em><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.26)"><em>ndarray</em></a><em>]</em>) – integer or array of integers, index</p></li>
 <li><p><strong>bunches</strong> (<em>of the selected</em>) – </p></li>
 </ul>
 </dd>
@@ -500,7 +512,7 @@ of mass</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="at.tracking.utils.initialize_lpass">
-<span class="sig-name descname"><span class="pre">initialize_lpass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lattice</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/tracking/utils.html#initialize_lpass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.tracking.utils.initialize_lpass" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">initialize_lpass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lattice</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nturns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/tracking/utils.html#initialize_lpass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.tracking.utils.initialize_lpass" title="Permalink to this definition">#</a></dt>
 <dd><p>Function to initialize keyword arguments for lattice tracking</p>
 <dl class="field-list simple">
 </dl>
@@ -520,7 +532,7 @@ particles.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ring</strong> (<a class="reference internal" href="at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice" title="at.lattice.lattice_object.Lattice"><em>Lattice</em></a>) – Lattice description</p></li>
-<li><p><strong>beam</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.25)"><em>ndarray</em></a>) – array with shape(6, nparticles)</p></li>
+<li><p><strong>beam</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.26)"><em>ndarray</em></a>) – array with shape(6, nparticles)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
@@ -536,10 +548,15 @@ Default: <a class="reference internal" href="at.lattice.options.html#at.lattice.
 <dd class="field-odd"><p><em>beam (numpy.ndarray)</em> – unfolded beam</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.25)"><em>ndarray</em></a></p>
+<dd class="field-even"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.26)"><em>ndarray</em></a></p>
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="at.tracking.utils.variable_refs">
+<span class="sig-name descname"><span class="pre">variable_refs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ring</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/tracking/utils.html#variable_refs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.tracking.utils.variable_refs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
 
 </section>
 
@@ -581,6 +598,15 @@ Default: <a class="reference internal" href="at.lattice.options.html#at.lattice.
 </div>
 <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.tracking.utils.disable_varelem">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     disable_varelem()
+    </span>
+   </code>
+  </a>
+ </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#at.tracking.utils.format_results">
    <code class="docutils literal notranslate">
@@ -640,6 +666,15 @@ Default: <a class="reference internal" href="at.lattice.options.html#at.lattice.
    <code class="docutils literal notranslate">
     <span class="pre">
      unfold_beam()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#at.tracking.utils.variable_refs">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     variable_refs()
     </span>
    </code>
   </a>

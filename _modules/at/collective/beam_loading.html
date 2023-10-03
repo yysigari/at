@@ -405,8 +405,6 @@
                         <span class="n">_beta</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">_wakefact</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">_nslice</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span>
                         <span class="n">ZCuts</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">_array</span><span class="p">(</span><span class="n">v</span><span class="p">),</span>
                         <span class="n">_nturns</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">_phis</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span>
-                        <span class="n">_turnhistory</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">_array</span><span class="p">(</span><span class="n">v</span><span class="p">),</span>
-                        <span class="n">_vbunch</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">_array</span><span class="p">(</span><span class="n">v</span><span class="p">),</span>
                         <span class="n">_vbeam_phasor</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">_array</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,)),</span>
                         <span class="n">_vbeam</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">_array</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,)),</span>
                         <span class="n">_vcav</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">_array</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,)),</span>
@@ -498,6 +496,32 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_vgen</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">vgen</span><span class="p">,</span> <span class="n">psi</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_vbeam</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="o">*</span><span class="n">current</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">Rshunt</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">psi</span><span class="p">),</span>
                                    <span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="o">-</span><span class="n">psi</span><span class="p">])</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">Nslice</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Number of slices per bunch&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nslice</span>
+
+    <span class="nd">@Nslice</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">Nslice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nslice</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nslice</span> <span class="o">=</span> <span class="n">nslice</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clear_history</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">Nturns</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Number of turn for the wake field&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nturns</span>
+
+    <span class="nd">@Nturns</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">Nturns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nturns</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nturns</span> <span class="o">=</span> <span class="n">nturns</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clear_history</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">TurnHistory</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Turn history of the slices center of mass&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_turnhistory</span>
+
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ResFrequency</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
