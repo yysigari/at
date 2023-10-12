@@ -457,22 +457,25 @@
 <span class="sd">          **refpts**        array of index where particle coordinate are saved</span>
 <span class="sd">                            (only for lattice tracking)</span>
 <span class="sd">          **nturns**        number of turn</span>
+<span class="sd">          ==============    ===================================================</span>
 
 <span class="sd">        trackdata: A dictionary containinf tracking data with the following</span>
 <span class="sd">          keys:</span>
 
 <span class="sd">          ==============    ===================================================</span>
-<span class="sd">          **loss_map**: recarray containing the loss_map (only for lattice</span>
-<span class="sd">                        tracking)</span>
+<span class="sd">          **loss_map**:     recarray containing the loss_map (only for lattice</span>
+<span class="sd">                            tracking)</span>
+<span class="sd">          ==============    ===================================================</span>
 
 
-<span class="sd">        The **loss_map** is filled only if *losses* is :py:obj:`True`,</span>
+<span class="sd">          The **loss_map** is filled only if *losses* is :py:obj:`True`,</span>
 <span class="sd">          it contains the following keys:</span>
+
 <span class="sd">          ==============    ===================================================</span>
 <span class="sd">          **islost**        (npart,) bool array indicating lost particles</span>
 <span class="sd">          **turn**          (npart,) int array indicating the turn at</span>
 <span class="sd">                            which the particle is lost</span>
-<span class="sd">          **element**       ((npart,) int array indicating the element at</span>
+<span class="sd">          **element**       (npart,) int array indicating the element at</span>
 <span class="sd">                            which the particle is lost</span>
 <span class="sd">          **coord**         (npart, 6) float array giving the coordinates at</span>
 <span class="sd">                            which the particle is lost (zero for surviving</span>

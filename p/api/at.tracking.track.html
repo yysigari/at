@@ -441,15 +441,15 @@ should be given as F_CONTIGUOUS numpy array.</p></li>
 </dd>
 <dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>in_place</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – If True <em>r_in</em> is modified in-place and
+<li><p><strong>in_place</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – If True <em>r_in</em> is modified in-place and
 reports the coordinates at the end of the element.
 (default: False)</p></li>
-<li><p><strong>omp_num_threads</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of OpenMP threads
+<li><p><strong>omp_num_threads</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Number of OpenMP threads
 (default: automatic)</p></li>
 <li><p><strong>particle</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="at.lattice.particle_object.html#at.lattice.particle_object.Particle" title="at.lattice.particle_object.Particle"><em>Particle</em></a><em>]</em>) – circulating particle.
 Default: <code class="code docutils literal notranslate"><span class="pre">lattice.particle</span></code> if existing,
 otherwise <code class="code docutils literal notranslate"><span class="pre">Particle('relativistic')</span></code></p></li>
-<li><p><strong>energy</strong> (<em>Optiona</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – lattice energy. Default 0.</p></li>
+<li><p><strong>energy</strong> (<em>Optiona</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>]</em>) – lattice energy. Default 0.</p></li>
 </ul>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -496,10 +496,10 @@ tracking function specified in the Element’s <em>PassMethod</em> field.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable" title="(in Python v3.11)"><em>Iterable</em></a><em>[</em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em>) – list of elements</p></li>
+<li><p><strong>lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable" title="(in Python v3.12)"><em>Iterable</em></a><em>[</em><a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Element" title="at.lattice.elements.Element"><em>Element</em></a><em>]</em>) – list of elements</p></li>
 <li><p><strong>r_in</strong> – (6, N) array: input coordinates of N particles.
 <em>r_in</em> is modified in-place only if <em>in_place</em> is
-<a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> and reports the coordinates at
+<a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a> and reports the coordinates at
 the end of the element. For the best efficiency, <em>r_in</em>
 should be given as F_CONTIGUOUS numpy array.</p></li>
 </ul>
@@ -509,19 +509,19 @@ should be given as F_CONTIGUOUS numpy array.</p></li>
 <li><p><strong>nturns</strong> – number of turns to be tracked</p></li>
 <li><p><strong>refpts</strong> – Selects the location of coordinates output.
 See “<a class="reference internal" href="at.lattice.utils.html#refpts"><span class="std std-ref">Selecting elements in a lattice</span></a>”</p></li>
-<li><p><strong>in_place</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – If True <em>r_in</em> is modified in-place and
+<li><p><strong>in_place</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – If True <em>r_in</em> is modified in-place and
 reports the coordinates at the end of the element.
 (default: False)</p></li>
-<li><p><strong>keep_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Use elements persisted from a previous
-call. If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, assume that the lattice has not changed
+<li><p><strong>keep_lattice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Use elements persisted from a previous
+call. If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, assume that the lattice has not changed
 since the previous call.</p></li>
-<li><p><strong>keep_counter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Keep the turn number from the previous
+<li><p><strong>keep_counter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Keep the turn number from the previous
 call.</p></li>
-<li><p><strong>turn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Starting turn number. Ignored if
-<em>keep_counter</em> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>. The turn number is necessary to
+<li><p><strong>turn</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Starting turn number. Ignored if
+<em>keep_counter</em> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>. The turn number is necessary to
 compute the absolute path length used in RFCavityPass.</p></li>
-<li><p><strong>losses</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Boolean to activate loss maps output</p></li>
-<li><p><strong>omp_num_threads</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of OpenMP threads
+<li><p><strong>losses</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Boolean to activate loss maps output</p></li>
+<li><p><strong>omp_num_threads</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Number of OpenMP threads
 (default: automatic)</p></li>
 </ul>
 </dd>
@@ -533,11 +533,11 @@ compute the absolute path length used in RFCavityPass.</p></li>
 <li><p><strong>particle</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="at.lattice.particle_object.html#at.lattice.particle_object.Particle" title="at.lattice.particle_object.Particle"><em>Particle</em></a><em>]</em>) – circulating particle.
 Default: <code class="code docutils literal notranslate"><span class="pre">lattice.particle</span></code> if existing,
 otherwise <code class="code docutils literal notranslate"><span class="pre">Particle('relativistic')</span></code></p></li>
-<li><p><strong>energy</strong> (<em>Optiona</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em>) – lattice energy. Default 0.</p></li>
-<li><p><strong>unfold_beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)"><em>bool</em></a>) – Internal beam folding activate, this
+<li><p><strong>energy</strong> (<em>Optiona</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>]</em>) – lattice energy. Default 0.</p></li>
+<li><p><strong>unfold_beam</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Internal beam folding activate, this
 assumes the input particles are in bucket 0, works only
 if all bucket see the same RF Voltage.
-Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a></p></li>
+Default: <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a></p></li>
 </ul>
 </dd>
 </dl>
@@ -549,23 +549,60 @@ Default: <a class="reference external" href="https://docs.python.org/3/library/c
 <li><p><strong>r_out</strong> – (6, N, R, T) array containing output coordinates of N particles
 at R reference points for T turns</p></li>
 <li><p><strong>trackparam</strong> – A dictionary containing tracking input parameters with the
-following keys:</p></li>
+following keys:</p>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>npart</strong></p></td>
+<td><p>number of particles</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>rout</strong></p></td>
+<td><p>final particle coordinates</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>turn</strong></p></td>
+<td><p>starting turn</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>refpts</strong></p></td>
+<td><p>array of index where particle coordinate are saved
+(only for lattice tracking)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>nturns</strong></p></td>
+<td><p>number of turn</p></td>
+</tr>
+</tbody>
+</table>
+</li>
 <li><p><strong>trackdata</strong> – A dictionary containinf tracking data with the following
-keys:</p></li>
-<li><p><strong>The **loss_map</strong> is filled only if <em>losses</em> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>,** – it contains the following keys:
-==============    ===================================================
-<strong>islost</strong>        (npart,) bool array indicating lost particles
-<strong>turn</strong>          (npart,) int array indicating the turn at</p>
-<blockquote>
-<div><p>which the particle is lost</p>
-</div></blockquote>
-<dl class="simple">
-<dt><strong>element</strong>       ((npart,) int array indicating the element at</dt><dd><p>which the particle is lost</p>
-</dd>
-<dt><strong>coord</strong>         (npart, 6) float array giving the coordinates at</dt><dd><p>which the particle is lost (zero for surviving
-particles)</p>
-</dd>
-</dl>
+keys:</p>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>loss_map</strong>:</p></td>
+<td><p>recarray containing the loss_map (only for lattice
+tracking)</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>loss_map</strong> is filled only if <em>losses</em> is <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>,
+it contains the following keys:</p>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>islost</strong></p></td>
+<td><p>(npart,) bool array indicating lost particles</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>turn</strong></p></td>
+<td><p>(npart,) int array indicating the turn at
+which the particle is lost</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>element</strong></p></td>
+<td><p>(npart,) int array indicating the element at
+which the particle is lost</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>coord</strong></p></td>
+<td><p>(npart, 6) float array giving the coordinates at
+which the particle is lost (zero for surviving
+particles)</p></td>
+</tr>
+</tbody>
+</table>
 </li>
 </ul>
 </dd>

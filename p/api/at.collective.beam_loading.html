@@ -424,7 +424,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="at.collective.beam_loading.BLMode">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BLMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/collective/beam_loading.html#BLMode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.collective.beam_loading.BLMode" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntEnum</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IntEnum</span></code></a></p>
 <p>An enumeration.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="at.collective.beam_loading.BLMode.PHASOR">
@@ -448,19 +448,19 @@ additional argument are ring, cavity, qfactor, rshunt</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ring</strong> (<a class="reference internal" href="at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice" title="at.lattice.lattice_object.Lattice"><em>Lattice</em></a>) – Lattice object</p></li>
-<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Length of the cavity</p></li>
-<li><p><strong>voltage</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Cavity voltage [V]</p></li>
-<li><p><strong>frequency</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Cavity frequency [Hz]</p></li>
-<li><p><strong>qfactor</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Q factor</p></li>
-<li><p><strong>rshunt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Shunt impedance, [<span class="math notranslate nohighlight">\(\Omega\)</span>]</p></li>
+<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – Length of the cavity</p></li>
+<li><p><strong>voltage</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – Cavity voltage [V]</p></li>
+<li><p><strong>frequency</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – Cavity frequency [Hz]</p></li>
+<li><p><strong>qfactor</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – Q factor</p></li>
+<li><p><strong>rshunt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – Shunt impedance, [<span class="math notranslate nohighlight">\(\Omega\)</span>]</p></li>
 </ul>
 </dd>
 <dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>Nslice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of slices per bunch. Default: 101</p></li>
-<li><p><strong>Nturns</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of turn for the wake field. Default: 1</p></li>
+<li><p><strong>Nslice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Number of slices per bunch. Default: 101</p></li>
+<li><p><strong>Nturns</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Number of turn for the wake field. Default: 1</p></li>
 <li><p><strong>ZCuts</strong> – Limits for fixed slicing, default is adaptive</p></li>
-<li><p><strong>NormFact</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Normalization factor</p></li>
+<li><p><strong>NormFact</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – Normalization factor</p></li>
 <li><p><strong>mode</strong> (<a class="reference internal" href="#at.collective.beam_loading.BLMode" title="at.collective.beam_loading.BLMode"><em>BLMode</em></a>) – method for beam loading calculation BLMode.PHASOR
 (default) uses the phasor method, BLMode.WAKE uses the wake
 function. For high Q resonator, the phasor method should be
@@ -480,17 +480,17 @@ taken from the cavity element</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ring</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.11)"><em>Sequence</em></a>) – Lattice object</p></li>
-<li><p><strong>qfactor</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Q factor</p></li>
-<li><p><strong>rshunt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Shunt impedance, [<span class="math notranslate nohighlight">\(\Omega\)</span>]</p></li>
+<li><p><strong>ring</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.12)"><em>Sequence</em></a>) – Lattice object</p></li>
+<li><p><strong>qfactor</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – Q factor</p></li>
+<li><p><strong>rshunt</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – Shunt impedance, [<span class="math notranslate nohighlight">\(\Omega\)</span>]</p></li>
 </ul>
 </dd>
 <dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>Nslice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of slices per bunch. Default: 101</p></li>
-<li><p><strong>Nturns</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of turn for the wake field. Default: 1</p></li>
+<li><p><strong>Nslice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Number of slices per bunch. Default: 101</p></li>
+<li><p><strong>Nturns</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Number of turn for the wake field. Default: 1</p></li>
 <li><p><strong>ZCuts</strong> – Limits for fixed slicing, default is adaptive</p></li>
-<li><p><strong>NormFact</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Normalization factor</p></li>
+<li><p><strong>NormFact</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – Normalization factor</p></li>
 <li><p><strong>mode</strong> (<a class="reference internal" href="#at.collective.beam_loading.BLMode" title="at.collective.beam_loading.BLMode"><em>BLMode</em></a>) – method for beam loading calculation BLMode.PHASOR
 (default) uses the phasor method, BLMode.WAKE uses the wake
 function. For high Q resonator, the phasor method should be
@@ -579,8 +579,8 @@ kick from both the cavity and the resonator</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ring</strong> (<a class="reference internal" href="at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice" title="at.lattice.lattice_object.Lattice"><em>Lattice</em></a>) – Lattice object</p></li>
-<li><p><strong>qfactor</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><em>Union</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.11)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em><em>]</em>) – Q factor. Scalar or array of float are accepted</p></li>
-<li><p><strong>rshunt</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.11)"><em>Union</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.11)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a><em>]</em><em>]</em>) – Shunt impedance, [<span class="math notranslate nohighlight">\(\Omega\)</span>] for longitudinal
+<li><p><strong>qfactor</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.12)"><em>Union</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.12)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>]</em><em>]</em>) – Q factor. Scalar or array of float are accepted</p></li>
+<li><p><strong>rshunt</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.12)"><em>Union</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.12)"><em>Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>]</em><em>]</em>) – Shunt impedance, [<span class="math notranslate nohighlight">\(\Omega\)</span>] for longitudinal
 Scalar or array of float are accepted</p></li>
 </ul>
 </dd>
@@ -588,10 +588,10 @@ Scalar or array of float are accepted</p></li>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>cavpts</strong> (<em>Refpts</em>) – refpts of the cavity. If None (default) apply
 to all cavity in the ring</p></li>
-<li><p><strong>Nslice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of slices per bunch. Default: 101</p></li>
-<li><p><strong>Nturns</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.11)"><em>int</em></a>) – Number of turn for the wake field. Default: 1</p></li>
+<li><p><strong>Nslice</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Number of slices per bunch. Default: 101</p></li>
+<li><p><strong>Nturns</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Number of turn for the wake field. Default: 1</p></li>
 <li><p><strong>ZCuts</strong> – Limits for fixed slicing, default is adaptive</p></li>
-<li><p><strong>NormFact</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.11)"><em>float</em></a>) – Normalization factor</p></li>
+<li><p><strong>NormFact</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – Normalization factor</p></li>
 <li><p><strong>mode</strong> (<a class="reference internal" href="#at.collective.beam_loading.BLMode" title="at.collective.beam_loading.BLMode"><em>BLMode</em></a>) – method for beam loading calculation BLMode.PHASOR
 (default) uses the phasor method, BLMode.WAKE uses the wake
 function. For high Q resonator, the phasor method should be
