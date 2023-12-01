@@ -113,6 +113,13 @@
     <ul id="navbar-main-elements" class="navbar-nav">
         
                 <li class="nav-item">
+                    <a class="nav-link" href="../../../common/indx.html">
+                        AT basics
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
                     <a class="nav-link" href="../../../p/index.html">
                         Python
                     </a>
@@ -122,13 +129,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../../../m/index.html">
                         Matlab
-                    </a>
-                </li>
-                
-
-                <li class="nav-item">
-                    <a class="nav-link" href="../../../pabout.html">
-                        About
                     </a>
                 </li>
                 
@@ -210,6 +210,13 @@
     <ul id="navbar-main-elements" class="navbar-nav">
         
                 <li class="nav-item">
+                    <a class="nav-link" href="../../../common/indx.html">
+                        AT basics
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
                     <a class="nav-link" href="../../../p/index.html">
                         Python
                     </a>
@@ -219,13 +226,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../../../m/index.html">
                         Matlab
-                    </a>
-                </li>
-                
-
-                <li class="nav-item">
-                    <a class="nav-link" href="../../../pabout.html">
-                        About
                     </a>
                 </li>
                 
@@ -498,28 +498,28 @@
             <span class="c1"># get the first turn in x</span>
             <span class="n">xfirst</span> <span class="o">=</span> <span class="n">z1</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">tns</span><span class="p">]</span>
             <span class="n">xfirst</span> <span class="o">=</span> <span class="n">xfirst</span> <span class="o">-</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">xfirst</span><span class="p">)</span>
-            <span class="n">pxfirst</span> <span class="o">=</span> <span class="n">z1</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">tns</span><span class="p">]</span>
-            <span class="n">pxfirst</span> <span class="o">=</span> <span class="n">pxfirst</span> <span class="o">-</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pxfirst</span><span class="p">)</span>
-            <span class="n">xfirstpart</span> <span class="o">=</span> <span class="n">xfirst</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">pxfirst</span>
+            <span class="c1"># pxfirst = z1[1, 0:tns]</span>
+            <span class="c1"># pxfirst = pxfirst - numpy.mean(pxfirst)</span>
+            <span class="c1"># xfirstpart = xfirst + 1j*pxfirst</span>
             <span class="c1"># get the last turns in x</span>
             <span class="n">xlast</span> <span class="o">=</span> <span class="n">z1</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">tns</span><span class="p">:</span><span class="mi">2</span><span class="o">*</span><span class="n">tns</span><span class="p">]</span>
             <span class="n">xlast</span> <span class="o">=</span> <span class="n">xlast</span> <span class="o">-</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">xlast</span><span class="p">)</span>
-            <span class="n">pxlast</span> <span class="o">=</span> <span class="n">z1</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">tns</span><span class="p">:</span><span class="mi">2</span><span class="o">*</span><span class="n">tns</span><span class="p">]</span>
-            <span class="n">pxlast</span> <span class="o">=</span> <span class="n">pxlast</span> <span class="o">-</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pxlast</span><span class="p">)</span>
-            <span class="n">xlastpart</span> <span class="o">=</span> <span class="n">xlast</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">pxlast</span>
+            <span class="c1"># pxlast = z1[1, tns:2*tns]</span>
+            <span class="c1"># pxlast = pxlast - numpy.mean(pxlast)</span>
+            <span class="c1"># xlastpart = xlast + 1j*pxlast</span>
 
             <span class="c1"># get the first turn in y</span>
             <span class="n">yfirst</span> <span class="o">=</span> <span class="n">z1</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">tns</span><span class="p">]</span>
             <span class="n">yfirst</span> <span class="o">=</span> <span class="n">yfirst</span> <span class="o">-</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">yfirst</span><span class="p">)</span>
-            <span class="n">pyfirst</span> <span class="o">=</span> <span class="n">z1</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">tns</span><span class="p">]</span>
-            <span class="n">pyfirst</span> <span class="o">=</span> <span class="n">pyfirst</span> <span class="o">-</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pyfirst</span><span class="p">)</span>
-            <span class="n">yfirstpart</span> <span class="o">=</span> <span class="n">yfirst</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">pyfirst</span>
+            <span class="c1"># pyfirst = z1[3, 0:tns]</span>
+            <span class="c1"># pyfirst = pyfirst - numpy.mean(pyfirst)</span>
+            <span class="c1"># yfirstpart = yfirst + 1j*pyfirst</span>
             <span class="c1"># get the last turns in y</span>
             <span class="n">ylast</span> <span class="o">=</span> <span class="n">z1</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="n">tns</span><span class="p">:</span><span class="mi">2</span><span class="o">*</span><span class="n">tns</span><span class="p">]</span>
             <span class="n">ylast</span> <span class="o">=</span> <span class="n">ylast</span> <span class="o">-</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ylast</span><span class="p">)</span>
-            <span class="n">pylast</span> <span class="o">=</span> <span class="n">z1</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="n">tns</span><span class="p">:</span><span class="mi">2</span><span class="o">*</span><span class="n">tns</span><span class="p">]</span>
-            <span class="n">pylast</span> <span class="o">=</span> <span class="n">pylast</span> <span class="o">-</span> <span class="n">numpy</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pylast</span><span class="p">)</span>
-            <span class="n">ylastpart</span> <span class="o">=</span> <span class="n">ylast</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">pylast</span>
+            <span class="c1"># pylast = z1[3, tns:2*tns]</span>
+            <span class="c1"># pylast = pylast - numpy.mean(pylast)</span>
+            <span class="c1"># ylastpart = ylast + 1j*pylast</span>
 
             <span class="c1"># calc frequency from array,</span>
             <span class="c1"># jump the cycle is no frequency is found</span>

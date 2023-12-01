@@ -113,6 +113,13 @@
     <ul id="navbar-main-elements" class="navbar-nav">
         
                 <li class="nav-item">
+                    <a class="nav-link" href="../../../common/indx.html">
+                        AT basics
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
                     <a class="nav-link" href="../../../p/index.html">
                         Python
                     </a>
@@ -122,13 +129,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../../../m/index.html">
                         Matlab
-                    </a>
-                </li>
-                
-
-                <li class="nav-item">
-                    <a class="nav-link" href="../../../pabout.html">
-                        About
                     </a>
                 </li>
                 
@@ -210,6 +210,13 @@
     <ul id="navbar-main-elements" class="navbar-nav">
         
                 <li class="nav-item">
+                    <a class="nav-link" href="../../../common/indx.html">
+                        AT basics
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
                     <a class="nav-link" href="../../../p/index.html">
                         Python
                     </a>
@@ -219,13 +226,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../../../m/index.html">
                         Matlab
-                    </a>
-                </li>
-                
-
-                <li class="nav-item">
-                    <a class="nav-link" href="../../../pabout.html">
-                        About
                     </a>
                 </li>
                 
@@ -338,7 +338,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_nslice</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;Nslice&#39;</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_nturns</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;Nturns&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_turnhistory</span> <span class="o">=</span> <span class="kc">None</span>    <span class="c1"># Defined here to avoid warning</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">clear_history</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clear_history</span><span class="p">(</span><span class="n">ring</span><span class="o">=</span><span class="n">ring</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">NormFact</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;NormFact&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_build</span><span class="p">(</span><span class="n">wake</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">zcuts</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -363,14 +363,13 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_build</span><span class="p">(</span><span class="n">wake</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="WakeElement.clear_history"><a class="viewcode-back" href="../../../p/api/at.collective.wake_elements.html#at.collective.wake_elements.WakeElement.clear_history">[docs]</a>    <span class="k">def</span> <span class="nf">clear_history</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ring</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">ring</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">tl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nturns</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_nslice</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">tl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nturns</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_nslice</span><span class="o">*</span><span class="n">ring</span><span class="o">.</span><span class="n">nbunch</span>
+        <span class="k">if</span> <span class="n">ring</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_nbunch</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">nbunch</span>
+        <span class="n">tl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nturns</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_nslice</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_nbunch</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_turnhistory</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">tl</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="WakeElement.set_normfactxy"><a class="viewcode-back" href="../../../p/api/at.collective.wake_elements.html#at.collective.wake_elements.WakeElement.set_normfactxy">[docs]</a>    <span class="k">def</span> <span class="nf">set_normfactxy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ring</span><span class="p">):</span>
-        <span class="n">l0</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">get_optics</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span>
+        <span class="n">l0</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ring</span><span class="o">.</span><span class="n">get_optics</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">NormFact</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">l0</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">NormFact</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">l0</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span></div>
 

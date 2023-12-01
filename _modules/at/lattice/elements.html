@@ -113,6 +113,13 @@
     <ul id="navbar-main-elements" class="navbar-nav">
         
                 <li class="nav-item">
+                    <a class="nav-link" href="../../../common/indx.html">
+                        AT basics
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
                     <a class="nav-link" href="../../../p/index.html">
                         Python
                     </a>
@@ -122,13 +129,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../../../m/index.html">
                         Matlab
-                    </a>
-                </li>
-                
-
-                <li class="nav-item">
-                    <a class="nav-link" href="../../../pabout.html">
-                        About
                     </a>
                 </li>
                 
@@ -210,6 +210,13 @@
     <ul id="navbar-main-elements" class="navbar-nav">
         
                 <li class="nav-item">
+                    <a class="nav-link" href="../../../common/indx.html">
+                        AT basics
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
                     <a class="nav-link" href="../../../p/index.html">
                         Python
                     </a>
@@ -219,13 +226,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../../../m/index.html">
                         Matlab
-                    </a>
-                </li>
-                
-
-                <li class="nav-item">
-                    <a class="nav-link" href="../../../pabout.html">
-                        About
                     </a>
                 </li>
                 
@@ -767,6 +767,12 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Element to compute bunches mean and std&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">family_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            family_name:    Name of the element</span>
+
+<span class="sd">        Default PassMethod: ``BeamMomentsPass``</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;PassMethod&#39;</span><span class="p">,</span> <span class="s1">&#39;BeamMomentsPass&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_stds</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_means</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
@@ -778,11 +784,116 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">stds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Beam 6d standard deviation&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stds</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">means</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Beam 6d center of mass&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_means</span></div>
+
+
+<div class="viewcode-block" id="SliceMoments"><a class="viewcode-back" href="../../../p/api/at.lattice.elements.html#at.lattice.elements.SliceMoments">[docs]</a><span class="k">class</span> <span class="nc">SliceMoments</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Element to compute slices mean and std&quot;&quot;&quot;</span>
+    <span class="n">_BUILD_ATTRIBUTES</span> <span class="o">=</span> <span class="n">Element</span><span class="o">.</span><span class="n">_BUILD_ATTRIBUTES</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;nslice&#39;</span><span class="p">]</span>
+    <span class="n">_conversions</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">Element</span><span class="o">.</span><span class="n">_conversions</span><span class="p">,</span> <span class="n">nslice</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">family_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">nslice</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            family_name:    Name of the element</span>
+<span class="sd">            nslice:         Number of slices</span>
+
+<span class="sd">        Keyword arguments:</span>
+<span class="sd">            startturn:      Start turn of the acquisition (Default 0)</span>
+<span class="sd">            endturn:        End turn of the acquisition (Default 1)</span>
+
+<span class="sd">        Default PassMethod: ``SliceMomentsPass``</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;PassMethod&#39;</span><span class="p">,</span> <span class="s1">&#39;SliceMomentsPass&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_startturn</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;startturn&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_endturn</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;endturn&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SliceMoments</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">family_name</span><span class="p">,</span> <span class="n">nslice</span><span class="o">=</span><span class="n">nslice</span><span class="p">,</span>
+                                           <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nbunch</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">startturn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_startturn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">endturn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_endturn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dturns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">endturn</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">startturn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stds</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="n">nslice</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dturns</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_means</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="n">nslice</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dturns</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_spos</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nslice</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dturns</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_weights</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nslice</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dturns</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_buffers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_endturn</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SliceMoments.set_buffers"><a class="viewcode-back" href="../../../p/api/at.lattice.elements.html#at.lattice.elements.SliceMoments.set_buffers">[docs]</a>    <span class="k">def</span> <span class="nf">set_buffers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nturns</span><span class="p">,</span> <span class="n">nbunch</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">endturn</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">endturn</span><span class="p">,</span> <span class="n">nturns</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dturns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">endturn</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">startturn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nbunch</span> <span class="o">=</span> <span class="n">nbunch</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stds</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nslice</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dturns</span><span class="p">),</span>
+                                 <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_means</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="n">nbunch</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nslice</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dturns</span><span class="p">),</span>
+                                  <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_spos</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nbunch</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nslice</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dturns</span><span class="p">),</span>
+                                 <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_weights</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nbunch</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">nslice</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dturns</span><span class="p">),</span>
+                                    <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">stds</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Slices x,y,dp standard deviation&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stds</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nbunch</span><span class="p">,</span>
+                                   <span class="bp">self</span><span class="o">.</span><span class="n">nslice</span><span class="p">,</span>
+                                   <span class="bp">self</span><span class="o">.</span><span class="n">_dturns</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">means</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Slices x,y,dp center of mass&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_means</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nbunch</span><span class="p">,</span>
+                                    <span class="bp">self</span><span class="o">.</span><span class="n">nslice</span><span class="p">,</span>
+                                    <span class="bp">self</span><span class="o">.</span><span class="n">_dturns</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">spos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Slices s position&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_spos</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_nbunch</span><span class="p">,</span>
+                                   <span class="bp">self</span><span class="o">.</span><span class="n">nslice</span><span class="p">,</span>
+                                   <span class="bp">self</span><span class="o">.</span><span class="n">_dturns</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">weights</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Slices weights in mA if beam current &gt;0,</span>
+<span class="sd">           otherwise fraction of total number of</span>
+<span class="sd">           particles in the bunch</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_weights</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_nbunch</span><span class="p">,</span>
+                                      <span class="bp">self</span><span class="o">.</span><span class="n">nslice</span><span class="p">,</span>
+                                      <span class="bp">self</span><span class="o">.</span><span class="n">_dturns</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">startturn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Start turn of the acquisition&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_startturn</span>
+
+    <span class="nd">@startturn</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">startturn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;startturn must be greater or equal to 0&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_endturn</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;startturn must be smaller than endturn&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_startturn</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">endturn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;End turn of the acquisition&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_endturn</span>
+
+    <span class="nd">@endturn</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">endturn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;endturn must be greater than 0&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_startturn</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;endturn must be greater than startturn&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_endturn</span> <span class="o">=</span> <span class="n">value</span></div>
 
 
 <div class="viewcode-block" id="Aperture"><a class="viewcode-back" href="../../../p/api/at.lattice.elements.html#at.lattice.elements.Aperture">[docs]</a><span class="k">class</span> <span class="nc">Aperture</span><span class="p">(</span><span class="n">Element</span><span class="p">):</span>
@@ -1070,7 +1181,12 @@
 <span class="sd">            KickAngle:          Correction deviation angles (H, V)</span>
 <span class="sd">            FieldScaling:       Scaling factor applied to the magnetic field</span>
 
-<span class="sd">        Default PassMethod: ``BndMPoleSymplectic4Pass``</span>
+<span class="sd">        Available PassMethods: :ref:`BndMPoleSymplectic4Pass`,</span>
+<span class="sd">                               :ref:`BendLinearPass`,</span>
+<span class="sd">        :ref:`ExactSectorBendPass`, :ref:`ExactRectangularBendPass`,</span>
+<span class="sd">        :ref:`ExactRectBendPass`, BndStrMPoleSymplectic4Pass</span>
+
+<span class="sd">        Default PassMethod: :ref:`BndMPoleSymplectic4Pass`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">poly_b</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;PolynomB&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">k</span><span class="p">]))</span>
         <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;BendingAngle&#39;</span><span class="p">,</span> <span class="n">bending_angle</span><span class="p">)</span>
@@ -1293,7 +1409,7 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            family_name:    Name of the element</span>
-<span class="sd">            </span>
+
 <span class="sd">        Optional Args:</span>
 <span class="sd">            betax:         Horizontal beta function at element [m]</span>
 <span class="sd">            betay:         Vertical beta function at element [m]</span>
@@ -1304,14 +1420,14 @@
 <span class="sd">            tauy:          Vertical damping time [turns]</span>
 <span class="sd">            tauz:          Longitudinal damping time [turns]</span>
 <span class="sd">            U0:             Energy Loss [eV]</span>
-<span class="sd">            </span>
+
 <span class="sd">        Default PassMethod: ``SimpleQuantDiffPass``</span>
 <span class="sd">       &quot;&quot;&quot;</span>
         <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;PassMethod&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_pass</span><span class="p">[</span><span class="kc">True</span><span class="p">])</span>
-       
+
         <span class="k">assert</span> <span class="n">taux</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;taux must be greater than or equal to 0&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">taux</span> <span class="o">=</span> <span class="n">taux</span>
-            
+
         <span class="k">assert</span> <span class="n">tauy</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;tauy must be greater than or equal to 0&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tauy</span> <span class="o">=</span> <span class="n">tauy</span>
 
@@ -1322,22 +1438,21 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">emitx</span> <span class="o">=</span> <span class="n">emitx</span>
         <span class="k">if</span> <span class="n">emitx</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
             <span class="k">assert</span> <span class="n">taux</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;if emitx is given, taux must be non zero&#39;</span>
-            
+
         <span class="k">assert</span> <span class="n">emity</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;emity must be greater than or equal to 0&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">emity</span> <span class="o">=</span> <span class="n">emity</span>
         <span class="k">if</span> <span class="n">emity</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
             <span class="k">assert</span> <span class="n">tauy</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;if emity is given, tauy must be non zero&#39;</span>
-            
+
         <span class="k">assert</span> <span class="n">espread</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;espread must be greater than or equal to 0&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">espread</span> <span class="o">=</span> <span class="n">espread</span>
         <span class="k">if</span> <span class="n">espread</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
             <span class="k">assert</span> <span class="n">tauz</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;if espread is given, tauz must be non zero&#39;</span>
-            
+
         <span class="bp">self</span><span class="o">.</span><span class="n">U0</span> <span class="o">=</span> <span class="n">U0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">betax</span> <span class="o">=</span> <span class="n">betax</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">betay</span> <span class="o">=</span> <span class="n">betay</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">SimpleQuantDiff</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">family_name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
-
 
 
 <div class="viewcode-block" id="Corrector"><a class="viewcode-back" href="../../../p/api/at.lattice.elements.html#at.lattice.elements.Corrector">[docs]</a><span class="k">class</span> <span class="nc">Corrector</span><span class="p">(</span><span class="n">LongElement</span><span class="p">):</span>
@@ -1456,6 +1571,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;PassMethod&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_pass</span><span class="p">[</span><span class="kc">False</span><span class="p">])</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">family_name</span><span class="p">,</span> <span class="n">EnergyLoss</span><span class="o">=</span><span class="n">energy_loss</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
 
 <span class="n">Radiative</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">EnergyLoss</span><span class="p">)</span>
 

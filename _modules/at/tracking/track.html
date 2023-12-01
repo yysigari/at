@@ -113,6 +113,13 @@
     <ul id="navbar-main-elements" class="navbar-nav">
         
                 <li class="nav-item">
+                    <a class="nav-link" href="../../../common/indx.html">
+                        AT basics
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
                     <a class="nav-link" href="../../../p/index.html">
                         Python
                     </a>
@@ -122,13 +129,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../../../m/index.html">
                         Matlab
-                    </a>
-                </li>
-                
-
-                <li class="nav-item">
-                    <a class="nav-link" href="../../../pabout.html">
-                        About
                     </a>
                 </li>
                 
@@ -210,6 +210,13 @@
     <ul id="navbar-main-elements" class="navbar-nav">
         
                 <li class="nav-item">
+                    <a class="nav-link" href="../../../common/indx.html">
+                        AT basics
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
                     <a class="nav-link" href="../../../p/index.html">
                         Python
                     </a>
@@ -219,13 +226,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../../../m/index.html">
                         Matlab
-                    </a>
-                </li>
-                
-
-                <li class="nav-item">
-                    <a class="nav-link" href="../../../pabout.html">
-                        About
                     </a>
                 </li>
                 
@@ -379,6 +379,8 @@
         <span class="k">if</span> <span class="n">pool_size</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">pool_size</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">r_in</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">(),</span>
                             <span class="n">DConstant</span><span class="o">.</span><span class="n">patpass_poolsize</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">start_method</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">start_method</span> <span class="o">=</span> <span class="n">DConstant</span><span class="o">.</span><span class="n">patpass_startmethod</span>
         <span class="k">return</span> <span class="n">_pass</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">r_in</span><span class="p">,</span> <span class="n">pool_size</span><span class="p">,</span> <span class="n">start_method</span><span class="p">,</span> <span class="n">nturns</span><span class="o">=</span><span class="n">nturns</span><span class="p">,</span>
                      <span class="n">refpts</span><span class="o">=</span><span class="n">refpts</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
@@ -427,6 +429,19 @@
 <span class="sd">        losses (bool):          Boolean to activate loss maps output</span>
 <span class="sd">        omp_num_threads (int):  Number of OpenMP threads</span>
 <span class="sd">          (default: automatic)</span>
+<span class="sd">        use_mp (bool): Flag to activate multiprocessing (default: False)</span>
+<span class="sd">        pool_size:              number of processes used when</span>
+<span class="sd">          *use_mp* is :py:obj:`True`. If None, ``min(npart,nproc)``</span>
+<span class="sd">          is used. It can be globally set using the variable</span>
+<span class="sd">          *at.lattice.DConstant.patpass_poolsize*</span>
+<span class="sd">        start_method:           python multiprocessing start method.</span>
+<span class="sd">          :py:obj:`None` uses the python default that is considered safe.</span>
+<span class="sd">          Available values: ``&#39;fork&#39;``, ``&#39;spawn&#39;``, ``&#39;forkserver&#39;``.</span>
+<span class="sd">          Default for linux is ``&#39;fork&#39;``, default for macOS and  Windows is</span>
+<span class="sd">          ``&#39;spawn&#39;``. ``&#39;fork&#39;`` may be used on macOS to speed up the</span>
+<span class="sd">          calculation or to solve Runtime Errors, however it is considered</span>
+<span class="sd">          unsafe. Used only when *use_mp* is :py:obj:`True`. It can be globally</span>
+<span class="sd">          set using the variable *at.lattice.DConstant.patpass_startmethod*</span>
 
 <span class="sd">    The following keyword arguments overload the lattice values</span>
 
@@ -459,7 +474,7 @@
 <span class="sd">          **nturns**        number of turn</span>
 <span class="sd">          ==============    ===================================================</span>
 
-<span class="sd">        trackdata: A dictionary containinf tracking data with the following</span>
+<span class="sd">        trackdata: A dictionary containing tracking data with the following</span>
 <span class="sd">          keys:</span>
 
 <span class="sd">          ==============    ===================================================</span>
@@ -532,7 +547,11 @@
                        <span class="s1">&#39;nturns&#39;</span><span class="p">:</span> <span class="n">nturns</span><span class="p">})</span>
 
     <span class="n">use_mp</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;use_mp&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">start_method</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;start_method&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">pool_size</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;pool_size&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">use_mp</span><span class="p">:</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;pool_size&#39;</span><span class="p">:</span> <span class="n">pool_size</span><span class="p">,</span>
+                       <span class="s1">&#39;start_method&#39;</span><span class="p">:</span> <span class="n">start_method</span><span class="p">})</span>
         <span class="n">rout</span> <span class="o">=</span> <span class="n">_plattice_pass</span><span class="p">(</span><span class="n">lattice</span><span class="p">,</span> <span class="n">r_in</span><span class="p">,</span> <span class="n">nturns</span><span class="o">=</span><span class="n">nturns</span><span class="p">,</span>
                               <span class="n">refpts</span><span class="o">=</span><span class="n">refpts</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
