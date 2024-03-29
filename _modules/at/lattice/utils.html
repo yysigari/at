@@ -1,161 +1,198 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+
+<html lang="en" data-content_root="../../../" >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>at.lattice.utils &#8212; Accelerator Toolbox 0.0.4 documentation</title>
-  <script>
+  
+  
+  
+  <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom_at.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom_at.css?v=bc6ab313" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/documentation_options.js?v=7622e6fc"></script>
+    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=fd10adb8"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/at/lattice/utils';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="docsearch:language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
   
-  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
   <label class="overlay overlay-primary" for="__primary"></label>
-
   
-  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
   <label class="overlay overlay-secondary" for="__secondary"></label>
-
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
-      
-<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-    </div>
+</form></div>
   </div>
-
   
-  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
   <label class="sidebar-toggle primary-toggle" for="__primary">
-      <span class="fa-solid fa-bars"></span>
+    <span class="fa-solid fa-bars"></span>
   </label>
-  <div id="navbar-start">
-    
-    
   
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
 
+  
 
 <a class="navbar-brand logo" href="../../../index.html">
-
   
   
   
   
   
+    
+    
+      
+    
+    
+    <img src="../../../_static/AT.png" class="logo__image only-light" alt="Accelerator Toolbox 0.0.4 documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/AT.png" class="logo__image only-dark" alt="Accelerator Toolbox 0.0.4 documentation - Home"/>`);</script>
   
   
-
-  
-    <img src="../../../_static/AT.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../_static/AT.png" class="logo__image only-dark" alt="Logo image">
-  
-  
-</a>
+</a></div>
     
   </div>
-
   
   <div class="col-lg-9 navbar-header-items">
-    <div id="navbar-center" class="mr-auto">
+    
+    <div class="me-auto navbar-header-items__center">
       
-      <div class="navbar-center-item">
-        <nav class="navbar-nav">
-    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
-        Site Navigation
-    </p>
-    <ul id="navbar-main-elements" class="navbar-nav">
-        
-                <li class="nav-item">
-                    <a class="nav-link" href="../../../common/indx.html">
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../common/indx.html">
                         AT basics
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="../../../p/index.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../p/index.html">
                         Python
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="../../../m/index.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../m/index.html">
                         Matlab
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
-    </ul>
-</nav>
-      </div>
+  </ul>
+</nav></div>
       
     </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
 
-    <div id="navbar-end">
-      <div class="navbar-end-item navbar-end__search-button-container">
-        
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
-  <i class="fa-solid fa-magnifying-glass"></i>
-</button>
-      </div>
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
       
-      <div class="navbar-end-item">
-        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
-    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
-    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
-    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
-</span>
-      </div>
       
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
         <li class="nav-item">
           
           
@@ -164,92 +201,100 @@
           
           
           
-          <a href="https://github.com/atcollab/at" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
-            <label class="sr-only">GitHub</label></a>
+          
+          <a href="https://github.com/atcollab/at" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
         </li>
-      </ul>
-      </div>
+</ul></div>
       
     </div>
+    
   </div>
+  
+  
+    <div class="navbar-persistent--mobile">
 
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
 
   
-  <div class="search-button-container--mobile">
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
-  <i class="fa-solid fa-magnifying-glass"></i>
-</button>
-  </div>
-
-  
-  <label class="sidebar-toggle secondary-toggle" for="__secondary">
-      <span class="fa-solid fa-outdent"></span>
-  </label>
-  
-
 </div>
-  </nav>
+
+    </header>
   
 
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
+      
+      
+        
+      
       <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
         
+
   
   <div class="sidebar-header-items sidebar-primary__section">
     
     
       <div class="sidebar-header-items__center">
-      
-      <div class="navbar-center-item">
-        <nav class="navbar-nav">
-    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
-        Site Navigation
-    </p>
-    <ul id="navbar-main-elements" class="navbar-nav">
         
-                <li class="nav-item">
-                    <a class="nav-link" href="../../../common/indx.html">
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../common/indx.html">
                         AT basics
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="../../../p/index.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../p/index.html">
                         Python
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
 
-                <li class="nav-item">
-                    <a class="nav-link" href="../../../m/index.html">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../m/index.html">
                         Matlab
-                    </a>
-                </li>
+                      </a>
+                    </li>
                 
-    </ul>
-</nav>
-      </div>
-      
+  </ul>
+</nav></div>
+        
       </div>
     
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
 
-    
-    
-    <div class="sidebar-header-items__end">
-      
-      <div class="navbar-end-item">
-        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
-    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
-    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
-    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
-</span>
-      </div>
-      
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
         <li class="nav-item">
           
           
@@ -258,38 +303,68 @@
           
           
           
-          <a href="https://github.com/atcollab/at" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
-            <label class="sr-only">GitHub</label></a>
+          
+          <a href="https://github.com/atcollab/at" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
         </li>
-      </ul>
+</ul></div>
+        
       </div>
-      
-    </div>
     
   </div>
-
   
-
   
-  <div class="sidebar-end-items sidebar-primary__section">
-    <div class="sidebar-end-items__item">
-    </div>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
 
       </div>
-      <main class="bd-main">
+      
+      <main id="main-content" class="bd-main">
         
         
-        <div class="bd-content">
-          <div class="bd-article-container">
-            
-            <div class="bd-header-article">
-                
-            </div>
-            
-            
-            <article class="bd-article" role="main">
+          <div class="bd-content">
+            <div class="bd-article-container">
               
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">at.lattice.utils</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <h1>Source code for at.lattice.utils</h1><div class="highlight"><pre>
 <span></span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Helper functions for working with AT lattices.</span>
@@ -365,12 +440,18 @@
     <span class="n">_axis_def</span><span class="p">[</span><span class="n">vvv</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">vvv</span>
 
 
-<div class="viewcode-block" id="AtError"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.AtError">[docs]</a><span class="k">class</span> <span class="nc">AtError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<div class="viewcode-block" id="AtError">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.AtError">[docs]</a>
+<span class="k">class</span> <span class="nc">AtError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
     <span class="k">pass</span></div>
 
 
-<div class="viewcode-block" id="AtWarning"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.AtWarning">[docs]</a><span class="k">class</span> <span class="nc">AtWarning</span><span class="p">(</span><span class="ne">UserWarning</span><span class="p">):</span>
+
+<div class="viewcode-block" id="AtWarning">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.AtWarning">[docs]</a>
+<span class="k">class</span> <span class="nc">AtWarning</span><span class="p">(</span><span class="ne">UserWarning</span><span class="p">):</span>
     <span class="k">pass</span></div>
+
 
 
 <span class="n">_typ1</span> <span class="o">=</span> <span class="s2">&quot;None, All, End, int, bool&quot;</span>
@@ -407,7 +488,9 @@
 
 
 <span class="c1"># noinspection PyIncorrectDocstring</span>
-<div class="viewcode-block" id="axis_descr"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.axis_descr">[docs]</a><span class="k">def</span> <span class="nf">axis_descr</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">:</span>
+<div class="viewcode-block" id="axis_descr">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.axis_descr">[docs]</a>
+<span class="k">def</span> <span class="nf">axis_descr</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;axis_descr(axis [ ,axis], key=None)</span>
 
 <span class="sd">    Return a tuple containing for each input argument the requested information</span>
@@ -456,6 +539,7 @@
         <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">_axis_def</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">args</span><span class="p">)</span></div>
 
 
+
 <span class="k">def</span> <span class="nf">check_radiation</span><span class="p">(</span><span class="n">rad</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Deprecated decorator for optics functions (see :py:func:`check_6d`).</span>
 
@@ -472,7 +556,9 @@
     <span class="k">return</span> <span class="n">set_6d</span><span class="p">(</span><span class="n">rad</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="check_6d"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.check_6d">[docs]</a><span class="k">def</span> <span class="nf">check_6d</span><span class="p">(</span><span class="n">is_6d</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+<div class="viewcode-block" id="check_6d">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.check_6d">[docs]</a>
+<span class="k">def</span> <span class="nf">check_6d</span><span class="p">(</span><span class="n">is_6d</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Decorator for optics functions</span>
 
 <span class="sd">    Wraps a function like :pycode:`func(ring, *args, **kwargs)` where</span>
@@ -509,7 +595,10 @@
     <span class="k">return</span> <span class="n">radiation_decorator</span></div>
 
 
-<div class="viewcode-block" id="set_6d"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.set_6d">[docs]</a><span class="k">def</span> <span class="nf">set_6d</span><span class="p">(</span><span class="n">is_6d</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+
+<div class="viewcode-block" id="set_6d">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.set_6d">[docs]</a>
+<span class="k">def</span> <span class="nf">set_6d</span><span class="p">(</span><span class="n">is_6d</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
     <span class="c1"># noinspection PyUnresolvedReferences</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Decorator for optics functions</span>
 
@@ -555,7 +644,10 @@
     <span class="k">return</span> <span class="n">setrad_decorator</span></div>
 
 
-<div class="viewcode-block" id="make_copy"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.make_copy">[docs]</a><span class="k">def</span> <span class="nf">make_copy</span><span class="p">(</span><span class="n">copy</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+
+<div class="viewcode-block" id="make_copy">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.make_copy">[docs]</a>
+<span class="k">def</span> <span class="nf">make_copy</span><span class="p">(</span><span class="n">copy</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Decorator for optics functions</span>
 
 <span class="sd">    Wraps a function like :pycode:`func(ring, refpts, *args, **kwargs)` where</span>
@@ -585,7 +677,10 @@
     <span class="k">return</span> <span class="n">copy_decorator</span></div>
 
 
-<div class="viewcode-block" id="uint32_refpts"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.uint32_refpts">[docs]</a><span class="k">def</span> <span class="nf">uint32_refpts</span><span class="p">(</span><span class="n">refpts</span><span class="p">:</span> <span class="n">RefIndex</span><span class="p">,</span> <span class="n">n_elements</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+
+<div class="viewcode-block" id="uint32_refpts">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.uint32_refpts">[docs]</a>
+<span class="k">def</span> <span class="nf">uint32_refpts</span><span class="p">(</span><span class="n">refpts</span><span class="p">:</span> <span class="n">RefIndex</span><span class="p">,</span> <span class="n">n_elements</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
                   <span class="n">endpoint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
                   <span class="n">types</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">_typ1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Uint32Refpts</span><span class="p">:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return a :py:obj:`~numpy.uint32` array of element indices selecting</span>
@@ -646,9 +741,13 @@
         <span class="k">raise</span> <span class="n">_type_error</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="n">types</span><span class="p">)</span></div>
 
 
+
 <span class="c1"># noinspection PyIncorrectDocstring</span>
-<div class="viewcode-block" id="get_uint32_index"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.get_uint32_index">[docs]</a><span class="k">def</span> <span class="nf">get_uint32_index</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span>
-                     <span class="n">endpoint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">regex</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Uint32Refpts</span><span class="p">:</span>
+<div class="viewcode-block" id="get_uint32_index">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.get_uint32_index">[docs]</a>
+<span class="k">def</span> <span class="nf">get_uint32_index</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span>
+                     <span class="n">endpoint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                     <span class="n">regex</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Uint32Refpts</span><span class="p">:</span>
     <span class="c1"># noinspection PyUnresolvedReferences, PyShadowingNames</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns an integer array of element indices, selecting ring elements.</span>
 
@@ -697,7 +796,10 @@
                           <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">uint32</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="bool_refpts"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.bool_refpts">[docs]</a><span class="k">def</span> <span class="nf">bool_refpts</span><span class="p">(</span><span class="n">refpts</span><span class="p">:</span> <span class="n">RefIndex</span><span class="p">,</span> <span class="n">n_elements</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+
+<div class="viewcode-block" id="bool_refpts">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.bool_refpts">[docs]</a>
+<span class="k">def</span> <span class="nf">bool_refpts</span><span class="p">(</span><span class="n">refpts</span><span class="p">:</span> <span class="n">RefIndex</span><span class="p">,</span> <span class="n">n_elements</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
                 <span class="n">endpoint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
                 <span class="n">types</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">_typ1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BoolRefpts</span><span class="p">:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns a :py:class:`bool` array of element indices, selecting ring</span>
@@ -747,8 +849,11 @@
         <span class="k">raise</span> <span class="n">_type_error</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="n">types</span><span class="p">)</span></div>
 
 
+
 <span class="c1"># noinspection PyIncorrectDocstring</span>
-<div class="viewcode-block" id="get_bool_index"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.get_bool_index">[docs]</a><span class="k">def</span> <span class="nf">get_bool_index</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span>
+<div class="viewcode-block" id="get_bool_index">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.get_bool_index">[docs]</a>
+<span class="k">def</span> <span class="nf">get_bool_index</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span>
                    <span class="n">endpoint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">regex</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BoolRefpts</span><span class="p">:</span>
     <span class="c1"># noinspection PyUnresolvedReferences, PyShadowingNames</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns a bool array of element indices, selecting ring elements.</span>
@@ -803,7 +908,10 @@
     <span class="k">return</span> <span class="n">boolrefs</span></div>
 
 
-<div class="viewcode-block" id="checkattr"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.checkattr">[docs]</a><span class="k">def</span> <span class="nf">checkattr</span><span class="p">(</span><span class="n">attrname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">attrvalue</span><span class="p">:</span> <span class="n">Optional</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> \
+
+<div class="viewcode-block" id="checkattr">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.checkattr">[docs]</a>
+<span class="k">def</span> <span class="nf">checkattr</span><span class="p">(</span><span class="n">attrname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">attrvalue</span><span class="p">:</span> <span class="n">Optional</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> \
         <span class="o">-&gt;</span> <span class="n">ElementFilter</span><span class="p">:</span>
     <span class="c1"># noinspection PyUnresolvedReferences</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Checks the presence or the value of an attribute</span>
@@ -845,7 +953,10 @@
     <span class="k">return</span> <span class="n">testf</span></div>
 
 
-<div class="viewcode-block" id="checktype"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.checktype">[docs]</a><span class="k">def</span> <span class="nf">checktype</span><span class="p">(</span><span class="n">eltype</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">type</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">type</span><span class="p">,</span> <span class="o">...</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">ElementFilter</span><span class="p">:</span>
+
+<div class="viewcode-block" id="checktype">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.checktype">[docs]</a>
+<span class="k">def</span> <span class="nf">checktype</span><span class="p">(</span><span class="n">eltype</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">type</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">type</span><span class="p">,</span> <span class="o">...</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">ElementFilter</span><span class="p">:</span>
     <span class="c1"># noinspection PyUnresolvedReferences</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Checks the type of an element</span>
 
@@ -869,7 +980,10 @@
     <span class="k">return</span> <span class="k">lambda</span> <span class="n">el</span><span class="p">:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">eltype</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="checkname"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.checkname">[docs]</a><span class="k">def</span> <span class="nf">checkname</span><span class="p">(</span><span class="n">pattern</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">regex</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ElementFilter</span><span class="p">:</span>
+
+<div class="viewcode-block" id="checkname">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.checkname">[docs]</a>
+<span class="k">def</span> <span class="nf">checkname</span><span class="p">(</span><span class="n">pattern</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">regex</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ElementFilter</span><span class="p">:</span>
     <span class="c1"># noinspection PyUnresolvedReferences</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Checks the name of an element</span>
 
@@ -900,8 +1014,11 @@
         <span class="k">return</span> <span class="k">lambda</span> <span class="n">el</span><span class="p">:</span> <span class="n">fnmatch</span><span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">FamName</span><span class="p">,</span> <span class="n">pattern</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="refpts_iterator"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.refpts_iterator">[docs]</a><span class="k">def</span> <span class="nf">refpts_iterator</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span> <span class="n">regex</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> \
-        <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Element</span><span class="p">]:</span>
+
+<div class="viewcode-block" id="refpts_iterator">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.refpts_iterator">[docs]</a>
+<span class="k">def</span> <span class="nf">refpts_iterator</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span>
+                    <span class="n">regex</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Element</span><span class="p">]:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Return an iterator over selected elements in a lattice</span>
 
 <span class="sd">    Parameters:</span>
@@ -941,8 +1058,11 @@
     <span class="k">return</span> <span class="nb">filter</span><span class="p">(</span><span class="n">checkfun</span><span class="p">,</span> <span class="n">ring</span><span class="p">)</span></div>
 
 
+
 <span class="c1"># noinspection PyUnusedLocal,PyIncorrectDocstring</span>
-<div class="viewcode-block" id="refpts_count"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.refpts_count">[docs]</a><span class="k">def</span> <span class="nf">refpts_count</span><span class="p">(</span><span class="n">refpts</span><span class="p">:</span> <span class="n">RefIndex</span><span class="p">,</span> <span class="n">n_elements</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<div class="viewcode-block" id="refpts_count">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.refpts_count">[docs]</a>
+<span class="k">def</span> <span class="nf">refpts_count</span><span class="p">(</span><span class="n">refpts</span><span class="p">:</span> <span class="n">RefIndex</span><span class="p">,</span> <span class="n">n_elements</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
                  <span class="n">endpoint</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
                  <span class="n">types</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">_typ1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns the number of reference points</span>
@@ -978,6 +1098,7 @@
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">refs</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">_type_error</span><span class="p">(</span><span class="n">refpts</span><span class="p">,</span> <span class="n">types</span><span class="p">)</span></div>
+
 
 
 <span class="k">def</span> <span class="nf">_refcount</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span>
@@ -1028,8 +1149,10 @@
 
 
 <span class="c1"># noinspection PyUnusedLocal,PyIncorrectDocstring</span>
-<div class="viewcode-block" id="get_elements"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.get_elements">[docs]</a><span class="k">def</span> <span class="nf">get_elements</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span> <span class="n">regex</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> \
-        <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<div class="viewcode-block" id="get_elements">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.get_elements">[docs]</a>
+<span class="k">def</span> <span class="nf">get_elements</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span>
+                 <span class="n">regex</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns a list of elements selected by *key*.</span>
 
 <span class="sd">    Deprecated: :pycode:`get_elements(ring, refpts)` is :pycode:`ring[refpts]`</span>
@@ -1047,8 +1170,12 @@
     <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">refpts_iterator</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="get_value_refpts"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.get_value_refpts">[docs]</a><span class="k">def</span> <span class="nf">get_value_refpts</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span>
-                     <span class="n">attrname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">regex</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+
+<div class="viewcode-block" id="get_value_refpts">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.get_value_refpts">[docs]</a>
+<span class="k">def</span> <span class="nf">get_value_refpts</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span>
+                     <span class="n">attrname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                     <span class="n">regex</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Extracts attribute values from selected</span>
 <span class="sd">        lattice :py:class:`.Element`\ s.</span>
 
@@ -1076,7 +1203,10 @@
                                                                <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">)])</span></div>
 
 
-<div class="viewcode-block" id="set_value_refpts"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.set_value_refpts">[docs]</a><span class="k">def</span> <span class="nf">set_value_refpts</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span>
+
+<div class="viewcode-block" id="set_value_refpts">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.set_value_refpts">[docs]</a>
+<span class="k">def</span> <span class="nf">set_value_refpts</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span><span class="p">,</span>
                      <span class="n">attrname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">attrvalues</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                      <span class="n">increment</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
                      <span class="n">copy</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">regex</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
@@ -1093,9 +1223,10 @@
 <span class="sd">        index:      index of the value to set if *attrname* is</span>
 <span class="sd">          an array. if :py:obj:`None`, the full array is replaced by</span>
 <span class="sd">          *attrvalue*</span>
-<span class="sd">        increment:  If :py:obj:`True`, *attrvalues* are added to the initial values.</span>
-<span class="sd">        regex: Use regular expression for *refpts* string matching instead of</span>
-<span class="sd">          Unix shell-style wildcards.</span>
+<span class="sd">        increment:  If :py:obj:`True`, *attrvalues* are added to the</span>
+<span class="sd">          initial values.</span>
+<span class="sd">        regex: Use regular expression for *refpts* string matching</span>
+<span class="sd">          instead of Unix shell-style wildcards.</span>
 <span class="sd">        copy:       If :py:obj:`False`, the modification is done in-place,</span>
 
 <span class="sd">          If :py:obj:`True`, return a shallow copy of the lattice. Only the</span>
@@ -1116,22 +1247,28 @@
 
     <span class="k">if</span> <span class="n">increment</span><span class="p">:</span>
         <span class="n">attrvalues</span> <span class="o">+=</span> <span class="n">get_value_refpts</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span>
-                                       <span class="n">attrname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">)</span>
+                                       <span class="n">attrname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span>
+                                       <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">attrvalues</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">broadcast_to</span><span class="p">(</span><span class="n">attrvalues</span><span class="p">,</span>
-                                        <span class="p">(</span><span class="n">_refcount</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">),))</span>
+                                        <span class="p">(</span><span class="n">_refcount</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span>
+                                                   <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">),))</span>
 
     <span class="c1"># noinspection PyShadowingNames</span>
     <span class="nd">@make_copy</span><span class="p">(</span><span class="n">copy</span><span class="p">)</span>
     <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">regex</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">elm</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">refpts_iterator</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">),</span> <span class="n">values</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">elm</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">refpts_iterator</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span>
+                                            <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">),</span> <span class="n">values</span><span class="p">):</span>
             <span class="n">setf</span><span class="p">(</span><span class="n">elm</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">apply</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="n">attrvalues</span><span class="p">,</span> <span class="n">regex</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="get_s_pos"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.get_s_pos">[docs]</a><span class="k">def</span> <span class="nf">get_s_pos</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span> <span class="o">=</span> <span class="n">All</span><span class="p">,</span> <span class="n">regex</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> \
-        <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+
+<div class="viewcode-block" id="get_s_pos">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.get_s_pos">[docs]</a>
+<span class="k">def</span> <span class="nf">get_s_pos</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span> <span class="o">=</span> <span class="n">All</span><span class="p">,</span>
+              <span class="n">regex</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
     <span class="c1"># noinspection PyUnresolvedReferences</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Returns the locations of selected elements</span>
 
@@ -1159,22 +1296,33 @@
     <span class="k">return</span> <span class="n">s_pos</span><span class="p">[</span><span class="n">get_bool_index</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">)]</span></div>
 
 
-<div class="viewcode-block" id="rotate_elem"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.rotate_elem">[docs]</a><span class="k">def</span> <span class="nf">rotate_elem</span><span class="p">(</span><span class="n">elem</span><span class="p">:</span> <span class="n">Element</span><span class="p">,</span> <span class="n">tilt</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">pitch</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+
+<div class="viewcode-block" id="rotate_elem">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.rotate_elem">[docs]</a>
+<span class="k">def</span> <span class="nf">rotate_elem</span><span class="p">(</span><span class="n">elem</span><span class="p">:</span> <span class="n">Element</span><span class="p">,</span> <span class="n">tilt</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">pitch</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
                 <span class="n">yaw</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">relative</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Set the tilt, pitch and yaw angle of an :py:class:`.Element`.</span>
 <span class="sd">    The tilt is a rotation around the *s*-axis, the pitch is a</span>
 <span class="sd">    rotation around the *x*-axis and the yaw is a rotation around</span>
 <span class="sd">    the *y*-axis.</span>
-<span class="sd">    A positive angle represent a clockwise rotation when looking in</span>
-<span class="sd">    the direction of the rotation axis.</span>
 
-<span class="sd">    The transformations are not all commmutative, the tilt is always the</span>
-<span class="sd">    last transformation applied.</span>
+<span class="sd">    A positive angle represents a clockwise rotation when</span>
+<span class="sd">    looking in the direction of the rotation axis.</span>
 
-<span class="sd">    If *relative* is :py:obj:`True`, the previous angle and shifts are</span>
-<span class="sd">    rebuilt form the *R* and *T* matrix and incremented by the input arguments.</span>
+<span class="sd">    The transformations are not all commmutative, the pitch and yaw</span>
+<span class="sd">    are applied first and the tilt is always the last transformation</span>
+<span class="sd">    applied. The element is rotated around its mid-point.</span>
+
+<span class="sd">    If *relative* is :py:obj:`True`, the previous angle and shifts</span>
+<span class="sd">    are rebuilt form the *R* and *T* matrix and incremented by the</span>
+<span class="sd">    input arguments.</span>
 
 <span class="sd">    The shift is always conserved regardless of the value of *relative*.</span>
+
+<span class="sd">    The transformations are applied by changing the particle coordinates</span>
+<span class="sd">    at the entrance of the element and restoring them at the end. Following</span>
+<span class="sd">    the small angles approximation the longitudinal shift of the particle</span>
+<span class="sd">    coordinates is neglected and the element length is unchanged.</span>
 
 <span class="sd">    Parameters:</span>
 <span class="sd">        elem:           Element to be tilted</span>
@@ -1190,21 +1338,21 @@
         <span class="n">pitch</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">pitch</span><span class="p">,</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
         <span class="n">yaw</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">yaw</span><span class="p">,</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
         <span class="n">ct</span><span class="p">,</span> <span class="n">st</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tilt</span><span class="p">),</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">tilt</span><span class="p">)</span>
-        <span class="n">ap</span><span class="p">,</span> <span class="n">ay</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">le</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">pitch</span><span class="p">),</span> <span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">le</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">yaw</span><span class="p">)</span>
+        <span class="n">ap</span><span class="p">,</span> <span class="n">ay</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">le</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">pitch</span><span class="p">),</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">le</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">yaw</span><span class="p">)</span>
         <span class="n">rr1</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">asfortranarray</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="n">ct</span><span class="p">,</span> <span class="n">ct</span><span class="p">,</span> <span class="n">ct</span><span class="p">,</span> <span class="n">ct</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]))</span>
         <span class="n">rr1</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">st</span>
         <span class="n">rr1</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">st</span>
         <span class="n">rr1</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">st</span>
         <span class="n">rr1</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">st</span>
         <span class="n">rr2</span> <span class="o">=</span> <span class="n">rr1</span><span class="o">.</span><span class="n">T</span>
-        <span class="n">t1</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">ay</span><span class="p">,</span> <span class="o">-</span><span class="n">yaw</span><span class="p">,</span> <span class="n">ap</span><span class="p">,</span> <span class="o">-</span><span class="n">pitch</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-        <span class="n">t2</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">ay</span><span class="p">,</span> <span class="n">yaw</span><span class="p">,</span> <span class="n">ap</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+        <span class="n">t1</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">ay</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="o">-</span><span class="n">yaw</span><span class="p">),</span> <span class="o">-</span><span class="n">ap</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">pitch</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+        <span class="n">t2</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">ay</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">yaw</span><span class="p">),</span> <span class="o">-</span><span class="n">ap</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="o">-</span><span class="n">pitch</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
         <span class="n">rt1</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
-        <span class="n">rt1</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">ct</span><span class="o">*</span><span class="n">t1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">rt1</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">ct</span><span class="o">*</span><span class="n">t1</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+        <span class="n">rt1</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">t1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">rt1</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">t1</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
         <span class="n">rt2</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
-        <span class="n">rt2</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">ct</span><span class="o">*</span><span class="n">t2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">rt2</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">ct</span><span class="o">*</span><span class="n">t2</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+        <span class="n">rt2</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">t2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">rt2</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">t2</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">rr1</span> <span class="o">@</span> <span class="n">rt1</span><span class="p">,</span> <span class="n">rt2</span> <span class="o">@</span> <span class="n">rr2</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="n">t2</span>
 
     <span class="n">tilt0</span> <span class="o">=</span> <span class="mf">0.0</span>
@@ -1217,8 +1365,8 @@
         <span class="n">rr10</span><span class="p">[:</span><span class="mi">4</span><span class="p">,</span> <span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">R1</span><span class="p">[:</span><span class="mi">4</span><span class="p">,</span> <span class="p">:</span><span class="mi">4</span><span class="p">]</span>
         <span class="n">rt10</span> <span class="o">=</span> <span class="n">rr10</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">elem</span><span class="o">.</span><span class="n">R1</span>
         <span class="n">tilt0</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">rr10</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">rr10</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-        <span class="n">yaw0</span> <span class="o">=</span> <span class="o">-</span><span class="n">rt10</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span><span class="o">/</span><span class="n">rr10</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-        <span class="n">pitch0</span> <span class="o">=</span> <span class="o">-</span><span class="n">rt10</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span><span class="o">/</span><span class="n">rr10</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="n">yaw0</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="o">-</span><span class="n">rt10</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+        <span class="n">pitch0</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">rt10</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
         <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">t10</span><span class="p">,</span> <span class="n">t20</span> <span class="o">=</span> <span class="n">_get_rm_tv</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">Length</span><span class="p">,</span> <span class="n">tilt0</span><span class="p">,</span> <span class="n">pitch0</span><span class="p">,</span> <span class="n">yaw0</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="s1">&#39;T1&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="s1">&#39;T2&#39;</span><span class="p">):</span>
         <span class="n">t10</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">T1</span><span class="o">-</span><span class="n">t10</span>
@@ -1235,7 +1383,10 @@
     <span class="n">elem</span><span class="o">.</span><span class="n">T2</span> <span class="o">=</span> <span class="n">t2</span><span class="o">+</span><span class="n">t20</span></div>
 
 
-<div class="viewcode-block" id="tilt_elem"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.tilt_elem">[docs]</a><span class="k">def</span> <span class="nf">tilt_elem</span><span class="p">(</span><span class="n">elem</span><span class="p">:</span> <span class="n">Element</span><span class="p">,</span> <span class="n">rots</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">relative</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+<div class="viewcode-block" id="tilt_elem">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.tilt_elem">[docs]</a>
+<span class="k">def</span> <span class="nf">tilt_elem</span><span class="p">(</span><span class="n">elem</span><span class="p">:</span> <span class="n">Element</span><span class="p">,</span> <span class="n">rots</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">relative</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Set the tilt angle :math:`\theta` of an :py:class:`.Element`</span>
 
 <span class="sd">    The rotation matrices are stored in the :pycode:`R1` and :pycode:`R2`</span>
@@ -1257,7 +1408,10 @@
     <span class="n">rotate_elem</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">tilt</span><span class="o">=</span><span class="n">rots</span><span class="p">,</span> <span class="n">relative</span><span class="o">=</span><span class="n">relative</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="shift_elem"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.shift_elem">[docs]</a><span class="k">def</span> <span class="nf">shift_elem</span><span class="p">(</span><span class="n">elem</span><span class="p">:</span> <span class="n">Element</span><span class="p">,</span> <span class="n">deltax</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">deltaz</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+
+<div class="viewcode-block" id="shift_elem">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.shift_elem">[docs]</a>
+<span class="k">def</span> <span class="nf">shift_elem</span><span class="p">(</span><span class="n">elem</span><span class="p">:</span> <span class="n">Element</span><span class="p">,</span> <span class="n">deltax</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">deltaz</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
                <span class="n">relative</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Sets the transverse displacement of an :py:class:`.Element`</span>
 
@@ -1280,7 +1434,10 @@
         <span class="n">elem</span><span class="o">.</span><span class="n">T2</span> <span class="o">=</span> <span class="n">tr</span></div>
 
 
-<div class="viewcode-block" id="set_rotation"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.set_rotation">[docs]</a><span class="k">def</span> <span class="nf">set_rotation</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">tilts</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+
+<div class="viewcode-block" id="set_rotation">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.set_rotation">[docs]</a>
+<span class="k">def</span> <span class="nf">set_rotation</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">tilts</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
                  <span class="n">pitches</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">yaws</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">relative</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Sets the tilts of a list of elements.</span>
 
@@ -1302,7 +1459,10 @@
         <span class="n">rotate_elem</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">tilt</span><span class="o">=</span><span class="n">tilt</span><span class="p">,</span> <span class="n">pitch</span><span class="o">=</span><span class="n">pitch</span><span class="p">,</span> <span class="n">yaw</span><span class="o">=</span><span class="n">yaw</span><span class="p">,</span> <span class="n">relative</span><span class="o">=</span><span class="n">relative</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="set_tilt"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.set_tilt">[docs]</a><span class="k">def</span> <span class="nf">set_tilt</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">tilts</span><span class="p">,</span> <span class="n">relative</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+<div class="viewcode-block" id="set_tilt">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.set_tilt">[docs]</a>
+<span class="k">def</span> <span class="nf">set_tilt</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">tilts</span><span class="p">,</span> <span class="n">relative</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Sets the tilts of a list of elements.</span>
 
 <span class="sd">    Parameters:</span>
@@ -1317,7 +1477,10 @@
         <span class="n">tilt_elem</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">tilt</span><span class="p">,</span> <span class="n">relative</span><span class="o">=</span><span class="n">relative</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="set_shift"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.set_shift">[docs]</a><span class="k">def</span> <span class="nf">set_shift</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">dxs</span><span class="p">,</span> <span class="n">dzs</span><span class="p">,</span> <span class="n">relative</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+<div class="viewcode-block" id="set_shift">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.set_shift">[docs]</a>
+<span class="k">def</span> <span class="nf">set_shift</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span> <span class="n">dxs</span><span class="p">,</span> <span class="n">dzs</span><span class="p">,</span> <span class="n">relative</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Sets the translations of a list of elements.</span>
 
 <span class="sd">    Parameters:</span>
@@ -1335,7 +1498,10 @@
         <span class="n">shift_elem</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">relative</span><span class="o">=</span><span class="n">relative</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="get_geometry"><a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.get_geometry">[docs]</a><span class="k">def</span> <span class="nf">get_geometry</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span>
+
+<div class="viewcode-block" id="get_geometry">
+<a class="viewcode-back" href="../../../p/api/at.lattice.utils.html#at.lattice.utils.get_geometry">[docs]</a>
+<span class="k">def</span> <span class="nf">get_geometry</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Element</span><span class="p">],</span>
                  <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span> <span class="o">=</span> <span class="n">All</span><span class="p">,</span>
                  <span class="n">start_coordinates</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
                  <span class="n">centered</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -1348,8 +1514,8 @@
 <span class="sd">        ring:               Lattice description.</span>
 <span class="sd">        refpts:     Element selection key.</span>
 <span class="sd">          See &quot;:ref:`Selecting elements in a lattice &lt;refpts&gt;`&quot;</span>
-<span class="sd">        start_coordinates:  *x*, *y*, *angle* at starting point. *x* and *y* are</span>
-<span class="sd">          ignored if *centered* is :py:obj:`True`.</span>
+<span class="sd">        start_coordinates:  *x*, *y*, *angle* at starting point. *x*</span>
+<span class="sd">          and *y* are ignored if *centered* is :py:obj:`True`.</span>
 <span class="sd">        centered:           if :py:obj:`True` the coordinates origin is the</span>
 <span class="sd">          center of the ring.</span>
 <span class="sd">        regex: Use regular expression for *refpts* string matching instead of</span>
@@ -1422,77 +1588,79 @@
     <span class="n">geomdata</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">yy</span><span class="p">[</span><span class="n">boolrefs</span><span class="p">]</span>
     <span class="n">geomdata</span><span class="p">[</span><span class="s2">&quot;angle&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">angle</span><span class="p">[</span><span class="n">boolrefs</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">geomdata</span><span class="p">,</span> <span class="n">radius</span></div>
+
 </pre></div>
 
-            </article>
-            
-            
-            
-            <footer class="bd-footer-article">
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-</div>
-            </footer>
-            
-          </div>
-          
-          
-          
-            <div class="bd-sidebar-secondary bd-toc">
+                </article>
               
-<div class="toc-item">
-  
-<div id="searchbox"></div>
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
 </div>
-
-<div class="toc-item">
-  
-</div>
-
-<div class="toc-item">
-  
-</div>
-
+                </footer>
+              
             </div>
-          
-          
-        </div>
-        <footer class="bd-footer-content">
-          <div class="bd-footer-content__inner">
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
             
           </div>
-        </footer>
+          <footer class="bd-footer-content">
+            
+          </footer>
         
       </main>
     </div>
   </div>
-
   
-    
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
-  <footer class="bd-footer"><div class="bd-footer__inner container">
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
   
-  <div class="footer-item">
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
     
-<p class="copyright">
+      © Copyright 2022, ATCollab.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
 
-    &copy; Copyright 2022, ATCollab.<br>
-
-</p>
-
-  </div>
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
   
-  <div class="footer-item">
-    
-<p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
-</p>
-
-  </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
   
 </div>
+
   </footer>
   </body>
 </html>
