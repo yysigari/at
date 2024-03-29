@@ -12,7 +12,7 @@ import numpy
 from copy import copy, deepcopy
 from abc import ABC
 from collections.abc import Generator, Iterable
-from typing import Optional
+from typing import Any, Optional
 
 
 def _array(value, shape=(-1,), dtype=numpy.float64):
@@ -371,7 +371,7 @@ class Element(object):
         """Return a deep copy of the element"""
         return deepcopy(self)
 
-    def items(self) -> Generator[tuple, None, None]:
+    def items(self) -> Generator[tuple[str, Any], None, None]:
         """Iterates through the data members"""
         for k, v in vars(self).items():
             yield k, v
@@ -454,8 +454,22 @@ class LongElement(Element):
         return element_list
 
     def is_compatible(self, other) -> bool:
-        return type(other) is type(self) and \
-               self.PassMethod == other.PassMethod
+        def compatible_field(fieldname):
+            f1 = getattr(self, fieldname, None)
+            f2 = getattr(other, fieldname, None)
+            if f1 is None and f2 is None:  # no such field
+                return True
+            elif f1 is None or f2 is None:  # only one
+                return False
+            else:  # both
+                return numpy.all(f1 == f2)
+
+        if not (type(other) is type(self) and self.PassMethod == other.PassMethod):
+            return False
+        for fname in ("RApertures", "EApertures"):
+            if not compatible_field(fname):
+                return False
+        return True
 
     def merge(self, other) -> None:
         super().merge(other)
@@ -708,8 +722,8 @@ class ThinMultipole(Element):
         """
         Args:
             family_name:    Name of the element
-            poly_a:         Array of normal multipole components
-            poly_b:         Array of skew multipole components
+            poly_a:         Array of skew multipole components
+            poly_b:         Array of normal multipole components
 
         Keyword arguments:
             MaxOrder:       Number of desired multipoles. Default: highest
@@ -775,8 +789,8 @@ class Multipole(_Radiative, LongElement, ThinMultipole):
         Args:
             family_name:    Name of the element
             length:         Element length [m]
-            poly_a:         Array of normal multipole components
-            poly_b:         Array of skew multipole components
+            poly_a:         Array of skew multipole components
+            poly_b:         Array of normal multipole components
 
         Keyword arguments:
             MaxOrder:       Number of desired multipoles. Default: highest
@@ -857,16 +871,14 @@ class Dipole(Radiative, Multipole):
             family_name:    Name of the element
             length:         Element length [m]
             bending_angle:  Bending angle [rd]
-            poly_a:         Array of normal multipole components
-            poly_b:         Array of skew multipole components
-            k=0:            Field index
+            k:              Focusing strength [m^-2]
 
         Keyword arguments:
             EntranceAngle=0.0:  entrance angle
             ExitAngle=0.0:      exit angle
             PolynomB:           straight multipoles
             PolynomA:           skew multipoles
-            MaxOrder:           Number of desired multipoles
+            MaxOrder=0:         Number of desired multipoles
             NumIntSt=10:        Number of integration steps
             FullGap:            Magnet full gap
             FringeInt1:         Extension of the entrance fringe field
@@ -889,9 +901,9 @@ class Dipole(Radiative, Multipole):
             FieldScaling:       Scaling factor applied to the magnetic field
 
         Available PassMethods: :ref:`BndMPoleSymplectic4Pass`,
-                               :ref:`BendLinearPass`,
-        :ref:`ExactSectorBendPass`, :ref:`ExactRectangularBendPass`,
-        :ref:`ExactRectBendPass`, BndStrMPoleSymplectic4Pass
+        :ref:`BendLinearPass`, :ref:`ExactSectorBendPass`,
+        :ref:`ExactRectangularBendPass`, :ref:`ExactRectBendPass`,
+        BndStrMPoleSymplectic4Pass
 
         Default PassMethod: :ref:`BndMPoleSymplectic4Pass`
         """
@@ -950,12 +962,12 @@ class Quadrupole(Radiative, Multipole):
         Args:
             family_name:    Name of the element
             length:         Element length [m]
-            k:              strength [mˆ-2]
+            k:              Focusing strength [mˆ-2]
 
         Keyword Arguments:
             PolynomB:           straight multipoles
             PolynomA:           skew multipoles
-            MaxOrder:           Number of desired multipoles
+            MaxOrder=1:         Number of desired multipoles
             NumIntSteps=10:     Number of integration steps
             FringeQuadEntrance: 0: no fringe field effect (default)
 
@@ -1082,7 +1094,7 @@ class RFCavity(LongtMotion, LongElement):
 
 class M66(Element):
     """Linear (6, 6) transfer matrix"""
-    _BUILD_ATTRIBUTES = Element._BUILD_ATTRIBUTES
+    _BUILD_ATTRIBUTES = Element._BUILD_ATTRIBUTES + ["M66"]
     _conversions = dict(Element._conversions, M66=_array66)
 
     def __init__(self, family_name: str, m66=None, **kwargs):
@@ -1096,13 +1108,17 @@ class M66(Element):
         if m66 is None:
             m66 = numpy.identity(6)
         kwargs.setdefault('PassMethod', 'Matrix66Pass')
-        super(M66, self).__init__(family_name, M66=m66, **kwargs)
+        kwargs.setdefault("M66", m66)
+        super(M66, self).__init__(family_name, **kwargs)
 
 
 class SimpleQuantDiff(_DictLongtMotion, Element):
     """
     Linear tracking element for a simplified quantum diffusion,
-    radiation damping and energy loss
+    radiation damping and energy loss.
+
+    Note: The damping times are needed to compute the correct
+    kick for the emittance. Radiation damping is NOT applied.
     """
     _BUILD_ATTRIBUTES = Element._BUILD_ATTRIBUTES
     default_pass = {False: 'IdentityPass', True: 'SimpleQuantDiffPass'}
@@ -1111,7 +1127,7 @@ class SimpleQuantDiff(_DictLongtMotion, Element):
                  betay: float = 1.0, emitx: float = 0.0,
                  emity: float = 0.0, espread: float = 0.0,
                  taux: float = 0.0, tauy: float = 0.0,
-                 tauz: float = 0.0, U0: float = 0.0,
+                 tauz: float = 0.0,
                  **kwargs):
         """
         Args:
@@ -1126,7 +1142,6 @@ class SimpleQuantDiff(_DictLongtMotion, Element):
             taux:          Horizontal damping time [turns]
             tauy:          Vertical damping time [turns]
             tauz:          Longitudinal damping time [turns]
-            U0:             Energy Loss [eV]
 
         Default PassMethod: ``SimpleQuantDiffPass``
        """
@@ -1156,10 +1171,59 @@ class SimpleQuantDiff(_DictLongtMotion, Element):
         if espread > 0.0:
             assert tauz > 0.0, 'if espread is given, tauz must be non zero'
 
-        self.U0 = U0
         self.betax = betax
         self.betay = betay
         super(SimpleQuantDiff, self).__init__(family_name, **kwargs)
+
+
+class SimpleRadiation(_DictLongtMotion, Radiative, Element):
+    """Simple radiation damping and energy loss"""
+    _BUILD_ATTRIBUTES = Element._BUILD_ATTRIBUTES
+    _conversions = dict(Element._conversions, U0=float,
+                        damp_mat_diag=lambda v: _array(v, shape=(6,)))
+
+    default_pass = {False: 'IdentityPass', True: 'SimpleRadiationPass'}
+
+    def __init__(self, family_name: str,
+                 taux: float = 0.0, tauy: float = 0.0,
+                 tauz: float = 0.0, U0: float = 0.0,
+                 **kwargs):
+        """
+        Args:
+            family_name:    Name of the element
+
+        Optional Args:
+            taux:          Horizontal damping time [turns]
+            tauy:          Vertical damping time [turns]
+            tauz:          Longitudinal damping time [turns]
+            U0:            Energy loss per turn [eV]
+
+        Default PassMethod: ``SimpleRadiationPass``
+       """
+        assert taux >= 0.0, 'taux must be greater than or equal to 0'
+        if taux == 0.0:
+            dampx = 1
+        else:
+            dampx = numpy.exp(-1/taux)
+
+        assert tauy >= 0.0, 'tauy must be greater than or equal to 0'
+        if tauy == 0.0:
+            dampy = 1
+        else:
+            dampy = numpy.exp(-1/tauy)
+
+        assert tauz >= 0.0, 'tauz must be greater than or equal to 0'
+        if tauz == 0.0:
+            dampz = 1
+        else:
+            dampz = numpy.exp(-1/tauz)
+
+        kwargs.setdefault('PassMethod', self.default_pass[True])
+        kwargs.setdefault("U0", U0)
+        kwargs.setdefault("damp_mat_diag",
+                          numpy.array([dampx, dampx, dampy, dampy, dampz, dampz]))
+
+        super(SimpleRadiation, self).__init__(family_name, **kwargs)
 
 
 class Corrector(LongElement):
