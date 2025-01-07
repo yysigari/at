@@ -15,8 +15,8 @@ def test_data_checks():
 
 def test_element_string_ordering():
     d = elements.Drift('D0', 1, attr=numpy.array(0))
-    assert d.__str__() == ("Drift:\n\tFamName : D0\n\tLength : 1.0\n"
-                           "\tPassMethod : DriftPass\n\tattr : 0")
+    assert d.__str__() == ("Drift:\n       FamName: D0\n        Length: 1.0\n"
+                           "    PassMethod: DriftPass\n          attr: 0")
     assert d.__repr__() == "Drift('D0', 1.0, attr=array(0))"
 
 
@@ -392,9 +392,9 @@ def test_wiggler(rin, func):
     expected = numpy.array(rin, copy=True)
     expected[5] = 0.000000181809691064259
     if func == element_track:
-        func(c, rin, in_place=True)
+        func(c, rin, energy=3e9, in_place=True)
     else:
-        func(c, rin)
+        func(c, rin, energy=3e9)
     numpy.testing.assert_allclose(rin, expected, atol=1e-12)
 
 

@@ -2,7 +2,8 @@
 requires = [
     "setuptools >= 64",
     "setuptools_scm >= 7",
-    "oldest-supported-numpy",
+    "oldest-supported-numpy; python_version <= '3.8'",
+    "numpy >= 2.0; python_version >= '3.9'",
     "wheel",
 ]
 # build-backend = "setuptools.build_meta"
@@ -27,8 +28,9 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: The Unlicense (Unlicense)",
+    "License :: OSI Approved :: Apache Software License",
     "Operating System :: MacOS",
     "Operating System :: Microsoft :: Windows",
     "Operating System :: POSIX",
@@ -36,7 +38,8 @@ classifiers = [
 requires-python = ">=3.7"
 dependencies = [
     "importlib-resources;python_version<'3.9'",
-    "numpy>=1.16.6",
+    "numpy >=1.16.6, <2.0; python_version <= '3.8'",
+    "numpy >= 1.23.5; python_version >= '3.9'",
     "scipy>=1.4.0"
 ]
 
@@ -50,7 +53,7 @@ ChangeLog = "https://github.com/atcollab/at/releases"
 mpi = ["mpi4py"]
 plot = ["matplotlib"]
 dev = ["pytest >= 2.9", "pytest-cov", "flake8"]
-doc = ["Sphinx ~= 7.2", "myst-parser", "myst-nb", "pydata-sphinx-theme ~= 0.14",
+doc = ["Sphinx ~= 8.1", "myst-parser", "myst-nb", "pydata-sphinx-theme",
     "sphinx_design", "sphinx-copybutton"]
 
 [tool.setuptools]
@@ -66,15 +69,13 @@ machine_data = ["*.m", "*.mat"]
 
 [tool.cibuildwheel]
 # Pypy does not have Scipy so we cannot support it.
-build = ["cp3{7,8,9,10,11,12}*"]
-# Skip 32-bit builds starting with python 3.12
-skip = ["cp312-win32", "cp312-*_i686"]
+build = ["cp3{7,8,9,10,11,12,13}*"]
+# build = ["cp312-*"]  # Only cp312 for test
+# Skip 32-bit builds
+skip = ["*-win32", "*_i686"]
 build-verbosity = "1"
 # "build" frontend fails on windows
 # build-frontend = "build"
-
-[tool.cibuildwheel.macos]
-archs = ["x86_64", "arm64"]
 
 #[tool.cibuildwheel.linux]
 ## Pass the detected PyAT version to the linux docker containers
